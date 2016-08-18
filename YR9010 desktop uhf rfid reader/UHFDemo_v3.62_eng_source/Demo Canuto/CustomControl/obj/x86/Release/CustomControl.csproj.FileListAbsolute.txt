@@ -1,0 +1,14 @@
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\bin\x86\Release\CustomControl.dll
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\bin\x86\Release\CustomControl.pdb
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.IpAddressTextBox.resources
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.csproj.GenerateResource.Cache
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.dll
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\bin\x86\Release\CustomControl.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\bin\x86\Release\CustomControl.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Release\CustomControl.csprojResolveAssemblyReference.cache
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Release\CustomControl.IpAddressTextBox.resources
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Release\CustomControl.csproj.GenerateResource.Cache
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Release\CustomControl.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Release\CustomControl.pdb

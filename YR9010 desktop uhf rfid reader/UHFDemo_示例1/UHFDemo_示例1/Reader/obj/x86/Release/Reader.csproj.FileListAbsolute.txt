@@ -1,0 +1,10 @@
+D:\Project\Luo\R2000Project\UHFDemo\Reader\bin\x86\Release\Reader.dll
+D:\Project\Luo\R2000Project\UHFDemo\Reader\bin\x86\Release\Reader.pdb
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\Reader.dll
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\Reader.pdb
+D:\demo\UHFDemo_v3.62\Reader\bin\x86\Release\Reader.dll
+D:\demo\UHFDemo_v3.62\Reader\bin\x86\Release\Reader.pdb
+D:\demo\UHFDemo_v3.62\Reader\obj\x86\Release\ResolveAssemblyReference.cache
+D:\demo\UHFDemo_v3.62\Reader\obj\x86\Release\Reader.dll
+D:\demo\UHFDemo_v3.62\Reader\obj\x86\Release\Reader.pdb

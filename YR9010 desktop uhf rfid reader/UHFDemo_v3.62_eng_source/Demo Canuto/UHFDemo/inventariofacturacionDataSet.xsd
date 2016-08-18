@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="inventariofacturacionDataSet" targetNamespace="http://tempuri.org/inventariofacturacionDataSet.xsd" xmlns:mstns="http://tempuri.org/inventariofacturacionDataSet.xsd" xmlns="http://tempuri.org/inventariofacturacionDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="inventariofacturacionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="inventariofacturacionConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.UHFDemo.Properties.Settings.GlobalReference.Default.inventariofacturacionConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="carrerasTableAdapter" GeneratorDataComponentClassName="carrerasTableAdapter" Name="carreras" UserDataComponentName="carrerasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.carreras" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdEmpresa`, `IdCarrera`, `IdCategoria`, `Fecha`, `IdPais`, `IdEstado`, `IdCiudad` FROM `carreras`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="carrerasdetalleTableAdapter" GeneratorDataComponentClassName="carrerasdetalleTableAdapter" Name="carrerasdetalle" UserDataComponentName="carrerasdetalleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.carrerasdetalle" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdEmpresa`, `IdCarrera`, `Id`, `IdCompetidor`, `Chip`, `Tiempo` FROM `carrerasdetalle`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="categoriasTableAdapter" GeneratorDataComponentClassName="categoriasTableAdapter" Name="categorias" UserDataComponentName="categoriasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.categorias" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdEmpresa`, `IdCategoria`, `Descripcion` FROM `categorias`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ciudadesTableAdapter" GeneratorDataComponentClassName="ciudadesTableAdapter" Name="ciudades" UserDataComponentName="ciudadesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.ciudades" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdPais`, `IdEstado`, `IdCiudad`, `Descripcion` FROM `ciudades`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="competidoresTableAdapter" GeneratorDataComponentClassName="competidoresTableAdapter" Name="competidores" UserDataComponentName="competidoresTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.competidores" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdEmpresa`, `IdCompetidor`, `ApellidoPaterno`, `ApellidoMaterno`, `Nombre`, `Direccion`, `IdPais`, `IdEstado`, `IdCiudad`, `Telefono` FROM `competidores`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="estadosTableAdapter" GeneratorDataComponentClassName="estadosTableAdapter" Name="estados" UserDataComponentName="estadosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.estados" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdPais`, `IdEstado`, `Descripcion` FROM `estados`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="paisesTableAdapter" GeneratorDataComponentClassName="paisesTableAdapter" Name="paises" UserDataComponentName="paisesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="inventariofacturacionConnectionString (Settings)" DbObjectName="inventariofacturacion.paises" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IdPais`, `Descripcion` FROM `paises`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="inventariofacturacionDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="inventariofacturacionDataSet" msprop:Generator_UserDSName="inventariofacturacionDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="carreras" msprop:Generator_TableClassName="carrerasDataTable" msprop:Generator_TableVarName="tablecarreras" msprop:Generator_TablePropName="carreras" msprop:Generator_RowDeletingName="carrerasRowDeleting" msprop:Generator_RowChangingName="carrerasRowChanging" msprop:Generator_RowEvHandlerName="carrerasRowChangeEventHandler" msprop:Generator_RowDeletedName="carrerasRowDeleted" msprop:Generator_UserTableName="carreras" msprop:Generator_RowChangedName="carrerasRowChanged" msprop:Generator_RowEvArgName="carrerasRowChangeEvent" msprop:Generator_RowClassName="carrerasRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="carrerasdetalle" msprop:Generator_TableClassName="carrerasdetalleDataTable" msprop:Generator_TableVarName="tablecarrerasdetalle" msprop:Generator_TablePropName="carrerasdetalle" msprop:Generator_RowDeletingName="carrerasdetalleRowDeleting" msprop:Generator_RowChangingName="carrerasdetalleRowChanging" msprop:Generator_RowEvHandlerName="carrerasdetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="carrerasdetalleRowDeleted" msprop:Generator_UserTableName="carrerasdetalle" msprop:Generator_RowChangedName="carrerasdetalleRowChanged" msprop:Generator_RowEvArgName="carrerasdetalleRowChangeEvent" msprop:Generator_RowClassName="carrerasdetalleRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="categorias" msprop:Generator_TableClassName="categoriasDataTable" msprop:Generator_TableVarName="tablecategorias" msprop:Generator_TablePropName="categorias" msprop:Generator_RowDeletingName="categoriasRowDeleting" msprop:Generator_RowChangingName="categoriasRowChanging" msprop:Generator_RowEvHandlerName="categoriasRowChangeEventHandler" msprop:Generator_RowDeletedName="categoriasRowDeleted" msprop:Generator_UserTableName="categorias" msprop:Generator_RowChangedName="categoriasRowChanged" msprop:Generator_RowEvArgName="categoriasRowChangeEvent" msprop:Generator_RowClassName="categoriasRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ciudades" msprop:Generator_TableClassName="ciudadesDataTable" msprop:Generator_TableVarName="tableciudades" msprop:Generator_TablePropName="ciudades" msprop:Generator_RowDeletingName="ciudadesRowDeleting" msprop:Generator_RowChangingName="ciudadesRowChanging" msprop:Generator_RowEvHandlerName="ciudadesRowChangeEventHandler" msprop:Generator_RowDeletedName="ciudadesRowDeleted" msprop:Generator_UserTableName="ciudades" msprop:Generator_RowChangedName="ciudadesRowChanged" msprop:Generator_RowEvArgName="ciudadesRowChangeEvent" msprop:Generator_RowClassName="ciudadesRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="competidores" msprop:Generator_TableClassName="competidoresDataTable" msprop:Generator_TableVarName="tablecompetidores" msprop:Generator_TablePropName="competidores" msprop:Generator_RowDeletingName="competidoresRowDeleting" msprop:Generator_RowChangingName="competidoresRowChanging" msprop:Generator_RowEvHandlerName="competidoresRowChangeEventHandler" msprop:Generator_RowDeletedName="competidoresRowDeleted" msprop:Generator_UserTableName="competidores" msprop:Generator_RowChangedName="competidoresRowChanged" msprop:Generator_RowEvArgName="competidoresRowChangeEvent" msprop:Generator_RowClassName="competidoresRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="estados" msprop:Generator_TableClassName="estadosDataTable" msprop:Generator_TableVarName="tableestados" msprop:Generator_TablePropName="estados" msprop:Generator_RowDeletingName="estadosRowDeleting" msprop:Generator_RowChangingName="estadosRowChanging" msprop:Generator_RowEvHandlerName="estadosRowChangeEventHandler" msprop:Generator_RowDeletedName="estadosRowDeleted" msprop:Generator_UserTableName="estados" msprop:Generator_RowChangedName="estadosRowChanged" msprop:Generator_RowEvArgName="estadosRowChangeEvent" msprop:Generator_RowClassName="estadosRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="paises" msprop:Generator_TableClassName="paisesDataTable" msprop:Generator_TableVarName="tablepaises" msprop:Generator_TablePropName="paises" msprop:Generator_RowDeletingName="paisesRowDeleting" msprop:Generator_RowChangingName="paisesRowChanging" msprop:Generator_RowEvHandlerName="paisesRowChangeEventHandler" msprop:Generator_RowDeletedName="paisesRowDeleted" msprop:Generator_UserTableName="paises" msprop:Generator_RowChangedName="paisesRowChanged" msprop:Generator_RowEvArgName="paisesRowChangeEvent" msprop:Generator_RowClassName="paisesRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

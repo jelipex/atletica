@@ -1,0 +1,26 @@
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\UHFDemo.exe
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\UHFDemo.pdb
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\CustomControl.dll
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\Reader.dll
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\CustomControl.pdb
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\bin\x86\Release\Reader.pdb
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.Form1.resources
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.R2000UartDemo.resources
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.Properties.Resources.resources
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.csproj.GenerateResource.Cache
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.exe
+D:\Project\Luo\R2000Project\UHFDemo\UHFDemo\obj\x86\Release\UHFDemo.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.exe
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\UHFDemo.exe
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\UHFDemo.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\CustomControl.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\Reader.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\CustomControl.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\bin\x86\Release\Reader.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.csprojResolveAssemblyReference.cache
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.Form1.resources
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.R2000UartDemo.resources
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.Properties.Resources.resources
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Release\UHFDemo.csproj.GenerateResource.Cache

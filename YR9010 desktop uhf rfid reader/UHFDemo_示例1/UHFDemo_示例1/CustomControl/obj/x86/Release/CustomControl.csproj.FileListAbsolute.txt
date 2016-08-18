@@ -1,0 +1,15 @@
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\bin\x86\Release\CustomControl.dll
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\bin\x86\Release\CustomControl.pdb
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.IpAddressTextBox.resources
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.csproj.GenerateResource.Cache
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.dll
+D:\Project\Luo\R2000Project\UHFDemo\CustomControl\obj\x86\Release\CustomControl.pdb
+D:\demo\UHFDemo_v3.62\CustomControl\bin\x86\Release\CustomControl.dll
+D:\demo\UHFDemo_v3.62\CustomControl\bin\x86\Release\CustomControl.pdb
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\ResolveAssemblyReference.cache
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\CustomControl.IpAddressTextBox.resources
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\CustomControl.dll
+D:\demo\UHFDemo_v3.62\CustomControl\obj\x86\Release\CustomControl.pdb

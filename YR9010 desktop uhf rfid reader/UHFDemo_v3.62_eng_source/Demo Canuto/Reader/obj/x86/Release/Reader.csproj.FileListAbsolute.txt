@@ -1,0 +1,10 @@
+D:\Project\Luo\R2000Project\UHFDemo\Reader\bin\x86\Release\Reader.dll
+D:\Project\Luo\R2000Project\UHFDemo\Reader\bin\x86\Release\Reader.pdb
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\Reader.dll
+D:\Project\Luo\R2000Project\UHFDemo\Reader\obj\x86\Release\Reader.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\bin\x86\Release\Reader.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\bin\x86\Release\Reader.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Release\Reader.csprojResolveAssemblyReference.cache
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Release\Reader.dll
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Release\Reader.pdb
