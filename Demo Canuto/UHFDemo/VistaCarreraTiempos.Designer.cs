@@ -40,6 +40,7 @@
             this.Competidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaTiemposCorredores)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +120,8 @@
             this.IdCompetidor,
             this.Competidor,
             this.Chip,
-            this.Tiempo});
+            this.Tiempo,
+            this.IdPunto});
             this.tablaTiemposCorredores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaTiemposCorredores.Location = new System.Drawing.Point(0, 49);
             this.tablaTiemposCorredores.Name = "tablaTiemposCorredores";
@@ -154,6 +156,13 @@
             this.Tiempo.ReadOnly = true;
             this.Tiempo.Width = 150;
             // 
+            // IdPunto
+            // 
+            this.IdPunto.DataPropertyName = "IdPunto";
+            this.IdPunto.HeaderText = "Punto";
+            this.IdPunto.Name = "IdPunto";
+            this.IdPunto.ReadOnly = true;
+            // 
             // VistaCarreraTiempos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +195,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Competidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Chip;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPunto;
 
     }
 }

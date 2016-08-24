@@ -34,6 +34,9 @@ namespace UHFDemo
         private void InicializarFormularioCategorias()
         {
             txtIdCategoria.Text = ObtenerConsecutivo().ToString();
+            txtDescripcionCategoria.Text = "";
+            txtEdadInicial.Text = "";
+            txtEdadFinal.Text = "";
             txtDescripcionCategoria.Focus();
             AsignarEventos();
         }
@@ -52,9 +55,13 @@ namespace UHFDemo
 
         private void AsignarEventos()
         {
+            btnGuardarCategoria.Click -= btnGuardarCategoria_Click;
             btnGuardarCategoria.Click +=btnGuardarCategoria_Click;
+            btnGuardarCerrarCategoria.Click -= btnGuardarCerrarCategoria_Click;
             btnGuardarCerrarCategoria.Click += btnGuardarCerrarCategoria_Click;
+            btnCancelar.Click -= btnCancelar_Click;
             btnCancelar.Click += btnCancelar_Click;
+            this.FormClosing -= VistaCapturaCategorias_FormClosing;
             this.FormClosing += VistaCapturaCategorias_FormClosing;
         }
 
@@ -69,7 +76,8 @@ namespace UHFDemo
                 }
                 else
                 {
-                    vistaDemo.LlenarListadoCategorias();
+                    //vistaDemo.LlenarListadoCategorias();
+                    entroGuardarCerrar = true;
                 }
             }
             else
@@ -97,7 +105,7 @@ namespace UHFDemo
 
         private int ObtenerConsecutivo()
         {
-            connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
             query = "SELECT ifnull(MAX(IdCategoria), 0) + 1 from categorias where idempresa = " + IdEmpresa;
             int idCategoria = 0;
@@ -126,38 +134,68 @@ namespace UHFDemo
             }
         }
 
+        private bool ValidarCampos()
+        {
+            bool valido = true;
+            string descripcion = txtDescripcionCategoria.Text;
+            string edadInicial = txtEdadInicial.Text;
+            string edadFinal = txtEdadFinal.Text;
+
+            if (string.IsNullOrEmpty(descripcion))
+            {
+                MessageBox.Show("Debe de capturar una descripción de la categoría");
+                valido = false;
+                return valido;
+            }
+            else if (string.IsNullOrEmpty(edadInicial))
+            {
+                MessageBox.Show("Debe de capturar un edad inicial de edad");
+                valido = false;
+                return valido;
+            }
+            else if (string.IsNullOrEmpty(edadFinal))
+            {
+                MessageBox.Show("Debe de capturar un edad final de edad");
+                valido = false;
+                return valido;
+            }
+
+            return valido;
+        }
+
         private void Guardar()
         {
-            int idCategoria = ObtenerConsecutivo();
-            string descripcion = txtDescripcionCategoria.Text;
+            
+           
             try
             {
-                if (string.IsNullOrEmpty(descripcion))
+                if (ValidarCampos())
                 {
-                    MessageBox.Show("Debe de capturar una descripción de la categoría");
-                    return;
-                }
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
-                mysqlCon = new MySqlConnection(connectionString);
-                mysqlCon.Open();
-                query = "INSERT INTO CATEGORIAS(IDEMPRESA, IDCATEGORIA, DESCRIPCION) VALUES(" + IdEmpresa + ", " + idCategoria + ", '" + descripcion + "')";
-                MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+                    int idCategoria = ObtenerConsecutivo();
+                    string descripcion = txtDescripcionCategoria.Text;
+                    int edadInicial = Convert.ToInt32(txtEdadInicial.Text);
+                    int edadFinal = Convert.ToInt32(txtEdadFinal.Text);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    MessageBox.Show("Categoría guardada correctamente.");
-                    InicializarFormularioCategorias();
+                    connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+                    mysqlCon = new MySqlConnection(connectionString);
+                    mysqlCon.Open();
+                    query = "INSERT INTO CATEGORIAS(IDEMPRESA, IDCATEGORIA, DESCRIPCION, EDADINICIAL, EDADFINAL) VALUES(" + IdEmpresa + ", " + idCategoria + ", '" + descripcion + "', " + edadInicial + ", " + edadFinal + ")";
+                    MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Categoría guardada correctamente.");
+                        InicializarFormularioCategorias();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al guardar la categoría comunicarse con el administrador.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Hubo un error al guardar la categoría comunicarse con el administrador.");
-                }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw ex;
             }
             finally
             {
@@ -170,33 +208,32 @@ namespace UHFDemo
 
         private void GuardarCerrar()
         {
-            int idCategoria = ObtenerConsecutivo();
-            string descripcion = txtDescripcionCategoria.Text;
             try
             {
-                if (string.IsNullOrEmpty(descripcion))
+                if (ValidarCampos())
                 {
-                    MessageBox.Show("Debe de capturar una descripción de la categoría");
-                    return;
-                }
+                    int idCategoria = ObtenerConsecutivo();
+                    string descripcion = txtDescripcionCategoria.Text;
+                    int edadInicial = Convert.ToInt32(txtEdadInicial.Text);
+                    int edadFinal = Convert.ToInt32(txtEdadFinal.Text);
 
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
-                mysqlCon = new MySqlConnection(connectionString);
-                mysqlCon.Open();
-                query = "INSERT INTO CATEGORIAS(IDEMPRESA, IDCATEGORIA, DESCRIPCION) VALUES(" + IdEmpresa + ", " + idCategoria + ", '" + descripcion + "')";
-                MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+                    connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+                    mysqlCon = new MySqlConnection(connectionString);
+                    mysqlCon.Open();
+                    query = "INSERT INTO CATEGORIAS(IDEMPRESA, IDCATEGORIA, DESCRIPCION, EDADINICIAL, EDADFINAL) VALUES(" + IdEmpresa + ", " + idCategoria + ", '" + descripcion + "', " + edadInicial + ", " + edadFinal + ")";
+                    MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    MessageBox.Show("Categoría guardada correctamente.");
-                    entroGuardarCerrar = true;
-                    this.Close();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Categoría guardada correctamente.");
+                        entroGuardarCerrar = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al guardar la categoría comunicarse con el administrador.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Hubo un error al guardar la categoría comunicarse con el administrador.");
-                }
-
             }
             catch (Exception ex)
             {
@@ -214,34 +251,33 @@ namespace UHFDemo
 
         private void Actualizar(object sender, EventArgs e)
         {
-            int idCategoria = Convert.ToInt32(txtIdCategoria.Text);
-            string descripcion = txtDescripcionCategoria.Text;
             try
             {
-                if (string.IsNullOrEmpty(descripcion))
+                if (ValidarCampos())
                 {
-                    MessageBox.Show("Debe de capturar una descripción de la categoría");
-                    return;
-                }
+                    int idCategoria = Convert.ToInt32(txtIdCategoria.Text);
+                    string descripcion = txtDescripcionCategoria.Text;
+                    int edadInicial = Convert.ToInt32(txtEdadInicial.Text);
+                    int edadFinal = Convert.ToInt32(txtEdadFinal.Text);
 
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
-                mysqlCon = new MySqlConnection(connectionString);
-                mysqlCon.Open();
-                query = "UPDATE CATEGORIAS SET DESCRIPCION = '" + descripcion  + "' WHERE IDEMPRESA = " + IdEmpresa + " AND IDCATEGORIA = " + idCategoria ;
-                MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+                    connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+                    mysqlCon = new MySqlConnection(connectionString);
+                    mysqlCon.Open();
+                    query = "UPDATE CATEGORIAS SET DESCRIPCION = '" + descripcion + "', EDADINICIAL = " + edadInicial + ", EDADFINAL = " + edadFinal + " WHERE IDEMPRESA = " + IdEmpresa + " AND IDCATEGORIA = " + idCategoria;
+                    MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    MessageBox.Show("Categoría modificada correctamente.");
-                    entroGuardarCerrar = true;
-                    this.Close();
-                    vistaDemo.LlenarListadoCategorias();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Categoría modificada correctamente.");
+                        entroGuardarCerrar = true;
+                        this.Close();
+                        vistaDemo.LlenarListadoCategorias();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al modificar la categoría comunicarse con el administrador.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Hubo un error al modificar la categoría comunicarse con el administrador.");
-                }
-
             }
             catch (Exception ex)
             {

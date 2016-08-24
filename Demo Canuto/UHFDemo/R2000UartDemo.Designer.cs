@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(R2000UartDemo));
             this.tabCtrMain = new System.Windows.Forms.TabControl();
             this.PagReaderSetting = new System.Windows.Forms.TabPage();
@@ -74,14 +73,18 @@
             this.txtFirmwareVersion = new System.Windows.Forms.TextBox();
             this.btnResetReader = new System.Windows.Forms.Button();
             this.gbCmdBaudrate = new System.Windows.Forms.GroupBox();
+            this.htbGetIdentifier = new CustomControl.HexTextBox();
+            this.htbSetIdentifier = new CustomControl.HexTextBox();
             this.btSetIdentifier = new System.Windows.Forms.Button();
             this.btGetIdentifier = new System.Windows.Forms.Button();
             this.gbCmdReaderAddress = new System.Windows.Forms.GroupBox();
+            this.htxtReadId = new CustomControl.HexTextBox();
             this.btnSetReadAddress = new System.Windows.Forms.Button();
             this.gbTcpIp = new System.Windows.Forms.GroupBox();
             this.btnDisconnectTcp = new System.Windows.Forms.Button();
             this.txtTcpPort = new System.Windows.Forms.TextBox();
             this.btnConnectTcp = new System.Windows.Forms.Button();
+            this.ipIpServer = new CustomControl.IpAddressTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gbRS232 = new System.Windows.Forms.GroupBox();
@@ -178,7 +181,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMostrarCarrera = new System.Windows.Forms.Button();
             this.textRealRound = new System.Windows.Forms.TextBox();
             this.label84 = new System.Windows.Forms.Label();
             this.btRealTimeInventory = new System.Windows.Forms.Button();
@@ -195,12 +197,17 @@
             this.label74 = new System.Windows.Forms.Label();
             this.lbRealTagCount = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ledReal3 = new LxControl.LxLedControl();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.ledReal5 = new LxControl.LxLedControl();
+            this.ledReal2 = new LxControl.LxLedControl();
+            this.ledReal4 = new LxControl.LxLedControl();
             this.label53 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
+            this.ledReal1 = new LxControl.LxLedControl();
             this.lvRealList = new System.Windows.Forms.ListView();
             this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -208,169 +215,6 @@
             this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pageBufferedMode = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btClearBuffer = new System.Windows.Forms.Button();
-            this.btQueryBuffer = new System.Windows.Forms.Button();
-            this.btGetClearBuffer = new System.Windows.Forms.Button();
-            this.btGetBuffer = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btBufferInventory = new System.Windows.Forms.Button();
-            this.label85 = new System.Windows.Forms.Label();
-            this.textReadRoundBuffer = new System.Windows.Forms.TextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.cbBufferWorkant1 = new System.Windows.Forms.CheckBox();
-            this.cbBufferWorkant4 = new System.Windows.Forms.CheckBox();
-            this.cbBufferWorkant2 = new System.Windows.Forms.CheckBox();
-            this.cbBufferWorkant3 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.label92 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.btBufferFresh = new System.Windows.Forms.Button();
-            this.labelBufferTagCount = new System.Windows.Forms.Label();
-            this.lvBufferList = new System.Windows.Forms.ListView();
-            this.columnHeader49 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader50 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader51 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader52 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader53 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader54 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pageFast4AntMode = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.txtFastMaxRssi = new System.Windows.Forms.TextBox();
-            this.txtFastMinRssi = new System.Windows.Forms.TextBox();
-            this.buttonFastFresh = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtDStay = new System.Windows.Forms.TextBox();
-            this.txtCStay = new System.Windows.Forms.TextBox();
-            this.txtBStay = new System.Windows.Forms.TextBox();
-            this.txtAStay = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.cmbAntSelect1 = new System.Windows.Forms.ComboBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.cmbAntSelect2 = new System.Windows.Forms.ComboBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.cmbAntSelect3 = new System.Windows.Forms.ComboBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.cmbAntSelect4 = new System.Windows.Forms.ComboBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btFastInventory = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtRepeat = new System.Windows.Forms.TextBox();
-            this.txtInterval = new System.Windows.Forms.TextBox();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.lvFastList = new System.Windows.Forms.ListView();
-            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label49 = new System.Windows.Forms.Label();
-            this.txtFastTagList = new System.Windows.Forms.Label();
-            this.pageAcessTag = new System.Windows.Forms.TabPage();
-            this.ltvOperate = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbCmdOperateTag = new System.Windows.Forms.GroupBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.btnKillTag = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.rdbUserMemory = new System.Windows.Forms.RadioButton();
-            this.rdbTidMemory = new System.Windows.Forms.RadioButton();
-            this.rdbEpcMermory = new System.Windows.Forms.RadioButton();
-            this.rdbKillPwd = new System.Windows.Forms.RadioButton();
-            this.rdbAccessPwd = new System.Windows.Forms.RadioButton();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.rdbLockEver = new System.Windows.Forms.RadioButton();
-            this.rdbFreeEver = new System.Windows.Forms.RadioButton();
-            this.rdbLock = new System.Windows.Forms.RadioButton();
-            this.rdbFree = new System.Windows.Forms.RadioButton();
-            this.btnLockTag = new System.Windows.Forms.Button();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.txtWordCnt = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.btnWriteTag = new System.Windows.Forms.Button();
-            this.btnReadTag = new System.Windows.Forms.Button();
-            this.txtWordAdd = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.rdbUser = new System.Windows.Forms.RadioButton();
-            this.rdbTid = new System.Windows.Forms.RadioButton();
-            this.rdbEpc = new System.Windows.Forms.RadioButton();
-            this.rdbReserved = new System.Windows.Forms.RadioButton();
-            this.label24 = new System.Windows.Forms.Label();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.btnSetAccessEpcMatch = new System.Windows.Forms.Button();
-            this.cmbSetAccessEpcMatch = new System.Windows.Forms.ComboBox();
-            this.txtAccessEpcMatch = new System.Windows.Forms.TextBox();
-            this.ckAccessEpcMatch = new System.Windows.Forms.CheckBox();
-            this.PagISO18000 = new System.Windows.Forms.TabPage();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnInventoryISO18000 = new System.Windows.Forms.Button();
-            this.ltvTagISO18000 = new System.Windows.Forms.ListView();
-            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbISO1800LockQuery = new System.Windows.Forms.GroupBox();
-            this.txtStatus = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.btnQueryTagISO18000 = new System.Windows.Forms.Button();
-            this.btnLockTagISO18000 = new System.Windows.Forms.Button();
-            this.gbISO1800ReadWrite = new System.Windows.Forms.GroupBox();
-            this.txtLoopTimes = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.txtLoop = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.txtWriteLength = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.btnWriteTagISO18000 = new System.Windows.Forms.Button();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.txtReadLength = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.btnReadTagISO18000 = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
-            this.PagTranDataLog = new System.Windows.Forms.TabPage();
-            this.gbCmdManual = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnClearData = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.btnSendData = new System.Windows.Forms.Button();
             this.TabCatalogos = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.tabOpcionesCatalogos = new System.Windows.Forms.TabControl();
@@ -385,8 +229,14 @@
             this.btnModificarCategoria = new System.Windows.Forms.Button();
             this.tabCompetidores = new System.Windows.Forms.TabPage();
             this.tablaCompetidores = new System.Windows.Forms.DataGridView();
-            this.inventariofacturacionDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.inventariofacturacionDataSet = new UHFDemo.inventariofacturacionDataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnRegistrarCompetidor = new System.Windows.Forms.Button();
             this.btnEliminarCompetidor = new System.Windows.Forms.Button();
@@ -422,11 +272,16 @@
             this.label78 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.lxLedControl9 = new LxControl.LxLedControl();
+            this.lxLedControl10 = new LxControl.LxLedControl();
+            this.lxLedControl11 = new LxControl.LxLedControl();
+            this.lxLedControl12 = new LxControl.LxLedControl();
             this.label79 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
+            this.lxLedControl13 = new LxControl.LxLedControl();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -441,53 +296,7 @@
             this.label90 = new System.Windows.Forms.Label();
             this.label91 = new System.Windows.Forms.Label();
             this.ckClearOperationRec = new System.Windows.Forms.CheckBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lrtxtLog = new CustomControl.LogRichTextBox();
-            this.htbGetIdentifier = new CustomControl.HexTextBox();
-            this.htbSetIdentifier = new CustomControl.HexTextBox();
-            this.htxtReadId = new CustomControl.HexTextBox();
-            this.ipIpServer = new CustomControl.IpAddressTextBox();
-            this.ledReal3 = new LxControl.LxLedControl();
-            this.ledReal5 = new LxControl.LxLedControl();
-            this.ledReal2 = new LxControl.LxLedControl();
-            this.ledReal4 = new LxControl.LxLedControl();
-            this.ledReal1 = new LxControl.LxLedControl();
-            this.ledBuffer4 = new LxControl.LxLedControl();
-            this.ledBuffer5 = new LxControl.LxLedControl();
-            this.ledBuffer2 = new LxControl.LxLedControl();
-            this.ledBuffer3 = new LxControl.LxLedControl();
-            this.ledBuffer1 = new LxControl.LxLedControl();
-            this.ledFast4 = new LxControl.LxLedControl();
-            this.ledFast5 = new LxControl.LxLedControl();
-            this.ledFast2 = new LxControl.LxLedControl();
-            this.ledFast3 = new LxControl.LxLedControl();
-            this.ledFast1 = new LxControl.LxLedControl();
-            this.htxtKillPwd = new CustomControl.HexTextBox();
-            this.htxtLockPwd = new CustomControl.HexTextBox();
-            this.htxtWriteData = new CustomControl.HexTextBox();
-            this.htxtReadAndWritePwd = new CustomControl.HexTextBox();
-            this.htxtQueryAdd = new CustomControl.HexTextBox();
-            this.htxtLockAdd = new CustomControl.HexTextBox();
-            this.htxtWriteData18000 = new CustomControl.HexTextBox();
-            this.htxtReadData18000 = new CustomControl.HexTextBox();
-            this.htxtWriteStartAdd = new CustomControl.HexTextBox();
-            this.htxtReadStartAdd = new CustomControl.HexTextBox();
-            this.htxtReadUID = new CustomControl.HexTextBox();
-            this.htxtSendData = new CustomControl.HexTextBox();
-            this.htxtCheckData = new CustomControl.HexTextBox();
-            this.lrtxtDataTran = new CustomControl.LogRichTextBox();
-            this.lxLedControl9 = new LxControl.LxLedControl();
-            this.lxLedControl10 = new LxControl.LxLedControl();
-            this.lxLedControl11 = new LxControl.LxLedControl();
-            this.lxLedControl12 = new LxControl.LxLedControl();
-            this.lxLedControl13 = new LxControl.LxLedControl();
             this.lxLedControl14 = new LxControl.LxLedControl();
             this.lxLedControl15 = new LxControl.LxLedControl();
             this.lxLedControl16 = new LxControl.LxLedControl();
@@ -531,32 +340,11 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.pageBufferedMode.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.pageFast4AntMode.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.pageAcessTag.SuspendLayout();
-            this.gbCmdOperateTag.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.PagISO18000.SuspendLayout();
-            this.gbISO1800LockQuery.SuspendLayout();
-            this.gbISO1800ReadWrite.SuspendLayout();
-            this.PagTranDataLog.SuspendLayout();
-            this.gbCmdManual.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).BeginInit();
             this.TabCatalogos.SuspendLayout();
             this.panel11.SuspendLayout();
             this.tabOpcionesCatalogos.SuspendLayout();
@@ -566,8 +354,6 @@
             this.panel12.SuspendLayout();
             this.tabCompetidores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSet)).BeginInit();
             this.panel14.SuspendLayout();
             this.TabCarreras.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -577,21 +363,6 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).BeginInit();
@@ -608,8 +379,6 @@
             // 
             this.tabCtrMain.Controls.Add(this.PagReaderSetting);
             this.tabCtrMain.Controls.Add(this.pageEpcTest);
-            this.tabCtrMain.Controls.Add(this.PagISO18000);
-            this.tabCtrMain.Controls.Add(this.PagTranDataLog);
             this.tabCtrMain.Controls.Add(this.TabCatalogos);
             this.tabCtrMain.Controls.Add(this.TabCarreras);
             this.tabCtrMain.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1096,6 +865,23 @@
             this.gbCmdBaudrate.TabStop = false;
             this.gbCmdBaudrate.Text = "Reader Identifier(12 Bytes)";
             // 
+            // htbGetIdentifier
+            // 
+            this.htbGetIdentifier.Location = new System.Drawing.Point(34, 24);
+            this.htbGetIdentifier.Name = "htbGetIdentifier";
+            this.htbGetIdentifier.ReadOnly = true;
+            this.htbGetIdentifier.Size = new System.Drawing.Size(228, 20);
+            this.htbGetIdentifier.TabIndex = 13;
+            this.htbGetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // htbSetIdentifier
+            // 
+            this.htbSetIdentifier.Location = new System.Drawing.Point(34, 66);
+            this.htbSetIdentifier.Name = "htbSetIdentifier";
+            this.htbSetIdentifier.Size = new System.Drawing.Size(228, 20);
+            this.htbSetIdentifier.TabIndex = 12;
+            this.htbSetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btSetIdentifier
             // 
             this.btSetIdentifier.Location = new System.Drawing.Point(314, 65);
@@ -1127,6 +913,14 @@
             this.gbCmdReaderAddress.TabIndex = 5;
             this.gbCmdReaderAddress.TabStop = false;
             this.gbCmdReaderAddress.Text = "RS-485 Address(HEX)";
+            // 
+            // htxtReadId
+            // 
+            this.htxtReadId.Location = new System.Drawing.Point(114, 27);
+            this.htxtReadId.Name = "htxtReadId";
+            this.htxtReadId.Size = new System.Drawing.Size(121, 20);
+            this.htxtReadId.TabIndex = 2;
+            this.htxtReadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSetReadAddress
             // 
@@ -1182,6 +976,14 @@
             this.btnConnectTcp.Text = "Connect";
             this.btnConnectTcp.UseVisualStyleBackColor = true;
             this.btnConnectTcp.Click += new System.EventHandler(this.btnConnectTcp_Click);
+            // 
+            // ipIpServer
+            // 
+            this.ipIpServer.IpAddressStr = "";
+            this.ipIpServer.Location = new System.Drawing.Point(114, 22);
+            this.ipIpServer.Name = "ipIpServer";
+            this.ipIpServer.Size = new System.Drawing.Size(120, 23);
+            this.ipIpServer.TabIndex = 0;
             // 
             // label4
             // 
@@ -2197,14 +1999,11 @@
             this.pageEpcTest.Name = "pageEpcTest";
             this.pageEpcTest.Size = new System.Drawing.Size(1010, 603);
             this.pageEpcTest.TabIndex = 5;
-            this.pageEpcTest.Text = "18000-6C Tag Test";
+            this.pageEpcTest.Text = "Carrera";
             // 
             // tabEpcTest
             // 
             this.tabEpcTest.Controls.Add(this.pageRealMode);
-            this.tabEpcTest.Controls.Add(this.pageBufferedMode);
-            this.tabEpcTest.Controls.Add(this.pageFast4AntMode);
-            this.tabEpcTest.Controls.Add(this.pageAcessTag);
             this.tabEpcTest.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabEpcTest.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabEpcTest.Location = new System.Drawing.Point(0, 7);
@@ -2224,15 +2023,15 @@
             this.pageRealMode.Controls.Add(this.label70);
             this.pageRealMode.Controls.Add(this.label74);
             this.pageRealMode.Controls.Add(this.lbRealTagCount);
-            this.pageRealMode.Controls.Add(this.groupBox1);
             this.pageRealMode.Controls.Add(this.lvRealList);
+            this.pageRealMode.Controls.Add(this.groupBox1);
             this.pageRealMode.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pageRealMode.Location = new System.Drawing.Point(4, 22);
             this.pageRealMode.Name = "pageRealMode";
             this.pageRealMode.Padding = new System.Windows.Forms.Padding(3);
             this.pageRealMode.Size = new System.Drawing.Size(1000, 568);
             this.pageRealMode.TabIndex = 1;
-            this.pageRealMode.Text = "Tag Inventory(Real Time Mode)";
+            this.pageRealMode.Text = "Carrera General";
             // 
             // groupBox20
             // 
@@ -2248,7 +2047,7 @@
             this.groupBox20.Size = new System.Drawing.Size(994, 57);
             this.groupBox20.TabIndex = 49;
             this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Antenna Selection";
+            this.groupBox20.Text = "Selección de Antenas";
             // 
             // cbRealWorkant1
             // 
@@ -2323,7 +2122,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnMostrarCarrera);
             this.panel1.Controls.Add(this.textRealRound);
             this.panel1.Controls.Add(this.label84);
             this.panel1.Controls.Add(this.btRealTimeInventory);
@@ -2332,16 +2130,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 52);
             this.panel1.TabIndex = 0;
-            // 
-            // btnMostrarCarrera
-            // 
-            this.btnMostrarCarrera.Location = new System.Drawing.Point(3, 9);
-            this.btnMostrarCarrera.Name = "btnMostrarCarrera";
-            this.btnMostrarCarrera.Size = new System.Drawing.Size(120, 30);
-            this.btnMostrarCarrera.TabIndex = 49;
-            this.btnMostrarCarrera.Text = "Mostrar Carrera";
-            this.btnMostrarCarrera.UseVisualStyleBackColor = true;
-            this.btnMostrarCarrera.Click += new System.EventHandler(this.btnMostrarCarrera_Click);
             // 
             // textRealRound
             // 
@@ -2388,6 +2176,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(561, 52);
             this.panel5.TabIndex = 1;
+            this.panel5.Visible = false;
             // 
             // cbRealSession
             // 
@@ -2539,6 +2328,29 @@
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tag Data";
+            this.groupBox1.Visible = false;
+            // 
+            // ledReal3
+            // 
+            this.ledReal3.BackColor = System.Drawing.Color.Transparent;
+            this.ledReal3.BackColor_1 = System.Drawing.Color.Transparent;
+            this.ledReal3.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.ledReal3.BevelRate = 0.1F;
+            this.ledReal3.BorderColor = System.Drawing.Color.Lavender;
+            this.ledReal3.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.ledReal3.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.ledReal3.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.ledReal3.HighlightOpaque = ((byte)(20));
+            this.ledReal3.Location = new System.Drawing.Point(702, 54);
+            this.ledReal3.Name = "ledReal3";
+            this.ledReal3.RoundCorner = true;
+            this.ledReal3.SegmentIntervalRatio = 50;
+            this.ledReal3.ShowHighlight = true;
+            this.ledReal3.Size = new System.Drawing.Size(183, 38);
+            this.ledReal3.TabIndex = 40;
+            this.ledReal3.Text = "0";
+            this.ledReal3.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.ledReal3.TotalCharCount = 10;
             // 
             // comboBox6
             // 
@@ -2555,6 +2367,72 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(55, 20);
             this.comboBox6.TabIndex = 39;
+            // 
+            // ledReal5
+            // 
+            this.ledReal5.BackColor = System.Drawing.Color.Transparent;
+            this.ledReal5.BackColor_1 = System.Drawing.Color.Transparent;
+            this.ledReal5.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.ledReal5.BevelRate = 0.1F;
+            this.ledReal5.BorderColor = System.Drawing.Color.Lavender;
+            this.ledReal5.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.ledReal5.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.ledReal5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.ledReal5.HighlightOpaque = ((byte)(20));
+            this.ledReal5.Location = new System.Drawing.Point(702, 128);
+            this.ledReal5.Name = "ledReal5";
+            this.ledReal5.RoundCorner = true;
+            this.ledReal5.SegmentIntervalRatio = 50;
+            this.ledReal5.ShowHighlight = true;
+            this.ledReal5.Size = new System.Drawing.Size(183, 38);
+            this.ledReal5.TabIndex = 35;
+            this.ledReal5.Text = "0";
+            this.ledReal5.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.ledReal5.TotalCharCount = 10;
+            // 
+            // ledReal2
+            // 
+            this.ledReal2.BackColor = System.Drawing.Color.Transparent;
+            this.ledReal2.BackColor_1 = System.Drawing.Color.Transparent;
+            this.ledReal2.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.ledReal2.BevelRate = 0.1F;
+            this.ledReal2.BorderColor = System.Drawing.Color.Lavender;
+            this.ledReal2.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.ledReal2.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.ledReal2.ForeColor = System.Drawing.Color.Purple;
+            this.ledReal2.HighlightOpaque = ((byte)(20));
+            this.ledReal2.Location = new System.Drawing.Point(496, 38);
+            this.ledReal2.Name = "ledReal2";
+            this.ledReal2.RoundCorner = true;
+            this.ledReal2.SegmentIntervalRatio = 50;
+            this.ledReal2.ShowHighlight = true;
+            this.ledReal2.Size = new System.Drawing.Size(162, 54);
+            this.ledReal2.TabIndex = 34;
+            this.ledReal2.Text = "0";
+            this.ledReal2.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.ledReal2.TotalCharCount = 6;
+            // 
+            // ledReal4
+            // 
+            this.ledReal4.BackColor = System.Drawing.Color.Transparent;
+            this.ledReal4.BackColor_1 = System.Drawing.Color.Transparent;
+            this.ledReal4.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.ledReal4.BevelRate = 0.1F;
+            this.ledReal4.BorderColor = System.Drawing.Color.Lavender;
+            this.ledReal4.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.ledReal4.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.ledReal4.ForeColor = System.Drawing.Color.Purple;
+            this.ledReal4.HighlightOpaque = ((byte)(20));
+            this.ledReal4.Location = new System.Drawing.Point(497, 112);
+            this.ledReal4.Name = "ledReal4";
+            this.ledReal4.RoundCorner = true;
+            this.ledReal4.SegmentIntervalRatio = 50;
+            this.ledReal4.ShowHighlight = true;
+            this.ledReal4.Size = new System.Drawing.Size(161, 54);
+            this.ledReal4.TabIndex = 33;
+            this.ledReal4.Text = "0";
+            this.ledReal4.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.ledReal4.TotalCharCount = 6;
             // 
             // label53
             // 
@@ -2611,6 +2489,28 @@
             this.label69.TabIndex = 26;
             this.label69.Text = "Inventoried Quantity:";
             // 
+            // ledReal1
+            // 
+            this.ledReal1.BackColor = System.Drawing.Color.Transparent;
+            this.ledReal1.BackColor_1 = System.Drawing.Color.Transparent;
+            this.ledReal1.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.ledReal1.BevelRate = 0.1F;
+            this.ledReal1.BorderColor = System.Drawing.Color.Lavender;
+            this.ledReal1.BorderWidth = 3;
+            this.ledReal1.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.ledReal1.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.ledReal1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.ledReal1.HighlightOpaque = ((byte)(20));
+            this.ledReal1.Location = new System.Drawing.Point(106, 38);
+            this.ledReal1.Name = "ledReal1";
+            this.ledReal1.RoundCorner = true;
+            this.ledReal1.SegmentIntervalRatio = 50;
+            this.ledReal1.ShowHighlight = true;
+            this.ledReal1.Size = new System.Drawing.Size(310, 128);
+            this.ledReal1.TabIndex = 21;
+            this.ledReal1.Text = "0";
+            this.ledReal1.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
             // lvRealList
             // 
             this.lvRealList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -2664,1782 +2564,6 @@
             this.columnHeader42.Text = "Carrier Frequency";
             this.columnHeader42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader42.Width = 117;
-            // 
-            // pageBufferedMode
-            // 
-            this.pageBufferedMode.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pageBufferedMode.Controls.Add(this.tableLayoutPanel4);
-            this.pageBufferedMode.Controls.Add(this.groupBox3);
-            this.pageBufferedMode.Controls.Add(this.btBufferFresh);
-            this.pageBufferedMode.Controls.Add(this.labelBufferTagCount);
-            this.pageBufferedMode.Controls.Add(this.lvBufferList);
-            this.pageBufferedMode.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.pageBufferedMode.Location = new System.Drawing.Point(4, 22);
-            this.pageBufferedMode.Name = "pageBufferedMode";
-            this.pageBufferedMode.Size = new System.Drawing.Size(1000, 568);
-            this.pageBufferedMode.TabIndex = 2;
-            this.pageBufferedMode.Text = "Tag Inventory(Buffer Mode)";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0284F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9716F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 368F));
-            this.tableLayoutPanel4.Controls.Add(this.panel9, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel10, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel8, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1000, 89);
-            this.tableLayoutPanel4.TabIndex = 58;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btClearBuffer);
-            this.panel9.Controls.Add(this.btQueryBuffer);
-            this.panel9.Controls.Add(this.btGetClearBuffer);
-            this.panel9.Controls.Add(this.btGetBuffer);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(633, 4);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(363, 81);
-            this.panel9.TabIndex = 1;
-            // 
-            // btClearBuffer
-            // 
-            this.btClearBuffer.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btClearBuffer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btClearBuffer.Location = new System.Drawing.Point(15, 44);
-            this.btClearBuffer.Name = "btClearBuffer";
-            this.btClearBuffer.Size = new System.Drawing.Size(135, 27);
-            this.btClearBuffer.TabIndex = 8;
-            this.btClearBuffer.Text = "Clear Buffer";
-            this.btClearBuffer.UseVisualStyleBackColor = true;
-            this.btClearBuffer.Click += new System.EventHandler(this.btClearBuffer_Click);
-            // 
-            // btQueryBuffer
-            // 
-            this.btQueryBuffer.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btQueryBuffer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btQueryBuffer.Location = new System.Drawing.Point(167, 44);
-            this.btQueryBuffer.Name = "btQueryBuffer";
-            this.btQueryBuffer.Size = new System.Drawing.Size(135, 27);
-            this.btQueryBuffer.TabIndex = 7;
-            this.btQueryBuffer.Text = "Query Tag Quantity";
-            this.btQueryBuffer.UseVisualStyleBackColor = true;
-            this.btQueryBuffer.Click += new System.EventHandler(this.btQueryBuffer_Click);
-            // 
-            // btGetClearBuffer
-            // 
-            this.btGetClearBuffer.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btGetClearBuffer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btGetClearBuffer.Location = new System.Drawing.Point(167, 11);
-            this.btGetClearBuffer.Name = "btGetClearBuffer";
-            this.btGetClearBuffer.Size = new System.Drawing.Size(135, 27);
-            this.btGetClearBuffer.TabIndex = 6;
-            this.btGetClearBuffer.Text = "Get and Clear Buffer";
-            this.btGetClearBuffer.UseVisualStyleBackColor = true;
-            this.btGetClearBuffer.Click += new System.EventHandler(this.btGetClearBuffer_Click);
-            // 
-            // btGetBuffer
-            // 
-            this.btGetBuffer.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btGetBuffer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btGetBuffer.Location = new System.Drawing.Point(15, 11);
-            this.btGetBuffer.Name = "btGetBuffer";
-            this.btGetBuffer.Size = new System.Drawing.Size(135, 27);
-            this.btGetBuffer.TabIndex = 5;
-            this.btGetBuffer.Text = "Get Buffer";
-            this.btGetBuffer.UseVisualStyleBackColor = true;
-            this.btGetBuffer.Click += new System.EventHandler(this.btGetBuffer_Click);
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btBufferInventory);
-            this.panel10.Controls.Add(this.label85);
-            this.panel10.Controls.Add(this.textReadRoundBuffer);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(4, 4);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(301, 81);
-            this.panel10.TabIndex = 0;
-            // 
-            // btBufferInventory
-            // 
-            this.btBufferInventory.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btBufferInventory.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btBufferInventory.Location = new System.Drawing.Point(7, 15);
-            this.btBufferInventory.Name = "btBufferInventory";
-            this.btBufferInventory.Size = new System.Drawing.Size(144, 41);
-            this.btBufferInventory.TabIndex = 51;
-            this.btBufferInventory.Text = "Inventory";
-            this.btBufferInventory.UseVisualStyleBackColor = true;
-            this.btBufferInventory.Click += new System.EventHandler(this.btBufferInventory_Click);
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label85.Location = new System.Drawing.Point(157, 33);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(119, 12);
-            this.label85.TabIndex = 49;
-            this.label85.Text = "Repeat Per Command:";
-            // 
-            // textReadRoundBuffer
-            // 
-            this.textReadRoundBuffer.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textReadRoundBuffer.Location = new System.Drawing.Point(278, 28);
-            this.textReadRoundBuffer.Name = "textReadRoundBuffer";
-            this.textReadRoundBuffer.Size = new System.Drawing.Size(28, 21);
-            this.textReadRoundBuffer.TabIndex = 50;
-            this.textReadRoundBuffer.Text = "1";
-            this.textReadRoundBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.cbBufferWorkant1);
-            this.panel8.Controls.Add(this.cbBufferWorkant4);
-            this.panel8.Controls.Add(this.cbBufferWorkant2);
-            this.panel8.Controls.Add(this.cbBufferWorkant3);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(312, 4);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(314, 81);
-            this.panel8.TabIndex = 0;
-            // 
-            // cbBufferWorkant1
-            // 
-            this.cbBufferWorkant1.AutoSize = true;
-            this.cbBufferWorkant1.Checked = true;
-            this.cbBufferWorkant1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbBufferWorkant1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbBufferWorkant1.Location = new System.Drawing.Point(28, 30);
-            this.cbBufferWorkant1.Name = "cbBufferWorkant1";
-            this.cbBufferWorkant1.Size = new System.Drawing.Size(48, 16);
-            this.cbBufferWorkant1.TabIndex = 11;
-            this.cbBufferWorkant1.Text = "Ant1";
-            this.cbBufferWorkant1.UseVisualStyleBackColor = true;
-            // 
-            // cbBufferWorkant4
-            // 
-            this.cbBufferWorkant4.AutoSize = true;
-            this.cbBufferWorkant4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbBufferWorkant4.Location = new System.Drawing.Point(253, 31);
-            this.cbBufferWorkant4.Name = "cbBufferWorkant4";
-            this.cbBufferWorkant4.Size = new System.Drawing.Size(48, 16);
-            this.cbBufferWorkant4.TabIndex = 10;
-            this.cbBufferWorkant4.Text = "Ant4";
-            this.cbBufferWorkant4.UseVisualStyleBackColor = true;
-            // 
-            // cbBufferWorkant2
-            // 
-            this.cbBufferWorkant2.AutoSize = true;
-            this.cbBufferWorkant2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbBufferWorkant2.Location = new System.Drawing.Point(103, 31);
-            this.cbBufferWorkant2.Name = "cbBufferWorkant2";
-            this.cbBufferWorkant2.Size = new System.Drawing.Size(48, 16);
-            this.cbBufferWorkant2.TabIndex = 8;
-            this.cbBufferWorkant2.Text = "Ant2";
-            this.cbBufferWorkant2.UseVisualStyleBackColor = true;
-            // 
-            // cbBufferWorkant3
-            // 
-            this.cbBufferWorkant3.AutoSize = true;
-            this.cbBufferWorkant3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbBufferWorkant3.Location = new System.Drawing.Point(178, 31);
-            this.cbBufferWorkant3.Name = "cbBufferWorkant3";
-            this.cbBufferWorkant3.Size = new System.Drawing.Size(48, 16);
-            this.cbBufferWorkant3.TabIndex = 9;
-            this.cbBufferWorkant3.Text = "Ant3";
-            this.cbBufferWorkant3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.ledBuffer4);
-            this.groupBox3.Controls.Add(this.comboBox11);
-            this.groupBox3.Controls.Add(this.ledBuffer5);
-            this.groupBox3.Controls.Add(this.ledBuffer2);
-            this.groupBox3.Controls.Add(this.ledBuffer3);
-            this.groupBox3.Controls.Add(this.label92);
-            this.groupBox3.Controls.Add(this.label93);
-            this.groupBox3.Controls.Add(this.label94);
-            this.groupBox3.Controls.Add(this.label95);
-            this.groupBox3.Controls.Add(this.label96);
-            this.groupBox3.Controls.Add(this.ledBuffer1);
-            this.groupBox3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox3.Location = new System.Drawing.Point(0, 95);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(996, 176);
-            this.groupBox3.TabIndex = 57;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tag Data";
-            // 
-            // comboBox11
-            // 
-            this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox11.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Items.AddRange(new object[] {
-            "天线1",
-            "天线2",
-            "天线3",
-            "天线4",
-            "不选"});
-            this.comboBox11.Location = new System.Drawing.Point(-165, 120);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(55, 20);
-            this.comboBox11.TabIndex = 39;
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label92.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label92.Location = new System.Drawing.Point(700, 112);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(179, 12);
-            this.label92.TabIndex = 30;
-            this.label92.Text = "Total Inventory Duration(mS):";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label93.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label93.Location = new System.Drawing.Point(495, 18);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(95, 12);
-            this.label93.TabIndex = 29;
-            this.label93.Text = "Speed(Tag/Sec):";
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label94.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label94.Location = new System.Drawing.Point(498, 95);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(131, 12);
-            this.label94.TabIndex = 28;
-            this.label94.Text = "Command Duration(mS):";
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label95.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label95.Location = new System.Drawing.Point(700, 38);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(149, 12);
-            this.label95.TabIndex = 27;
-            this.label95.Text = "Total Tag Communication:";
-            // 
-            // label96
-            // 
-            this.label96.AutoSize = true;
-            this.label96.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label96.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label96.Location = new System.Drawing.Point(104, 18);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(131, 12);
-            this.label96.TabIndex = 26;
-            this.label96.Text = "Inventoried Quantity:";
-            // 
-            // btBufferFresh
-            // 
-            this.btBufferFresh.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btBufferFresh.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btBufferFresh.Location = new System.Drawing.Point(907, 277);
-            this.btBufferFresh.Name = "btBufferFresh";
-            this.btBufferFresh.Size = new System.Drawing.Size(89, 25);
-            this.btBufferFresh.TabIndex = 52;
-            this.btBufferFresh.Text = "Refresh";
-            this.btBufferFresh.UseVisualStyleBackColor = true;
-            this.btBufferFresh.Click += new System.EventHandler(this.btBufferFresh_Click);
-            // 
-            // labelBufferTagCount
-            // 
-            this.labelBufferTagCount.AutoSize = true;
-            this.labelBufferTagCount.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelBufferTagCount.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.labelBufferTagCount.Location = new System.Drawing.Point(6, 283);
-            this.labelBufferTagCount.Name = "labelBufferTagCount";
-            this.labelBufferTagCount.Size = new System.Drawing.Size(65, 12);
-            this.labelBufferTagCount.TabIndex = 49;
-            this.labelBufferTagCount.Text = "Tag List: ";
-            // 
-            // lvBufferList
-            // 
-            this.lvBufferList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader49,
-            this.columnHeader50,
-            this.columnHeader51,
-            this.columnHeader52,
-            this.columnHeader53,
-            this.columnHeader54,
-            this.columnHeader16});
-            this.lvBufferList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lvBufferList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lvBufferList.GridLines = true;
-            this.lvBufferList.Location = new System.Drawing.Point(0, 310);
-            this.lvBufferList.Name = "lvBufferList";
-            this.lvBufferList.Size = new System.Drawing.Size(1000, 258);
-            this.lvBufferList.TabIndex = 48;
-            this.lvBufferList.UseCompatibleStateImageBehavior = false;
-            this.lvBufferList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader49
-            // 
-            this.columnHeader49.Text = "ID";
-            this.columnHeader49.Width = 56;
-            // 
-            // columnHeader50
-            // 
-            this.columnHeader50.Text = "PC";
-            this.columnHeader50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader50.Width = 64;
-            // 
-            // columnHeader51
-            // 
-            this.columnHeader51.Text = "CRC";
-            this.columnHeader51.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader51.Width = 74;
-            // 
-            // columnHeader52
-            // 
-            this.columnHeader52.Text = "EPC";
-            this.columnHeader52.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader52.Width = 469;
-            // 
-            // columnHeader53
-            // 
-            this.columnHeader53.Text = "Ant ID";
-            this.columnHeader53.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader53.Width = 95;
-            // 
-            // columnHeader54
-            // 
-            this.columnHeader54.Text = "RSSI";
-            this.columnHeader54.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader54.Width = 71;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Identification Count";
-            this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader16.Width = 154;
-            // 
-            // pageFast4AntMode
-            // 
-            this.pageFast4AntMode.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pageFast4AntMode.Controls.Add(this.groupBox2);
-            this.pageFast4AntMode.Controls.Add(this.txtFastMaxRssi);
-            this.pageFast4AntMode.Controls.Add(this.txtFastMinRssi);
-            this.pageFast4AntMode.Controls.Add(this.buttonFastFresh);
-            this.pageFast4AntMode.Controls.Add(this.tableLayoutPanel2);
-            this.pageFast4AntMode.Controls.Add(this.label22);
-            this.pageFast4AntMode.Controls.Add(this.lvFastList);
-            this.pageFast4AntMode.Controls.Add(this.label49);
-            this.pageFast4AntMode.Controls.Add(this.txtFastTagList);
-            this.pageFast4AntMode.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.pageFast4AntMode.Location = new System.Drawing.Point(4, 22);
-            this.pageFast4AntMode.Name = "pageFast4AntMode";
-            this.pageFast4AntMode.Padding = new System.Windows.Forms.Padding(3);
-            this.pageFast4AntMode.Size = new System.Drawing.Size(1000, 568);
-            this.pageFast4AntMode.TabIndex = 0;
-            this.pageFast4AntMode.Text = "Tag Inventory(Fast Swith Antenna Mode)";
-            this.pageFast4AntMode.Enter += new System.EventHandler(this.pageFast4AntMode_Enter);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.ledFast4);
-            this.groupBox2.Controls.Add(this.comboBox7);
-            this.groupBox2.Controls.Add(this.ledFast5);
-            this.groupBox2.Controls.Add(this.ledFast2);
-            this.groupBox2.Controls.Add(this.ledFast3);
-            this.groupBox2.Controls.Add(this.label54);
-            this.groupBox2.Controls.Add(this.label55);
-            this.groupBox2.Controls.Add(this.label56);
-            this.groupBox2.Controls.Add(this.label57);
-            this.groupBox2.Controls.Add(this.label58);
-            this.groupBox2.Controls.Add(this.ledFast1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox2.Location = new System.Drawing.Point(3, 89);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(994, 176);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tag Data";
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "天线1",
-            "天线2",
-            "天线3",
-            "天线4",
-            "不选"});
-            this.comboBox7.Location = new System.Drawing.Point(-165, 120);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(55, 20);
-            this.comboBox7.TabIndex = 39;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label54.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label54.Location = new System.Drawing.Point(700, 112);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(179, 12);
-            this.label54.TabIndex = 30;
-            this.label54.Text = "Total Inventory Duration(mS):";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label55.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label55.Location = new System.Drawing.Point(495, 18);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(95, 12);
-            this.label55.TabIndex = 29;
-            this.label55.Text = "Speed(Tag/Sec):";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label56.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label56.Location = new System.Drawing.Point(498, 95);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(131, 12);
-            this.label56.TabIndex = 28;
-            this.label56.Text = "Command Duration(mS):";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label57.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label57.Location = new System.Drawing.Point(700, 38);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(149, 12);
-            this.label57.TabIndex = 27;
-            this.label57.Text = "Total Tag Communication:";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label58.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label58.Location = new System.Drawing.Point(104, 18);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(131, 12);
-            this.label58.TabIndex = 26;
-            this.label58.Text = "Inventoried Quantity:";
-            // 
-            // txtFastMaxRssi
-            // 
-            this.txtFastMaxRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtFastMaxRssi.Location = new System.Drawing.Point(705, 271);
-            this.txtFastMaxRssi.Name = "txtFastMaxRssi";
-            this.txtFastMaxRssi.Size = new System.Drawing.Size(62, 21);
-            this.txtFastMaxRssi.TabIndex = 40;
-            // 
-            // txtFastMinRssi
-            // 
-            this.txtFastMinRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtFastMinRssi.Location = new System.Drawing.Point(499, 271);
-            this.txtFastMinRssi.Name = "txtFastMinRssi";
-            this.txtFastMinRssi.Size = new System.Drawing.Size(62, 21);
-            this.txtFastMinRssi.TabIndex = 41;
-            // 
-            // buttonFastFresh
-            // 
-            this.buttonFastFresh.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonFastFresh.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.buttonFastFresh.Location = new System.Drawing.Point(905, 271);
-            this.buttonFastFresh.Name = "buttonFastFresh";
-            this.buttonFastFresh.Size = new System.Drawing.Size(89, 25);
-            this.buttonFastFresh.TabIndex = 28;
-            this.buttonFastFresh.Text = "Refresh";
-            this.buttonFastFresh.UseVisualStyleBackColor = true;
-            this.buttonFastFresh.Click += new System.EventHandler(this.buttonFastFresh_Click);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.20588F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.79412F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel4, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 86);
-            this.tableLayoutPanel2.TabIndex = 25;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtDStay);
-            this.panel2.Controls.Add(this.txtCStay);
-            this.panel2.Controls.Add(this.txtBStay);
-            this.panel2.Controls.Add(this.txtAStay);
-            this.panel2.Controls.Add(this.label64);
-            this.panel2.Controls.Add(this.label65);
-            this.panel2.Controls.Add(this.cmbAntSelect1);
-            this.panel2.Controls.Add(this.label62);
-            this.panel2.Controls.Add(this.cmbAntSelect2);
-            this.panel2.Controls.Add(this.label63);
-            this.panel2.Controls.Add(this.cmbAntSelect3);
-            this.panel2.Controls.Add(this.label60);
-            this.panel2.Controls.Add(this.cmbAntSelect4);
-            this.panel2.Controls.Add(this.label61);
-            this.panel2.Controls.Add(this.label59);
-            this.panel2.Controls.Add(this.label48);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(189, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(483, 76);
-            this.panel2.TabIndex = 0;
-            // 
-            // txtDStay
-            // 
-            this.txtDStay.AcceptsReturn = true;
-            this.txtDStay.Location = new System.Drawing.Point(471, 29);
-            this.txtDStay.Name = "txtDStay";
-            this.txtDStay.Size = new System.Drawing.Size(42, 21);
-            this.txtDStay.TabIndex = 59;
-            this.txtDStay.Text = "1";
-            this.txtDStay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtCStay
-            // 
-            this.txtCStay.Location = new System.Drawing.Point(336, 29);
-            this.txtCStay.Name = "txtCStay";
-            this.txtCStay.Size = new System.Drawing.Size(42, 21);
-            this.txtCStay.TabIndex = 58;
-            this.txtCStay.Text = "1";
-            this.txtCStay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtBStay
-            // 
-            this.txtBStay.Location = new System.Drawing.Point(203, 29);
-            this.txtBStay.Name = "txtBStay";
-            this.txtBStay.Size = new System.Drawing.Size(42, 21);
-            this.txtBStay.TabIndex = 57;
-            this.txtBStay.Text = "1";
-            this.txtBStay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtAStay
-            // 
-            this.txtAStay.Location = new System.Drawing.Point(69, 29);
-            this.txtAStay.Name = "txtAStay";
-            this.txtAStay.Size = new System.Drawing.Size(42, 21);
-            this.txtAStay.TabIndex = 56;
-            this.txtAStay.Text = "1";
-            this.txtAStay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label64.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label64.Location = new System.Drawing.Point(469, 13);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(35, 12);
-            this.label64.TabIndex = 39;
-            this.label64.Text = "Round";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label65.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label65.Location = new System.Drawing.Point(431, 13);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(11, 12);
-            this.label65.TabIndex = 38;
-            this.label65.Text = "D";
-            // 
-            // cmbAntSelect1
-            // 
-            this.cmbAntSelect1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAntSelect1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbAntSelect1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.cmbAntSelect1.FormattingEnabled = true;
-            this.cmbAntSelect1.Items.AddRange(new object[] {
-            "Ant1",
-            "Ant2",
-            "Ant3",
-            "Ant4",
-            "Empty"});
-            this.cmbAntSelect1.Location = new System.Drawing.Point(8, 29);
-            this.cmbAntSelect1.Name = "cmbAntSelect1";
-            this.cmbAntSelect1.Size = new System.Drawing.Size(55, 20);
-            this.cmbAntSelect1.TabIndex = 13;
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label62.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label62.Location = new System.Drawing.Point(334, 13);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(35, 12);
-            this.label62.TabIndex = 37;
-            this.label62.Text = "Round";
-            // 
-            // cmbAntSelect2
-            // 
-            this.cmbAntSelect2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAntSelect2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbAntSelect2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.cmbAntSelect2.FormattingEnabled = true;
-            this.cmbAntSelect2.Items.AddRange(new object[] {
-            "Ant1",
-            "Ant2",
-            "Ant3",
-            "Ant4",
-            "Empty"});
-            this.cmbAntSelect2.Location = new System.Drawing.Point(140, 29);
-            this.cmbAntSelect2.Name = "cmbAntSelect2";
-            this.cmbAntSelect2.Size = new System.Drawing.Size(55, 20);
-            this.cmbAntSelect2.TabIndex = 14;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label63.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label63.Location = new System.Drawing.Point(297, 13);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(11, 12);
-            this.label63.TabIndex = 36;
-            this.label63.Text = "C";
-            // 
-            // cmbAntSelect3
-            // 
-            this.cmbAntSelect3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAntSelect3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbAntSelect3.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.cmbAntSelect3.FormattingEnabled = true;
-            this.cmbAntSelect3.Items.AddRange(new object[] {
-            "Ant1",
-            "Ant2",
-            "Ant3",
-            "Ant4",
-            "Empty"});
-            this.cmbAntSelect3.Location = new System.Drawing.Point(275, 29);
-            this.cmbAntSelect3.Name = "cmbAntSelect3";
-            this.cmbAntSelect3.Size = new System.Drawing.Size(55, 20);
-            this.cmbAntSelect3.TabIndex = 15;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label60.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label60.Location = new System.Drawing.Point(199, 13);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(35, 12);
-            this.label60.TabIndex = 35;
-            this.label60.Text = "Round";
-            // 
-            // cmbAntSelect4
-            // 
-            this.cmbAntSelect4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAntSelect4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbAntSelect4.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.cmbAntSelect4.FormattingEnabled = true;
-            this.cmbAntSelect4.Items.AddRange(new object[] {
-            "Ant1",
-            "Ant2",
-            "Ant3",
-            "Ant4",
-            "Empty"});
-            this.cmbAntSelect4.Location = new System.Drawing.Point(410, 29);
-            this.cmbAntSelect4.Name = "cmbAntSelect4";
-            this.cmbAntSelect4.Size = new System.Drawing.Size(55, 20);
-            this.cmbAntSelect4.TabIndex = 16;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label61.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label61.Location = new System.Drawing.Point(161, 13);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(11, 12);
-            this.label61.TabIndex = 34;
-            this.label61.Text = "B";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label59.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label59.Location = new System.Drawing.Point(67, 13);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(35, 12);
-            this.label59.TabIndex = 33;
-            this.label59.Text = "Round";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label48.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label48.Location = new System.Drawing.Point(27, 13);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(11, 12);
-            this.label48.TabIndex = 32;
-            this.label48.Text = "A";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btFastInventory);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(5, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(176, 76);
-            this.panel3.TabIndex = 1;
-            // 
-            // btFastInventory
-            // 
-            this.btFastInventory.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btFastInventory.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btFastInventory.Location = new System.Drawing.Point(28, 17);
-            this.btFastInventory.Name = "btFastInventory";
-            this.btFastInventory.Size = new System.Drawing.Size(144, 41);
-            this.btFastInventory.TabIndex = 52;
-            this.btFastInventory.Text = "Inventory";
-            this.btFastInventory.UseVisualStyleBackColor = true;
-            this.btFastInventory.Click += new System.EventHandler(this.btFastInventory_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtRepeat);
-            this.panel4.Controls.Add(this.txtInterval);
-            this.panel4.Controls.Add(this.label73);
-            this.panel4.Controls.Add(this.label72);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(680, 5);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(309, 76);
-            this.panel4.TabIndex = 2;
-            // 
-            // txtRepeat
-            // 
-            this.txtRepeat.Location = new System.Drawing.Point(181, 29);
-            this.txtRepeat.Name = "txtRepeat";
-            this.txtRepeat.Size = new System.Drawing.Size(42, 21);
-            this.txtRepeat.TabIndex = 58;
-            this.txtRepeat.Text = "10";
-            this.txtRepeat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtInterval
-            // 
-            this.txtInterval.Location = new System.Drawing.Point(67, 29);
-            this.txtInterval.Name = "txtInterval";
-            this.txtInterval.Size = new System.Drawing.Size(42, 21);
-            this.txtInterval.TabIndex = 57;
-            this.txtInterval.Text = "0";
-            this.txtInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label73.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label73.Location = new System.Drawing.Point(3, 13);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(155, 12);
-            this.label73.TabIndex = 36;
-            this.label73.Text = "Interval Between Ants(mS)";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label72.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label72.Location = new System.Drawing.Point(179, 13);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(41, 12);
-            this.label72.TabIndex = 37;
-            this.label72.Text = "Repeat";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(634, 276);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(59, 12);
-            this.label22.TabIndex = 26;
-            this.label22.Text = "Max RSSI:";
-            // 
-            // lvFastList
-            // 
-            this.lvFastList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader31,
-            this.columnHeader32,
-            this.columnHeader33,
-            this.columnHeader34,
-            this.columnHeader35,
-            this.columnHeader36});
-            this.lvFastList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lvFastList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lvFastList.GridLines = true;
-            this.lvFastList.Location = new System.Drawing.Point(3, 304);
-            this.lvFastList.Name = "lvFastList";
-            this.lvFastList.Size = new System.Drawing.Size(994, 261);
-            this.lvFastList.TabIndex = 24;
-            this.lvFastList.UseCompatibleStateImageBehavior = false;
-            this.lvFastList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader31
-            // 
-            this.columnHeader31.Text = "ID";
-            this.columnHeader31.Width = 56;
-            // 
-            // columnHeader32
-            // 
-            this.columnHeader32.Text = "EPC";
-            this.columnHeader32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader32.Width = 416;
-            // 
-            // columnHeader33
-            // 
-            this.columnHeader33.Text = "PC";
-            this.columnHeader33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader33.Width = 65;
-            // 
-            // columnHeader34
-            // 
-            this.columnHeader34.Text = "Identification Count(ANT1/ANT2/ANT3/ANT4)";
-            this.columnHeader34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader34.Width = 263;
-            // 
-            // columnHeader35
-            // 
-            this.columnHeader35.Text = "RSSI";
-            this.columnHeader35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader35.Width = 94;
-            // 
-            // columnHeader36
-            // 
-            this.columnHeader36.Text = "Carrier Freq";
-            this.columnHeader36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader36.Width = 92;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label49.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label49.Location = new System.Drawing.Point(428, 276);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(59, 12);
-            this.label49.TabIndex = 27;
-            this.label49.Text = "Min RSSI:";
-            // 
-            // txtFastTagList
-            // 
-            this.txtFastTagList.AutoSize = true;
-            this.txtFastTagList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtFastTagList.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.txtFastTagList.Location = new System.Drawing.Point(6, 276);
-            this.txtFastTagList.Name = "txtFastTagList";
-            this.txtFastTagList.Size = new System.Drawing.Size(65, 12);
-            this.txtFastTagList.TabIndex = 23;
-            this.txtFastTagList.Text = "Tag List: ";
-            // 
-            // pageAcessTag
-            // 
-            this.pageAcessTag.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pageAcessTag.Controls.Add(this.ltvOperate);
-            this.pageAcessTag.Controls.Add(this.gbCmdOperateTag);
-            this.pageAcessTag.Location = new System.Drawing.Point(4, 22);
-            this.pageAcessTag.Name = "pageAcessTag";
-            this.pageAcessTag.Size = new System.Drawing.Size(1000, 568);
-            this.pageAcessTag.TabIndex = 3;
-            this.pageAcessTag.Text = "Access Tag";
-            this.pageAcessTag.UseVisualStyleBackColor = true;
-            // 
-            // ltvOperate
-            // 
-            this.ltvOperate.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15});
-            this.ltvOperate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ltvOperate.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ltvOperate.GridLines = true;
-            this.ltvOperate.Location = new System.Drawing.Point(0, 348);
-            this.ltvOperate.Name = "ltvOperate";
-            this.ltvOperate.Size = new System.Drawing.Size(1000, 220);
-            this.ltvOperate.TabIndex = 10;
-            this.ltvOperate.UseCompatibleStateImageBehavior = false;
-            this.ltvOperate.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "ID";
-            this.columnHeader5.Width = 38;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "PC";
-            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "CRC";
-            this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "EPC";
-            this.columnHeader11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader11.Width = 260;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Data";
-            this.columnHeader12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader12.Width = 331;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Data Len";
-            this.columnHeader13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader13.Width = 73;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Ant ID";
-            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader14.Width = 64;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Operated Count";
-            this.columnHeader15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader15.Width = 101;
-            // 
-            // gbCmdOperateTag
-            // 
-            this.gbCmdOperateTag.Controls.Add(this.groupBox16);
-            this.gbCmdOperateTag.Controls.Add(this.groupBox15);
-            this.gbCmdOperateTag.Controls.Add(this.groupBox14);
-            this.gbCmdOperateTag.Controls.Add(this.groupBox13);
-            this.gbCmdOperateTag.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbCmdOperateTag.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.gbCmdOperateTag.Location = new System.Drawing.Point(0, 0);
-            this.gbCmdOperateTag.Name = "gbCmdOperateTag";
-            this.gbCmdOperateTag.Size = new System.Drawing.Size(1000, 348);
-            this.gbCmdOperateTag.TabIndex = 8;
-            this.gbCmdOperateTag.TabStop = false;
-            this.gbCmdOperateTag.Text = "Tag Access";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.btnKillTag);
-            this.groupBox16.Controls.Add(this.htxtKillPwd);
-            this.groupBox16.Controls.Add(this.label29);
-            this.groupBox16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox16.Location = new System.Drawing.Point(3, 277);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(994, 54);
-            this.groupBox16.TabIndex = 4;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Kill Tag";
-            // 
-            // btnKillTag
-            // 
-            this.btnKillTag.Location = new System.Drawing.Point(888, 21);
-            this.btnKillTag.Name = "btnKillTag";
-            this.btnKillTag.Size = new System.Drawing.Size(90, 25);
-            this.btnKillTag.TabIndex = 14;
-            this.btnKillTag.Text = "Kill";
-            this.btnKillTag.UseVisualStyleBackColor = true;
-            this.btnKillTag.Click += new System.EventHandler(this.btnKillTag_Click);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(295, 26);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(119, 12);
-            this.label29.TabIndex = 13;
-            this.label29.Text = "Kill Password(HEX):";
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.htxtLockPwd);
-            this.groupBox15.Controls.Add(this.label28);
-            this.groupBox15.Controls.Add(this.groupBox19);
-            this.groupBox15.Controls.Add(this.groupBox18);
-            this.groupBox15.Controls.Add(this.btnLockTag);
-            this.groupBox15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox15.Location = new System.Drawing.Point(3, 174);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(994, 103);
-            this.groupBox15.TabIndex = 3;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Lock Tag";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(630, 52);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(131, 12);
-            this.label28.TabIndex = 12;
-            this.label28.Text = "Access Password(HEX):";
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Controls.Add(this.rdbUserMemory);
-            this.groupBox19.Controls.Add(this.rdbTidMemory);
-            this.groupBox19.Controls.Add(this.rdbEpcMermory);
-            this.groupBox19.Controls.Add(this.rdbKillPwd);
-            this.groupBox19.Controls.Add(this.rdbAccessPwd);
-            this.groupBox19.Location = new System.Drawing.Point(16, 15);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(584, 43);
-            this.groupBox19.TabIndex = 2;
-            this.groupBox19.TabStop = false;
-            // 
-            // rdbUserMemory
-            // 
-            this.rdbUserMemory.AutoSize = true;
-            this.rdbUserMemory.Location = new System.Drawing.Point(483, 16);
-            this.rdbUserMemory.Name = "rdbUserMemory";
-            this.rdbUserMemory.Size = new System.Drawing.Size(47, 16);
-            this.rdbUserMemory.TabIndex = 4;
-            this.rdbUserMemory.TabStop = true;
-            this.rdbUserMemory.Text = "USER";
-            this.rdbUserMemory.UseVisualStyleBackColor = true;
-            // 
-            // rdbTidMemory
-            // 
-            this.rdbTidMemory.AutoSize = true;
-            this.rdbTidMemory.Location = new System.Drawing.Point(378, 16);
-            this.rdbTidMemory.Name = "rdbTidMemory";
-            this.rdbTidMemory.Size = new System.Drawing.Size(41, 16);
-            this.rdbTidMemory.TabIndex = 3;
-            this.rdbTidMemory.TabStop = true;
-            this.rdbTidMemory.Text = "TID";
-            this.rdbTidMemory.UseVisualStyleBackColor = true;
-            // 
-            // rdbEpcMermory
-            // 
-            this.rdbEpcMermory.AutoSize = true;
-            this.rdbEpcMermory.Location = new System.Drawing.Point(275, 16);
-            this.rdbEpcMermory.Name = "rdbEpcMermory";
-            this.rdbEpcMermory.Size = new System.Drawing.Size(41, 16);
-            this.rdbEpcMermory.TabIndex = 2;
-            this.rdbEpcMermory.TabStop = true;
-            this.rdbEpcMermory.Text = "EPC";
-            this.rdbEpcMermory.UseVisualStyleBackColor = true;
-            // 
-            // rdbKillPwd
-            // 
-            this.rdbKillPwd.AutoSize = true;
-            this.rdbKillPwd.Location = new System.Drawing.Point(142, 16);
-            this.rdbKillPwd.Name = "rdbKillPwd";
-            this.rdbKillPwd.Size = new System.Drawing.Size(101, 16);
-            this.rdbKillPwd.TabIndex = 1;
-            this.rdbKillPwd.TabStop = true;
-            this.rdbKillPwd.Text = "Kill Password";
-            this.rdbKillPwd.UseVisualStyleBackColor = true;
-            // 
-            // rdbAccessPwd
-            // 
-            this.rdbAccessPwd.AutoSize = true;
-            this.rdbAccessPwd.Location = new System.Drawing.Point(9, 16);
-            this.rdbAccessPwd.Name = "rdbAccessPwd";
-            this.rdbAccessPwd.Size = new System.Drawing.Size(113, 16);
-            this.rdbAccessPwd.TabIndex = 0;
-            this.rdbAccessPwd.TabStop = true;
-            this.rdbAccessPwd.Text = "Access Password";
-            this.rdbAccessPwd.UseVisualStyleBackColor = true;
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.rdbLockEver);
-            this.groupBox18.Controls.Add(this.rdbFreeEver);
-            this.groupBox18.Controls.Add(this.rdbLock);
-            this.groupBox18.Controls.Add(this.rdbFree);
-            this.groupBox18.Location = new System.Drawing.Point(16, 55);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(584, 43);
-            this.groupBox18.TabIndex = 1;
-            this.groupBox18.TabStop = false;
-            // 
-            // rdbLockEver
-            // 
-            this.rdbLockEver.AutoSize = true;
-            this.rdbLockEver.Location = new System.Drawing.Point(453, 15);
-            this.rdbLockEver.Name = "rdbLockEver";
-            this.rdbLockEver.Size = new System.Drawing.Size(107, 16);
-            this.rdbLockEver.TabIndex = 3;
-            this.rdbLockEver.TabStop = true;
-            this.rdbLockEver.Text = "Permanent Lock";
-            this.rdbLockEver.UseVisualStyleBackColor = true;
-            // 
-            // rdbFreeEver
-            // 
-            this.rdbFreeEver.AutoSize = true;
-            this.rdbFreeEver.Location = new System.Drawing.Point(273, 15);
-            this.rdbFreeEver.Name = "rdbFreeEver";
-            this.rdbFreeEver.Size = new System.Drawing.Size(107, 16);
-            this.rdbFreeEver.TabIndex = 2;
-            this.rdbFreeEver.TabStop = true;
-            this.rdbFreeEver.Text = "Permanent Open";
-            this.rdbFreeEver.UseVisualStyleBackColor = true;
-            // 
-            // rdbLock
-            // 
-            this.rdbLock.AutoSize = true;
-            this.rdbLock.Location = new System.Drawing.Point(153, 15);
-            this.rdbLock.Name = "rdbLock";
-            this.rdbLock.Size = new System.Drawing.Size(47, 16);
-            this.rdbLock.TabIndex = 1;
-            this.rdbLock.TabStop = true;
-            this.rdbLock.Text = "Lock";
-            this.rdbLock.UseVisualStyleBackColor = true;
-            // 
-            // rdbFree
-            // 
-            this.rdbFree.AutoSize = true;
-            this.rdbFree.Location = new System.Drawing.Point(33, 15);
-            this.rdbFree.Name = "rdbFree";
-            this.rdbFree.Size = new System.Drawing.Size(47, 16);
-            this.rdbFree.TabIndex = 0;
-            this.rdbFree.TabStop = true;
-            this.rdbFree.Text = "Open";
-            this.rdbFree.UseVisualStyleBackColor = true;
-            // 
-            // btnLockTag
-            // 
-            this.btnLockTag.Location = new System.Drawing.Point(888, 48);
-            this.btnLockTag.Name = "btnLockTag";
-            this.btnLockTag.Size = new System.Drawing.Size(90, 25);
-            this.btnLockTag.TabIndex = 0;
-            this.btnLockTag.Text = "Lock";
-            this.btnLockTag.UseVisualStyleBackColor = true;
-            this.btnLockTag.Click += new System.EventHandler(this.btnLockTag_Click);
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.htxtWriteData);
-            this.groupBox14.Controls.Add(this.txtWordCnt);
-            this.groupBox14.Controls.Add(this.label27);
-            this.groupBox14.Controls.Add(this.btnWriteTag);
-            this.groupBox14.Controls.Add(this.btnReadTag);
-            this.groupBox14.Controls.Add(this.txtWordAdd);
-            this.groupBox14.Controls.Add(this.label26);
-            this.groupBox14.Controls.Add(this.htxtReadAndWritePwd);
-            this.groupBox14.Controls.Add(this.label25);
-            this.groupBox14.Controls.Add(this.groupBox17);
-            this.groupBox14.Controls.Add(this.label24);
-            this.groupBox14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox14.Location = new System.Drawing.Point(3, 71);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(994, 103);
-            this.groupBox14.TabIndex = 2;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Read/Write Tag";
-            // 
-            // txtWordCnt
-            // 
-            this.txtWordCnt.Location = new System.Drawing.Point(808, 25);
-            this.txtWordCnt.Name = "txtWordCnt";
-            this.txtWordCnt.Size = new System.Drawing.Size(48, 21);
-            this.txtWordCnt.TabIndex = 9;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(719, 29);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(83, 12);
-            this.label27.TabIndex = 8;
-            this.label27.Text = "Length(WORD):";
-            // 
-            // btnWriteTag
-            // 
-            this.btnWriteTag.Location = new System.Drawing.Point(888, 73);
-            this.btnWriteTag.Name = "btnWriteTag";
-            this.btnWriteTag.Size = new System.Drawing.Size(90, 25);
-            this.btnWriteTag.TabIndex = 7;
-            this.btnWriteTag.Text = "Write";
-            this.btnWriteTag.UseVisualStyleBackColor = true;
-            this.btnWriteTag.Click += new System.EventHandler(this.btnWriteTag_Click);
-            // 
-            // btnReadTag
-            // 
-            this.btnReadTag.Location = new System.Drawing.Point(888, 24);
-            this.btnReadTag.Name = "btnReadTag";
-            this.btnReadTag.Size = new System.Drawing.Size(90, 25);
-            this.btnReadTag.TabIndex = 6;
-            this.btnReadTag.Text = "Read";
-            this.btnReadTag.UseVisualStyleBackColor = true;
-            this.btnReadTag.Click += new System.EventHandler(this.btnReadTag_Click);
-            // 
-            // txtWordAdd
-            // 
-            this.txtWordAdd.Location = new System.Drawing.Point(641, 25);
-            this.txtWordAdd.Name = "txtWordAdd";
-            this.txtWordAdd.Size = new System.Drawing.Size(48, 21);
-            this.txtWordAdd.TabIndex = 5;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(534, 29);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(101, 12);
-            this.label26.TabIndex = 4;
-            this.label26.Text = "Start Add(WORD):";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(295, 29);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(131, 12);
-            this.label25.TabIndex = 2;
-            this.label25.Text = "Access Password(HEX):";
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.rdbUser);
-            this.groupBox17.Controls.Add(this.rdbTid);
-            this.groupBox17.Controls.Add(this.rdbEpc);
-            this.groupBox17.Controls.Add(this.rdbReserved);
-            this.groupBox17.Location = new System.Drawing.Point(18, 13);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(258, 43);
-            this.groupBox17.TabIndex = 1;
-            this.groupBox17.TabStop = false;
-            // 
-            // rdbUser
-            // 
-            this.rdbUser.AutoSize = true;
-            this.rdbUser.Location = new System.Drawing.Point(205, 14);
-            this.rdbUser.Name = "rdbUser";
-            this.rdbUser.Size = new System.Drawing.Size(47, 16);
-            this.rdbUser.TabIndex = 3;
-            this.rdbUser.TabStop = true;
-            this.rdbUser.Text = "USER";
-            this.rdbUser.UseVisualStyleBackColor = true;
-            // 
-            // rdbTid
-            // 
-            this.rdbTid.AutoSize = true;
-            this.rdbTid.Location = new System.Drawing.Point(149, 14);
-            this.rdbTid.Name = "rdbTid";
-            this.rdbTid.Size = new System.Drawing.Size(41, 16);
-            this.rdbTid.TabIndex = 2;
-            this.rdbTid.TabStop = true;
-            this.rdbTid.Text = "TID";
-            this.rdbTid.UseVisualStyleBackColor = true;
-            // 
-            // rdbEpc
-            // 
-            this.rdbEpc.AutoSize = true;
-            this.rdbEpc.Location = new System.Drawing.Point(93, 14);
-            this.rdbEpc.Name = "rdbEpc";
-            this.rdbEpc.Size = new System.Drawing.Size(41, 16);
-            this.rdbEpc.TabIndex = 1;
-            this.rdbEpc.TabStop = true;
-            this.rdbEpc.Text = "EPC";
-            this.rdbEpc.UseVisualStyleBackColor = true;
-            // 
-            // rdbReserved
-            // 
-            this.rdbReserved.AutoSize = true;
-            this.rdbReserved.Location = new System.Drawing.Point(7, 14);
-            this.rdbReserved.Name = "rdbReserved";
-            this.rdbReserved.Size = new System.Drawing.Size(71, 16);
-            this.rdbReserved.TabIndex = 0;
-            this.rdbReserved.TabStop = true;
-            this.rdbReserved.Text = "Password";
-            this.rdbReserved.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 78);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(149, 12);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Data to be Written(HEX):";
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.label23);
-            this.groupBox13.Controls.Add(this.btnSetAccessEpcMatch);
-            this.groupBox13.Controls.Add(this.cmbSetAccessEpcMatch);
-            this.groupBox13.Controls.Add(this.txtAccessEpcMatch);
-            this.groupBox13.Controls.Add(this.ckAccessEpcMatch);
-            this.groupBox13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox13.Location = new System.Drawing.Point(3, 17);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(994, 54);
-            this.groupBox13.TabIndex = 1;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Tag Selection";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(468, 23);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 12);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Tag List:";
-            // 
-            // btnSetAccessEpcMatch
-            // 
-            this.btnSetAccessEpcMatch.Location = new System.Drawing.Point(888, 17);
-            this.btnSetAccessEpcMatch.Name = "btnSetAccessEpcMatch";
-            this.btnSetAccessEpcMatch.Size = new System.Drawing.Size(90, 25);
-            this.btnSetAccessEpcMatch.TabIndex = 3;
-            this.btnSetAccessEpcMatch.Text = "Select";
-            this.btnSetAccessEpcMatch.UseVisualStyleBackColor = true;
-            this.btnSetAccessEpcMatch.Click += new System.EventHandler(this.btnSetAccessEpcMatch_Click);
-            // 
-            // cmbSetAccessEpcMatch
-            // 
-            this.cmbSetAccessEpcMatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSetAccessEpcMatch.FormattingEnabled = true;
-            this.cmbSetAccessEpcMatch.Location = new System.Drawing.Point(533, 18);
-            this.cmbSetAccessEpcMatch.Name = "cmbSetAccessEpcMatch";
-            this.cmbSetAccessEpcMatch.Size = new System.Drawing.Size(323, 20);
-            this.cmbSetAccessEpcMatch.TabIndex = 2;
-            this.cmbSetAccessEpcMatch.DropDown += new System.EventHandler(this.cmbSetAccessEpcMatch_DropDown);
-            // 
-            // txtAccessEpcMatch
-            // 
-            this.txtAccessEpcMatch.Location = new System.Drawing.Point(116, 18);
-            this.txtAccessEpcMatch.Name = "txtAccessEpcMatch";
-            this.txtAccessEpcMatch.ReadOnly = true;
-            this.txtAccessEpcMatch.Size = new System.Drawing.Size(320, 21);
-            this.txtAccessEpcMatch.TabIndex = 1;
-            // 
-            // ckAccessEpcMatch
-            // 
-            this.ckAccessEpcMatch.AutoSize = true;
-            this.ckAccessEpcMatch.Location = new System.Drawing.Point(16, 21);
-            this.ckAccessEpcMatch.Name = "ckAccessEpcMatch";
-            this.ckAccessEpcMatch.Size = new System.Drawing.Size(102, 16);
-            this.ckAccessEpcMatch.TabIndex = 0;
-            this.ckAccessEpcMatch.Text = "Selected Tag:";
-            this.ckAccessEpcMatch.UseVisualStyleBackColor = true;
-            this.ckAccessEpcMatch.CheckedChanged += new System.EventHandler(this.cbAccessEpcMatch_CheckedChanged);
-            // 
-            // PagISO18000
-            // 
-            this.PagISO18000.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.PagISO18000.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PagISO18000.Controls.Add(this.btnClear);
-            this.PagISO18000.Controls.Add(this.btnInventoryISO18000);
-            this.PagISO18000.Controls.Add(this.ltvTagISO18000);
-            this.PagISO18000.Controls.Add(this.gbISO1800LockQuery);
-            this.PagISO18000.Controls.Add(this.gbISO1800ReadWrite);
-            this.PagISO18000.Controls.Add(this.label41);
-            this.PagISO18000.Controls.Add(this.htxtReadUID);
-            this.PagISO18000.Location = new System.Drawing.Point(4, 22);
-            this.PagISO18000.Name = "PagISO18000";
-            this.PagISO18000.Size = new System.Drawing.Size(1010, 603);
-            this.PagISO18000.TabIndex = 4;
-            this.PagISO18000.Text = "ISO 18000-6B Tag Test";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(887, 24);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(100, 30);
-            this.btnClear.TabIndex = 10;
-            this.btnClear.Text = "Refresh";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnInventoryISO18000
-            // 
-            this.btnInventoryISO18000.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnInventoryISO18000.ForeColor = System.Drawing.Color.Indigo;
-            this.btnInventoryISO18000.Location = new System.Drawing.Point(89, 11);
-            this.btnInventoryISO18000.Name = "btnInventoryISO18000";
-            this.btnInventoryISO18000.Size = new System.Drawing.Size(120, 38);
-            this.btnInventoryISO18000.TabIndex = 3;
-            this.btnInventoryISO18000.Text = "Inventory";
-            this.btnInventoryISO18000.UseVisualStyleBackColor = true;
-            this.btnInventoryISO18000.Click += new System.EventHandler(this.btnInventoryISO18000_Click);
-            // 
-            // ltvTagISO18000
-            // 
-            this.ltvTagISO18000.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader27,
-            this.columnHeader25,
-            this.columnHeader26,
-            this.columnHeader28});
-            this.ltvTagISO18000.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ltvTagISO18000.FullRowSelect = true;
-            this.ltvTagISO18000.GridLines = true;
-            this.ltvTagISO18000.Location = new System.Drawing.Point(3, 55);
-            this.ltvTagISO18000.Name = "ltvTagISO18000";
-            this.ltvTagISO18000.Size = new System.Drawing.Size(458, 544);
-            this.ltvTagISO18000.TabIndex = 9;
-            this.ltvTagISO18000.UseCompatibleStateImageBehavior = false;
-            this.ltvTagISO18000.View = System.Windows.Forms.View.Details;
-            this.ltvTagISO18000.Click += new System.EventHandler(this.ltvTagISO18000_Click);
-            this.ltvTagISO18000.DoubleClick += new System.EventHandler(this.ltvTagISO18000_DoubleClick);
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "ID";
-            this.columnHeader27.Width = 36;
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "UID";
-            this.columnHeader25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader25.Width = 189;
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Ant ID";
-            this.columnHeader26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader26.Width = 65;
-            // 
-            // columnHeader28
-            // 
-            this.columnHeader28.Text = "Identification Count";
-            this.columnHeader28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader28.Width = 157;
-            // 
-            // gbISO1800LockQuery
-            // 
-            this.gbISO1800LockQuery.Controls.Add(this.txtStatus);
-            this.gbISO1800LockQuery.Controls.Add(this.htxtQueryAdd);
-            this.gbISO1800LockQuery.Controls.Add(this.label46);
-            this.gbISO1800LockQuery.Controls.Add(this.htxtLockAdd);
-            this.gbISO1800LockQuery.Controls.Add(this.label47);
-            this.gbISO1800LockQuery.Controls.Add(this.btnQueryTagISO18000);
-            this.gbISO1800LockQuery.Controls.Add(this.btnLockTagISO18000);
-            this.gbISO1800LockQuery.Location = new System.Drawing.Point(487, 506);
-            this.gbISO1800LockQuery.Name = "gbISO1800LockQuery";
-            this.gbISO1800LockQuery.Size = new System.Drawing.Size(515, 93);
-            this.gbISO1800LockQuery.TabIndex = 7;
-            this.gbISO1800LockQuery.TabStop = false;
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(263, 63);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(128, 20);
-            this.txtStatus.TabIndex = 9;
-            this.txtStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(13, 67);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(167, 13);
-            this.label46.TabIndex = 5;
-            this.label46.Text = "Query Lock Status Address(HEX):";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(31, 31);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(157, 13);
-            this.label47.TabIndex = 5;
-            this.label47.Text = "Permanent Lock Address(HEX):";
-            // 
-            // btnQueryTagISO18000
-            // 
-            this.btnQueryTagISO18000.Location = new System.Drawing.Point(400, 59);
-            this.btnQueryTagISO18000.Name = "btnQueryTagISO18000";
-            this.btnQueryTagISO18000.Size = new System.Drawing.Size(100, 30);
-            this.btnQueryTagISO18000.TabIndex = 3;
-            this.btnQueryTagISO18000.Text = "Query";
-            this.btnQueryTagISO18000.UseVisualStyleBackColor = true;
-            this.btnQueryTagISO18000.Click += new System.EventHandler(this.btnQueryTagISO18000_Click);
-            // 
-            // btnLockTagISO18000
-            // 
-            this.btnLockTagISO18000.Location = new System.Drawing.Point(400, 23);
-            this.btnLockTagISO18000.Name = "btnLockTagISO18000";
-            this.btnLockTagISO18000.Size = new System.Drawing.Size(100, 30);
-            this.btnLockTagISO18000.TabIndex = 3;
-            this.btnLockTagISO18000.Text = "Lock";
-            this.btnLockTagISO18000.UseVisualStyleBackColor = true;
-            this.btnLockTagISO18000.Click += new System.EventHandler(this.btnLockTagISO18000_Click);
-            // 
-            // gbISO1800ReadWrite
-            // 
-            this.gbISO1800ReadWrite.Controls.Add(this.txtLoopTimes);
-            this.gbISO1800ReadWrite.Controls.Add(this.label44);
-            this.gbISO1800ReadWrite.Controls.Add(this.txtLoop);
-            this.gbISO1800ReadWrite.Controls.Add(this.label40);
-            this.gbISO1800ReadWrite.Controls.Add(this.htxtWriteData18000);
-            this.gbISO1800ReadWrite.Controls.Add(this.txtWriteLength);
-            this.gbISO1800ReadWrite.Controls.Add(this.htxtReadData18000);
-            this.gbISO1800ReadWrite.Controls.Add(this.label45);
-            this.gbISO1800ReadWrite.Controls.Add(this.btnWriteTagISO18000);
-            this.gbISO1800ReadWrite.Controls.Add(this.label51);
-            this.gbISO1800ReadWrite.Controls.Add(this.label52);
-            this.gbISO1800ReadWrite.Controls.Add(this.txtReadLength);
-            this.gbISO1800ReadWrite.Controls.Add(this.htxtWriteStartAdd);
-            this.gbISO1800ReadWrite.Controls.Add(this.label50);
-            this.gbISO1800ReadWrite.Controls.Add(this.htxtReadStartAdd);
-            this.gbISO1800ReadWrite.Controls.Add(this.label42);
-            this.gbISO1800ReadWrite.Controls.Add(this.label43);
-            this.gbISO1800ReadWrite.Controls.Add(this.btnReadTagISO18000);
-            this.gbISO1800ReadWrite.Location = new System.Drawing.Point(487, 61);
-            this.gbISO1800ReadWrite.Name = "gbISO1800ReadWrite";
-            this.gbISO1800ReadWrite.Size = new System.Drawing.Size(515, 445);
-            this.gbISO1800ReadWrite.TabIndex = 4;
-            this.gbISO1800ReadWrite.TabStop = false;
-            this.gbISO1800ReadWrite.Text = "Read/Write Tag With Unlimited Length";
-            // 
-            // txtLoopTimes
-            // 
-            this.txtLoopTimes.Location = new System.Drawing.Point(274, 237);
-            this.txtLoopTimes.Name = "txtLoopTimes";
-            this.txtLoopTimes.ReadOnly = true;
-            this.txtLoopTimes.Size = new System.Drawing.Size(41, 20);
-            this.txtLoopTimes.TabIndex = 15;
-            this.txtLoopTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(200, 242);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(65, 13);
-            this.label44.TabIndex = 14;
-            this.label44.Text = "Succeeded:";
-            // 
-            // txtLoop
-            // 
-            this.txtLoop.Location = new System.Drawing.Point(117, 237);
-            this.txtLoop.Name = "txtLoop";
-            this.txtLoop.Size = new System.Drawing.Size(39, 20);
-            this.txtLoop.TabIndex = 13;
-            this.txtLoop.Text = "1";
-            this.txtLoop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(16, 242);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(95, 13);
-            this.label40.TabIndex = 12;
-            this.label40.Text = "Command Repeat:";
-            // 
-            // txtWriteLength
-            // 
-            this.txtWriteLength.Location = new System.Drawing.Point(274, 208);
-            this.txtWriteLength.MaxLength = 2;
-            this.txtWriteLength.Name = "txtWriteLength";
-            this.txtWriteLength.ReadOnly = true;
-            this.txtWriteLength.Size = new System.Drawing.Size(41, 20);
-            this.txtWriteLength.TabIndex = 11;
-            this.txtWriteLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(46, 271);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(61, 13);
-            this.label45.TabIndex = 6;
-            this.label45.Text = "Data(HEX):";
-            // 
-            // btnWriteTagISO18000
-            // 
-            this.btnWriteTagISO18000.Location = new System.Drawing.Point(400, 233);
-            this.btnWriteTagISO18000.Name = "btnWriteTagISO18000";
-            this.btnWriteTagISO18000.Size = new System.Drawing.Size(100, 30);
-            this.btnWriteTagISO18000.TabIndex = 3;
-            this.btnWriteTagISO18000.Text = "Write";
-            this.btnWriteTagISO18000.UseVisualStyleBackColor = true;
-            this.btnWriteTagISO18000.Click += new System.EventHandler(this.btnWriteTagISO18000_Click);
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(188, 212);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(71, 13);
-            this.label51.TabIndex = 10;
-            this.label51.Text = "Length(HEX):";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(46, 56);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(61, 13);
-            this.label52.TabIndex = 10;
-            this.label52.Text = "Data(HEX):";
-            // 
-            // txtReadLength
-            // 
-            this.txtReadLength.Location = new System.Drawing.Point(274, 21);
-            this.txtReadLength.MaxLength = 2;
-            this.txtReadLength.Name = "txtReadLength";
-            this.txtReadLength.Size = new System.Drawing.Size(41, 20);
-            this.txtReadLength.TabIndex = 9;
-            this.txtReadLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(188, 25);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(71, 13);
-            this.label50.TabIndex = 8;
-            this.label50.Text = "Length(HEX):";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(16, 25);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(82, 13);
-            this.label42.TabIndex = 5;
-            this.label42.Text = "Start Add(HEX):";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(16, 212);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(82, 13);
-            this.label43.TabIndex = 5;
-            this.label43.Text = "Start Add(HEX):";
-            // 
-            // btnReadTagISO18000
-            // 
-            this.btnReadTagISO18000.Location = new System.Drawing.Point(400, 16);
-            this.btnReadTagISO18000.Name = "btnReadTagISO18000";
-            this.btnReadTagISO18000.Size = new System.Drawing.Size(100, 30);
-            this.btnReadTagISO18000.TabIndex = 3;
-            this.btnReadTagISO18000.Text = "Read";
-            this.btnReadTagISO18000.UseVisualStyleBackColor = true;
-            this.btnReadTagISO18000.Click += new System.EventHandler(this.btnReadTagISO18000_Click);
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(503, 33);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(74, 13);
-            this.label41.TabIndex = 4;
-            this.label41.Text = "Selected UID:";
-            // 
-            // PagTranDataLog
-            // 
-            this.PagTranDataLog.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PagTranDataLog.Controls.Add(this.gbCmdManual);
-            this.PagTranDataLog.Controls.Add(this.lrtxtDataTran);
-            this.PagTranDataLog.Location = new System.Drawing.Point(4, 22);
-            this.PagTranDataLog.Name = "PagTranDataLog";
-            this.PagTranDataLog.Size = new System.Drawing.Size(1010, 603);
-            this.PagTranDataLog.TabIndex = 2;
-            this.PagTranDataLog.Text = "Serial Port Monitor";
-            this.PagTranDataLog.UseVisualStyleBackColor = true;
-            // 
-            // gbCmdManual
-            // 
-            this.gbCmdManual.Controls.Add(this.label16);
-            this.gbCmdManual.Controls.Add(this.htxtSendData);
-            this.gbCmdManual.Controls.Add(this.btnClearData);
-            this.gbCmdManual.Controls.Add(this.label17);
-            this.gbCmdManual.Controls.Add(this.btnSendData);
-            this.gbCmdManual.Controls.Add(this.htxtCheckData);
-            this.gbCmdManual.Location = new System.Drawing.Point(2, 516);
-            this.gbCmdManual.Name = "gbCmdManual";
-            this.gbCmdManual.Size = new System.Drawing.Size(1002, 55);
-            this.gbCmdManual.TabIndex = 8;
-            this.gbCmdManual.TabStop = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 21);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Input Command:";
-            // 
-            // btnClearData
-            // 
-            this.btnClearData.Location = new System.Drawing.Point(906, 15);
-            this.btnClearData.Name = "btnClearData";
-            this.btnClearData.Size = new System.Drawing.Size(90, 25);
-            this.btnClearData.TabIndex = 6;
-            this.btnClearData.Text = "Clear";
-            this.btnClearData.UseVisualStyleBackColor = true;
-            this.btnClearData.Click += new System.EventHandler(this.btnClearData_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(632, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Check Sum:";
-            // 
-            // btnSendData
-            // 
-            this.btnSendData.Location = new System.Drawing.Point(810, 15);
-            this.btnSendData.Name = "btnSendData";
-            this.btnSendData.Size = new System.Drawing.Size(90, 25);
-            this.btnSendData.TabIndex = 5;
-            this.btnSendData.Text = "Send";
-            this.btnSendData.UseVisualStyleBackColor = true;
-            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
             // TabCatalogos
             // 
@@ -4506,6 +2630,7 @@
             this.tablaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaCategorias.Size = new System.Drawing.Size(996, 540);
             this.tablaCategorias.TabIndex = 0;
+            this.tablaCategorias.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellContentDoubleClick);
             // 
             // IdCategoria
             // 
@@ -4587,23 +2712,75 @@
             this.Estado,
             this.Ciudad,
             this.Telefono,
-            this.Edad});
+            this.FechaNacimiento});
             this.tablaCompetidores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaCompetidores.Location = new System.Drawing.Point(3, 34);
             this.tablaCompetidores.Name = "tablaCompetidores";
             this.tablaCompetidores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaCompetidores.Size = new System.Drawing.Size(996, 540);
             this.tablaCompetidores.TabIndex = 5;
+            this.tablaCompetidores.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCompetidores_CellContentDoubleClick);
             // 
-            // inventariofacturacionDataSetBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            this.inventariofacturacionDataSetBindingSource.DataSource = this.inventariofacturacionDataSet;
-            this.inventariofacturacionDataSetBindingSource.Position = 0;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCompetidor";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Clave";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 60;
             // 
-            // inventariofacturacionDataSet
+            // dataGridViewTextBoxColumn2
             // 
-            this.inventariofacturacionDataSet.DataSetName = "inventariofacturacionDataSet";
-            this.inventariofacturacionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCompleto";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn2.Width = 220;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 180;
+            // 
+            // Pais
+            // 
+            this.Pais.DataPropertyName = "Pais";
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.DataPropertyName = "Estado";
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.DataPropertyName = "Ciudad";
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            this.Ciudad.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 70;
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "Fecha Nacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
             // 
             // panel14
             // 
@@ -4683,6 +2860,7 @@
             this.tablaCarreras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaCarreras.Size = new System.Drawing.Size(1004, 559);
             this.tablaCarreras.TabIndex = 0;
+            this.tablaCarreras.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCarreras_CellContentDoubleClick);
             // 
             // IdCarrera
             // 
@@ -4985,6 +3163,91 @@
             this.comboBox9.Size = new System.Drawing.Size(55, 21);
             this.comboBox9.TabIndex = 39;
             // 
+            // lxLedControl9
+            // 
+            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl9.BevelRate = 0.1F;
+            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl9.HighlightOpaque = ((byte)(20));
+            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
+            this.lxLedControl9.Name = "lxLedControl9";
+            this.lxLedControl9.RoundCorner = true;
+            this.lxLedControl9.SegmentIntervalRatio = 50;
+            this.lxLedControl9.ShowHighlight = true;
+            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
+            this.lxLedControl9.TabIndex = 35;
+            this.lxLedControl9.Text = "0";
+            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.lxLedControl9.TotalCharCount = 10;
+            // 
+            // lxLedControl10
+            // 
+            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl10.BevelRate = 0.1F;
+            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl10.HighlightOpaque = ((byte)(20));
+            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
+            this.lxLedControl10.Name = "lxLedControl10";
+            this.lxLedControl10.RoundCorner = true;
+            this.lxLedControl10.SegmentIntervalRatio = 50;
+            this.lxLedControl10.ShowHighlight = true;
+            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl10.TabIndex = 34;
+            this.lxLedControl10.Text = "0";
+            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl11
+            // 
+            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl11.BevelRate = 0.1F;
+            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl11.HighlightOpaque = ((byte)(20));
+            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
+            this.lxLedControl11.Name = "lxLedControl11";
+            this.lxLedControl11.RoundCorner = true;
+            this.lxLedControl11.SegmentIntervalRatio = 50;
+            this.lxLedControl11.ShowHighlight = true;
+            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl11.TabIndex = 33;
+            this.lxLedControl11.Text = "0";
+            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl12
+            // 
+            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl12.BevelRate = 0.1F;
+            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl12.HighlightOpaque = ((byte)(20));
+            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
+            this.lxLedControl12.Name = "lxLedControl12";
+            this.lxLedControl12.RoundCorner = true;
+            this.lxLedControl12.SegmentIntervalRatio = 50;
+            this.lxLedControl12.ShowHighlight = true;
+            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl12.TabIndex = 32;
+            this.lxLedControl12.Text = "0";
+            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
             // label79
             // 
             this.label79.AutoSize = true;
@@ -5035,6 +3298,27 @@
             this.label83.Size = new System.Drawing.Size(149, 12);
             this.label83.TabIndex = 26;
             this.label83.Text = "已盘存的标签总数量(个)：";
+            // 
+            // lxLedControl13
+            // 
+            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl13.BevelRate = 0.1F;
+            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
+            this.lxLedControl13.HighlightOpaque = ((byte)(20));
+            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
+            this.lxLedControl13.Name = "lxLedControl13";
+            this.lxLedControl13.RoundCorner = true;
+            this.lxLedControl13.SegmentIntervalRatio = 50;
+            this.lxLedControl13.ShowHighlight = true;
+            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
+            this.lxLedControl13.TabIndex = 21;
+            this.lxLedControl13.Text = "0";
+            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
             // 
             // listView1
             // 
@@ -5167,662 +3451,15 @@
             this.ckClearOperationRec.Text = "Auto Clear";
             this.ckClearOperationRec.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCompetidor";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Clave";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCompleto";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn2.Width = 300;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Pais
-            // 
-            this.Pais.DataPropertyName = "Pais";
-            this.Pais.HeaderText = "Pais";
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.DataPropertyName = "Estado";
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Ciudad
-            // 
-            this.Ciudad.DataPropertyName = "Ciudad";
-            this.Ciudad.HeaderText = "Ciudad";
-            this.Ciudad.Name = "Ciudad";
-            this.Ciudad.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Edad
-            // 
-            this.Edad.DataPropertyName = "Edad";
-            this.Edad.HeaderText = "Edad";
-            this.Edad.Name = "Edad";
-            this.Edad.ReadOnly = true;
-            // 
             // lrtxtLog
             // 
-            this.lrtxtLog.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lrtxtLog.Location = new System.Drawing.Point(0, 619);
+            this.lrtxtLog.Location = new System.Drawing.Point(0, 605);
             this.lrtxtLog.Name = "lrtxtLog";
-            this.lrtxtLog.Size = new System.Drawing.Size(1018, 114);
+            this.lrtxtLog.Size = new System.Drawing.Size(1018, 128);
             this.lrtxtLog.TabIndex = 1;
             this.lrtxtLog.Text = "";
+            this.lrtxtLog.Visible = false;
             this.lrtxtLog.DoubleClick += new System.EventHandler(this.lrtxtLog_DoubleClick);
-            // 
-            // htbGetIdentifier
-            // 
-            this.htbGetIdentifier.Location = new System.Drawing.Point(34, 24);
-            this.htbGetIdentifier.Name = "htbGetIdentifier";
-            this.htbGetIdentifier.ReadOnly = true;
-            this.htbGetIdentifier.Size = new System.Drawing.Size(228, 20);
-            this.htbGetIdentifier.TabIndex = 13;
-            this.htbGetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htbSetIdentifier
-            // 
-            this.htbSetIdentifier.Location = new System.Drawing.Point(34, 66);
-            this.htbSetIdentifier.Name = "htbSetIdentifier";
-            this.htbSetIdentifier.Size = new System.Drawing.Size(228, 20);
-            this.htbSetIdentifier.TabIndex = 12;
-            this.htbSetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtReadId
-            // 
-            this.htxtReadId.Location = new System.Drawing.Point(114, 27);
-            this.htxtReadId.Name = "htxtReadId";
-            this.htxtReadId.Size = new System.Drawing.Size(121, 20);
-            this.htxtReadId.TabIndex = 2;
-            this.htxtReadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ipIpServer
-            // 
-            this.ipIpServer.IpAddressStr = "";
-            this.ipIpServer.Location = new System.Drawing.Point(114, 22);
-            this.ipIpServer.Name = "ipIpServer";
-            this.ipIpServer.Size = new System.Drawing.Size(120, 23);
-            this.ipIpServer.TabIndex = 0;
-            // 
-            // ledReal3
-            // 
-            this.ledReal3.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal3.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal3.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal3.BevelRate = 0.1F;
-            this.ledReal3.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal3.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal3.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal3.HighlightOpaque = ((byte)(20));
-            this.ledReal3.Location = new System.Drawing.Point(702, 54);
-            this.ledReal3.Name = "ledReal3";
-            this.ledReal3.RoundCorner = true;
-            this.ledReal3.SegmentIntervalRatio = 50;
-            this.ledReal3.ShowHighlight = true;
-            this.ledReal3.Size = new System.Drawing.Size(183, 38);
-            this.ledReal3.TabIndex = 40;
-            this.ledReal3.Text = "0";
-            this.ledReal3.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal3.TotalCharCount = 10;
-            // 
-            // ledReal5
-            // 
-            this.ledReal5.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal5.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal5.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal5.BevelRate = 0.1F;
-            this.ledReal5.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal5.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal5.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal5.HighlightOpaque = ((byte)(20));
-            this.ledReal5.Location = new System.Drawing.Point(702, 128);
-            this.ledReal5.Name = "ledReal5";
-            this.ledReal5.RoundCorner = true;
-            this.ledReal5.SegmentIntervalRatio = 50;
-            this.ledReal5.ShowHighlight = true;
-            this.ledReal5.Size = new System.Drawing.Size(183, 38);
-            this.ledReal5.TabIndex = 35;
-            this.ledReal5.Text = "0";
-            this.ledReal5.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal5.TotalCharCount = 10;
-            // 
-            // ledReal2
-            // 
-            this.ledReal2.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal2.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal2.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal2.BevelRate = 0.1F;
-            this.ledReal2.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal2.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal2.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal2.ForeColor = System.Drawing.Color.Purple;
-            this.ledReal2.HighlightOpaque = ((byte)(20));
-            this.ledReal2.Location = new System.Drawing.Point(496, 38);
-            this.ledReal2.Name = "ledReal2";
-            this.ledReal2.RoundCorner = true;
-            this.ledReal2.SegmentIntervalRatio = 50;
-            this.ledReal2.ShowHighlight = true;
-            this.ledReal2.Size = new System.Drawing.Size(162, 54);
-            this.ledReal2.TabIndex = 34;
-            this.ledReal2.Text = "0";
-            this.ledReal2.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal2.TotalCharCount = 6;
-            // 
-            // ledReal4
-            // 
-            this.ledReal4.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal4.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal4.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal4.BevelRate = 0.1F;
-            this.ledReal4.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal4.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal4.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal4.ForeColor = System.Drawing.Color.Purple;
-            this.ledReal4.HighlightOpaque = ((byte)(20));
-            this.ledReal4.Location = new System.Drawing.Point(497, 112);
-            this.ledReal4.Name = "ledReal4";
-            this.ledReal4.RoundCorner = true;
-            this.ledReal4.SegmentIntervalRatio = 50;
-            this.ledReal4.ShowHighlight = true;
-            this.ledReal4.Size = new System.Drawing.Size(161, 54);
-            this.ledReal4.TabIndex = 33;
-            this.ledReal4.Text = "0";
-            this.ledReal4.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal4.TotalCharCount = 6;
-            // 
-            // ledReal1
-            // 
-            this.ledReal1.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal1.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal1.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal1.BevelRate = 0.1F;
-            this.ledReal1.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal1.BorderWidth = 3;
-            this.ledReal1.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal1.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal1.HighlightOpaque = ((byte)(20));
-            this.ledReal1.Location = new System.Drawing.Point(106, 38);
-            this.ledReal1.Name = "ledReal1";
-            this.ledReal1.RoundCorner = true;
-            this.ledReal1.SegmentIntervalRatio = 50;
-            this.ledReal1.ShowHighlight = true;
-            this.ledReal1.Size = new System.Drawing.Size(310, 128);
-            this.ledReal1.TabIndex = 21;
-            this.ledReal1.Text = "0";
-            this.ledReal1.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // ledBuffer4
-            // 
-            this.ledBuffer4.BackColor = System.Drawing.Color.Transparent;
-            this.ledBuffer4.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledBuffer4.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledBuffer4.BevelRate = 0.1F;
-            this.ledBuffer4.BorderColor = System.Drawing.Color.Lavender;
-            this.ledBuffer4.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledBuffer4.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledBuffer4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledBuffer4.HighlightOpaque = ((byte)(20));
-            this.ledBuffer4.Location = new System.Drawing.Point(702, 54);
-            this.ledBuffer4.Name = "ledBuffer4";
-            this.ledBuffer4.RoundCorner = true;
-            this.ledBuffer4.SegmentIntervalRatio = 50;
-            this.ledBuffer4.ShowHighlight = true;
-            this.ledBuffer4.Size = new System.Drawing.Size(183, 38);
-            this.ledBuffer4.TabIndex = 40;
-            this.ledBuffer4.Text = "0";
-            this.ledBuffer4.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledBuffer4.TotalCharCount = 10;
-            // 
-            // ledBuffer5
-            // 
-            this.ledBuffer5.BackColor = System.Drawing.Color.Transparent;
-            this.ledBuffer5.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledBuffer5.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledBuffer5.BevelRate = 0.1F;
-            this.ledBuffer5.BorderColor = System.Drawing.Color.Lavender;
-            this.ledBuffer5.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledBuffer5.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledBuffer5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledBuffer5.HighlightOpaque = ((byte)(20));
-            this.ledBuffer5.Location = new System.Drawing.Point(702, 128);
-            this.ledBuffer5.Name = "ledBuffer5";
-            this.ledBuffer5.RoundCorner = true;
-            this.ledBuffer5.SegmentIntervalRatio = 50;
-            this.ledBuffer5.ShowHighlight = true;
-            this.ledBuffer5.Size = new System.Drawing.Size(183, 38);
-            this.ledBuffer5.TabIndex = 35;
-            this.ledBuffer5.Text = "0";
-            this.ledBuffer5.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledBuffer5.TotalCharCount = 10;
-            // 
-            // ledBuffer2
-            // 
-            this.ledBuffer2.BackColor = System.Drawing.Color.Transparent;
-            this.ledBuffer2.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledBuffer2.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledBuffer2.BevelRate = 0.1F;
-            this.ledBuffer2.BorderColor = System.Drawing.Color.Lavender;
-            this.ledBuffer2.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledBuffer2.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledBuffer2.ForeColor = System.Drawing.Color.Purple;
-            this.ledBuffer2.HighlightOpaque = ((byte)(20));
-            this.ledBuffer2.Location = new System.Drawing.Point(496, 38);
-            this.ledBuffer2.Name = "ledBuffer2";
-            this.ledBuffer2.RoundCorner = true;
-            this.ledBuffer2.SegmentIntervalRatio = 50;
-            this.ledBuffer2.ShowHighlight = true;
-            this.ledBuffer2.Size = new System.Drawing.Size(162, 54);
-            this.ledBuffer2.TabIndex = 34;
-            this.ledBuffer2.Text = "0";
-            this.ledBuffer2.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledBuffer2.TotalCharCount = 6;
-            // 
-            // ledBuffer3
-            // 
-            this.ledBuffer3.BackColor = System.Drawing.Color.Transparent;
-            this.ledBuffer3.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledBuffer3.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledBuffer3.BevelRate = 0.1F;
-            this.ledBuffer3.BorderColor = System.Drawing.Color.Lavender;
-            this.ledBuffer3.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledBuffer3.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledBuffer3.ForeColor = System.Drawing.Color.Purple;
-            this.ledBuffer3.HighlightOpaque = ((byte)(20));
-            this.ledBuffer3.Location = new System.Drawing.Point(497, 112);
-            this.ledBuffer3.Name = "ledBuffer3";
-            this.ledBuffer3.RoundCorner = true;
-            this.ledBuffer3.SegmentIntervalRatio = 50;
-            this.ledBuffer3.ShowHighlight = true;
-            this.ledBuffer3.Size = new System.Drawing.Size(161, 54);
-            this.ledBuffer3.TabIndex = 33;
-            this.ledBuffer3.Text = "0";
-            this.ledBuffer3.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledBuffer3.TotalCharCount = 6;
-            // 
-            // ledBuffer1
-            // 
-            this.ledBuffer1.BackColor = System.Drawing.Color.Transparent;
-            this.ledBuffer1.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledBuffer1.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledBuffer1.BevelRate = 0.1F;
-            this.ledBuffer1.BorderColor = System.Drawing.Color.Lavender;
-            this.ledBuffer1.BorderWidth = 3;
-            this.ledBuffer1.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledBuffer1.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledBuffer1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledBuffer1.HighlightOpaque = ((byte)(20));
-            this.ledBuffer1.Location = new System.Drawing.Point(106, 38);
-            this.ledBuffer1.Name = "ledBuffer1";
-            this.ledBuffer1.RoundCorner = true;
-            this.ledBuffer1.SegmentIntervalRatio = 50;
-            this.ledBuffer1.ShowHighlight = true;
-            this.ledBuffer1.Size = new System.Drawing.Size(310, 128);
-            this.ledBuffer1.TabIndex = 21;
-            this.ledBuffer1.Text = "0";
-            this.ledBuffer1.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // ledFast4
-            // 
-            this.ledFast4.BackColor = System.Drawing.Color.Transparent;
-            this.ledFast4.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledFast4.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledFast4.BevelRate = 0.1F;
-            this.ledFast4.BorderColor = System.Drawing.Color.Lavender;
-            this.ledFast4.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledFast4.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledFast4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledFast4.HighlightOpaque = ((byte)(20));
-            this.ledFast4.Location = new System.Drawing.Point(702, 54);
-            this.ledFast4.Name = "ledFast4";
-            this.ledFast4.RoundCorner = true;
-            this.ledFast4.SegmentIntervalRatio = 50;
-            this.ledFast4.ShowHighlight = true;
-            this.ledFast4.Size = new System.Drawing.Size(183, 38);
-            this.ledFast4.TabIndex = 40;
-            this.ledFast4.Text = "0";
-            this.ledFast4.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledFast4.TotalCharCount = 10;
-            // 
-            // ledFast5
-            // 
-            this.ledFast5.BackColor = System.Drawing.Color.Transparent;
-            this.ledFast5.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledFast5.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledFast5.BevelRate = 0.1F;
-            this.ledFast5.BorderColor = System.Drawing.Color.Lavender;
-            this.ledFast5.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledFast5.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledFast5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledFast5.HighlightOpaque = ((byte)(20));
-            this.ledFast5.Location = new System.Drawing.Point(702, 128);
-            this.ledFast5.Name = "ledFast5";
-            this.ledFast5.RoundCorner = true;
-            this.ledFast5.SegmentIntervalRatio = 50;
-            this.ledFast5.ShowHighlight = true;
-            this.ledFast5.Size = new System.Drawing.Size(183, 38);
-            this.ledFast5.TabIndex = 35;
-            this.ledFast5.Text = "0";
-            this.ledFast5.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledFast5.TotalCharCount = 10;
-            // 
-            // ledFast2
-            // 
-            this.ledFast2.BackColor = System.Drawing.Color.Transparent;
-            this.ledFast2.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledFast2.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledFast2.BevelRate = 0.1F;
-            this.ledFast2.BorderColor = System.Drawing.Color.Lavender;
-            this.ledFast2.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledFast2.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledFast2.ForeColor = System.Drawing.Color.Purple;
-            this.ledFast2.HighlightOpaque = ((byte)(20));
-            this.ledFast2.Location = new System.Drawing.Point(496, 38);
-            this.ledFast2.Name = "ledFast2";
-            this.ledFast2.RoundCorner = true;
-            this.ledFast2.SegmentIntervalRatio = 50;
-            this.ledFast2.ShowHighlight = true;
-            this.ledFast2.Size = new System.Drawing.Size(162, 54);
-            this.ledFast2.TabIndex = 34;
-            this.ledFast2.Text = "0";
-            this.ledFast2.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledFast2.TotalCharCount = 6;
-            // 
-            // ledFast3
-            // 
-            this.ledFast3.BackColor = System.Drawing.Color.Transparent;
-            this.ledFast3.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledFast3.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledFast3.BevelRate = 0.1F;
-            this.ledFast3.BorderColor = System.Drawing.Color.Lavender;
-            this.ledFast3.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledFast3.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledFast3.ForeColor = System.Drawing.Color.Purple;
-            this.ledFast3.HighlightOpaque = ((byte)(20));
-            this.ledFast3.Location = new System.Drawing.Point(497, 112);
-            this.ledFast3.Name = "ledFast3";
-            this.ledFast3.RoundCorner = true;
-            this.ledFast3.SegmentIntervalRatio = 50;
-            this.ledFast3.ShowHighlight = true;
-            this.ledFast3.Size = new System.Drawing.Size(161, 54);
-            this.ledFast3.TabIndex = 33;
-            this.ledFast3.Text = "0";
-            this.ledFast3.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledFast3.TotalCharCount = 6;
-            // 
-            // ledFast1
-            // 
-            this.ledFast1.BackColor = System.Drawing.Color.Transparent;
-            this.ledFast1.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledFast1.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledFast1.BevelRate = 0.1F;
-            this.ledFast1.BorderColor = System.Drawing.Color.Lavender;
-            this.ledFast1.BorderWidth = 3;
-            this.ledFast1.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledFast1.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledFast1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledFast1.HighlightOpaque = ((byte)(20));
-            this.ledFast1.Location = new System.Drawing.Point(106, 38);
-            this.ledFast1.Name = "ledFast1";
-            this.ledFast1.RoundCorner = true;
-            this.ledFast1.SegmentIntervalRatio = 50;
-            this.ledFast1.ShowHighlight = true;
-            this.ledFast1.Size = new System.Drawing.Size(310, 128);
-            this.ledFast1.TabIndex = 21;
-            this.ledFast1.Text = "0";
-            this.ledFast1.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // htxtKillPwd
-            // 
-            this.htxtKillPwd.Location = new System.Drawing.Point(421, 23);
-            this.htxtKillPwd.Name = "htxtKillPwd";
-            this.htxtKillPwd.Size = new System.Drawing.Size(101, 21);
-            this.htxtKillPwd.TabIndex = 13;
-            // 
-            // htxtLockPwd
-            // 
-            this.htxtLockPwd.Location = new System.Drawing.Point(766, 49);
-            this.htxtLockPwd.Name = "htxtLockPwd";
-            this.htxtLockPwd.Size = new System.Drawing.Size(90, 21);
-            this.htxtLockPwd.TabIndex = 12;
-            // 
-            // htxtWriteData
-            // 
-            this.htxtWriteData.Location = new System.Drawing.Point(171, 74);
-            this.htxtWriteData.Name = "htxtWriteData";
-            this.htxtWriteData.Size = new System.Drawing.Size(685, 21);
-            this.htxtWriteData.TabIndex = 10;
-            // 
-            // htxtReadAndWritePwd
-            // 
-            this.htxtReadAndWritePwd.Location = new System.Drawing.Point(432, 26);
-            this.htxtReadAndWritePwd.Name = "htxtReadAndWritePwd";
-            this.htxtReadAndWritePwd.Size = new System.Drawing.Size(90, 21);
-            this.htxtReadAndWritePwd.TabIndex = 3;
-            // 
-            // htxtQueryAdd
-            // 
-            this.htxtQueryAdd.Location = new System.Drawing.Point(210, 63);
-            this.htxtQueryAdd.MaxLength = 2;
-            this.htxtQueryAdd.Name = "htxtQueryAdd";
-            this.htxtQueryAdd.Size = new System.Drawing.Size(39, 20);
-            this.htxtQueryAdd.TabIndex = 8;
-            this.htxtQueryAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtLockAdd
-            // 
-            this.htxtLockAdd.Location = new System.Drawing.Point(210, 27);
-            this.htxtLockAdd.MaxLength = 2;
-            this.htxtLockAdd.Name = "htxtLockAdd";
-            this.htxtLockAdd.Size = new System.Drawing.Size(39, 20);
-            this.htxtLockAdd.TabIndex = 8;
-            this.htxtLockAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtWriteData18000
-            // 
-            this.htxtWriteData18000.Location = new System.Drawing.Point(117, 268);
-            this.htxtWriteData18000.Multiline = true;
-            this.htxtWriteData18000.Name = "htxtWriteData18000";
-            this.htxtWriteData18000.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.htxtWriteData18000.Size = new System.Drawing.Size(383, 171);
-            this.htxtWriteData18000.TabIndex = 9;
-            // 
-            // htxtReadData18000
-            // 
-            this.htxtReadData18000.Location = new System.Drawing.Point(117, 53);
-            this.htxtReadData18000.Multiline = true;
-            this.htxtReadData18000.Name = "htxtReadData18000";
-            this.htxtReadData18000.ReadOnly = true;
-            this.htxtReadData18000.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.htxtReadData18000.Size = new System.Drawing.Size(383, 144);
-            this.htxtReadData18000.TabIndex = 11;
-            // 
-            // htxtWriteStartAdd
-            // 
-            this.htxtWriteStartAdd.Location = new System.Drawing.Point(117, 208);
-            this.htxtWriteStartAdd.MaxLength = 2;
-            this.htxtWriteStartAdd.Name = "htxtWriteStartAdd";
-            this.htxtWriteStartAdd.Size = new System.Drawing.Size(39, 20);
-            this.htxtWriteStartAdd.TabIndex = 8;
-            this.htxtWriteStartAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtReadStartAdd
-            // 
-            this.htxtReadStartAdd.Location = new System.Drawing.Point(117, 21);
-            this.htxtReadStartAdd.MaxLength = 2;
-            this.htxtReadStartAdd.Name = "htxtReadStartAdd";
-            this.htxtReadStartAdd.Size = new System.Drawing.Size(39, 20);
-            this.htxtReadStartAdd.TabIndex = 7;
-            this.htxtReadStartAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtReadUID
-            // 
-            this.htxtReadUID.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.htxtReadUID.Location = new System.Drawing.Point(604, 29);
-            this.htxtReadUID.Name = "htxtReadUID";
-            this.htxtReadUID.ReadOnly = true;
-            this.htxtReadUID.Size = new System.Drawing.Size(195, 21);
-            this.htxtReadUID.TabIndex = 6;
-            this.htxtReadUID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtSendData
-            // 
-            this.htxtSendData.Location = new System.Drawing.Point(95, 17);
-            this.htxtSendData.Name = "htxtSendData";
-            this.htxtSendData.Size = new System.Drawing.Size(515, 20);
-            this.htxtSendData.TabIndex = 2;
-            this.htxtSendData.Leave += new System.EventHandler(this.htxtSendData_Leave);
-            // 
-            // htxtCheckData
-            // 
-            this.htxtCheckData.Location = new System.Drawing.Point(703, 17);
-            this.htxtCheckData.Name = "htxtCheckData";
-            this.htxtCheckData.ReadOnly = true;
-            this.htxtCheckData.Size = new System.Drawing.Size(47, 20);
-            this.htxtCheckData.TabIndex = 4;
-            this.htxtCheckData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lrtxtDataTran
-            // 
-            this.lrtxtDataTran.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lrtxtDataTran.Location = new System.Drawing.Point(0, 0);
-            this.lrtxtDataTran.Name = "lrtxtDataTran";
-            this.lrtxtDataTran.Size = new System.Drawing.Size(1010, 510);
-            this.lrtxtDataTran.TabIndex = 0;
-            this.lrtxtDataTran.Text = "";
-            this.lrtxtDataTran.DoubleClick += new System.EventHandler(this.lrtxtDataTran_DoubleClick);
-            // 
-            // lxLedControl9
-            // 
-            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl9.BevelRate = 0.1F;
-            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl9.HighlightOpaque = ((byte)(20));
-            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
-            this.lxLedControl9.Name = "lxLedControl9";
-            this.lxLedControl9.RoundCorner = true;
-            this.lxLedControl9.SegmentIntervalRatio = 50;
-            this.lxLedControl9.ShowHighlight = true;
-            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
-            this.lxLedControl9.TabIndex = 35;
-            this.lxLedControl9.Text = "0";
-            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.lxLedControl9.TotalCharCount = 10;
-            // 
-            // lxLedControl10
-            // 
-            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl10.BevelRate = 0.1F;
-            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl10.HighlightOpaque = ((byte)(20));
-            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
-            this.lxLedControl10.Name = "lxLedControl10";
-            this.lxLedControl10.RoundCorner = true;
-            this.lxLedControl10.SegmentIntervalRatio = 50;
-            this.lxLedControl10.ShowHighlight = true;
-            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl10.TabIndex = 34;
-            this.lxLedControl10.Text = "0";
-            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl11
-            // 
-            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl11.BevelRate = 0.1F;
-            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl11.HighlightOpaque = ((byte)(20));
-            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
-            this.lxLedControl11.Name = "lxLedControl11";
-            this.lxLedControl11.RoundCorner = true;
-            this.lxLedControl11.SegmentIntervalRatio = 50;
-            this.lxLedControl11.ShowHighlight = true;
-            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl11.TabIndex = 33;
-            this.lxLedControl11.Text = "0";
-            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl12
-            // 
-            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl12.BevelRate = 0.1F;
-            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl12.HighlightOpaque = ((byte)(20));
-            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
-            this.lxLedControl12.Name = "lxLedControl12";
-            this.lxLedControl12.RoundCorner = true;
-            this.lxLedControl12.SegmentIntervalRatio = 50;
-            this.lxLedControl12.ShowHighlight = true;
-            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl12.TabIndex = 32;
-            this.lxLedControl12.Text = "0";
-            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl13
-            // 
-            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl13.BevelRate = 0.1F;
-            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
-            this.lxLedControl13.HighlightOpaque = ((byte)(20));
-            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
-            this.lxLedControl13.Name = "lxLedControl13";
-            this.lxLedControl13.RoundCorner = true;
-            this.lxLedControl13.SegmentIntervalRatio = 50;
-            this.lxLedControl13.ShowHighlight = true;
-            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
-            this.lxLedControl13.TabIndex = 21;
-            this.lxLedControl13.Text = "0";
-            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
             // 
             // lxLedControl14
             // 
@@ -6015,51 +3652,11 @@
             this.panel5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pageBufferedMode.ResumeLayout(false);
-            this.pageBufferedMode.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.pageFast4AntMode.ResumeLayout(false);
-            this.pageFast4AntMode.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.pageAcessTag.ResumeLayout(false);
-            this.gbCmdOperateTag.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.PagISO18000.ResumeLayout(false);
-            this.PagISO18000.PerformLayout();
-            this.gbISO1800LockQuery.ResumeLayout(false);
-            this.gbISO1800LockQuery.PerformLayout();
-            this.gbISO1800ReadWrite.ResumeLayout(false);
-            this.gbISO1800ReadWrite.PerformLayout();
-            this.PagTranDataLog.ResumeLayout(false);
-            this.gbCmdManual.ResumeLayout(false);
-            this.gbCmdManual.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).EndInit();
             this.TabCatalogos.ResumeLayout(false);
             this.TabCatalogos.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -6070,8 +3667,6 @@
             this.panel12.ResumeLayout(false);
             this.tabCompetidores.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSet)).EndInit();
             this.panel14.ResumeLayout(false);
             this.TabCarreras.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
@@ -6083,21 +3678,6 @@
             this.panel7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledBuffer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledFast1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).EndInit();
@@ -6117,57 +3697,10 @@
 
         private System.Windows.Forms.TabControl tabCtrMain;
         private System.Windows.Forms.TabPage PagReaderSetting;
-        private System.Windows.Forms.TabPage PagTranDataLog;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button btnSendData;
-        private System.Windows.Forms.Label label17;
-        private CustomControl.HexTextBox htxtSendData;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox gbCmdManual;
-        private CustomControl.LogRichTextBox lrtxtDataTran;
-        private CustomControl.HexTextBox htxtCheckData;
-        private System.Windows.Forms.Button btnClearData;
-        private System.Windows.Forms.TabPage PagISO18000;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Button btnWriteTagISO18000;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ColumnHeader columnHeader25;
-        private System.Windows.Forms.ColumnHeader columnHeader26;
-        private CustomControl.HexTextBox htxtReadUID;
-        private CustomControl.HexTextBox htxtQueryAdd;
-        private CustomControl.HexTextBox htxtWriteStartAdd;
-        private System.Windows.Forms.Button btnInventoryISO18000;
-        private System.Windows.Forms.Button btnReadTagISO18000;
-        private System.Windows.Forms.Button btnLockTagISO18000;
-        private System.Windows.Forms.Button btnQueryTagISO18000;
-        private System.Windows.Forms.Label label50;
-        private CustomControl.HexTextBox htxtReadStartAdd;
-        private CustomControl.HexTextBox htxtWriteData18000;
-        private CustomControl.HexTextBox htxtLockAdd;
-        private System.Windows.Forms.ListView ltvTagISO18000;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox txtReadLength;
-        private System.Windows.Forms.TextBox txtWriteLength;
-        private CustomControl.HexTextBox htxtReadData18000;
-        private System.Windows.Forms.ColumnHeader columnHeader27;
-        private System.Windows.Forms.ColumnHeader columnHeader28;
-        private System.Windows.Forms.TextBox txtStatus;
-        private System.Windows.Forms.GroupBox gbISO1800ReadWrite;
-        private System.Windows.Forms.GroupBox gbISO1800LockQuery;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.CheckBox ckDisplayLog;
-        private System.Windows.Forms.TextBox txtLoopTimes;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox txtLoop;
-        private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TabPage pageEpcTest;
         private System.Windows.Forms.TabControl tabEpcTest;
-        private System.Windows.Forms.TabPage pageFast4AntMode;
         private System.Windows.Forms.TabPage pageRealMode;
         private System.Windows.Forms.ColumnHeader columnHeader37;
         private System.Windows.Forms.ColumnHeader columnHeader38;
@@ -6175,39 +3708,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader40;
         private System.Windows.Forms.ColumnHeader columnHeader41;
         private System.Windows.Forms.ColumnHeader columnHeader42;
-        private System.Windows.Forms.ComboBox cmbAntSelect4;
-        private System.Windows.Forms.ComboBox cmbAntSelect3;
-        private System.Windows.Forms.ComboBox cmbAntSelect2;
-        private System.Windows.Forms.ComboBox cmbAntSelect1;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.TabPage pageBufferedMode;
-        private System.Windows.Forms.TabPage pageAcessTag;
-        private System.Windows.Forms.Label txtFastTagList;
-        private System.Windows.Forms.ListView lvFastList;
-        private System.Windows.Forms.ColumnHeader columnHeader31;
-        private System.Windows.Forms.ColumnHeader columnHeader32;
-        private System.Windows.Forms.ColumnHeader columnHeader33;
-        private System.Windows.Forms.ColumnHeader columnHeader34;
-        private System.Windows.Forms.ColumnHeader columnHeader35;
-        private System.Windows.Forms.ColumnHeader columnHeader36;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button buttonFastFresh;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtFastMinRssi;
-        private System.Windows.Forms.TextBox txtFastMaxRssi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
@@ -6228,11 +3728,6 @@
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
         private LxControl.LxLedControl ledReal1;
-        private System.Windows.Forms.Button btGetBuffer;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btBufferFresh;
-        private System.Windows.Forms.Label labelBufferTagCount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button4;
@@ -6277,108 +3772,10 @@
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label label91;
         private LxControl.LxLedControl lxLedControl18;
-        private System.Windows.Forms.Button btQueryBuffer;
-        private System.Windows.Forms.Button btGetClearBuffer;
-        private System.Windows.Forms.Button btClearBuffer;
-        private System.Windows.Forms.ListView lvBufferList;
-        private System.Windows.Forms.ColumnHeader columnHeader49;
-        private System.Windows.Forms.ColumnHeader columnHeader50;
-        private System.Windows.Forms.ColumnHeader columnHeader51;
-        private System.Windows.Forms.ColumnHeader columnHeader52;
-        private System.Windows.Forms.ColumnHeader columnHeader53;
-        private System.Windows.Forms.ColumnHeader columnHeader54;
-        private System.Windows.Forms.GroupBox gbCmdOperateTag;
-        private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.Button btnKillTag;
-        private CustomControl.HexTextBox htxtKillPwd;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private CustomControl.HexTextBox htxtLockPwd;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.RadioButton rdbUserMemory;
-        private System.Windows.Forms.RadioButton rdbTidMemory;
-        private System.Windows.Forms.RadioButton rdbEpcMermory;
-        private System.Windows.Forms.RadioButton rdbKillPwd;
-        private System.Windows.Forms.RadioButton rdbAccessPwd;
-        private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.RadioButton rdbLockEver;
-        private System.Windows.Forms.RadioButton rdbFreeEver;
-        private System.Windows.Forms.RadioButton rdbLock;
-        private System.Windows.Forms.RadioButton rdbFree;
-        private System.Windows.Forms.Button btnLockTag;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private CustomControl.HexTextBox htxtWriteData;
-        private System.Windows.Forms.TextBox txtWordCnt;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button btnWriteTag;
-        private System.Windows.Forms.Button btnReadTag;
-        private System.Windows.Forms.TextBox txtWordAdd;
-        private System.Windows.Forms.Label label26;
-        private CustomControl.HexTextBox htxtReadAndWritePwd;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.RadioButton rdbUser;
-        private System.Windows.Forms.RadioButton rdbTid;
-        private System.Windows.Forms.RadioButton rdbEpc;
-        private System.Windows.Forms.RadioButton rdbReserved;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button btnSetAccessEpcMatch;
-        private System.Windows.Forms.ComboBox cmbSetAccessEpcMatch;
-        private System.Windows.Forms.TextBox txtAccessEpcMatch;
-        private System.Windows.Forms.CheckBox ckAccessEpcMatch;
         private System.Windows.Forms.TextBox textRealRound;
         private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.TextBox textReadRoundBuffer;
-        private System.Windows.Forms.ListView ltvOperate;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ListView lvRealList;
         private LxControl.LxLedControl ledReal3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private LxControl.LxLedControl ledBuffer4;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private LxControl.LxLedControl ledBuffer5;
-        private LxControl.LxLedControl ledBuffer2;
-        private LxControl.LxLedControl ledBuffer3;
-        private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label96;
-        private LxControl.LxLedControl ledBuffer1;
-        private System.Windows.Forms.Button btBufferInventory;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.Button btFastInventory;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private LxControl.LxLedControl ledFast4;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private LxControl.LxLedControl ledFast5;
-        private LxControl.LxLedControl ledFast2;
-        private LxControl.LxLedControl ledFast3;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label58;
-        private LxControl.LxLedControl ledFast1;
-        private System.Windows.Forms.TextBox txtDStay;
-        private System.Windows.Forms.TextBox txtCStay;
-        private System.Windows.Forms.TextBox txtBStay;
-        private System.Windows.Forms.TextBox txtAStay;
-        private System.Windows.Forms.TextBox txtRepeat;
-        private System.Windows.Forms.TextBox txtInterval;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox gbCmdReadGpio;
@@ -6496,10 +3893,6 @@
         private System.Windows.Forms.RadioButton rdbProfile2;
         private System.Windows.Forms.RadioButton rdbProfile1;
         private System.Windows.Forms.RadioButton rdbProfile0;
-        private System.Windows.Forms.CheckBox cbBufferWorkant1;
-        private System.Windows.Forms.CheckBox cbBufferWorkant4;
-        private System.Windows.Forms.CheckBox cbBufferWorkant2;
-        private System.Windows.Forms.CheckBox cbBufferWorkant3;
         private System.Windows.Forms.GroupBox groupBox23;
         private System.Windows.Forms.TextBox textFreqQuantity;
         private System.Windows.Forms.TextBox TextFreqInterval;
@@ -6541,9 +3934,7 @@
         private System.Windows.Forms.Button btnModificarCategoria;
         private System.Windows.Forms.TabPage tabCompetidores;
         public System.Windows.Forms.DataGridView tablaCategorias;
-        private CustomControl.LogRichTextBox lrtxtLog;
-        private System.Windows.Forms.BindingSource inventariofacturacionDataSetBindingSource;
-        private inventariofacturacionDataSet inventariofacturacionDataSet;
+        public CustomControl.LogRichTextBox lrtxtLog;
         public System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
         public System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridView tablaCompetidores;
@@ -6562,7 +3953,6 @@
         public System.Windows.Forms.ComboBox cmbCarreraConfig;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button btnMostrarCarrera;
         private System.Windows.Forms.Button txtExportarExcel;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCarrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionCarrera;
@@ -6577,7 +3967,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Edad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
     }
 }
 

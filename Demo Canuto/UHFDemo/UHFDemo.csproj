@@ -104,8 +104,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarreraDetalle.cs" />
+    <Compile Include="Entidades\CarreraDetalle.cs" />
     <Compile Include="CCommondMethod.cs" />
+    <Compile Include="Entidades\Ciudad.cs" />
+    <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Pais.cs" />
+    <Compile Include="Entidades\SuggestCombobox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,13 +119,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Globales.cs" />
-    <Compile Include="inventariofacturacionDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>inventariofacturacionDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="InventoryBuffer.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="Entidades\Item.cs" />
     <Compile Include="OperateTagBuffer.cs" />
     <Compile Include="OperateTagISO18000Buffer.cs" />
     <Compile Include="R2000UartDemo.cs">
@@ -183,17 +184,6 @@
       <DependentUpon>VistaCarreraTiempos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="inventariofacturacionDataSet.xsc">
-      <DependentUpon>inventariofacturacionDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="inventariofacturacionDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>inventariofacturacionDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="inventariofacturacionDataSet.xss">
-      <DependentUpon>inventariofacturacionDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

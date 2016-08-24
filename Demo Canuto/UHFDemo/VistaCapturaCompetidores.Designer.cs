@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,18 +46,15 @@
             this.cmbPaisCompetidor = new System.Windows.Forms.ComboBox();
             this.cmbEstadoCompetidor = new System.Windows.Forms.ComboBox();
             this.cmbCiudadCompetidor = new System.Windows.Forms.ComboBox();
-            this.inventariofacturacionDataSet = new UHFDemo.inventariofacturacionDataSet();
-            this.paisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paisesTableAdapter = new UHFDemo.inventariofacturacionDataSetTableAdapters.paisesTableAdapter();
             this.btnGuardarCompetidor = new System.Windows.Forms.Button();
             this.btnGuardarCerrarCompetidor = new System.Windows.Forms.Button();
             this.btnCancelarCompetidor = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtEdadCompetidor = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).BeginInit();
+            this.cmbGeneroCompetidor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -196,7 +192,8 @@
             // 
             // cmbPaisCompetidor
             // 
-            this.cmbPaisCompetidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaisCompetidor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbPaisCompetidor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPaisCompetidor.FormattingEnabled = true;
             this.cmbPaisCompetidor.Location = new System.Drawing.Point(139, 163);
             this.cmbPaisCompetidor.Name = "cmbPaisCompetidor";
@@ -205,7 +202,8 @@
             // 
             // cmbEstadoCompetidor
             // 
-            this.cmbEstadoCompetidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoCompetidor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEstadoCompetidor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEstadoCompetidor.FormattingEnabled = true;
             this.cmbEstadoCompetidor.Location = new System.Drawing.Point(139, 195);
             this.cmbEstadoCompetidor.Name = "cmbEstadoCompetidor";
@@ -214,30 +212,17 @@
             // 
             // cmbCiudadCompetidor
             // 
-            this.cmbCiudadCompetidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCiudadCompetidor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCiudadCompetidor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCiudadCompetidor.FormattingEnabled = true;
             this.cmbCiudadCompetidor.Location = new System.Drawing.Point(139, 225);
             this.cmbCiudadCompetidor.Name = "cmbCiudadCompetidor";
             this.cmbCiudadCompetidor.Size = new System.Drawing.Size(178, 21);
             this.cmbCiudadCompetidor.TabIndex = 8;
             // 
-            // inventariofacturacionDataSet
-            // 
-            this.inventariofacturacionDataSet.DataSetName = "inventariofacturacionDataSet";
-            this.inventariofacturacionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // paisesBindingSource
-            // 
-            this.paisesBindingSource.DataMember = "paises";
-            this.paisesBindingSource.DataSource = this.inventariofacturacionDataSet;
-            // 
-            // paisesTableAdapter
-            // 
-            this.paisesTableAdapter.ClearBeforeFill = true;
-            // 
             // btnGuardarCompetidor
             // 
-            this.btnGuardarCompetidor.Location = new System.Drawing.Point(139, 345);
+            this.btnGuardarCompetidor.Location = new System.Drawing.Point(139, 378);
             this.btnGuardarCompetidor.Name = "btnGuardarCompetidor";
             this.btnGuardarCompetidor.Size = new System.Drawing.Size(75, 23);
             this.btnGuardarCompetidor.TabIndex = 11;
@@ -246,7 +231,7 @@
             // 
             // btnGuardarCerrarCompetidor
             // 
-            this.btnGuardarCerrarCompetidor.Location = new System.Drawing.Point(222, 345);
+            this.btnGuardarCerrarCompetidor.Location = new System.Drawing.Point(222, 378);
             this.btnGuardarCerrarCompetidor.Name = "btnGuardarCerrarCompetidor";
             this.btnGuardarCerrarCompetidor.Size = new System.Drawing.Size(112, 23);
             this.btnGuardarCerrarCompetidor.TabIndex = 12;
@@ -256,7 +241,7 @@
             // btnCancelarCompetidor
             // 
             this.btnCancelarCompetidor.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelarCompetidor.Location = new System.Drawing.Point(343, 345);
+            this.btnCancelarCompetidor.Location = new System.Drawing.Point(343, 378);
             this.btnCancelarCompetidor.Name = "btnCancelarCompetidor";
             this.btnCancelarCompetidor.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarCompetidor.TabIndex = 13;
@@ -270,34 +255,59 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(432, 380);
+            this.shapeContainer1.Size = new System.Drawing.Size(432, 413);
             this.shapeContainer1.TabIndex = 24;
             this.shapeContainer1.TabStop = false;
             // 
             // lineShape1
             // 
             this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = -4;
-            this.lineShape1.X2 = 432;
-            this.lineShape1.Y1 = 331;
-            this.lineShape1.Y2 = 331;
+            this.lineShape1.X1 = -11;
+            this.lineShape1.X2 = 425;
+            this.lineShape1.Y1 = 363;
+            this.lineShape1.Y2 = 363;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(24, 286);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 26);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Fecha de \r\nNacimiento";
+            // 
+            // dtFechaNacimiento
+            // 
+            this.dtFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaNacimiento.Location = new System.Drawing.Point(139, 292);
+            this.dtFechaNacimiento.Name = "dtFechaNacimiento";
+            this.dtFechaNacimiento.Size = new System.Drawing.Size(100, 20);
+            this.dtFechaNacimiento.TabIndex = 10;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(24, 290);
+            this.label10.Location = new System.Drawing.Point(24, 330);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Edad";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Genero";
             // 
-            // txtEdadCompetidor
+            // cmbGeneroCompetidor
             // 
-            this.txtEdadCompetidor.Location = new System.Drawing.Point(139, 287);
-            this.txtEdadCompetidor.Name = "txtEdadCompetidor";
-            this.txtEdadCompetidor.Size = new System.Drawing.Size(82, 20);
-            this.txtEdadCompetidor.TabIndex = 10;
+            this.cmbGeneroCompetidor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGeneroCompetidor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbGeneroCompetidor.FormattingEnabled = true;
+            this.cmbGeneroCompetidor.Items.AddRange(new object[] {
+            "Seleccionar",
+            "Masculino",
+            "Femenino"});
+            this.cmbGeneroCompetidor.Location = new System.Drawing.Point(139, 327);
+            this.cmbGeneroCompetidor.Name = "cmbGeneroCompetidor";
+            this.cmbGeneroCompetidor.Size = new System.Drawing.Size(100, 21);
+            this.cmbGeneroCompetidor.TabIndex = 28;
             // 
             // VistaCapturaCompetidores
             // 
@@ -305,9 +315,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelarCompetidor;
-            this.ClientSize = new System.Drawing.Size(432, 380);
-            this.Controls.Add(this.txtEdadCompetidor);
+            this.ClientSize = new System.Drawing.Size(432, 413);
+            this.Controls.Add(this.cmbGeneroCompetidor);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.dtFechaNacimiento);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnCancelarCompetidor);
             this.Controls.Add(this.btnGuardarCerrarCompetidor);
             this.Controls.Add(this.btnGuardarCompetidor);
@@ -333,9 +345,6 @@
             this.Name = "VistaCapturaCompetidores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Competidores";
-            this.Load += new System.EventHandler(this.VistaCapturaCompetidores_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.inventariofacturacionDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,15 +370,14 @@
         private System.Windows.Forms.ComboBox cmbPaisCompetidor;
         private System.Windows.Forms.ComboBox cmbEstadoCompetidor;
         private System.Windows.Forms.ComboBox cmbCiudadCompetidor;
-        private inventariofacturacionDataSet inventariofacturacionDataSet;
-        private System.Windows.Forms.BindingSource paisesBindingSource;
-        private inventariofacturacionDataSetTableAdapters.paisesTableAdapter paisesTableAdapter;
         private System.Windows.Forms.Button btnGuardarCompetidor;
         private System.Windows.Forms.Button btnGuardarCerrarCompetidor;
         private System.Windows.Forms.Button btnCancelarCompetidor;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker dtFechaNacimiento;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtEdadCompetidor;
+        private System.Windows.Forms.ComboBox cmbGeneroCompetidor;
     }
 }

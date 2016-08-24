@@ -25,6 +25,7 @@ namespace UHFDemo
         public string tiempo { get; set; }
         private Reader.ReaderMethod reader;
         private byte btCmdGlobal { get; set; }
+        public DataGridView tablaCarreraDetalle { get; set; }
         
 
         private ReaderSetting m_curSetting = new ReaderSetting();
@@ -110,6 +111,7 @@ namespace UHFDemo
             };
 
             btnMostrarCarrera.Enabled = true;
+            //tabEpcTest.Visible = false;
 
             AsignarEventos();
         }
@@ -142,7 +144,7 @@ namespace UHFDemo
 
         public void LlenarListadoCategorias()
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
          
             try
@@ -177,7 +179,7 @@ namespace UHFDemo
 
         public void LlenarListadoCompetidores()
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
        
 
@@ -193,7 +195,7 @@ namespace UHFDemo
                 sentencia.AppendLine(" 	C.Descripcion AS Estado, ");
                 sentencia.AppendLine("  D.Descripcion AS Ciudad, ");
                 sentencia.AppendLine(" 	A.Telefono, ");
-                sentencia.AppendLine(" 	A.Edad ");
+                sentencia.AppendLine(" 	A.FechaNacimiento ");
                 sentencia.AppendLine(" FROM ");
                 sentencia.AppendLine(" 	competidores AS A ");
                 sentencia.AppendLine(" LEFT JOIN ");
@@ -227,9 +229,9 @@ namespace UHFDemo
                     string estado = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     string ciudad = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     string telefono = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    int edad = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    DateTime fechaNacimiento = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
 
-                    string[] rowNuevo = new string[] { idCompetidor.ToString(), nombreCompleto, direccion, pais, estado, ciudad, telefono, edad.ToString()};
+                    string[] rowNuevo = new string[] { idCompetidor.ToString(), nombreCompleto, direccion, pais, estado, ciudad, telefono, fechaNacimiento.ToString("dd/MM/yyyy")};
                     grid.Rows.Add(rowNuevo);
                 }
 
@@ -249,7 +251,7 @@ namespace UHFDemo
 
         public void LlenarListadoCarreras()
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             BindingSource bSource = new BindingSource();
             DataTable table = new DataTable();
@@ -311,7 +313,7 @@ namespace UHFDemo
             {
                 string strLog = CCommondMethod.ByteArrayToString(btAryReceiveData, 0, btAryReceiveData.Length);
 
-                WriteLog(lrtxtDataTran, strLog, 1);
+                //WriteLog(lrtxtDataTran, strLog, 1);
             }            
         }
 
@@ -321,7 +323,7 @@ namespace UHFDemo
             {
                 string strLog = CCommondMethod.ByteArrayToString(btArySendData, 0, btArySendData.Length);
 
-                WriteLog(lrtxtDataTran, strLog, 0);
+                //WriteLog(lrtxtDataTran, strLog, 0);
             }            
         }
 
@@ -401,7 +403,7 @@ namespace UHFDemo
                     break;
                               
                 case 0x80:
-                    ProcessInventory(msgTran);
+                    //ProcessInventory(msgTran);
                     break;
                 case 0x81:
                     ProcessReadTag(msgTran);
@@ -419,7 +421,7 @@ namespace UHFDemo
                     ProcessSetAccessEpcMatch(msgTran);
                     break;
                 case 0x86:
-                    ProcessGetAccessEpcMatch(msgTran);
+                    //ProcessGetAccessEpcMatch(msgTran);
                     break;
 
                 case 0x89:
@@ -427,7 +429,7 @@ namespace UHFDemo
                     ProcessInventoryReal(msgTran);
                     break;
                 case 0x8A:
-                    ProcessFastSwitch(msgTran);
+                    //ProcessFastSwitch(msgTran);
                     break;
                 case 0x8D:
                     ProcessSetMonzaStatus(msgTran);
@@ -436,25 +438,25 @@ namespace UHFDemo
                     ProcessGetMonzaStatus(msgTran);
                     break;
                 case 0x90:
-                    ProcessGetInventoryBuffer(msgTran);
+                    //ProcessGetInventoryBuffer(msgTran);
                     break;
                 case 0x91:
-                    ProcessGetAndResetInventoryBuffer(msgTran);
+                    //ProcessGetAndResetInventoryBuffer(msgTran);
                     break;
                 case 0x92:
                     ProcessGetInventoryBufferTagCount(msgTran);
                     break;
                 case 0x93:
-                    ProcessResetInventoryBuffer(msgTran);
+                    //ProcessResetInventoryBuffer(msgTran);
                     break;
                 case 0xb0:
-                    ProcessInventoryISO18000(msgTran);
+                    //ProcessInventoryISO18000(msgTran);
                     break;
                 case 0xb1:
-                    ProcessReadTagISO18000(msgTran);
+                    //ProcessReadTagISO18000(msgTran);
                     break;
                 case 0xb2:
-                    ProcessWriteTagISO18000(msgTran);
+                    //ProcessWriteTagISO18000(msgTran);
                     break;
                 case 0xb3:
                     ProcessLockTagISO18000(msgTran);
@@ -468,7 +470,7 @@ namespace UHFDemo
         }
 
         private delegate void WriteLogUnSafe(CustomControl.LogRichTextBox logRichTxt, string strLog, int nType);
-        private void WriteLog(CustomControl.LogRichTextBox logRichTxt, string strLog, int nType)
+        public void WriteLog(CustomControl.LogRichTextBox logRichTxt, string strLog, int nType)
         {
             if (this.InvokeRequired)
             {
@@ -500,137 +502,137 @@ namespace UHFDemo
         }
 
         private delegate void RefreshInventoryUnsafe(byte btCmd);
-        private void RefreshInventory(byte btCmd)
-        {
-            if (this.InvokeRequired)
-            {
-                RefreshInventoryUnsafe InvokeRefresh = new RefreshInventoryUnsafe(RefreshInventory);
-                this.Invoke(InvokeRefresh, new object[] { btCmd });
-            }
-            else
-            {
-                switch(btCmd)
-                {
-                    case 0x80:
-                        {
-                            ledBuffer1.Text = m_curInventoryBuffer.nTagCount.ToString();
-                            ledBuffer2.Text = m_curInventoryBuffer.nReadRate.ToString();
+        //private void RefreshInventory(byte btCmd)
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        RefreshInventoryUnsafe InvokeRefresh = new RefreshInventoryUnsafe(RefreshInventory);
+        //        this.Invoke(InvokeRefresh, new object[] { btCmd });
+        //    }
+        //    else
+        //    {
+        //        switch(btCmd)
+        //        {
+        //            case 0x80:
+        //                {
+        //                    ledBuffer1.Text = m_curInventoryBuffer.nTagCount.ToString();
+        //                    ledBuffer2.Text = m_curInventoryBuffer.nReadRate.ToString();
 
-                            TimeSpan ts = m_curInventoryBuffer.dtEndInventory - m_curInventoryBuffer.dtStartInventory;
-                            ledBuffer5.Text = (ts.Minutes * 60 * 1000 + ts.Seconds * 1000 + ts.Milliseconds).ToString();
-                            int nTotalRead = 0;
-                            foreach (int nTemp in m_curInventoryBuffer.lTotalRead)
-                            {
-                                nTotalRead += nTemp;
-                            }
-                            ledBuffer4.Text = nTotalRead.ToString();
-                            int commandDuration = 0;
-                            if (m_curInventoryBuffer.nReadRate > 0)
-                            {
-                                commandDuration = m_curInventoryBuffer.nDataCount *1000/m_curInventoryBuffer.nReadRate;
-                            }
-                            ledBuffer3.Text = commandDuration.ToString();
-                            int currentAntDisplay = 0;
-                            currentAntDisplay = m_curInventoryBuffer.nCurrentAnt + 1;
+        //                    TimeSpan ts = m_curInventoryBuffer.dtEndInventory - m_curInventoryBuffer.dtStartInventory;
+        //                    ledBuffer5.Text = (ts.Minutes * 60 * 1000 + ts.Seconds * 1000 + ts.Milliseconds).ToString();
+        //                    int nTotalRead = 0;
+        //                    foreach (int nTemp in m_curInventoryBuffer.lTotalRead)
+        //                    {
+        //                        nTotalRead += nTemp;
+        //                    }
+        //                    ledBuffer4.Text = nTotalRead.ToString();
+        //                    int commandDuration = 0;
+        //                    if (m_curInventoryBuffer.nReadRate > 0)
+        //                    {
+        //                        commandDuration = m_curInventoryBuffer.nDataCount *1000/m_curInventoryBuffer.nReadRate;
+        //                    }
+        //                    ledBuffer3.Text = commandDuration.ToString();
+        //                    int currentAntDisplay = 0;
+        //                    currentAntDisplay = m_curInventoryBuffer.nCurrentAnt + 1;
                             
-                        }
-                        break;
-                    case 0x90:                        
-                    case 0x91:
-                        {
-                            int nCount = lvBufferList.Items.Count;
-                            int nLength = m_curInventoryBuffer.dtTagTable.Rows.Count;
-                            DataRow row = m_curInventoryBuffer.dtTagTable.Rows[nLength - 1];
+        //                }
+        //                break;
+        //            case 0x90:                        
+        //            case 0x91:
+        //                {
+        //                    int nCount = lvBufferList.Items.Count;
+        //                    int nLength = m_curInventoryBuffer.dtTagTable.Rows.Count;
+        //                    DataRow row = m_curInventoryBuffer.dtTagTable.Rows[nLength - 1];
 
-                            ListViewItem item = new ListViewItem();
-                            item.Text = (nCount + 1).ToString();
-                            item.SubItems.Add(row[0].ToString());
-                            item.SubItems.Add(row[1].ToString());
-                            item.SubItems.Add(row[2].ToString());
-                            item.SubItems.Add(row[3].ToString());
+        //                    ListViewItem item = new ListViewItem();
+        //                    item.Text = (nCount + 1).ToString();
+        //                    item.SubItems.Add(row[0].ToString());
+        //                    item.SubItems.Add(row[1].ToString());
+        //                    item.SubItems.Add(row[2].ToString());
+        //                    item.SubItems.Add(row[3].ToString());
 
-                            string strTemp = (Convert.ToInt32(row[4].ToString()) - 129).ToString() + "dBm";
-                            item.SubItems.Add(strTemp);
-                            byte byTemp = Convert.ToByte(row[4]);
-                         /*   if (byTemp > 0x50)
-                            {
-                                item.BackColor = Color.PowderBlue;
-                            }
-                            else if (byTemp < 0x30)
-                            {
-                                item.BackColor = Color.LemonChiffon;
-                            } */
+        //                    string strTemp = (Convert.ToInt32(row[4].ToString()) - 129).ToString() + "dBm";
+        //                    item.SubItems.Add(strTemp);
+        //                    byte byTemp = Convert.ToByte(row[4]);
+        //                 /*   if (byTemp > 0x50)
+        //                    {
+        //                        item.BackColor = Color.PowderBlue;
+        //                    }
+        //                    else if (byTemp < 0x30)
+        //                    {
+        //                        item.BackColor = Color.LemonChiffon;
+        //                    } */
 
-                            item.SubItems.Add(row[5].ToString());
+        //                    item.SubItems.Add(row[5].ToString());
 
-                            lvBufferList.Items.Add(item);
-                            lvBufferList.Items[nCount].EnsureVisible();
+        //                    lvBufferList.Items.Add(item);
+        //                    lvBufferList.Items[nCount].EnsureVisible();
 
-                            labelBufferTagCount.Text = "Tag List: " + m_curInventoryBuffer.nTagCount.ToString() ;
+        //                    labelBufferTagCount.Text = "Tag List: " + m_curInventoryBuffer.nTagCount.ToString() ;
                            
-                        }
-                        break;
-                    case 0x92:
-                        {
+        //                }
+        //                break;
+        //            case 0x92:
+        //                {
                            
-                        }
-                        break;
-                    case 0x93:
-                        {
+        //                }
+        //                break;
+        //            case 0x93:
+        //                {
                             
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //                }
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //}
 
         private delegate void RefreshOpTagUnsafe(byte btCmd);
-        private void RefreshOpTag(byte btCmd)
-        {
-            if (this.InvokeRequired)
-            {
-                RefreshOpTagUnsafe InvokeRefresh = new RefreshOpTagUnsafe(RefreshOpTag);
-                this.Invoke(InvokeRefresh, new object[] { btCmd });
-            }
-            else
-            {
-                switch(btCmd)
-                {
-                    case 0x81:
-                    case 0x82:
-                    case 0x83:
-                    case 0x84:
-                        {
-                            int nCount = ltvOperate.Items.Count;
-                            int nLength = m_curOperateTagBuffer.dtTagTable.Rows.Count;
+        //private void RefreshOpTag(byte btCmd)
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        RefreshOpTagUnsafe InvokeRefresh = new RefreshOpTagUnsafe(RefreshOpTag);
+        //        this.Invoke(InvokeRefresh, new object[] { btCmd });
+        //    }
+        //    else
+        //    {
+        //        switch (btCmd)
+        //        {
+        //            case 0x81:
+        //            case 0x82:
+        //            case 0x83:
+        //            case 0x84:
+        //                {
+        //                    int nCount = ltvOperate.Items.Count;
+        //                    int nLength = m_curOperateTagBuffer.dtTagTable.Rows.Count;
 
-                            DataRow row = m_curOperateTagBuffer.dtTagTable.Rows[nLength - 1];
+        //                    DataRow row = m_curOperateTagBuffer.dtTagTable.Rows[nLength - 1];
 
-                            ListViewItem item = new ListViewItem();
-                            item.Text = (nCount + 1).ToString();
-                            item.SubItems.Add(row[0].ToString());
-                            item.SubItems.Add(row[1].ToString());
-                            item.SubItems.Add(row[2].ToString());
-                            item.SubItems.Add(row[3].ToString());
-                            item.SubItems.Add(row[4].ToString());
-                            item.SubItems.Add(row[5].ToString());
-                            item.SubItems.Add(row[6].ToString());
+        //                    ListViewItem item = new ListViewItem();
+        //                    item.Text = (nCount + 1).ToString();
+        //                    item.SubItems.Add(row[0].ToString());
+        //                    item.SubItems.Add(row[1].ToString());
+        //                    item.SubItems.Add(row[2].ToString());
+        //                    item.SubItems.Add(row[3].ToString());
+        //                    item.SubItems.Add(row[4].ToString());
+        //                    item.SubItems.Add(row[5].ToString());
+        //                    item.SubItems.Add(row[6].ToString());
 
-                            ltvOperate.Items.Add(item);
-                        }
-                        break;
-                    case 0x86:
-                        {
-                            txtAccessEpcMatch.Text = m_curOperateTagBuffer.strAccessEpcMatch;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //                    ltvOperate.Items.Add(item);
+        //                }
+        //                break;
+        //            case 0x86:
+        //                {
+        //                    txtAccessEpcMatch.Text = m_curOperateTagBuffer.strAccessEpcMatch;
+        //                }
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //}
 
         private delegate void RefreshInventoryRealUnsafe(byte btCmd);
         public void RefreshInventoryReal(byte btCmd)
@@ -683,8 +685,7 @@ namespace UHFDemo
                             lbRealTagCount.Text = "Tag List: " + nTagCount.ToString();
 
                             nEpcCount = lvRealList.Items.Count;
-                                
-                                                        
+
                             if (nEpcCount < nEpcLength)
                             {
                                 DataRow row = m_curInventoryBuffer.dtTagTable.Rows[nEpcLength - 1];
@@ -834,99 +835,118 @@ namespace UHFDemo
             }
         }
 
-        private delegate void RefreshFastSwitchUnsafe(byte btCmd);
-        private void RefreshFastSwitch(byte btCmd)
+        private void AsignarChip(string chip)
         {
-            if (this.InvokeRequired)
+            foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
             {
-                RefreshFastSwitchUnsafe InvokeRefreshFastSwitch = new RefreshFastSwitchUnsafe(RefreshFastSwitch);
-                this.Invoke(InvokeRefreshFastSwitch, new object[] { btCmd });
-            }
-            else
-            {
-                switch(btCmd)
+                if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
                 {
-                    case 0x00:
-                        {
-                            int nTagCount = m_curInventoryBuffer.dtTagTable.Rows.Count;
-                            int nTotalRead = m_nTotal;// m_curInventoryBuffer.dtTagDetailTable.Rows.Count;
-                            TimeSpan ts = m_curInventoryBuffer.dtEndInventory - m_curInventoryBuffer.dtStartInventory;
-                            int nTotalTime = ts.Minutes * 60 * 1000 + ts.Seconds * 1000 + ts.Milliseconds;
-
-                            ledFast1.Text = nTagCount.ToString(); //标签总数
-                            if (m_curInventoryBuffer.nCommandDuration > 0)
-                            {
-                                ledFast2.Text = (m_curInventoryBuffer.nDataCount * 1000 / m_curInventoryBuffer.nCommandDuration).ToString(); //读标签速度
-                            }
-                            else
-                            {
-                                ledFast2.Text = "";
-                            }
-
-                            ledFast3.Text = m_curInventoryBuffer.nCommandDuration.ToString(); //命令执行时间
-
-                            ledFast5.Text = nTotalTime.ToString(); //命令累计执行时间
-                            ledFast4.Text = nTotalRead.ToString();
-                           
-                            txtFastMaxRssi.Text = (m_curInventoryBuffer.nMaxRSSI - 129).ToString() + "dBm";
-                            txtFastMinRssi.Text = (m_curInventoryBuffer.nMinRSSI - 129).ToString() + "dBm";
-                            txtFastTagList.Text = "Tag List: " + nTagCount.ToString();
-
-                            //形成列表
-                            int nEpcCount = lvFastList.Items.Count;
-                            int nEpcLength = m_curInventoryBuffer.dtTagTable.Rows.Count;
-                            if (nEpcCount < nEpcLength)
-                            {
-                                DataRow row = m_curInventoryBuffer.dtTagTable.Rows[nEpcLength - 1];
-
-                                ListViewItem item = new ListViewItem();
-                                item.Text = (nEpcCount + 1).ToString();
-                                item.SubItems.Add(row[2].ToString());
-                                item.SubItems.Add(row[0].ToString());
-                                //item.SubItems.Add(row[5].ToString());
-                                item.SubItems.Add(row[7].ToString() + "  /  " + row[8].ToString() + "  /  " + row[9].ToString() + "  /  " + row[10]);
-                                item.SubItems.Add((Convert.ToInt32(row[4]) - 129).ToString() + "dBm");
-                                item.SubItems.Add(row[6].ToString());
-
-                                lvFastList.Items.Add(item);
-                                lvFastList.Items[nEpcCount].EnsureVisible();
-                            }
-
-                            //更新列表中读取的次数
-                            if (m_nTotal % m_nRealRate == 1)
-                            {
-                                int nIndex = 0;
-                                foreach (DataRow row in m_curInventoryBuffer.dtTagTable.Rows)
-                                {
-                                    ListViewItem item = lvFastList.Items[nIndex];
-                                    //item.SubItems[3].Text = row[5].ToString();
-                                    item.SubItems[3].Text = (row[7].ToString() + "  /  " + row[8].ToString() + "  /  " + row[9].ToString() + "  /  " + row[10]);
-                                    item.SubItems[4].Text = (Convert.ToInt32(row[4]) - 129).ToString() + "dBm";
-                                    item.SubItems[5].Text = row[6].ToString();
-
-                                    nIndex++;
-                                }
-                            }
-
-                        }
-                        break;
-                    case 0x01:
-                        {
-
-                        }
-                        break;
-                    case 0x02:
-                        {
-
-                            //ledFast1.Text.Text = m_nSwitchTime.ToString();
-                            //ledFast1.Text.Text = m_nSwitchTotal.ToString();
-                        }
-                        break;
-                    default:
-                        break;
-                }                
+                    if (row.Cells[6].Value != null && row.Cells[6].Value.ToString().Equals(chip.Trim()))
+                    {
+                        MessageBox.Show("Ya existe otro competidor con el mismo chip");
+                        return;
+                    }
+                }
+            }
+            if (tablaCarreraDetalle.CurrentCell != null)
+            {
+                tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[6].Value = chip.Trim();
             }
         }
+
+        private delegate void RefreshFastSwitchUnsafe(byte btCmd);
+        //private void RefreshFastSwitch(byte btCmd)
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        RefreshFastSwitchUnsafe InvokeRefreshFastSwitch = new RefreshFastSwitchUnsafe(RefreshFastSwitch);
+        //        this.Invoke(InvokeRefreshFastSwitch, new object[] { btCmd });
+        //    }
+        //    else
+        //    {
+        //        switch(btCmd)
+        //        {
+        //            case 0x00:
+        //                {
+        //                    int nTagCount = m_curInventoryBuffer.dtTagTable.Rows.Count;
+        //                    int nTotalRead = m_nTotal;// m_curInventoryBuffer.dtTagDetailTable.Rows.Count;
+        //                    TimeSpan ts = m_curInventoryBuffer.dtEndInventory - m_curInventoryBuffer.dtStartInventory;
+        //                    int nTotalTime = ts.Minutes * 60 * 1000 + ts.Seconds * 1000 + ts.Milliseconds;
+
+        //                    ledFast1.Text = nTagCount.ToString(); //标签总数
+        //                    if (m_curInventoryBuffer.nCommandDuration > 0)
+        //                    {
+        //                        ledFast2.Text = (m_curInventoryBuffer.nDataCount * 1000 / m_curInventoryBuffer.nCommandDuration).ToString(); //读标签速度
+        //                    }
+        //                    else
+        //                    {
+        //                        ledFast2.Text = "";
+        //                    }
+
+        //                    ledFast3.Text = m_curInventoryBuffer.nCommandDuration.ToString(); //命令执行时间
+
+        //                    ledFast5.Text = nTotalTime.ToString(); //命令累计执行时间
+        //                    ledFast4.Text = nTotalRead.ToString();
+                           
+        //                    txtFastMaxRssi.Text = (m_curInventoryBuffer.nMaxRSSI - 129).ToString() + "dBm";
+        //                    txtFastMinRssi.Text = (m_curInventoryBuffer.nMinRSSI - 129).ToString() + "dBm";
+        //                    txtFastTagList.Text = "Tag List: " + nTagCount.ToString();
+
+        //                    //形成列表
+        //                    int nEpcCount = lvFastList.Items.Count;
+        //                    int nEpcLength = m_curInventoryBuffer.dtTagTable.Rows.Count;
+        //                    if (nEpcCount < nEpcLength)
+        //                    {
+        //                        DataRow row = m_curInventoryBuffer.dtTagTable.Rows[nEpcLength - 1];
+
+        //                        ListViewItem item = new ListViewItem();
+        //                        item.Text = (nEpcCount + 1).ToString();
+        //                        item.SubItems.Add(row[2].ToString());
+        //                        item.SubItems.Add(row[0].ToString());
+        //                        //item.SubItems.Add(row[5].ToString());
+        //                        item.SubItems.Add(row[7].ToString() + "  /  " + row[8].ToString() + "  /  " + row[9].ToString() + "  /  " + row[10]);
+        //                        item.SubItems.Add((Convert.ToInt32(row[4]) - 129).ToString() + "dBm");
+        //                        item.SubItems.Add(row[6].ToString());
+
+        //                        lvFastList.Items.Add(item);
+        //                        lvFastList.Items[nEpcCount].EnsureVisible();
+        //                    }
+
+        //                    //更新列表中读取的次数
+        //                    if (m_nTotal % m_nRealRate == 1)
+        //                    {
+        //                        int nIndex = 0;
+        //                        foreach (DataRow row in m_curInventoryBuffer.dtTagTable.Rows)
+        //                        {
+        //                            ListViewItem item = lvFastList.Items[nIndex];
+        //                            //item.SubItems[3].Text = row[5].ToString();
+        //                            item.SubItems[3].Text = (row[7].ToString() + "  /  " + row[8].ToString() + "  /  " + row[9].ToString() + "  /  " + row[10]);
+        //                            item.SubItems[4].Text = (Convert.ToInt32(row[4]) - 129).ToString() + "dBm";
+        //                            item.SubItems[5].Text = row[6].ToString();
+
+        //                            nIndex++;
+        //                        }
+        //                    }
+
+        //                }
+        //                break;
+        //            case 0x01:
+        //                {
+
+        //                }
+        //                break;
+        //            case 0x02:
+        //                {
+
+        //                    //ledFast1.Text.Text = m_nSwitchTime.ToString();
+        //                    //ledFast1.Text.Text = m_nSwitchTotal.ToString();
+        //                }
+        //                break;
+        //            default:
+        //                break;
+        //        }                
+        //    }
+        //}
 
         private delegate void RefreshReadSettingUnsafe(byte btCmd);
         private void RefreshReadSetting(byte btCmd)
@@ -1192,119 +1212,119 @@ namespace UHFDemo
         }
 
         private delegate void RefreshISO18000Unsafe(byte btCmd);
-        private void RefreshISO18000(byte btCmd)
-        {
-            if (this.InvokeRequired)
-            {
-                RefreshISO18000Unsafe InvokeRefreshISO18000 = new RefreshISO18000Unsafe(RefreshISO18000);
-                this.Invoke(InvokeRefreshISO18000, new object[] {btCmd });
-            }
-            else
-            {
-                switch(btCmd)
-                {
-                    case 0xb0:
-                        {
-                            ltvTagISO18000.Items.Clear();
-                            int nLength = m_curOperateTagISO18000Buffer.dtTagTable.Rows.Count;
-                            int nIndex = 1;
-                            foreach (DataRow row in m_curOperateTagISO18000Buffer.dtTagTable.Rows)
-                            {
-                                ListViewItem item = new ListViewItem();
-                                item.Text = nIndex.ToString();
-                                item.SubItems.Add(row[1].ToString());
-                                item.SubItems.Add(row[0].ToString());
-                                item.SubItems.Add(row[2].ToString());
-                                ltvTagISO18000.Items.Add(item);
+        //private void RefreshISO18000(byte btCmd)
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        RefreshISO18000Unsafe InvokeRefreshISO18000 = new RefreshISO18000Unsafe(RefreshISO18000);
+        //        this.Invoke(InvokeRefreshISO18000, new object[] {btCmd });
+        //    }
+        //    else
+        //    {
+        //        switch(btCmd)
+        //        {
+        //            case 0xb0:
+        //                {
+        //                    ltvTagISO18000.Items.Clear();
+        //                    int nLength = m_curOperateTagISO18000Buffer.dtTagTable.Rows.Count;
+        //                    int nIndex = 1;
+        //                    foreach (DataRow row in m_curOperateTagISO18000Buffer.dtTagTable.Rows)
+        //                    {
+        //                        ListViewItem item = new ListViewItem();
+        //                        item.Text = nIndex.ToString();
+        //                        item.SubItems.Add(row[1].ToString());
+        //                        item.SubItems.Add(row[0].ToString());
+        //                        item.SubItems.Add(row[2].ToString());
+        //                        ltvTagISO18000.Items.Add(item);
 
-                                nIndex++;
-                            }
+        //                        nIndex++;
+        //                    }
 
-                            //txtTagCountISO18000.Text = m_curOperateTagISO18000Buffer.dtTagTable.Rows.Count.ToString();
+        //                    //txtTagCountISO18000.Text = m_curOperateTagISO18000Buffer.dtTagTable.Rows.Count.ToString();
 
-                            if (m_bContinue)
-                            {
-                                reader.InventoryISO18000(m_curSetting.btReadId);
-                            }
-                            else
-                            {
-                                WriteLog(lrtxtLog, "Inventory stopped", 0);
-                            }
-                        }
-                        break;
-                    case 0xb1:
-                        {
-                            htxtReadData18000.Text = m_curOperateTagISO18000Buffer.strReadData;
-                        }
-                        break;
-                    case 0xb2:
-                        {
-                            //txtWriteLength.Text = m_curOperateTagISO18000Buffer.btWriteLength.ToString();
-                        }
-                        break;
-                    case 0xb3:
-                        {
-                            //switch(m_curOperateTagISO18000Buffer.btStatus)
-                            //{
-                            //    case 0x00:
-                            //        MessageBox.Show("该字节成功锁定");
-                            //        break;
-                            //    case 0xFE:
-                            //        MessageBox.Show("该字节已是锁定状态");
-                            //        break;
-                            //    case 0xFF:
-                            //        MessageBox.Show("该字节无法锁定");
-                            //        break;
-                            //    default:
-                            //        break;
-                            //}
-                        }
-                        break;
-                    case 0xb4:
-                        {
-                            switch (m_curOperateTagISO18000Buffer.btStatus)
-                            {
-                                case 0x00:
-                                    txtStatus.Text = "The byte is unlock";
-                                    break;
-                                case 0xFE:
-                                    txtStatus.Text = "The byte is already locked";
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //                    if (m_bContinue)
+        //                    {
+        //                        reader.InventoryISO18000(m_curSetting.btReadId);
+        //                    }
+        //                    else
+        //                    {
+        //                        WriteLog(lrtxtLog, "Inventory stopped", 0);
+        //                    }
+        //                }
+        //                break;
+        //            case 0xb1:
+        //                {
+        //                    htxtReadData18000.Text = m_curOperateTagISO18000Buffer.strReadData;
+        //                }
+        //                break;
+        //            case 0xb2:
+        //                {
+        //                    //txtWriteLength.Text = m_curOperateTagISO18000Buffer.btWriteLength.ToString();
+        //                }
+        //                break;
+        //            case 0xb3:
+        //                {
+        //                    //switch(m_curOperateTagISO18000Buffer.btStatus)
+        //                    //{
+        //                    //    case 0x00:
+        //                    //        MessageBox.Show("该字节成功锁定");
+        //                    //        break;
+        //                    //    case 0xFE:
+        //                    //        MessageBox.Show("该字节已是锁定状态");
+        //                    //        break;
+        //                    //    case 0xFF:
+        //                    //        MessageBox.Show("该字节无法锁定");
+        //                    //        break;
+        //                    //    default:
+        //                    //        break;
+        //                    //}
+        //                }
+        //                break;
+        //            case 0xb4:
+        //                {
+        //                    switch (m_curOperateTagISO18000Buffer.btStatus)
+        //                    {
+        //                        case 0x00:
+        //                            txtStatus.Text = "The byte is unlock";
+        //                            break;
+        //                        case 0xFE:
+        //                            txtStatus.Text = "The byte is already locked";
+        //                            break;
+        //                        default:
+        //                            break;
+        //                    }
+        //                }
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //}
 
         private delegate void RunLoopISO18000Unsafe(int nLength);
-        private void RunLoopISO18000(int nLength)
-        {
-            if (this.InvokeRequired)
-            {
-                RunLoopISO18000Unsafe InvokeRunLoopISO18000 = new RunLoopISO18000Unsafe(RunLoopISO18000);
-                this.Invoke(InvokeRunLoopISO18000, new object[] { nLength });
-            }
-            else
-            {
-                //判断写入是否正确
-                if (nLength == m_nBytes)
-                {
-                    m_nLoopedTimes++;
-                    txtLoopTimes.Text = m_nLoopedTimes.ToString();
-                }
-                //判断是否循环结束
-                m_nLoopTimes--;
-                if (m_nLoopTimes > 0)
-                {
-                    WriteTagISO18000();
-                }
-            }
-        }
+        //private void RunLoopISO18000(int nLength)
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        RunLoopISO18000Unsafe InvokeRunLoopISO18000 = new RunLoopISO18000Unsafe(RunLoopISO18000);
+        //        this.Invoke(InvokeRunLoopISO18000, new object[] { nLength });
+        //    }
+        //    else
+        //    {
+        //        //判断写入是否正确
+        //        if (nLength == m_nBytes)
+        //        {
+        //            m_nLoopedTimes++;
+        //            txtLoopTimes.Text = m_nLoopedTimes.ToString();
+        //        }
+        //        //判断是否循环结束
+        //        m_nLoopTimes--;
+        //        if (m_nLoopTimes > 0)
+        //        {
+        //            WriteTagISO18000();
+        //        }
+        //    }
+        //}
 
         private void rdbRS232_CheckedChanged(object sender, EventArgs e)
         {
@@ -1377,15 +1397,15 @@ namespace UHFDemo
 
             btnResetReader.Enabled = bIsEnable;
 
-           
-            gbCmdOperateTag.Enabled = bIsEnable;
 
-            btnInventoryISO18000.Enabled = bIsEnable;
-            btnClear.Enabled = bIsEnable;
-            gbISO1800ReadWrite.Enabled = bIsEnable;
-            gbISO1800LockQuery.Enabled = bIsEnable;
+            //gbCmdOperateTag.Enabled = bIsEnable;
 
-            gbCmdManual.Enabled = bIsEnable;
+            //btnInventoryISO18000.Enabled = bIsEnable;
+            //btnClear.Enabled = bIsEnable;
+            //gbISO1800ReadWrite.Enabled = bIsEnable;
+            //gbISO1800LockQuery.Enabled = bIsEnable;
+
+            //gbCmdManual.Enabled = bIsEnable;
 
             tabEpcTest.Enabled = bIsEnable;
 
@@ -2784,170 +2804,170 @@ namespace UHFDemo
             }     */       
         }
 
-        private void ProcessFastSwitch(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Fast switch antenna inventory ";
-            string strErrorCode = string.Empty;
+        //private void ProcessFastSwitch(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Fast switch antenna inventory ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                string strLog = strCmd + "failed, due to: " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-                RefreshFastSwitch(0x01);
-                RunLoopFastSwitch();
-            }
-            else if (msgTran.AryData.Length == 2)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[1]);
-                string strLog = strCmd + "failed, due to: " + strErrorCode + "--" + "antenna " + (msgTran.AryData[0] + 1);
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //        RefreshFastSwitch(0x01);
+        //        RunLoopFastSwitch();
+        //    }
+        //    else if (msgTran.AryData.Length == 2)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[1]);
+        //        string strLog = strCmd + "failed, due to: " + strErrorCode + "--" + "antenna " + (msgTran.AryData[0] + 1);
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
 
-            else if (msgTran.AryData.Length == 7)
-            {
-                m_nSwitchTotal = Convert.ToInt32(msgTran.AryData[0]) * 255 * 255  + Convert.ToInt32(msgTran.AryData[1]) * 255  + Convert.ToInt32(msgTran.AryData[2]);
-                m_nSwitchTime = Convert.ToInt32(msgTran.AryData[3]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[4]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[5]) * 255 + Convert.ToInt32(msgTran.AryData[6]);
+        //    else if (msgTran.AryData.Length == 7)
+        //    {
+        //        m_nSwitchTotal = Convert.ToInt32(msgTran.AryData[0]) * 255 * 255  + Convert.ToInt32(msgTran.AryData[1]) * 255  + Convert.ToInt32(msgTran.AryData[2]);
+        //        m_nSwitchTime = Convert.ToInt32(msgTran.AryData[3]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[4]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[5]) * 255 + Convert.ToInt32(msgTran.AryData[6]);
 
-                m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
-                m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
-                WriteLog(lrtxtLog, strCmd, 0);
-                RefreshFastSwitch(0x02);
-                RunLoopFastSwitch();
-            }
+        //        m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
+        //        m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
+        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        RefreshFastSwitch(0x02);
+        //        RunLoopFastSwitch();
+        //    }
 
-            /*else if (msgTran.AryData.Length == 8)
-            {
+        //    /*else if (msgTran.AryData.Length == 8)
+        //    {
                 
-                m_nSwitchTotal = Convert.ToInt32(msgTran.AryData[0]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[1]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[2]) * 255 + Convert.ToInt32(msgTran.AryData[3]);
-                m_nSwitchTime = Convert.ToInt32(msgTran.AryData[4]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[5]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[6]) * 255 + Convert.ToInt32(msgTran.AryData[7]);
+        //        m_nSwitchTotal = Convert.ToInt32(msgTran.AryData[0]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[1]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[2]) * 255 + Convert.ToInt32(msgTran.AryData[3]);
+        //        m_nSwitchTime = Convert.ToInt32(msgTran.AryData[4]) * 255 * 255 * 255 + Convert.ToInt32(msgTran.AryData[5]) * 255 * 255 + Convert.ToInt32(msgTran.AryData[6]) * 255 + Convert.ToInt32(msgTran.AryData[7]);
 
-                m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
-                m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
-                WriteLog(lrtxtLog, strCmd, 0);
-                RefreshFastSwitch(0x02);
-                RunLoopFastSwitch();
-            }*/
-            else
-            {
-                m_nTotal++;
-                int nLength = msgTran.AryData.Length;
-                int nEpcLength = nLength - 4;
+        //        m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
+        //        m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
+        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        RefreshFastSwitch(0x02);
+        //        RunLoopFastSwitch();
+        //    }*/
+        //    else
+        //    {
+        //        m_nTotal++;
+        //        int nLength = msgTran.AryData.Length;
+        //        int nEpcLength = nLength - 4;
 
-                //增加盘存明细表
-                string strEPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, nEpcLength);                
-                string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 2);
-                string strRSSI = msgTran.AryData[nLength - 1].ToString();
-                SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nLength - 1]));
-                byte btTemp = msgTran.AryData[0];
-                byte btAntId = (byte)((btTemp & 0x03) + 1);
-                m_curInventoryBuffer.nCurrentAnt = (int)btAntId;
-                string strAntId = btAntId.ToString();
-                byte btFreq = (byte)(btTemp >> 2);
+        //        //增加盘存明细表
+        //        string strEPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, nEpcLength);                
+        //        string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 2);
+        //        string strRSSI = msgTran.AryData[nLength - 1].ToString();
+        //        SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nLength - 1]));
+        //        byte btTemp = msgTran.AryData[0];
+        //        byte btAntId = (byte)((btTemp & 0x03) + 1);
+        //        m_curInventoryBuffer.nCurrentAnt = (int)btAntId;
+        //        string strAntId = btAntId.ToString();
+        //        byte btFreq = (byte)(btTemp >> 2);
                 
-                string strFreq = GetFreqString(btFreq);
+        //        string strFreq = GetFreqString(btFreq);
 
-                DataRow[] drs = m_curInventoryBuffer.dtTagTable.Select(string.Format("COLEPC = '{0}'", strEPC));
-                if (drs.Length == 0)
-                {
-                    DataRow row1 = m_curInventoryBuffer.dtTagTable.NewRow();
-                    row1[0] = strPC;
-                    row1[2] = strEPC;
-                    row1[4] = strRSSI;
-                    row1[5] = "1";
-                    row1[6] = strFreq;
-                    row1[7] = "0";
-                    row1[8] = "0";
-                    row1[9] = "0";
-                    row1[10] = "0";
-                    switch(btAntId)
-                    {
-                        case 0x01:
-                            {
-                                row1[7] = "1";
-                            }
-                            break;
-                        case 0x02:
-                            {
-                                row1[8] = "1";
-                            }
-                            break;
-                        case 0x03:
-                            {
-                                row1[9] = "1";
-                            }
-                            break;
-                        case 0x04:
-                            {
-                                row1[10] = "1";
-                            }
-                            break;
-                        default:
-                            break;
-                    }
+        //        DataRow[] drs = m_curInventoryBuffer.dtTagTable.Select(string.Format("COLEPC = '{0}'", strEPC));
+        //        if (drs.Length == 0)
+        //        {
+        //            DataRow row1 = m_curInventoryBuffer.dtTagTable.NewRow();
+        //            row1[0] = strPC;
+        //            row1[2] = strEPC;
+        //            row1[4] = strRSSI;
+        //            row1[5] = "1";
+        //            row1[6] = strFreq;
+        //            row1[7] = "0";
+        //            row1[8] = "0";
+        //            row1[9] = "0";
+        //            row1[10] = "0";
+        //            switch(btAntId)
+        //            {
+        //                case 0x01:
+        //                    {
+        //                        row1[7] = "1";
+        //                    }
+        //                    break;
+        //                case 0x02:
+        //                    {
+        //                        row1[8] = "1";
+        //                    }
+        //                    break;
+        //                case 0x03:
+        //                    {
+        //                        row1[9] = "1";
+        //                    }
+        //                    break;
+        //                case 0x04:
+        //                    {
+        //                        row1[10] = "1";
+        //                    }
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
 
-                    m_curInventoryBuffer.dtTagTable.Rows.Add(row1);
-                    m_curInventoryBuffer.dtTagTable.AcceptChanges();
-                }
-                else
-                {
-                    foreach (DataRow dr in drs)
-                    {
-                        dr.BeginEdit();
-                        int nTemp = 0;
+        //            m_curInventoryBuffer.dtTagTable.Rows.Add(row1);
+        //            m_curInventoryBuffer.dtTagTable.AcceptChanges();
+        //        }
+        //        else
+        //        {
+        //            foreach (DataRow dr in drs)
+        //            {
+        //                dr.BeginEdit();
+        //                int nTemp = 0;
 
-                        dr[4] = strRSSI;
-                        //dr[5] = (Convert.ToInt32(dr[5]) + 1).ToString();
-                        nTemp = Convert.ToInt32(dr[5]);
-                        dr[5] = (nTemp + 1).ToString();
-                        dr[6] = strFreq;
+        //                dr[4] = strRSSI;
+        //                //dr[5] = (Convert.ToInt32(dr[5]) + 1).ToString();
+        //                nTemp = Convert.ToInt32(dr[5]);
+        //                dr[5] = (nTemp + 1).ToString();
+        //                dr[6] = strFreq;
 
-                        switch(btAntId)
-                        {
-                            case 0x01:
-                                {
-                                    //dr[7] = (Convert.ToInt32(dr[7]) + 1).ToString();
-                                    nTemp = Convert.ToInt32(dr[7]);
-                                    dr[7] = (nTemp + 1).ToString();
-                                }
-                                break;
-                            case 0x02:
-                                {
-                                    //dr[8] = (Convert.ToInt32(dr[8]) + 1).ToString();
-                                    nTemp = Convert.ToInt32(dr[8]);
-                                    dr[8] = (nTemp + 1).ToString();
-                                }
-                                break;
-                            case 0x03:
-                                {
-                                    //dr[9] = (Convert.ToInt32(dr[9]) + 1).ToString();
-                                    nTemp = Convert.ToInt32(dr[9]);
-                                    dr[9] = (nTemp + 1).ToString();
-                                }
-                                break;
-                            case 0x04:
-                                {
-                                    //dr[10] = (Convert.ToInt32(dr[10]) + 1).ToString();
-                                    nTemp = Convert.ToInt32(dr[10]);
-                                    dr[10] = (nTemp + 1).ToString();
-                                }
-                                break;
-                            default:
-                                break;
-                        }
+        //                switch(btAntId)
+        //                {
+        //                    case 0x01:
+        //                        {
+        //                            //dr[7] = (Convert.ToInt32(dr[7]) + 1).ToString();
+        //                            nTemp = Convert.ToInt32(dr[7]);
+        //                            dr[7] = (nTemp + 1).ToString();
+        //                        }
+        //                        break;
+        //                    case 0x02:
+        //                        {
+        //                            //dr[8] = (Convert.ToInt32(dr[8]) + 1).ToString();
+        //                            nTemp = Convert.ToInt32(dr[8]);
+        //                            dr[8] = (nTemp + 1).ToString();
+        //                        }
+        //                        break;
+        //                    case 0x03:
+        //                        {
+        //                            //dr[9] = (Convert.ToInt32(dr[9]) + 1).ToString();
+        //                            nTemp = Convert.ToInt32(dr[9]);
+        //                            dr[9] = (nTemp + 1).ToString();
+        //                        }
+        //                        break;
+        //                    case 0x04:
+        //                        {
+        //                            //dr[10] = (Convert.ToInt32(dr[10]) + 1).ToString();
+        //                            nTemp = Convert.ToInt32(dr[10]);
+        //                            dr[10] = (nTemp + 1).ToString();
+        //                        }
+        //                        break;
+        //                    default:
+        //                        break;
+        //                }
 
-                        dr.EndEdit();
-                    }
-                    m_curInventoryBuffer.dtTagTable.AcceptChanges();
-                }
+        //                dr.EndEdit();
+        //            }
+        //            m_curInventoryBuffer.dtTagTable.AcceptChanges();
+        //        }
 
-                m_curInventoryBuffer.dtEndInventory = DateTime.Now;
-                RefreshFastSwitch(0x00);
-            }
+        //        m_curInventoryBuffer.dtEndInventory = DateTime.Now;
+        //        RefreshFastSwitch(0x00);
+        //    }
 
-        }
+        //}
 
         private void ProcessInventoryReal(Reader.MessageTran msgTran)
         {
@@ -3002,6 +3022,8 @@ namespace UHFDemo
             
                 byte btFreq = (byte)(btTemp >> 2);
                 string strFreq = GetFreqString(btFreq);
+
+                AsignarChip(strEPC.Trim());
                 
                 //DataRow row = m_curInventoryBuffer.dtTagDetailTable.NewRow();
                 //row[0] = strEPC;
@@ -3050,45 +3072,45 @@ namespace UHFDemo
 
       
 
-        private void ProcessInventory(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Buffer mode inventory ";
-            string strErrorCode = string.Empty;
+        //private void ProcessInventory(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Buffer mode inventory ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 9)
-            {
-                m_curInventoryBuffer.nCurrentAnt = msgTran.AryData[0];
-                m_curInventoryBuffer.nTagCount = Convert.ToInt32(msgTran.AryData[1]) * 256 + Convert.ToInt32(msgTran.AryData[2]);
-                m_curInventoryBuffer.nReadRate = Convert.ToInt32(msgTran.AryData[3]) * 256 + Convert.ToInt32(msgTran.AryData[4]);
-                int nTotalRead = Convert.ToInt32(msgTran.AryData[5]) * 256 * 256 * 256
-                    + Convert.ToInt32(msgTran.AryData[6]) * 256 * 256
-                    + Convert.ToInt32(msgTran.AryData[7]) * 256
-                    + Convert.ToInt32(msgTran.AryData[8]);
-                m_curInventoryBuffer.nDataCount = nTotalRead;
-                m_curInventoryBuffer.lTotalRead.Add(nTotalRead);
-                m_curInventoryBuffer.dtEndInventory = DateTime.Now;
+        //    if (msgTran.AryData.Length == 9)
+        //    {
+        //        m_curInventoryBuffer.nCurrentAnt = msgTran.AryData[0];
+        //        m_curInventoryBuffer.nTagCount = Convert.ToInt32(msgTran.AryData[1]) * 256 + Convert.ToInt32(msgTran.AryData[2]);
+        //        m_curInventoryBuffer.nReadRate = Convert.ToInt32(msgTran.AryData[3]) * 256 + Convert.ToInt32(msgTran.AryData[4]);
+        //        int nTotalRead = Convert.ToInt32(msgTran.AryData[5]) * 256 * 256 * 256
+        //            + Convert.ToInt32(msgTran.AryData[6]) * 256 * 256
+        //            + Convert.ToInt32(msgTran.AryData[7]) * 256
+        //            + Convert.ToInt32(msgTran.AryData[8]);
+        //        m_curInventoryBuffer.nDataCount = nTotalRead;
+        //        m_curInventoryBuffer.lTotalRead.Add(nTotalRead);
+        //        m_curInventoryBuffer.dtEndInventory = DateTime.Now;
 
-                RefreshInventory(0x80);
-                WriteLog(lrtxtLog, strCmd, 0);
+        //        RefreshInventory(0x80);
+        //        WriteLog(lrtxtLog, strCmd, 0);
 
-                RunLoopInventroy();
+        //        RunLoopInventroy();
 
-                return;
-            }
-            else if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-            }
-            else
-            {
-                strErrorCode = "Unknown error";
-            }
+        //        return;
+        //    }
+        //    else if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //    }
+        //    else
+        //    {
+        //        strErrorCode = "Unknown error";
+        //    }
 
-            string strLog = strCmd + "failed, due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+        //    string strLog = strCmd + "failed, due to: " + strErrorCode;
+        //    WriteLog(lrtxtLog, strLog, 1);
 
-            RunLoopInventroy();
-        }
+        //    RunLoopInventroy();
+        //}
 
         private void btnGetInventoryBuffer_Click(object sender, EventArgs e)
         {
@@ -3114,48 +3136,48 @@ namespace UHFDemo
             }
         }
 
-        private void ProcessGetInventoryBuffer(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Reader buffer ";
-            string strErrorCode = string.Empty;
+        //private void ProcessGetInventoryBuffer(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Reader buffer ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                string strLog = strCmd + "failed due to: " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        string strLog = strCmd + "failed due to: " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
-            else
-            {
-                int nDataLen = msgTran.AryData.Length;
-                int nEpcLen = Convert.ToInt32(msgTran.AryData[2]) - 4;
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
+        //    else
+        //    {
+        //        int nDataLen = msgTran.AryData.Length;
+        //        int nEpcLen = Convert.ToInt32(msgTran.AryData[2]) - 4;
 
-                string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, 2);
-                string strEpc = CCommondMethod.ByteArrayToString(msgTran.AryData, 5, nEpcLen);
-                string strCRC = CCommondMethod.ByteArrayToString(msgTran.AryData, 5 + nEpcLen, 2);
-                string strRSSI = msgTran.AryData[nDataLen - 3].ToString();
-                SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nDataLen - 3]));
-                byte btTemp = msgTran.AryData[nDataLen - 2];
-                byte btAntId = (byte)((btTemp & 0x03) + 1);
-                string strAntId = btAntId.ToString();
-                string strReadCnr = msgTran.AryData[nDataLen - 1].ToString();
+        //        string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, 2);
+        //        string strEpc = CCommondMethod.ByteArrayToString(msgTran.AryData, 5, nEpcLen);
+        //        string strCRC = CCommondMethod.ByteArrayToString(msgTran.AryData, 5 + nEpcLen, 2);
+        //        string strRSSI = msgTran.AryData[nDataLen - 3].ToString();
+        //        SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nDataLen - 3]));
+        //        byte btTemp = msgTran.AryData[nDataLen - 2];
+        //        byte btAntId = (byte)((btTemp & 0x03) + 1);
+        //        string strAntId = btAntId.ToString();
+        //        string strReadCnr = msgTran.AryData[nDataLen - 1].ToString();
 
-                DataRow row = m_curInventoryBuffer.dtTagTable.NewRow();
-                row[0] = strPC;
-                row[1] = strCRC;
-                row[2] = strEpc;
-                row[3] = strAntId;
-                row[4] = strRSSI;
-                row[5] = strReadCnr;
+        //        DataRow row = m_curInventoryBuffer.dtTagTable.NewRow();
+        //        row[0] = strPC;
+        //        row[1] = strCRC;
+        //        row[2] = strEpc;
+        //        row[3] = strAntId;
+        //        row[4] = strRSSI;
+        //        row[5] = strReadCnr;
 
-                m_curInventoryBuffer.dtTagTable.Rows.Add(row);
-                m_curInventoryBuffer.dtTagTable.AcceptChanges();
+        //        m_curInventoryBuffer.dtTagTable.Rows.Add(row);
+        //        m_curInventoryBuffer.dtTagTable.AcceptChanges();
 
-                RefreshInventory(0x90);
-                WriteLog(lrtxtLog, strCmd, 0);
-            }
-        }
+        //        RefreshInventory(0x90);
+        //        WriteLog(lrtxtLog, strCmd, 0);
+        //    }
+        //}
 
         private void btnGetAndResetInventoryBuffer_Click(object sender, EventArgs e)
         {
@@ -3164,48 +3186,48 @@ namespace UHFDemo
             reader.GetAndResetInventoryBuffer(m_curSetting.btReadId);
         }
 
-        private void ProcessGetAndResetInventoryBuffer(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Read and clear buffer ";
-            string strErrorCode = string.Empty;
+        //private void ProcessGetAndResetInventoryBuffer(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Read and clear buffer ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                string strLog = strCmd + "failed, due to: " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
-            else
-            {
-                int nDataLen = msgTran.AryData.Length;
-                int nEpcLen = Convert.ToInt32(msgTran.AryData[2]) - 4;
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
+        //    else
+        //    {
+        //        int nDataLen = msgTran.AryData.Length;
+        //        int nEpcLen = Convert.ToInt32(msgTran.AryData[2]) - 4;
 
-                string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, 2);
-                string strEpc = CCommondMethod.ByteArrayToString(msgTran.AryData, 5, nEpcLen);
-                string strCRC = CCommondMethod.ByteArrayToString(msgTran.AryData, 5 + nEpcLen, 2);
-                string strRSSI = msgTran.AryData[nDataLen - 3].ToString();
-                SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nDataLen - 3]));
-                byte btTemp = msgTran.AryData[nDataLen - 2];
-                byte btAntId = (byte)((btTemp & 0x03) + 1);
-                string strAntId = btAntId.ToString();
-                string strReadCnr = msgTran.AryData[nDataLen - 1].ToString();
+        //        string strPC = CCommondMethod.ByteArrayToString(msgTran.AryData, 3, 2);
+        //        string strEpc = CCommondMethod.ByteArrayToString(msgTran.AryData, 5, nEpcLen);
+        //        string strCRC = CCommondMethod.ByteArrayToString(msgTran.AryData, 5 + nEpcLen, 2);
+        //        string strRSSI = msgTran.AryData[nDataLen - 3].ToString();
+        //        SetMaxMinRSSI(Convert.ToInt32(msgTran.AryData[nDataLen - 3]));
+        //        byte btTemp = msgTran.AryData[nDataLen - 2];
+        //        byte btAntId = (byte)((btTemp & 0x03) + 1);
+        //        string strAntId = btAntId.ToString();
+        //        string strReadCnr = msgTran.AryData[nDataLen - 1].ToString();
 
-                DataRow row = m_curInventoryBuffer.dtTagTable.NewRow();
-                row[0] = strPC;
-                row[1] = strCRC;
-                row[2] = strEpc;
-                row[3] = strAntId;
-                row[4] = strRSSI;
-                row[5] = strReadCnr;
+        //        DataRow row = m_curInventoryBuffer.dtTagTable.NewRow();
+        //        row[0] = strPC;
+        //        row[1] = strCRC;
+        //        row[2] = strEpc;
+        //        row[3] = strAntId;
+        //        row[4] = strRSSI;
+        //        row[5] = strReadCnr;
 
-                m_curInventoryBuffer.dtTagTable.Rows.Add(row);
-                m_curInventoryBuffer.dtTagTable.AcceptChanges();
+        //        m_curInventoryBuffer.dtTagTable.Rows.Add(row);
+        //        m_curInventoryBuffer.dtTagTable.AcceptChanges();
 
-                RefreshInventory(0x91);
-                WriteLog(lrtxtLog, strCmd, 0);
-            }
-        }
+        //        RefreshInventory(0x91);
+        //        WriteLog(lrtxtLog, strCmd, 0);
+        //    }
+        //}
         
         private void btnGetInventoryBufferTagCount_Click(object sender, EventArgs e)
         {
@@ -3221,7 +3243,7 @@ namespace UHFDemo
             {
                 m_curInventoryBuffer.nTagCount = Convert.ToInt32(msgTran.AryData[0]) * 256 + Convert.ToInt32(msgTran.AryData[1]);
 
-                RefreshInventory(0x92);
+                //RefreshInventory(0x92);
                 string strLog1 = strCmd + " " + m_curInventoryBuffer.nTagCount.ToString();
                 WriteLog(lrtxtLog, strLog1, 0);
                 return;
@@ -3245,103 +3267,103 @@ namespace UHFDemo
             reader.ResetInventoryBuffer(m_curSetting.btReadId);
         }
 
-        private void ProcessResetInventoryBuffer(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Clear buffer ";
-            string strErrorCode = string.Empty;
+        //private void ProcessResetInventoryBuffer(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Clear buffer ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                if (msgTran.AryData[0] == 0x10)
-                {
-                    RefreshInventory(0x93);
-                    WriteLog(lrtxtLog, strCmd, 0);
-                    return;
-                }
-                else
-                {
-                    strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                }
-            }
-            else
-            {
-                strErrorCode = "Unknown error";
-            }
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        if (msgTran.AryData[0] == 0x10)
+        //        {
+        //            RefreshInventory(0x93);
+        //            WriteLog(lrtxtLog, strCmd, 0);
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        strErrorCode = "Unknown error";
+        //    }
 
-            string strLog = strCmd + "failed due to: " + strErrorCode;
+        //    string strLog = strCmd + "failed due to: " + strErrorCode;
 
-            WriteLog(lrtxtLog, strLog, 1);
-        }
+        //    WriteLog(lrtxtLog, strLog, 1);
+        //}
 
-        private void cbAccessEpcMatch_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ckAccessEpcMatch.Checked)
-            {
-                reader.GetAccessEpcMatch(m_curSetting.btReadId);
-            }
-            else
-            {
-                m_curOperateTagBuffer.strAccessEpcMatch = "";
-                txtAccessEpcMatch.Text = "";
-                reader.CancelAccessEpcMatch(m_curSetting.btReadId, 0x01);
-            }
-        }
+        //private void cbAccessEpcMatch_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (ckAccessEpcMatch.Checked)
+        //    {
+        //        reader.GetAccessEpcMatch(m_curSetting.btReadId);
+        //    }
+        //    else
+        //    {
+        //        m_curOperateTagBuffer.strAccessEpcMatch = "";
+        //        txtAccessEpcMatch.Text = "";
+        //        reader.CancelAccessEpcMatch(m_curSetting.btReadId, 0x01);
+        //    }
+        //}
 
-        private void ProcessGetAccessEpcMatch(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Get selected tag ";
-            string strErrorCode = string.Empty;
+        //private void ProcessGetAccessEpcMatch(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Get selected tag ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                if (msgTran.AryData[0] == 0x01)
-                {
-                    WriteLog(lrtxtLog, "No tag has been selected ", 0);
-                    return;
-                }
-                else
-                {
-                    strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                }
-            }
-            else
-            {
-                if (msgTran.AryData[0] == 0x00)
-                {
-                    m_curOperateTagBuffer.strAccessEpcMatch = CCommondMethod.ByteArrayToString(msgTran.AryData, 2, Convert.ToInt32(msgTran.AryData[1]));
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        if (msgTran.AryData[0] == 0x01)
+        //        {
+        //            WriteLog(lrtxtLog, "No tag has been selected ", 0);
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (msgTran.AryData[0] == 0x00)
+        //        {
+        //            m_curOperateTagBuffer.strAccessEpcMatch = CCommondMethod.ByteArrayToString(msgTran.AryData, 2, Convert.ToInt32(msgTran.AryData[1]));
                     
-                    RefreshOpTag(0x86);
-                    WriteLog(lrtxtLog, strCmd, 0);
-                    return;
-                }
-                else
-                {
-                    strErrorCode = "Unknown error ";
-                }
-            }
+        //            RefreshOpTag(0x86);
+        //            WriteLog(lrtxtLog, strCmd, 0);
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            strErrorCode = "Unknown error ";
+        //        }
+        //    }
 
-            string strLog = strCmd + "failed, due to " + strErrorCode;
+        //    string strLog = strCmd + "failed, due to " + strErrorCode;
 
-            WriteLog(lrtxtLog, strLog, 1);
-        }
+        //    WriteLog(lrtxtLog, strLog, 1);
+        //}
 
-        private void btnSetAccessEpcMatch_Click(object sender, EventArgs e)
-        {
-            string[] reslut = CCommondMethod.StringToStringArray(cmbSetAccessEpcMatch.Text.ToUpper(), 2);
+        //private void btnSetAccessEpcMatch_Click(object sender, EventArgs e)
+        //{
+        //    string[] reslut = CCommondMethod.StringToStringArray(cmbSetAccessEpcMatch.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Please select an EPC ");
-                return;
-            }
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Please select an EPC ");
+        //        return;
+        //    }
 
-            byte[] btAryEpc = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
+        //    byte[] btAryEpc = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
 
-            m_curOperateTagBuffer.strAccessEpcMatch = cmbSetAccessEpcMatch.Text;
-            txtAccessEpcMatch.Text = cmbSetAccessEpcMatch.Text;
-            ckAccessEpcMatch.Checked = true;
-            reader.SetAccessEpcMatch(m_curSetting.btReadId, 0x00, Convert.ToByte(btAryEpc.Length), btAryEpc);
-        }
+        //    m_curOperateTagBuffer.strAccessEpcMatch = cmbSetAccessEpcMatch.Text;
+        //    txtAccessEpcMatch.Text = cmbSetAccessEpcMatch.Text;
+        //    ckAccessEpcMatch.Checked = true;
+        //    reader.SetAccessEpcMatch(m_curSetting.btReadId, 0x00, Convert.ToByte(btAryEpc.Length), btAryEpc);
+        //}
 
         private void ProcessSetAccessEpcMatch(Reader.MessageTran msgTran)
         {
@@ -3370,66 +3392,66 @@ namespace UHFDemo
             WriteLog(lrtxtLog, strLog, 1);
         }
 
-        private void btnReadTag_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                byte btMemBank = 0x00;
-                byte btWordAdd = 0x00;
-                byte btWordCnt = 0x00;
+        //private void btnReadTag_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        byte btMemBank = 0x00;
+        //        byte btWordAdd = 0x00;
+        //        byte btWordCnt = 0x00;
 
-                if (rdbReserved.Checked)
-                {
-                    btMemBank = 0x00;
-                }
-                else if (rdbEpc.Checked)
-                {
-                    btMemBank = 0x01;
-                }
-                else if (rdbTid.Checked)
-                {
-                    btMemBank = 0x02;
-                }
-                else if (rdbUser.Checked)
-                {
-                    btMemBank = 0x03;
-                }
-                else
-                {
-                    MessageBox.Show("Please select a memory bank ");
-                    return;
-                }
+        //        if (rdbReserved.Checked)
+        //        {
+        //            btMemBank = 0x00;
+        //        }
+        //        else if (rdbEpc.Checked)
+        //        {
+        //            btMemBank = 0x01;
+        //        }
+        //        else if (rdbTid.Checked)
+        //        {
+        //            btMemBank = 0x02;
+        //        }
+        //        else if (rdbUser.Checked)
+        //        {
+        //            btMemBank = 0x03;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please select a memory bank ");
+        //            return;
+        //        }
 
-                if (txtWordAdd.Text.Length != 0)
-                {
-                    btWordAdd = Convert.ToByte(txtWordAdd.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Please input start address");
-                    return;
-                }
+        //        if (txtWordAdd.Text.Length != 0)
+        //        {
+        //            btWordAdd = Convert.ToByte(txtWordAdd.Text);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please input start address");
+        //            return;
+        //        }
 
-                if (txtWordCnt.Text.Length != 0)
-                {
-                    btWordCnt = Convert.ToByte(txtWordCnt.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Please input read length ");
-                    return;
-                }
+        //        if (txtWordCnt.Text.Length != 0)
+        //        {
+        //            btWordCnt = Convert.ToByte(txtWordCnt.Text);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please input read length ");
+        //            return;
+        //        }
 
-                m_curOperateTagBuffer.dtTagTable.Clear();
-                ltvOperate.Items.Clear();
-                reader.ReadTag(m_curSetting.btReadId, btMemBank, btWordAdd, btWordCnt);
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        //        m_curOperateTagBuffer.dtTagTable.Clear();
+        //        ltvOperate.Items.Clear();
+        //        reader.ReadTag(m_curSetting.btReadId, btMemBank, btWordAdd, btWordCnt);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
             
-        }
+        //}
 
         private void ProcessReadTag(Reader.MessageTran msgTran)
         {
@@ -3472,87 +3494,87 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.Rows.Add(row);
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
-                RefreshOpTag(0x81);
+                //RefreshOpTag(0x81);
                 WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
-        private void btnWriteTag_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                byte btMemBank = 0x00;
-                byte btWordAdd = 0x00;
-                byte btWordCnt = 0x00;
+        //private void btnWriteTag_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        byte btMemBank = 0x00;
+        //        byte btWordAdd = 0x00;
+        //        byte btWordCnt = 0x00;
 
-                if (rdbReserved.Checked)
-                {
-                    btMemBank = 0x00;
-                }
-                else if (rdbEpc.Checked)
-                {
-                    btMemBank = 0x01;
-                }
-                else if (rdbTid.Checked)
-                {
-                    btMemBank = 0x02;
-                }
-                else if (rdbUser.Checked)
-                {
-                    btMemBank = 0x03;
-                }
-                else
-                {
-                    MessageBox.Show("Please select a memory bank ");
-                    return;
-                }
+        //        if (rdbReserved.Checked)
+        //        {
+        //            btMemBank = 0x00;
+        //        }
+        //        else if (rdbEpc.Checked)
+        //        {
+        //            btMemBank = 0x01;
+        //        }
+        //        else if (rdbTid.Checked)
+        //        {
+        //            btMemBank = 0x02;
+        //        }
+        //        else if (rdbUser.Checked)
+        //        {
+        //            btMemBank = 0x03;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please select a memory bank ");
+        //            return;
+        //        }
 
-                if (txtWordAdd.Text.Length != 0)
-                {
-                    btWordAdd = Convert.ToByte(txtWordAdd.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Please input start address ");
-                    return;
-                }
+        //        if (txtWordAdd.Text.Length != 0)
+        //        {
+        //            btWordAdd = Convert.ToByte(txtWordAdd.Text);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please input start address ");
+        //            return;
+        //        }
 
-                string[] reslut = CCommondMethod.StringToStringArray(htxtReadAndWritePwd.Text.ToUpper(), 2);
+        //        string[] reslut = CCommondMethod.StringToStringArray(htxtReadAndWritePwd.Text.ToUpper(), 2);
 
-                if (reslut == null)
-                {
-                    MessageBox.Show("Invalid characters have been input");
-                    return;
-                }
-                else if (reslut.GetLength(0) < 4)
-                {
-                    MessageBox.Show("At least input 4 bytes ");
-                    return;
-                }
-                byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
+        //        if (reslut == null)
+        //        {
+        //            MessageBox.Show("Invalid characters have been input");
+        //            return;
+        //        }
+        //        else if (reslut.GetLength(0) < 4)
+        //        {
+        //            MessageBox.Show("At least input 4 bytes ");
+        //            return;
+        //        }
+        //        byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
 
-                reslut = CCommondMethod.StringToStringArray(htxtWriteData.Text.ToUpper(), 2);
+        //        reslut = CCommondMethod.StringToStringArray(htxtWriteData.Text.ToUpper(), 2);
 
-                if (reslut == null)
-                {
-                    MessageBox.Show("Invalid character ");
-                    return;
-                }
-                byte[] btAryWriteData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
-                btWordCnt = Convert.ToByte(reslut.Length / 2 + reslut.Length % 2);
+        //        if (reslut == null)
+        //        {
+        //            MessageBox.Show("Invalid character ");
+        //            return;
+        //        }
+        //        byte[] btAryWriteData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
+        //        btWordCnt = Convert.ToByte(reslut.Length / 2 + reslut.Length % 2);
 
-                txtWordCnt.Text = btWordCnt.ToString();
+        //        txtWordCnt.Text = btWordCnt.ToString();
 
-                m_curOperateTagBuffer.dtTagTable.Clear();
-                ltvOperate.Items.Clear();
-                reader.WriteTag(m_curSetting.btReadId, btAryPwd, btMemBank, btWordAdd, btWordCnt, btAryWriteData);
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        //        m_curOperateTagBuffer.dtTagTable.Clear();
+        //        ltvOperate.Items.Clear();
+        //        reader.WriteTag(m_curSetting.btReadId, btAryPwd, btMemBank, btWordAdd, btWordCnt, btAryWriteData);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
             
-        }
+        //}
 
         private void ProcessWriteTag(Reader.MessageTran msgTran)
         {
@@ -3603,83 +3625,83 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.Rows.Add(row);
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
-                RefreshOpTag(0x82);
+                //RefreshOpTag(0x82);
                 WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
-        private void btnLockTag_Click(object sender, EventArgs e)
-        {
-            byte btMemBank = 0x00;
-            byte btLockType = 0x00;
+        //private void btnLockTag_Click(object sender, EventArgs e)
+        //{
+        //    byte btMemBank = 0x00;
+        //    byte btLockType = 0x00;
 
-            if (rdbAccessPwd.Checked)
-            {
-                btMemBank = 0x04;
-            }
-            else if (rdbKillPwd.Checked)
-            {
-                btMemBank = 0x05;
-            }
-            else if (rdbEpcMermory.Checked)
-            {
-                btMemBank = 0x03;
-            }
-            else if (rdbTidMemory.Checked)
-            {
-                btMemBank = 0x02;
-            }
-            else if (rdbUserMemory.Checked)
-            {
-                btMemBank = 0x01;
-            }
-            else
-            {
-                MessageBox.Show("Please select a memory bank ");
-                return;
-            }
+        //    if (rdbAccessPwd.Checked)
+        //    {
+        //        btMemBank = 0x04;
+        //    }
+        //    else if (rdbKillPwd.Checked)
+        //    {
+        //        btMemBank = 0x05;
+        //    }
+        //    else if (rdbEpcMermory.Checked)
+        //    {
+        //        btMemBank = 0x03;
+        //    }
+        //    else if (rdbTidMemory.Checked)
+        //    {
+        //        btMemBank = 0x02;
+        //    }
+        //    else if (rdbUserMemory.Checked)
+        //    {
+        //        btMemBank = 0x01;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select a memory bank ");
+        //        return;
+        //    }
 
-            if (rdbFree.Checked)
-            {
-                btLockType = 0x00;
-            }
-            else if (rdbFreeEver.Checked)
-            {
-                btLockType = 0x02;
-            }
-            else if (rdbLock.Checked)
-            {
-                btLockType = 0x01;
-            }
-            else if (rdbLockEver.Checked)
-            {
-                btLockType = 0x03;
-            }
-            else
-            {
-                MessageBox.Show("Please select a lock type ");
-                return;
-            }
+        //    if (rdbFree.Checked)
+        //    {
+        //        btLockType = 0x00;
+        //    }
+        //    else if (rdbFreeEver.Checked)
+        //    {
+        //        btLockType = 0x02;
+        //    }
+        //    else if (rdbLock.Checked)
+        //    {
+        //        btLockType = 0x01;
+        //    }
+        //    else if (rdbLockEver.Checked)
+        //    {
+        //        btLockType = 0x03;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select a lock type ");
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtLockPwd.Text.ToUpper(), 2);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtLockPwd.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 4)
-            {
-                MessageBox.Show("At least input 4 bytes ");
-                return;
-            }
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 4)
+        //    {
+        //        MessageBox.Show("At least input 4 bytes ");
+        //        return;
+        //    }
 
-            byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
+        //    byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
 
-            m_curOperateTagBuffer.dtTagTable.Clear();
-            ltvOperate.Items.Clear();
-            reader.LockTag(m_curSetting.btReadId, btAryPwd, btMemBank, btLockType);
-        }
+        //    m_curOperateTagBuffer.dtTagTable.Clear();
+        //    ltvOperate.Items.Clear();
+        //    reader.LockTag(m_curSetting.btReadId, btAryPwd, btMemBank, btLockType);
+        //}
 
         private void ProcessLockTag(Reader.MessageTran msgTran)
         {
@@ -3730,32 +3752,32 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.Rows.Add(row);
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
-                RefreshOpTag(0x83);
+                //RefreshOpTag(0x83);
                 WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
-        private void btnKillTag_Click(object sender, EventArgs e)
-        {
-            string[] reslut = CCommondMethod.StringToStringArray(htxtKillPwd.Text.ToUpper(), 2);
+        //private void btnKillTag_Click(object sender, EventArgs e)
+        //{
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtKillPwd.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 4)
-            {
-                MessageBox.Show("At least input 4 bytes ");
-                return;
-            }
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 4)
+        //    {
+        //        MessageBox.Show("At least input 4 bytes ");
+        //        return;
+        //    }
 
-            byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
+        //    byte[] btAryPwd = CCommondMethod.StringArrayToByteArray(reslut, 4);
 
-            m_curOperateTagBuffer.dtTagTable.Clear();
-            ltvOperate.Items.Clear();
-            reader.KillTag(m_curSetting.btReadId, btAryPwd);
-        }
+        //    m_curOperateTagBuffer.dtTagTable.Clear();
+        //    ltvOperate.Items.Clear();
+        //    reader.KillTag(m_curSetting.btReadId, btAryPwd);
+        //}
 
         private void ProcessKillTag(Reader.MessageTran msgTran)
         {
@@ -3806,238 +3828,238 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.Rows.Add(row);
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
-                RefreshOpTag(0x84);
+                //RefreshOpTag(0x84);
                 WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
-        private void btnInventoryISO18000_Click(object sender, EventArgs e)
-        {            
-            if (m_bContinue)
-            {
-                m_bContinue = false;
-                btnInventoryISO18000.BackColor = Color.WhiteSmoke;
-                btnInventoryISO18000.ForeColor = Color.Indigo;
-                btnInventoryISO18000.Text = "Start 18000-6B tag inventory ";
-            }
-            else
-            {
-                //判断EPC盘存是否正在进行
-                if (m_curInventoryBuffer.bLoopInventory)
-                {
-                    if (MessageBox.Show("EPC C1G2 tag inventory is ongoing, stop it ? ", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        btnInventory_Click(sender, e);
-                        return;
-                    }
-                }
+        //private void btnInventoryISO18000_Click(object sender, EventArgs e)
+        //{            
+        //    if (m_bContinue)
+        //    {
+        //        m_bContinue = false;
+        //        btnInventoryISO18000.BackColor = Color.WhiteSmoke;
+        //        btnInventoryISO18000.ForeColor = Color.Indigo;
+        //        btnInventoryISO18000.Text = "Start 18000-6B tag inventory ";
+        //    }
+        //    else
+        //    {
+        //        //判断EPC盘存是否正在进行
+        //        if (m_curInventoryBuffer.bLoopInventory)
+        //        {
+        //            if (MessageBox.Show("EPC C1G2 tag inventory is ongoing, stop it ? ", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
+        //            {
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                btnInventory_Click(sender, e);
+        //                return;
+        //            }
+        //        }
 
-                m_curOperateTagISO18000Buffer.ClearBuffer();
-                ltvTagISO18000.Items.Clear();
-                m_bContinue = true;
-                btnInventoryISO18000.BackColor = Color.Indigo;
-                btnInventoryISO18000.ForeColor = Color.White;
-                btnInventoryISO18000.Text = "Stop inventory";
+        //        m_curOperateTagISO18000Buffer.ClearBuffer();
+        //        ltvTagISO18000.Items.Clear();
+        //        m_bContinue = true;
+        //        btnInventoryISO18000.BackColor = Color.Indigo;
+        //        btnInventoryISO18000.ForeColor = Color.White;
+        //        btnInventoryISO18000.Text = "Stop inventory";
 
-                string strCmd = "Tag inventory";
-                WriteLog(lrtxtLog, strCmd, 0);
+        //        string strCmd = "Tag inventory";
+        //        WriteLog(lrtxtLog, strCmd, 0);
                 
-                reader.InventoryISO18000(m_curSetting.btReadId);
-            }            
-        }
+        //        reader.InventoryISO18000(m_curSetting.btReadId);
+        //    }            
+        //}
 
-        private void ProcessInventoryISO18000(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Tag inventory ";
-            string strErrorCode = string.Empty;
+        //private void ProcessInventoryISO18000(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Tag inventory ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                if (msgTran.AryData[0] != 0xFF)
-                {
-                    strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                    string strLog = strCmd + "failed, due to: " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        if (msgTran.AryData[0] != 0xFF)
+        //        {
+        //            strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //            string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-                    WriteLog(lrtxtLog, strLog, 1);
-                }                
-            }
-            else if (msgTran.AryData.Length == 9)
-            {
-                string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
-                string strUID = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 8);
+        //            WriteLog(lrtxtLog, strLog, 1);
+        //        }                
+        //    }
+        //    else if (msgTran.AryData.Length == 9)
+        //    {
+        //        string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
+        //        string strUID = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 8);
 
-                //增加保存标签列表，原未盘存则增加记录，否则将标签盘存数量加1
-                DataRow[] drs = m_curOperateTagISO18000Buffer.dtTagTable.Select(string.Format("UID = '{0}'", strUID));
-                if (drs.Length == 0)
-                {
-                    DataRow row = m_curOperateTagISO18000Buffer.dtTagTable.NewRow();
-                    row[0] = strAntID;
-                    row[1] = strUID;
-                    row[2] = "1";
-                    m_curOperateTagISO18000Buffer.dtTagTable.Rows.Add(row);
-                    m_curOperateTagISO18000Buffer.dtTagTable.AcceptChanges();
-                }
-                else
-                {
-                    DataRow row = drs[0];
-                    row.BeginEdit();
-                    row[2] = (Convert.ToInt32(row[2]) + 1).ToString();
-                    m_curOperateTagISO18000Buffer.dtTagTable.AcceptChanges();
-                }
+        //        //增加保存标签列表，原未盘存则增加记录，否则将标签盘存数量加1
+        //        DataRow[] drs = m_curOperateTagISO18000Buffer.dtTagTable.Select(string.Format("UID = '{0}'", strUID));
+        //        if (drs.Length == 0)
+        //        {
+        //            DataRow row = m_curOperateTagISO18000Buffer.dtTagTable.NewRow();
+        //            row[0] = strAntID;
+        //            row[1] = strUID;
+        //            row[2] = "1";
+        //            m_curOperateTagISO18000Buffer.dtTagTable.Rows.Add(row);
+        //            m_curOperateTagISO18000Buffer.dtTagTable.AcceptChanges();
+        //        }
+        //        else
+        //        {
+        //            DataRow row = drs[0];
+        //            row.BeginEdit();
+        //            row[2] = (Convert.ToInt32(row[2]) + 1).ToString();
+        //            m_curOperateTagISO18000Buffer.dtTagTable.AcceptChanges();
+        //        }
                 
-            }
-            else if (msgTran.AryData.Length == 2)
-            {
-                m_curOperateTagISO18000Buffer.nTagCnt = Convert.ToInt32(msgTran.AryData[1]);
-                RefreshISO18000(msgTran.Cmd);
+        //    }
+        //    else if (msgTran.AryData.Length == 2)
+        //    {
+        //        m_curOperateTagISO18000Buffer.nTagCnt = Convert.ToInt32(msgTran.AryData[1]);
+        //        RefreshISO18000(msgTran.Cmd);
 
-                //WriteLog(lrtxtLog, strCmd, 0);
-            }
-            else
-            {
-                strErrorCode = "Unknown error ";
-                string strLog = strCmd + "failed, due to " + strErrorCode;
+        //        //WriteLog(lrtxtLog, strCmd, 0);
+        //    }
+        //    else
+        //    {
+        //        strErrorCode = "Unknown error ";
+        //        string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
-        }
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
+        //}
 
-        private void btnReadTagISO18000_Click(object sender, EventArgs e)
-        {
-            if (htxtReadUID.Text.Length == 0)
-            {
-                MessageBox.Show("Please select a UID");
-                return;
-            }
-            if (htxtReadStartAdd.Text.Length == 0)
-            {
-                MessageBox.Show("Please input start address ");
-                return;
-            }
-            if (txtReadLength.Text.Length == 0)
-            {
-                MessageBox.Show("Please input read length ");
-                return;
-            }
+        //private void btnReadTagISO18000_Click(object sender, EventArgs e)
+        //{
+        //    if (htxtReadUID.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please select a UID");
+        //        return;
+        //    }
+        //    if (htxtReadStartAdd.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input start address ");
+        //        return;
+        //    }
+        //    if (txtReadLength.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input read length ");
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 8)
-            {
-                MessageBox.Show("At least input 8 bytes ");
-                return;
-            }
-            byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 8)
+        //    {
+        //        MessageBox.Show("At least input 8 bytes ");
+        //        return;
+        //    }
+        //    byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
 
-            reader.ReadTagISO18000(m_curSetting.btReadId, btAryUID, Convert.ToByte(htxtReadStartAdd.Text, 16), Convert.ToByte(txtReadLength.Text, 16));
-        }
+        //    reader.ReadTagISO18000(m_curSetting.btReadId, btAryUID, Convert.ToByte(htxtReadStartAdd.Text, 16), Convert.ToByte(txtReadLength.Text, 16));
+        //}
 
-        private void ProcessReadTagISO18000(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Read tag ";
-            string strErrorCode = string.Empty;
+        //private void ProcessReadTagISO18000(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Read tag ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                string strLog = strCmd + "failed, due to " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
-            else
-            {
-                string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
-                string strData = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, msgTran.AryData.Length - 1);
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
+        //    else
+        //    {
+        //        string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
+        //        string strData = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, msgTran.AryData.Length - 1);
 
-                m_curOperateTagISO18000Buffer.btAntId = Convert.ToByte(strAntID);
-                m_curOperateTagISO18000Buffer.strReadData = strData;
+        //        m_curOperateTagISO18000Buffer.btAntId = Convert.ToByte(strAntID);
+        //        m_curOperateTagISO18000Buffer.strReadData = strData;
 
-                RefreshISO18000(msgTran.Cmd);
+        //        RefreshISO18000(msgTran.Cmd);
 
-                WriteLog(lrtxtLog, strCmd, 0);
-            }
-        }
+        //        WriteLog(lrtxtLog, strCmd, 0);
+        //    }
+        //}
 
-        private void btnWriteTagISO18000_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                m_nLoopedTimes = 0;
-                if (txtLoop.Text.Length == 0)
-                    m_nLoopTimes = 0;
-                else
-                    m_nLoopTimes = Convert.ToInt32(txtLoop.Text);
+        //private void btnWriteTagISO18000_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        m_nLoopedTimes = 0;
+        //        if (txtLoop.Text.Length == 0)
+        //            m_nLoopTimes = 0;
+        //        else
+        //            m_nLoopTimes = Convert.ToInt32(txtLoop.Text);
 
-                WriteTagISO18000();
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //        WriteTagISO18000();
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
-        private void WriteTagISO18000()
-        {
-            if (htxtReadUID.Text.Length == 0)
-            {
-                MessageBox.Show("Please select a UID");
-                return;
-            }
-            if (htxtWriteStartAdd.Text.Length == 0)
-            {
-                MessageBox.Show("Please input start address ");
-                return;
-            }
-            if (htxtWriteData18000.Text.Length == 0)
-            {
-                MessageBox.Show("Please input the data to be written ");
-                return;
-            }
+        //private void WriteTagISO18000()
+        //{
+        //    if (htxtReadUID.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please select a UID");
+        //        return;
+        //    }
+        //    if (htxtWriteStartAdd.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input start address ");
+        //        return;
+        //    }
+        //    if (htxtWriteData18000.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input the data to be written ");
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 8)
-            {
-                MessageBox.Show("At least input 8 bytes ");
-                return;
-            }
-            byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 8)
+        //    {
+        //        MessageBox.Show("At least input 8 bytes ");
+        //        return;
+        //    }
+        //    byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
 
-            byte btStartAdd = Convert.ToByte(htxtWriteStartAdd.Text, 16);
+        //    byte btStartAdd = Convert.ToByte(htxtWriteStartAdd.Text, 16);
 
-            //string[] reslut = CCommondMethod.StringToStringArray(htxtWriteData18000.Text.ToUpper(), 2);
-            string strTemp = cleanString(htxtWriteData18000.Text);
-            reslut = CCommondMethod.StringToStringArray(strTemp.ToUpper(), 2);
+        //    //string[] reslut = CCommondMethod.StringToStringArray(htxtWriteData18000.Text.ToUpper(), 2);
+        //    string strTemp = cleanString(htxtWriteData18000.Text);
+        //    reslut = CCommondMethod.StringToStringArray(strTemp.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
 
-            byte[] btAryData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
+        //    byte[] btAryData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
 
-            //byte btLength = Convert.ToByte(txtWriteLength.Text, 16);
-            byte btLength = Convert.ToByte(reslut.Length);
-            txtWriteLength.Text = String.Format("{0:X}", btLength);
-            m_nBytes = reslut.Length;
+        //    //byte btLength = Convert.ToByte(txtWriteLength.Text, 16);
+        //    byte btLength = Convert.ToByte(reslut.Length);
+        //    txtWriteLength.Text = String.Format("{0:X}", btLength);
+        //    m_nBytes = reslut.Length;
 
-            reader.WriteTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd, btLength, btAryData);
-        }
+        //    reader.WriteTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd, btLength, btAryData);
+        //}
 
         private string cleanString(string newStr)
         {
@@ -4046,71 +4068,71 @@ namespace UHFDemo
         }
 
 
-        private void ProcessWriteTagISO18000(Reader.MessageTran msgTran)
-        {
-            string strCmd = "Write tag ";
-            string strErrorCode = string.Empty;
+        //private void ProcessWriteTagISO18000(Reader.MessageTran msgTran)
+        //{
+        //    string strCmd = "Write tag ";
+        //    string strErrorCode = string.Empty;
 
-            if (msgTran.AryData.Length == 1)
-            {
-                strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
-                string strLog = strCmd + "failed, due to : " + strErrorCode;
+        //    if (msgTran.AryData.Length == 1)
+        //    {
+        //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
+        //        string strLog = strCmd + "failed, due to : " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
-            }
-            else
-            {
-                //string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
-                //string strCnt = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 1);
+        //        WriteLog(lrtxtLog, strLog, 1);
+        //    }
+        //    else
+        //    {
+        //        //string strAntID = CCommondMethod.ByteArrayToString(msgTran.AryData, 0, 1);
+        //        //string strCnt = CCommondMethod.ByteArrayToString(msgTran.AryData, 1, 1);
 
-                m_curOperateTagISO18000Buffer.btAntId = msgTran.AryData[0];
-                m_curOperateTagISO18000Buffer.btWriteLength = msgTran.AryData[1];
+        //        m_curOperateTagISO18000Buffer.btAntId = msgTran.AryData[0];
+        //        m_curOperateTagISO18000Buffer.btWriteLength = msgTran.AryData[1];
 
-                //RefreshISO18000(msgTran.Cmd);
-                string strLength = msgTran.AryData[1].ToString();
-                string strLog = strCmd + ": " + "successfully wrote " + strLength + " byte(s)";
-                WriteLog(lrtxtLog, strLog, 0);
-                RunLoopISO18000(Convert.ToInt32(msgTran.AryData[1]));
-            }
-        }
+        //        //RefreshISO18000(msgTran.Cmd);
+        //        string strLength = msgTran.AryData[1].ToString();
+        //        string strLog = strCmd + ": " + "successfully wrote " + strLength + " byte(s)";
+        //        WriteLog(lrtxtLog, strLog, 0);
+        //        RunLoopISO18000(Convert.ToInt32(msgTran.AryData[1]));
+        //    }
+        //}
 
-        private void btnLockTagISO18000_Click(object sender, EventArgs e)
-        {
-            if (htxtReadUID.Text.Length == 0)
-            {
-                MessageBox.Show("Please select a UID");
-                return;
-            }
-            if (htxtLockAdd.Text.Length == 0)
-            {
-                MessageBox.Show("Please input lock address ");
-                return;
-            }
+        //private void btnLockTagISO18000_Click(object sender, EventArgs e)
+        //{
+        //    if (htxtReadUID.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please select a UID");
+        //        return;
+        //    }
+        //    if (htxtLockAdd.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input lock address ");
+        //        return;
+        //    }
 
-            //确认写保护提示
-            if (MessageBox.Show("Lock operation is permanent, proceed?", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel) 
-            {
-                return;
-            }
+        //    //确认写保护提示
+        //    if (MessageBox.Show("Lock operation is permanent, proceed?", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel) 
+        //    {
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 8)
-            {
-                MessageBox.Show("At least input 8 bytes ");
-                return;
-            }
-            byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 8)
+        //    {
+        //        MessageBox.Show("At least input 8 bytes ");
+        //        return;
+        //    }
+        //    byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
 
-            byte btStartAdd = Convert.ToByte(htxtLockAdd.Text, 16);
+        //    byte btStartAdd = Convert.ToByte(htxtLockAdd.Text, 16);
 
-            reader.LockTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd);
-        }
+        //    reader.LockTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd);
+        //}
 
         private void ProcessLockTagISO18000(Reader.MessageTran msgTran)
         {
@@ -4154,37 +4176,37 @@ namespace UHFDemo
             }
         }
 
-        private void btnQueryTagISO18000_Click(object sender, EventArgs e)
-        {
-            if (htxtReadUID.Text.Length == 0)
-            {
-                MessageBox.Show("Please select a UID ");
-                return;
-            }
-            if (htxtQueryAdd.Text.Length == 0)
-            {
-                MessageBox.Show("Please input query address ");
-                return;
-            }
+        //private void btnQueryTagISO18000_Click(object sender, EventArgs e)
+        //{
+        //    if (htxtReadUID.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please select a UID ");
+        //        return;
+        //    }
+        //    if (htxtQueryAdd.Text.Length == 0)
+        //    {
+        //        MessageBox.Show("Please input query address ");
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtReadUID.Text.ToUpper(), 2);
 
-            if (reslut == null)
-            {
-                MessageBox.Show("Invalid character ");
-                return;
-            }
-            else if (reslut.GetLength(0) < 8)
-            {
-                MessageBox.Show("At least input 8 bytes ");
-                return;
-            }
-            byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
+        //    if (reslut == null)
+        //    {
+        //        MessageBox.Show("Invalid character ");
+        //        return;
+        //    }
+        //    else if (reslut.GetLength(0) < 8)
+        //    {
+        //        MessageBox.Show("At least input 8 bytes ");
+        //        return;
+        //    }
+        //    byte[] btAryUID = CCommondMethod.StringArrayToByteArray(reslut, 8);
 
-            byte btStartAdd = Convert.ToByte(htxtQueryAdd.Text, 16);
+        //    byte btStartAdd = Convert.ToByte(htxtQueryAdd.Text, 16);
 
-            reader.QueryTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd);
-        }
+        //    reader.QueryTagISO18000(m_curSetting.btReadId, btAryUID, btStartAdd);
+        //}
 
         private void ProcessQueryISO18000(Reader.MessageTran msgTran)
         {
@@ -4206,51 +4228,51 @@ namespace UHFDemo
                 m_curOperateTagISO18000Buffer.btAntId = msgTran.AryData[0];
                 m_curOperateTagISO18000Buffer.btStatus = msgTran.AryData[1];
 
-                RefreshISO18000(msgTran.Cmd);
+                //RefreshISO18000(msgTran.Cmd);
 
                 WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
-        private void htxtSendData_Leave(object sender, EventArgs e)
-        {
-            if (htxtSendData.TextLength == 0)
-            {
-                return;
-            }
+        //private void htxtSendData_Leave(object sender, EventArgs e)
+        //{
+        //    if (htxtSendData.TextLength == 0)
+        //    {
+        //        return;
+        //    }
 
-            string[] reslut = CCommondMethod.StringToStringArray(htxtSendData.Text.ToUpper(), 2);
-            byte[] btArySendData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
+        //    string[] reslut = CCommondMethod.StringToStringArray(htxtSendData.Text.ToUpper(), 2);
+        //    byte[] btArySendData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
 
-            byte btCheckData = reader.CheckValue(btArySendData);
-            htxtCheckData.Text = string.Format(" {0:X2}", btCheckData);
-        }
+        //    byte btCheckData = reader.CheckValue(btArySendData);
+        //    htxtCheckData.Text = string.Format(" {0:X2}", btCheckData);
+        //}
 
-        private void btnSendData_Click(object sender, EventArgs e)
-        {
-            if (htxtSendData.TextLength == 0)
-            {
-                return;
-            }
+        //private void btnSendData_Click(object sender, EventArgs e)
+        //{
+        //    if (htxtSendData.TextLength == 0)
+        //    {
+        //        return;
+        //    }
 
-            string strData = htxtSendData.Text + htxtCheckData.Text;
+        //    string strData = htxtSendData.Text + htxtCheckData.Text;
 
-            string[] reslut = CCommondMethod.StringToStringArray(strData.ToUpper(), 2);
-            byte[] btArySendData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
+        //    string[] reslut = CCommondMethod.StringToStringArray(strData.ToUpper(), 2);
+        //    byte[] btArySendData = CCommondMethod.StringArrayToByteArray(reslut, reslut.Length);
 
-            reader.SendMessage(btArySendData);
-        }
+        //    reader.SendMessage(btArySendData);
+        //}
 
-        private void btnClearData_Click(object sender, EventArgs e)
-        {
-            htxtSendData.Text = "";
-            htxtCheckData.Text = "";
-        }
+        //private void btnClearData_Click(object sender, EventArgs e)
+        //{
+        //    htxtSendData.Text = "";
+        //    htxtCheckData.Text = "";
+        //}
 
-        private void lrtxtDataTran_DoubleClick(object sender, EventArgs e)
-        {
-            lrtxtDataTran.Text = "";
-        }
+        //private void lrtxtDataTran_DoubleClick(object sender, EventArgs e)
+        //{
+        //    lrtxtDataTran.Text = "";
+        //}
 
         private void lrtxtLog_DoubleClick(object sender, EventArgs e)
         {
@@ -4267,8 +4289,8 @@ namespace UHFDemo
 
             if (nIndex == 2)
             {
-                lrtxtDataTran.Select(lrtxtDataTran.TextLength, 0);
-                lrtxtDataTran.ScrollToCaret();
+                //lrtxtDataTran.Select(lrtxtDataTran.TextLength, 0);
+                //lrtxtDataTran.ScrollToCaret();
             }
 
             if (nIndex == 5)
@@ -4322,15 +4344,15 @@ namespace UHFDemo
             }
         }
 
-        private void cmbSetAccessEpcMatch_DropDown(object sender, EventArgs e)
-        {
-            cmbSetAccessEpcMatch.Items.Clear();
-            DataRow[] drs = m_curInventoryBuffer.dtTagTable.Select();
-            foreach (DataRow row in drs)
-            {
-                cmbSetAccessEpcMatch.Items.Add(row[2].ToString());
-            }
-        }
+        //private void cmbSetAccessEpcMatch_DropDown(object sender, EventArgs e)
+        //{
+        //    cmbSetAccessEpcMatch.Items.Clear();
+        //    DataRow[] drs = m_curInventoryBuffer.dtTagTable.Select();
+        //    foreach (DataRow row in drs)
+        //    {
+        //        cmbSetAccessEpcMatch.Items.Add(row[2].ToString());
+        //    }
+        //}
 
         
         private void btnClearInventoryRealResult_Click(object sender, EventArgs e)
@@ -4407,32 +4429,6 @@ namespace UHFDemo
             //    string strUID = item.SubItems[1].Text;
             //    htxtReadUID.Text = strUID;
             //}
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            htxtReadUID.Text = "";
-            htxtReadStartAdd.Text = "";
-            txtReadLength.Text = "";
-            htxtReadData18000.Text = "";
-            htxtWriteStartAdd.Text = "";
-            txtWriteLength.Text = "";
-            htxtWriteData18000.Text = "";
-            htxtLockAdd.Text = "";
-            htxtQueryAdd.Text = "";
-            txtStatus.Text = "";
-            txtLoop.Text = "1";
-            ltvTagISO18000.Items.Clear();
-        }
-
-        private void ltvTagISO18000_Click(object sender, EventArgs e)
-        {
-            if (ltvTagISO18000.SelectedItems.Count == 1)
-            {
-                ListViewItem item = ltvTagISO18000.SelectedItems[0];
-                string strUID = item.SubItems[1].Text;
-                htxtReadUID.Text = strUID;
-            }
         }
 
         private void ckDisplayLog_CheckedChanged(object sender, EventArgs e)
@@ -4522,7 +4518,7 @@ namespace UHFDemo
                 }
                 if (m_curInventoryBuffer.lAntenna.Count == 0)
                 {
-                    MessageBox.Show("Please select at least one antenna ");
+                    MessageBox.Show("Porfavor seleccione por lo menos una antena ");
                     return;
                 }
                 //默认循环发送命令
@@ -4546,7 +4542,7 @@ namespace UHFDemo
                         }
                         else
                         {
-                            btnInventoryISO18000_Click(sender, e);
+                            //btnInventoryISO18000_Click(sender, e);
                             return;
                         }
                     }
@@ -4607,344 +4603,344 @@ namespace UHFDemo
            
         }
 
-        private void btBufferInventory_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                    m_curInventoryBuffer.ClearInventoryPar();
+        //private void btBufferInventory_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //            m_curInventoryBuffer.ClearInventoryPar();
 
-                    if (textReadRoundBuffer.Text.Length == 0)
-                    {
-                        MessageBox.Show("Please input repeat per command ");
-                        return;
-                    }
-                    m_curInventoryBuffer.btRepeat = Convert.ToByte(textReadRoundBuffer.Text);
+        //            if (textReadRoundBuffer.Text.Length == 0)
+        //            {
+        //                MessageBox.Show("Please input repeat per command ");
+        //                return;
+        //            }
+        //            m_curInventoryBuffer.btRepeat = Convert.ToByte(textReadRoundBuffer.Text);
 
-                    if (cbBufferWorkant1.Checked)
-                    {
-                        m_curInventoryBuffer.lAntenna.Add(0x00);
-                    }
-                    if (cbBufferWorkant2.Checked)
-                    {
-                        m_curInventoryBuffer.lAntenna.Add(0x01);
-                    }
-                    if (cbBufferWorkant3.Checked)
-                    {
-                        m_curInventoryBuffer.lAntenna.Add(0x02);
-                    }
-                    if (cbBufferWorkant4.Checked)
-                    {
-                        m_curInventoryBuffer.lAntenna.Add(0x03);
-                    }
-                    if (m_curInventoryBuffer.lAntenna.Count == 0)
-                    {
-                        MessageBox.Show("Please select at least one antenna ");
-                        return;
-                    }
+        //            if (cbBufferWorkant1.Checked)
+        //            {
+        //                m_curInventoryBuffer.lAntenna.Add(0x00);
+        //            }
+        //            if (cbBufferWorkant2.Checked)
+        //            {
+        //                m_curInventoryBuffer.lAntenna.Add(0x01);
+        //            }
+        //            if (cbBufferWorkant3.Checked)
+        //            {
+        //                m_curInventoryBuffer.lAntenna.Add(0x02);
+        //            }
+        //            if (cbBufferWorkant4.Checked)
+        //            {
+        //                m_curInventoryBuffer.lAntenna.Add(0x03);
+        //            }
+        //            if (m_curInventoryBuffer.lAntenna.Count == 0)
+        //            {
+        //                MessageBox.Show("Please select at least one antenna ");
+        //                return;
+        //            }
                 
 
-                //默认循环发送命令
-                if (m_curInventoryBuffer.bLoopInventory)
-                {
-                    m_bInventory = false;
-                    m_curInventoryBuffer.bLoopInventory = false;
-                    btBufferInventory.BackColor = Color.WhiteSmoke;
-                    btBufferInventory.ForeColor = Color.DarkBlue;
-                    btBufferInventory.Text = "Inventory ";
-                    return;
-                }
-                else
-                {
-                    //ISO 18000-6B盘存是否正在运行
-                    if (m_bContinue)
-                    {
-                        if (MessageBox.Show("ISO 18000-6B inventory is ongoing, stop it? ", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
-                        {
-                            return;
-                        }
-                        else
-                        {
-                            btnInventoryISO18000_Click(sender, e);
-                            return;
-                        }
-                    }
+        //        //默认循环发送命令
+        //        if (m_curInventoryBuffer.bLoopInventory)
+        //        {
+        //            m_bInventory = false;
+        //            m_curInventoryBuffer.bLoopInventory = false;
+        //            btBufferInventory.BackColor = Color.WhiteSmoke;
+        //            btBufferInventory.ForeColor = Color.DarkBlue;
+        //            btBufferInventory.Text = "Inventory ";
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            //ISO 18000-6B盘存是否正在运行
+        //            if (m_bContinue)
+        //            {
+        //                if (MessageBox.Show("ISO 18000-6B inventory is ongoing, stop it? ", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
+        //                {
+        //                    return;
+        //                }
+        //                else
+        //                {
+        //                    btnInventoryISO18000_Click(sender, e);
+        //                    return;
+        //                }
+        //            }
 
-                    m_bInventory = true;
-                    m_curInventoryBuffer.bLoopInventory = true;
-                    btBufferInventory.BackColor = Color.DarkBlue;
-                    btBufferInventory.ForeColor = Color.White;
-                    btBufferInventory.Text = "Stop";
-                }
+        //            m_bInventory = true;
+        //            m_curInventoryBuffer.bLoopInventory = true;
+        //            btBufferInventory.BackColor = Color.DarkBlue;
+        //            btBufferInventory.ForeColor = Color.White;
+        //            btBufferInventory.Text = "Stop";
+        //        }
 
               
-                m_curInventoryBuffer.ClearInventoryRealResult();
-                lvBufferList.Items.Clear();
-                lvBufferList.Items.Clear();
-                m_nTotal = 0;
+        //        m_curInventoryBuffer.ClearInventoryRealResult();
+        //        lvBufferList.Items.Clear();
+        //        lvBufferList.Items.Clear();
+        //        m_nTotal = 0;
                 
-                byte btWorkAntenna = m_curInventoryBuffer.lAntenna[m_curInventoryBuffer.nIndexAntenna];
-                reader.SetWorkAntenna(m_curSetting.btReadId, btWorkAntenna);
-                m_curSetting.btWorkAntenna = btWorkAntenna;
+        //        byte btWorkAntenna = m_curInventoryBuffer.lAntenna[m_curInventoryBuffer.nIndexAntenna];
+        //        reader.SetWorkAntenna(m_curSetting.btReadId, btWorkAntenna);
+        //        m_curSetting.btWorkAntenna = btWorkAntenna;
                 
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }            
-        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }            
+        //}
 
-        private void btGetBuffer_Click(object sender, EventArgs e)
-        {
-            m_curInventoryBuffer.dtTagTable.Rows.Clear();
-            lvBufferList.Items.Clear();
-            reader.GetInventoryBuffer(m_curSetting.btReadId);
-        }
+        //private void btGetBuffer_Click(object sender, EventArgs e)
+        //{
+        //    m_curInventoryBuffer.dtTagTable.Rows.Clear();
+        //    lvBufferList.Items.Clear();
+        //    reader.GetInventoryBuffer(m_curSetting.btReadId);
+        //}
 
-        private void btGetClearBuffer_Click(object sender, EventArgs e)
-        {
-            m_curInventoryBuffer.dtTagTable.Rows.Clear();
-            lvBufferList.Items.Clear();
-            reader.GetAndResetInventoryBuffer(m_curSetting.btReadId);
-        }
+        //private void btGetClearBuffer_Click(object sender, EventArgs e)
+        //{
+        //    m_curInventoryBuffer.dtTagTable.Rows.Clear();
+        //    lvBufferList.Items.Clear();
+        //    reader.GetAndResetInventoryBuffer(m_curSetting.btReadId);
+        //}
 
-        private void btClearBuffer_Click(object sender, EventArgs e)
-        {
-            reader.ResetInventoryBuffer(m_curSetting.btReadId);
-            btBufferFresh_Click(sender, e);
+        //private void btClearBuffer_Click(object sender, EventArgs e)
+        //{
+        //    reader.ResetInventoryBuffer(m_curSetting.btReadId);
+        //    btBufferFresh_Click(sender, e);
 
-        }
+        //}
 
-        private void btQueryBuffer_Click(object sender, EventArgs e)
-        {
-            reader.GetInventoryBufferTagCount(m_curSetting.btReadId);
-        }
+        //private void btQueryBuffer_Click(object sender, EventArgs e)
+        //{
+        //    reader.GetInventoryBufferTagCount(m_curSetting.btReadId);
+        //}
 
-        private void btBufferFresh_Click(object sender, EventArgs e)
-        {
-            m_curInventoryBuffer.ClearInventoryRealResult();
-            lvBufferList.Items.Clear();
-            lvBufferList.Items.Clear();
-            ledBuffer1.Text = "0";
-            ledBuffer2.Text = "0";
-            ledBuffer3.Text = "0";
-            ledBuffer4.Text = "0";
-            ledBuffer5.Text = "0";
+        //private void btBufferFresh_Click(object sender, EventArgs e)
+        //{
+        //    m_curInventoryBuffer.ClearInventoryRealResult();
+        //    lvBufferList.Items.Clear();
+        //    lvBufferList.Items.Clear();
+        //    ledBuffer1.Text = "0";
+        //    ledBuffer2.Text = "0";
+        //    ledBuffer3.Text = "0";
+        //    ledBuffer4.Text = "0";
+        //    ledBuffer5.Text = "0";
            
-            textReadRoundBuffer.Text = "1";
-            cbBufferWorkant1.Checked = true;
-            cbBufferWorkant2.Checked = false;
-            cbBufferWorkant3.Checked = false;
-            cbBufferWorkant4.Checked = false;
-            labelBufferTagCount.Text = "Tag List: ";
-        }
+        //    textReadRoundBuffer.Text = "1";
+        //    cbBufferWorkant1.Checked = true;
+        //    cbBufferWorkant2.Checked = false;
+        //    cbBufferWorkant3.Checked = false;
+        //    cbBufferWorkant4.Checked = false;
+        //    labelBufferTagCount.Text = "Tag List: ";
+        //}
 
-        private void btFastInventory_Click(object sender, EventArgs e)
-        {
-            short antASelection = 1;
-            short antBSelection = 1;
-            short antCSelection = 1;
-            short antDSelection = 1;
-            //默认循环发送命令
-            if (m_curInventoryBuffer.bLoopInventory)
-            {
-                m_bInventory = false;
-                m_curInventoryBuffer.bLoopInventory = false;
-                btFastInventory.BackColor = Color.WhiteSmoke;
-                btFastInventory.ForeColor = Color.DarkBlue;
-                btFastInventory.Text = "Inventory ";
-                return;
-            }
-            else
-            {
-                //ISO 18000-6B盘存是否正在运行
-                if (m_bContinue)
-                {
-                    if (MessageBox.Show("ISO 18000-6B inventory is ongoing, stop it?", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        btnInventoryISO18000_Click(sender, e);
-                        return;
-                    }
-                }
+        //private void btFastInventory_Click(object sender, EventArgs e)
+        //{
+        //    short antASelection = 1;
+        //    short antBSelection = 1;
+        //    short antCSelection = 1;
+        //    short antDSelection = 1;
+        //    //默认循环发送命令
+        //    if (m_curInventoryBuffer.bLoopInventory)
+        //    {
+        //        m_bInventory = false;
+        //        m_curInventoryBuffer.bLoopInventory = false;
+        //        btFastInventory.BackColor = Color.WhiteSmoke;
+        //        btFastInventory.ForeColor = Color.DarkBlue;
+        //        btFastInventory.Text = "Inventory ";
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        //ISO 18000-6B盘存是否正在运行
+        //        if (m_bContinue)
+        //        {
+        //            if (MessageBox.Show("ISO 18000-6B inventory is ongoing, stop it?", "Note", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Cancel)
+        //            {
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                btnInventoryISO18000_Click(sender, e);
+        //                return;
+        //            }
+        //        }
 
-                m_bInventory = true;
-                m_curInventoryBuffer.bLoopInventory = true;
-                btFastInventory.BackColor = Color.DarkBlue;
-                btFastInventory.ForeColor = Color.White;
-                btFastInventory.Text = "Stop";
-            }
-            try
-            {
-                m_curInventoryBuffer.bLoopInventoryReal = true;
+        //        m_bInventory = true;
+        //        m_curInventoryBuffer.bLoopInventory = true;
+        //        btFastInventory.BackColor = Color.DarkBlue;
+        //        btFastInventory.ForeColor = Color.White;
+        //        btFastInventory.Text = "Stop";
+        //    }
+        //    try
+        //    {
+        //        m_curInventoryBuffer.bLoopInventoryReal = true;
                 
-                m_curInventoryBuffer.ClearInventoryRealResult();
-                lvFastList.Items.Clear();
+        //        m_curInventoryBuffer.ClearInventoryRealResult();
+        //        lvFastList.Items.Clear();
                 
-                m_nTotal = 0;
-                    if ((cmbAntSelect1.SelectedIndex < 0) || (cmbAntSelect1.SelectedIndex > 3))  
-                    {
-                        m_btAryData[0] = 0xFF;
-                    }
-                    else
-                    {
-                        m_btAryData[0] = Convert.ToByte(cmbAntSelect1.SelectedIndex);
-                    }
-                    if (txtAStay.Text.Length == 0)
-                    {
-                        m_btAryData[1] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[1] = Convert.ToByte(txtAStay.Text);
-                    }
+        //        m_nTotal = 0;
+        //            if ((cmbAntSelect1.SelectedIndex < 0) || (cmbAntSelect1.SelectedIndex > 3))  
+        //            {
+        //                m_btAryData[0] = 0xFF;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[0] = Convert.ToByte(cmbAntSelect1.SelectedIndex);
+        //            }
+        //            if (txtAStay.Text.Length == 0)
+        //            {
+        //                m_btAryData[1] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[1] = Convert.ToByte(txtAStay.Text);
+        //            }
 
-                    if ((cmbAntSelect2.SelectedIndex < 0) || (cmbAntSelect2.SelectedIndex > 3))  
-                    {
-                        m_btAryData[2] = 0xFF;
-                    }
-                    else
-                    {
-                        m_btAryData[2] = Convert.ToByte(cmbAntSelect2.SelectedIndex);
-                    }
-                    if (txtBStay.Text.Length == 0)
-                    {
-                        m_btAryData[3] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[3] = Convert.ToByte(txtBStay.Text);
-                    }
+        //            if ((cmbAntSelect2.SelectedIndex < 0) || (cmbAntSelect2.SelectedIndex > 3))  
+        //            {
+        //                m_btAryData[2] = 0xFF;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[2] = Convert.ToByte(cmbAntSelect2.SelectedIndex);
+        //            }
+        //            if (txtBStay.Text.Length == 0)
+        //            {
+        //                m_btAryData[3] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[3] = Convert.ToByte(txtBStay.Text);
+        //            }
 
-                    if ((cmbAntSelect3.SelectedIndex < 0) || (cmbAntSelect3.SelectedIndex > 3))  
-                    {
-                        m_btAryData[4] = 0xFF;
-                    }
-                    else
-                    {
-                        m_btAryData[4] = Convert.ToByte(cmbAntSelect3.SelectedIndex);
-                    }
-                    if (txtCStay.Text.Length == 0)
-                    {
-                        m_btAryData[5] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[5] = Convert.ToByte(txtCStay.Text);
-                    }
+        //            if ((cmbAntSelect3.SelectedIndex < 0) || (cmbAntSelect3.SelectedIndex > 3))  
+        //            {
+        //                m_btAryData[4] = 0xFF;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[4] = Convert.ToByte(cmbAntSelect3.SelectedIndex);
+        //            }
+        //            if (txtCStay.Text.Length == 0)
+        //            {
+        //                m_btAryData[5] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[5] = Convert.ToByte(txtCStay.Text);
+        //            }
 
-                    if ((cmbAntSelect4.SelectedIndex < 0) || (cmbAntSelect4.SelectedIndex > 3))  
-                    {
-                        m_btAryData[6] = 0xFF;
-                    }
-                    else
-                    {
-                        m_btAryData[6] = Convert.ToByte(cmbAntSelect4.SelectedIndex);
-                    }
-                    if (txtDStay.Text.Length == 0)
-                    {
-                        m_btAryData[7] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[7] = Convert.ToByte(txtDStay.Text);
-                    }
+        //            if ((cmbAntSelect4.SelectedIndex < 0) || (cmbAntSelect4.SelectedIndex > 3))  
+        //            {
+        //                m_btAryData[6] = 0xFF;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[6] = Convert.ToByte(cmbAntSelect4.SelectedIndex);
+        //            }
+        //            if (txtDStay.Text.Length == 0)
+        //            {
+        //                m_btAryData[7] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[7] = Convert.ToByte(txtDStay.Text);
+        //            }
 
-                    if (txtInterval.Text.Length == 0)
-                    {
-                        m_btAryData[8] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[8] = Convert.ToByte(txtInterval.Text);
-                    }
+        //            if (txtInterval.Text.Length == 0)
+        //            {
+        //                m_btAryData[8] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[8] = Convert.ToByte(txtInterval.Text);
+        //            }
 
-                    if (txtRepeat.Text.Length == 0)
-                    {
-                        m_btAryData[9] = 0x00;
-                    }
-                    else
-                    {
-                        m_btAryData[9] = Convert.ToByte(txtRepeat.Text);
-                    }
+        //            if (txtRepeat.Text.Length == 0)
+        //            {
+        //                m_btAryData[9] = 0x00;
+        //            }
+        //            else
+        //            {
+        //                m_btAryData[9] = Convert.ToByte(txtRepeat.Text);
+        //            }
 
-                    if (m_btAryData[0] > 3) 
-                    {
-                        antASelection = 0;
-                    }
+        //            if (m_btAryData[0] > 3) 
+        //            {
+        //                antASelection = 0;
+        //            }
 
-                    if (m_btAryData[2] > 3)
-                    {
-                        antBSelection = 0;
-                    }
+        //            if (m_btAryData[2] > 3)
+        //            {
+        //                antBSelection = 0;
+        //            }
 
-                    if (m_btAryData[4] > 3)
-                    {
-                        antCSelection = 0;
-                    }
+        //            if (m_btAryData[4] > 3)
+        //            {
+        //                antCSelection = 0;
+        //            }
 
-                    if (m_btAryData[6] > 3)
-                    {
-                        antDSelection = 0;
-                    }
+        //            if (m_btAryData[6] > 3)
+        //            {
+        //                antDSelection = 0;
+        //            }
 
-                    if ((antASelection * m_btAryData[1] + antBSelection * m_btAryData[3] + antCSelection * m_btAryData[5] + antDSelection * m_btAryData[7]) * m_btAryData[9] == 0)
-                    {
-                        MessageBox.Show("Please select at least one antenna and repeat at least one time ");
-                        m_bInventory = false;
-                        m_curInventoryBuffer.bLoopInventory = false;
-                        btFastInventory.BackColor = Color.WhiteSmoke;
-                        btFastInventory.ForeColor = Color.DarkBlue;
-                        btFastInventory.Text = "Start inventory ";
-                        return;    
-                    }
+        //            if ((antASelection * m_btAryData[1] + antBSelection * m_btAryData[3] + antCSelection * m_btAryData[5] + antDSelection * m_btAryData[7]) * m_btAryData[9] == 0)
+        //            {
+        //                MessageBox.Show("Please select at least one antenna and repeat at least one time ");
+        //                m_bInventory = false;
+        //                m_curInventoryBuffer.bLoopInventory = false;
+        //                btFastInventory.BackColor = Color.WhiteSmoke;
+        //                btFastInventory.ForeColor = Color.DarkBlue;
+        //                btFastInventory.Text = "Start inventory ";
+        //                return;    
+        //            }
 
-                    m_nSwitchTotal = 0;
-                    m_nSwitchTime = 0;
-                    reader.FastSwitchInventory(m_curSetting.btReadId, m_btAryData);
+        //            m_nSwitchTotal = 0;
+        //            m_nSwitchTime = 0;
+        //            reader.FastSwitchInventory(m_curSetting.btReadId, m_btAryData);
             
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }            
-        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }            
+        //}
 
-        private void buttonFastFresh_Click(object sender, EventArgs e)
-        {
-            m_curInventoryBuffer.ClearInventoryRealResult();
-            lvFastList.Items.Clear();
-            lvFastList.Items.Clear();
-            ledFast1.Text = "0";
-            ledFast2.Text = "0";
-            ledFast3.Text = "0";
-            ledFast4.Text = "0";
-            ledFast5.Text = "0";
-            txtFastMinRssi.Text = "";
-            txtFastMaxRssi.Text = "";
-            txtFastTagList.Text = "Tag List: ";
+        //private void buttonFastFresh_Click(object sender, EventArgs e)
+        //{
+        //    m_curInventoryBuffer.ClearInventoryRealResult();
+        //    lvFastList.Items.Clear();
+        //    lvFastList.Items.Clear();
+        //    ledFast1.Text = "0";
+        //    ledFast2.Text = "0";
+        //    ledFast3.Text = "0";
+        //    ledFast4.Text = "0";
+        //    ledFast5.Text = "0";
+        //    txtFastMinRssi.Text = "";
+        //    txtFastMaxRssi.Text = "";
+        //    txtFastTagList.Text = "Tag List: ";
 
-            cmbAntSelect1.SelectedIndex = 0;
-            cmbAntSelect2.SelectedIndex = 1;
-            cmbAntSelect3.SelectedIndex = 2;
-            cmbAntSelect4.SelectedIndex = 3;
+        //    cmbAntSelect1.SelectedIndex = 0;
+        //    cmbAntSelect2.SelectedIndex = 1;
+        //    cmbAntSelect3.SelectedIndex = 2;
+        //    cmbAntSelect4.SelectedIndex = 3;
 
-            txtAStay.Text = "1";
-            txtBStay.Text = "1";
-            txtCStay.Text = "1";
-            txtDStay.Text = "1";
+        //    txtAStay.Text = "1";
+        //    txtBStay.Text = "1";
+        //    txtCStay.Text = "1";
+        //    txtDStay.Text = "1";
 
-            txtInterval.Text = "0";
-            txtRepeat.Text = "10";
+        //    txtInterval.Text = "0";
+        //    txtRepeat.Text = "10";
 
-        }
+        //}
 
-        private void pageFast4AntMode_Enter(object sender, EventArgs e)
-        {
-            buttonFastFresh_Click(sender, e);
-        }
+        //private void pageFast4AntMode_Enter(object sender, EventArgs e)
+        //{
+        //    buttonFastFresh_Click(sender, e);
+        //}
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -5180,7 +5176,7 @@ namespace UHFDemo
 
         private void btnEliminarCategoria_Click(object sender, EventArgs e)
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             if (tablaCategorias.SelectedRows.Count != 0)
             {
@@ -5253,7 +5249,7 @@ namespace UHFDemo
 
         private void btnEliminarCompetidor_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             if (tablaCompetidores.SelectedRows.Count != 0)
             {
@@ -5261,7 +5257,7 @@ namespace UHFDemo
                 if (result == DialogResult.Yes)
                 {
                     DataGridViewRow row = this.tablaCompetidores.SelectedRows[0];
-                    int idCompetidor = (int)row.Cells[0].Value;
+                    int idCompetidor = Convert.ToInt32(row.Cells[0].Value);
 
                     try
                     {
@@ -5273,6 +5269,7 @@ namespace UHFDemo
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             MessageBox.Show("Registro eliminado correctamente");
+                            tablaCompetidores.Rows.Remove(row);
                         }
                         else
                         {
@@ -5301,6 +5298,8 @@ namespace UHFDemo
 
         private void btnRegistrarCarrera_Click(object sender, EventArgs e)
         {
+            m_curInventoryBuffer.bLoopInventory = false;
+            tabCtrMain.SelectedTab = pageEpcTest;
             btRealTimeInventory.PerformClick();
             VistaCapturaCarreras vista = new VistaCapturaCarreras(this);
             vista.accion = "registrar";
@@ -5331,7 +5330,7 @@ namespace UHFDemo
 
         private void LlenarComboCarreras()
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             string query = "SELECT IdCarrera, Descripcion FROM Carreras WHERE IdEmpresa = '" + IdEmpresa + "'";
             try
@@ -5373,7 +5372,7 @@ namespace UHFDemo
 
         private void LlenarComboCategorias(int idCarrera)
         {
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             StringBuilder sentencia = new StringBuilder();
             sentencia.AppendLine("SELECT DISTINCT ");
@@ -5430,7 +5429,7 @@ namespace UHFDemo
 
             vista.txtCarreraDescripcion.Text = ((Item)cmbCarreraConfig.SelectedValue).Name;
             vista.txtCategoriaDescripción.Text = ((Item)cmbCategoriaConfig.SelectedValue).Name;
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
 
@@ -5513,7 +5512,7 @@ namespace UHFDemo
         public bool GuardarTiempos(string chip)
         {
             bool resultado = false;
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             int idCarrera = 0;
             int idCategoria = 0;
@@ -5605,7 +5604,7 @@ namespace UHFDemo
         private List<CarreraDetalle> LlenarDatosCarrera(int idCarrera)
         {
             List<CarreraDetalle> lista = new List<CarreraDetalle>();
-            string connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
             mysqlCon.Open();
             try
@@ -5651,7 +5650,6 @@ namespace UHFDemo
                     entidad.IdCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     entidad.Chip = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    entidad.Tiempo = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     lista.Add(entidad);
 
                     if (idCategoriasCarrera.FindIndex(s => s == entidad.IdCategoria) == -1)
@@ -5767,12 +5765,12 @@ namespace UHFDemo
                             {
                                 foreach (CarreraDetalle entidad in lista)
                                 {
-                                    string tiempo = "";
-                                    if (!string.IsNullOrEmpty(entidad.Tiempo))
-                                    {
-                                        DateTime time = Convert.ToDateTime(entidad.Tiempo);
-                                        tiempo = time.ToString("hh:mm:ss tt");
-                                    }
+                                    //string tiempo = "";
+                                    //if (!string.IsNullOrEmpty(entidad.Tiempo))
+                                    //{
+                                    //    DateTime time = Convert.ToDateTime(entidad.Tiempo);
+                                    //    tiempo = time.ToString("hh:mm:ss tt");
+                                    //}
                                     
 
                                     var dato = ws.Cells[renglon, 1, renglon, 5];
@@ -5802,6 +5800,21 @@ namespace UHFDemo
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void tablaCompetidores_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnModificarCompetidor.PerformClick();
+        }
+
+        private void tablaCategorias_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnModificarCategoria.PerformClick();
+        }
+
+        private void tablaCarreras_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnModificarCarrera.PerformClick();
         }
 
     }

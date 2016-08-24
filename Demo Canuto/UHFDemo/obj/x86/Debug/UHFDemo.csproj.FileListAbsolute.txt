@@ -108,17 +108,17 @@ E:\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.R2000UartDemo.resources
 E:\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.Properties.Resources.resources
 E:\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
 E:\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
-C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.exe
-C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.pdb
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.csprojResolveAssemblyReference.cache
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.Form1.resources
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.R2000UartDemo.resources
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.Properties.Resources.resources
-C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.csproj.GenerateResource.Cache
-C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.exe
-C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.pdb
-C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.exe.config
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaCapturaCarreras.resources
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaCapturaCategorias.resources
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaCapturaCompetidores.resources
-C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaCapturaCarreras.resources
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaCarreraTiempos.resources
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.csproj.GenerateResource.Cache
+C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.exe.config
+C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.exe
+C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.exe
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.pdb

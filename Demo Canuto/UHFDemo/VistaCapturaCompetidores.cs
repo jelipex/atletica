@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using UHFDemo.Entidades;
 
 namespace UHFDemo
 {
@@ -28,9 +29,13 @@ namespace UHFDemo
 
         private void AsignarEventos()
         {
+            btnGuardarCompetidor.Click -= new EventHandler(Guardar);
             btnGuardarCompetidor.Click += new EventHandler(Guardar);
+            btnGuardarCerrarCompetidor.Click -= new EventHandler(GuardarCerrar);
             btnGuardarCerrarCompetidor.Click += new EventHandler(GuardarCerrar);
+            btnCancelarCompetidor.Click -= new EventHandler(Cancelar);
             btnCancelarCompetidor.Click += new EventHandler(Cancelar);
+            this.FormClosing -= VistaCapturaCompetidores_FormClosing;
             this.FormClosing += VistaCapturaCompetidores_FormClosing;
         }
 
@@ -61,16 +66,9 @@ namespace UHFDemo
             LlenarComboEstados("", 0);
         }
 
-        private void VistaCapturaCompetidores_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'inventariofacturacionDataSet.paises' Puede moverla o quitarla según sea necesario.
-
-            LlenarComboPaises("");
-        }
 
         public void RegistrarCompetidor()
         {
-            
             InicializarFormularioCompetidores();
             btnGuardarCompetidor.Visible = true;
         }
@@ -83,7 +81,7 @@ namespace UHFDemo
 
             try
             {
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+                connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
                 mysqlCon = new MySqlConnection(connectionString);
                 mysqlCon.Open();
                 query = "SELECT * FROM COMPETIDORES WHERE IDEMPRESA = "+ IdEmpresa + " AND IDCOMPETIDOR = " + idCompetidor;
@@ -103,13 +101,21 @@ namespace UHFDemo
                     idEstado = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     idCiudad =  (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     txtTelefonoCompetidor.Text = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    txtEdadCompetidor.Text = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    dtFechaNacimiento.Text = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    cmbGeneroCompetidor.SelectedItem = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                 }
 
                 LlenarComboPaises(idPais);
-                LlenarComboEstados(idPais, idEstado);
-                LlenarComboCiudades(idPais, idEstado, idCiudad);
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    LlenarComboEstados(idPais, idEstado);
+                }
 
+                if (!string.IsNullOrEmpty(idPais) && idEstado != 0)
+                {
+                    LlenarComboCiudades(idPais, idEstado, idCiudad);
+                }
+                
                 txtAPaternoCompetidor.Focus();
                 btnGuardarCompetidor.Visible = false;
                 btnGuardarCerrarCompetidor.Click -= new EventHandler(GuardarCerrar);;
@@ -133,13 +139,22 @@ namespace UHFDemo
         private void InicializarFormularioCompetidores()
         {
             txtIdCompetidor.Text = ObtenerConsecutivo().ToString();
+            txtAPaternoCompetidor.Text = "";
+            txtAMaternoCompetidor.Text = "";
+            txtNombreCompetidor.Text = "";
+            txtDireccionCompetidor.Text = "";
+            txtTelefonoCompetidor.Text = "";
             txtAPaternoCompetidor.Focus();
+            LlenarComboPaises("");
+            cmbEstadoCompetidor.Items.Clear();
+            cmbCiudadCompetidor.Items.Clear();
+            cmbGeneroCompetidor.SelectedItem = "Seleccionar";
             AsignarEventos();
         }
 
         private int ObtenerConsecutivo()
         {
-            connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
             query = "SELECT ifnull(MAX(IdCompetidor), 0) + 1 from competidores where idempresa = " + IdEmpresa;
             int idCompetidor = 0;
@@ -170,7 +185,7 @@ namespace UHFDemo
 
         private void LlenarComboPaises(string idPaisParam)
         {
-            connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
             query = "SELECT IdPais, Descripcion FROM PAISES";
             try
@@ -178,14 +193,13 @@ namespace UHFDemo
                 cmbPaisCompetidor.SelectedIndexChanged -= cmbPaisCompetidor_SelectedIndexChanged;
 
                 mysqlCon.Open();
-                List<Item> lista = new List<Item>();
+                List<Pais> listaPaises = new List<Pais>();
                 MySqlCommand sc = new MySqlCommand(query, mysqlCon);
                 MySqlDataReader reader;
 
                 reader = sc.ExecuteReader();
-                lista.Add(new Item("Seleccionar", ""));
-                int row = 1;
-                int indiceSeleccionado = 0;
+                int row = 0;
+                int indiceSeleccionado = -1;
                 while (reader.Read())
                 {
                     int indice= 0;
@@ -195,18 +209,25 @@ namespace UHFDemo
                     {
                         indiceSeleccionado = row;
                     }
-                    lista.Add(new Item(descripcion, idPais));
+                    listaPaises.Add(new Pais(idPais, descripcion));
                     row++;
                 }
 
 
                 cmbPaisCompetidor.DisplayMember = "Descripcion";
                 cmbPaisCompetidor.ValueMember = "IdPais";
-                cmbPaisCompetidor.DataSource = lista;
+                cmbPaisCompetidor.DataSource = listaPaises;
 
-                cmbPaisCompetidor.SelectedIndex = indiceSeleccionado;
-                cmbPaisCompetidor.SelectedItem= cmbPaisCompetidor.Items[indiceSeleccionado];
-                cmbPaisCompetidor.Text = ((Item)cmbPaisCompetidor.Items[indiceSeleccionado]).Name;
+                if (string.IsNullOrEmpty(idPaisParam) && indiceSeleccionado == -1)
+                {
+                    cmbPaisCompetidor.SelectedIndex = -1;
+                }
+                else
+                {
+                    cmbPaisCompetidor.SelectedItem = cmbPaisCompetidor.Items[indiceSeleccionado];
+                }
+                
+                //cmbPaisCompetidor.SelectedIndex = indiceSeleccionado;
                 cmbPaisCompetidor.SelectedIndexChanged += cmbPaisCompetidor_SelectedIndexChanged;
             }
             catch (Exception ex)
@@ -221,10 +242,9 @@ namespace UHFDemo
 
         private void LlenarComboEstados(string idPaisParam, int idEstadoParam)
         {
-            var item = (Item)cmbPaisCompetidor.SelectedValue;
-            string idPais = idPaisParam == "" ? item.Value : idPaisParam;
+            string idPais = idPaisParam == "" ? cmbPaisCompetidor.SelectedValue.ToString() : idPaisParam;
 
-            connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
             query = "SELECT IdEstado, Descripcion FROM ESTADOS WHERE IDPAIS = '" + idPais + "'";
             try
@@ -232,14 +252,14 @@ namespace UHFDemo
 
                 cmbEstadoCompetidor.SelectedIndexChanged -= cmbEstadoCompetidor_SelectedIndexChanged;
                 mysqlCon.Open();
-                List<Item> lista = new List<Item>();
+                List<Estado> listaEstados = new List<Estado>();
                 MySqlCommand sc = new MySqlCommand(query, mysqlCon);
                 MySqlDataReader reader;
 
                 reader = sc.ExecuteReader();
-                lista.Add(new Item("Seleccionar", ""));
-                int row = 1;
-                int indiceSeleccionado = 0;
+                
+                int row = 0;
+                int indiceSeleccionado = -1;
                 while (reader.Read())
                 {
                     int indice = 0;
@@ -249,13 +269,13 @@ namespace UHFDemo
                     {
                         indiceSeleccionado = row;
                     }
-                    lista.Add(new Item(descripcion, idEstado));
+                    listaEstados.Add(new Estado(idPais, idEstado, descripcion));
                     row++;
                 }
 
                 cmbEstadoCompetidor.DisplayMember = "Descripcion";
                 cmbEstadoCompetidor.ValueMember = "IdEstado";
-                cmbEstadoCompetidor.DataSource = lista;
+                cmbEstadoCompetidor.DataSource = listaEstados;
                 cmbEstadoCompetidor.SelectedIndex = indiceSeleccionado;
                 cmbEstadoCompetidor.SelectedIndexChanged += cmbEstadoCompetidor_SelectedIndexChanged;
 
@@ -273,26 +293,24 @@ namespace UHFDemo
 
         private void LlenarComboCiudades(string idPaisParam, int idEstadoParam, int idCiudadParam)
         {
-            var item = (Item)cmbPaisCompetidor.SelectedValue;
-            var item2 = (Item)cmbEstadoCompetidor.SelectedValue;
 
-            string idPais = idPaisParam == "" ? item.Value : idPaisParam;
-            int idEstado = idEstadoParam == 0 ? Convert.ToInt32(item2.Value) : idEstadoParam;
+            string idPais = idPaisParam == "" ? cmbPaisCompetidor.SelectedValue.ToString() : idPaisParam;
+            int idEstado = idEstadoParam == 0 ? Convert.ToInt32(cmbEstadoCompetidor.SelectedValue) : idEstadoParam;
 
-            connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
             query = "SELECT IdCiudad, Descripcion FROM CIUDADES WHERE IDPAIS = '" + idPais + "' AND IDESTADO =" + idEstado;
             try
             {
                 mysqlCon.Open();
-                List<Item> lista = new List<Item>();
+                List<Ciudad> listaCiudades = new List<Ciudad>();
                 MySqlCommand sc = new MySqlCommand(query, mysqlCon);
                 MySqlDataReader reader;
 
                 reader = sc.ExecuteReader();
-                lista.Add(new Item("Seleccionar", ""));
-                int row = 1;
-                int indiceSeleccionado = 0;
+                
+                int row = 0;
+                int indiceSeleccionado = -1;
                 while (reader.Read())
                 {
                     int indice = 0;
@@ -302,13 +320,13 @@ namespace UHFDemo
                     {
                         indiceSeleccionado = row;
                     }
-                    lista.Add(new Item(descripcion, idCiudad));
+                    listaCiudades.Add(new Ciudad(idPais, idEstado, idCiudad, descripcion));
                     row++;
                 }
 
                 cmbCiudadCompetidor.DisplayMember = "Descripcion";
                 cmbCiudadCompetidor.ValueMember = "IdCiudad";
-                cmbCiudadCompetidor.DataSource = lista;
+                cmbCiudadCompetidor.DataSource = listaCiudades;
                 cmbCiudadCompetidor.SelectedIndex = indiceSeleccionado;
 
             }
@@ -355,36 +373,42 @@ namespace UHFDemo
                 MessageBox.Show("Debe de capturar una dirección");
                 return valido;
             }
-            else if (cmbPaisCompetidor.SelectedValue == "0")
-            {
-                valido = false;
-                MessageBox.Show("Debe de seleccionar un país");
-                return valido;
-            }
-            else if (cmbEstadoCompetidor.SelectedValue == "0")
-            {
-                valido = false;
-                MessageBox.Show("Debe de seleccionar un estado");
-                return valido;
-            }
-            else if (cmbCiudadCompetidor.SelectedValue == "0")
-            {
-                valido = false;
-                MessageBox.Show("Debe de seleccionar una ciudad");
-                return valido;
-            }
+            //else if (cmbPaisCompetidor.SelectedValue == "0")
+            //{
+            //    valido = false;
+            //    MessageBox.Show("Debe de seleccionar un país");
+            //    return valido;
+            //}
+            //else if (cmbEstadoCompetidor.SelectedValue == "0")
+            //{
+            //    valido = false;
+            //    MessageBox.Show("Debe de seleccionar un estado");
+            //    return valido;
+            //}
+            //else if (cmbCiudadCompetidor.SelectedValue == "0")
+            //{
+            //    valido = false;
+            //    MessageBox.Show("Debe de seleccionar una ciudad");
+            //    return valido;
+            //}
             else if (string.IsNullOrEmpty(txtTelefonoCompetidor.Text))
             {
                 valido = false;
                 MessageBox.Show("Debe de capturar un teléfono");
                 return valido;
             }
-            else if (string.IsNullOrEmpty(txtEdadCompetidor.Text))
+            else if (cmbGeneroCompetidor.SelectedItem == null || cmbGeneroCompetidor.SelectedItem.ToString() == "Seleccionar")
             {
                 valido = false;
-                MessageBox.Show("Debe de capturar una edad");
+                MessageBox.Show("Debe de seleccionar un género");
                 return valido;
             }
+            //else if (string.IsNullOrEmpty(txtEdadCompetidor.Text))
+            //{
+            //    valido = false;
+            //    MessageBox.Show("Debe de capturar una edad");
+            //    return valido;
+            //}
 
             return valido;
 
@@ -402,20 +426,82 @@ namespace UHFDemo
             string apellidoMaterno = txtAMaternoCompetidor.Text;
             string nombre = txtNombreCompetidor.Text;
             string direccion = txtDireccionCompetidor.Text;
-            string idPais = ((Item)cmbPaisCompetidor.SelectedValue).Value.ToString();
-            int idEstado = Convert.ToInt32(((Item)cmbEstadoCompetidor.SelectedValue).Value);
-            int idCiudad = Convert.ToInt32(((Item)cmbCiudadCompetidor.SelectedValue).Value);
+            string idPais = cmbPaisCompetidor.SelectedValue != null ? cmbPaisCompetidor.SelectedValue.ToString() : "";
+            int idEstado = cmbEstadoCompetidor.SelectedValue != null ? Convert.ToInt32(cmbEstadoCompetidor.SelectedValue) : 0;
+            int idCiudad = cmbCiudadCompetidor.SelectedValue != null ? Convert.ToInt32(cmbCiudadCompetidor.SelectedValue) : 0;
             string telefono = txtTelefonoCompetidor.Text;
-            int edad = Convert.ToInt32(txtEdadCompetidor.Text);
+            DateTime fecha = Convert.ToDateTime(dtFechaNacimiento.Text);
+            string fechaNacimiento = fecha.ToString("yyyy-MM-dd");
+            string genero = cmbGeneroCompetidor.SelectedItem.ToString();
 
             try
             {
                
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+                connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
                 mysqlCon = new MySqlConnection(connectionString);
                 mysqlCon.Open();
-                query = "INSERT INTO COMPETIDORES VALUES (" + IdEmpresa + ", " + idCompetidor + ", '" + apellidoPaterno.Trim() + "', '" + apellidoMaterno.Trim() + "', '" + nombre.Trim() + "', '" + direccion.Trim() + "', '" + idPais + "', " + idEstado + ", " + idCiudad + ", '" + telefono + "', " + edad + " )";
-                MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("INSERT INTO ");
+                sentencia.AppendLine("	COMPETIDORES ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("		 IDEMPRESA ");
+                sentencia.AppendLine("		,IDCOMPETIDOR ");
+                sentencia.AppendLine("		,APELLIDOPATERNO ");
+                sentencia.AppendLine("		,APELLIDOMATERNO ");
+                sentencia.AppendLine("		,NOMBRE ");
+                sentencia.AppendLine("		,DIRECCION ");
+
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    sentencia.AppendLine("		,IDPAIS ");
+                }
+
+                if (idEstado != 0)
+                {
+                    sentencia.AppendLine("		,IDESTADO ");
+                }
+
+                if (idCiudad != 0)
+                {
+                    sentencia.AppendLine("		,IDCIUDAD ");
+                }
+
+                sentencia.AppendLine("		,TELEFONO ");
+                sentencia.AppendLine("		,FECHANACIMIENTO, ");
+                sentencia.AppendLine("		,GENERO ");
+                sentencia.AppendLine("	) ");
+                sentencia.AppendLine("VALUES ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("   " + IdEmpresa);
+                sentencia.AppendLine("  ," + idCompetidor);
+                sentencia.AppendLine("  ,'" + apellidoPaterno + "'");
+                sentencia.AppendLine("  ,'" + apellidoMaterno + "'");
+                sentencia.AppendLine("  ,'" + nombre + "'");
+                sentencia.AppendLine("  ,'" + direccion + "'");
+
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    sentencia.AppendLine("  ,'" + idPais + "'");
+                }
+
+                if (idEstado != 0)
+                {
+                    sentencia.AppendLine("  ," + idEstado);
+                }
+
+                if (idCiudad != 0)
+                {
+                    sentencia.AppendLine("  ," + idCiudad);
+                }
+
+                sentencia.AppendLine("  ,'" + telefono + "'");
+                sentencia.AppendLine("  ,'" + fechaNacimiento + "'");
+                sentencia.AppendLine("  ,'" + genero + "'");
+                sentencia.AppendLine("	) ");
+
+
+                MySqlCommand cmd = new MySqlCommand(sentencia.ToString(), mysqlCon);
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -454,20 +540,82 @@ namespace UHFDemo
             string apellidoMaterno = txtAMaternoCompetidor.Text;
             string nombre = txtNombreCompetidor.Text;
             string direccion = txtDireccionCompetidor.Text;
-            string idPais = ((Item)cmbPaisCompetidor.SelectedValue).Value.ToString();
-            int idEstado = Convert.ToInt32(((Item)cmbEstadoCompetidor.SelectedValue).Value);
-            int idCiudad = Convert.ToInt32(((Item)cmbCiudadCompetidor.SelectedValue).Value);
+            string idPais = cmbPaisCompetidor.SelectedValue != null ? cmbPaisCompetidor.SelectedValue.ToString() : "";
+            int idEstado =  cmbEstadoCompetidor.SelectedValue != null ? Convert.ToInt32(cmbEstadoCompetidor.SelectedValue) : 0;
+            int idCiudad = cmbCiudadCompetidor.SelectedValue != null ? Convert.ToInt32(cmbCiudadCompetidor.SelectedValue) : 0;
             string telefono = txtTelefonoCompetidor.Text;
-            int edad = Convert.ToInt32(txtEdadCompetidor.Text);
+            DateTime fecha = Convert.ToDateTime(dtFechaNacimiento.Text);
+            string fechaNacimiento = fecha.ToString("yyyy-MM-dd");
+            string genero = cmbGeneroCompetidor.SelectedItem.ToString();
 
             try
             {
          
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+                connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
                 mysqlCon = new MySqlConnection(connectionString);
                 mysqlCon.Open();
-                query = "INSERT INTO COMPETIDORES VALUES(" + IdEmpresa + ", " + idCompetidor + ", '" + apellidoPaterno.Trim() + "', '" + apellidoMaterno.Trim() + "', '" + nombre.Trim() + "', '" + direccion.Trim() + "', '" + idPais + "', " + idEstado + ", " + idCiudad + ", '" + telefono + "'," + edad + " )";
-                MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
+
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("INSERT INTO ");
+                sentencia.AppendLine("	COMPETIDORES ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("		 IDEMPRESA ");
+                sentencia.AppendLine("		,IDCOMPETIDOR ");
+                sentencia.AppendLine("		,APELLIDOPATERNO ");
+                sentencia.AppendLine("		,APELLIDOMATERNO ");
+                sentencia.AppendLine("		,NOMBRE ");
+                sentencia.AppendLine("		,DIRECCION ");
+
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    sentencia.AppendLine("		,IDPAIS ");
+                }
+
+                if (idEstado != 0)
+                {
+                    sentencia.AppendLine("		,IDESTADO ");
+                }
+
+                if (idCiudad != 0)
+                {
+                    sentencia.AppendLine("		,IDCIUDAD ");
+                }
+                
+                sentencia.AppendLine("		,TELEFONO ");
+                sentencia.AppendLine("		,FECHANACIMIENTO ");
+                sentencia.AppendLine("		,GENERO ");
+                sentencia.AppendLine("	) ");
+                sentencia.AppendLine("VALUES ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("   "  + IdEmpresa);
+                sentencia.AppendLine("  ,"  + idCompetidor);
+                sentencia.AppendLine("  ,'" + apellidoPaterno + "'");
+                sentencia.AppendLine("  ,'"  + apellidoMaterno + "'");
+                sentencia.AppendLine("  ,'"  + nombre + "'");
+                sentencia.AppendLine("  ,'"  + direccion + "'");
+
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    sentencia.AppendLine("  ,'" + idPais + "'");
+                }
+
+                if (idEstado != 0)
+                {
+                    sentencia.AppendLine("  ," + idEstado);
+                }
+
+                if (idCiudad != 0)
+                {
+                    sentencia.AppendLine("  ," + idCiudad);
+                }
+                
+                sentencia.AppendLine("  ,'" + telefono + "'");
+                sentencia.AppendLine("  ,'" + fechaNacimiento + "'");
+                sentencia.AppendLine("  ,'" + genero + "'");
+                sentencia.AppendLine("	) ");
+
+                
+                MySqlCommand cmd = new MySqlCommand(sentencia.ToString(), mysqlCon);
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -502,21 +650,23 @@ namespace UHFDemo
                 return;
             }
 
-            int idCompetidor = ObtenerConsecutivo();
+            int idCompetidor = Convert.ToInt32(txtIdCompetidor.Text);
             string apellidoPaterno = txtAPaternoCompetidor.Text;
             string apellidoMaterno = txtAMaternoCompetidor.Text;
             string nombre = txtNombreCompetidor.Text;
             string direccion = txtDireccionCompetidor.Text;
-            string idPais = ((Item)cmbPaisCompetidor.SelectedValue).Value.ToString();
-            int idEstado = Convert.ToInt32(((Item)cmbEstadoCompetidor.SelectedValue).Value);
-            int idCiudad = Convert.ToInt32(((Item)cmbCiudadCompetidor.SelectedValue).Value);
+            string idPais = cmbPaisCompetidor.SelectedValue != null ? cmbPaisCompetidor.SelectedValue.ToString() : "";
+            int idEstado = cmbEstadoCompetidor.SelectedValue != null ? Convert.ToInt32(cmbEstadoCompetidor.SelectedValue) : 0;
+            int idCiudad = cmbCiudadCompetidor.SelectedValue != null ? Convert.ToInt32(cmbCiudadCompetidor.SelectedValue) : 0;
             string telefono = txtTelefonoCompetidor.Text;
-            int edad = Convert.ToInt32(txtEdadCompetidor.Text);
+            DateTime fecha = Convert.ToDateTime(dtFechaNacimiento.Text);
+            string fechaNacimiento = fecha.ToString("yyyy-MM-dd");
+            string genero = cmbGeneroCompetidor.SelectedItem.ToString();
 
             try
             {
     
-                connectionString = "SERVER=localhost;DATABASE=inventariofacturacion;UID=root;PASSWORD=pecopeco1290;";
+                connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
                 mysqlCon = new MySqlConnection(connectionString);
                 mysqlCon.Open();
 
@@ -528,11 +678,25 @@ namespace UHFDemo
                 sentencia.AppendLine(" 	APELLIDOMATERNO = '" + apellidoMaterno + "', ");
                 sentencia.AppendLine(" 	NOMBRE = '" + nombre + "', ");
                 sentencia.AppendLine(" 	DIRECCION = '" + direccion + "', ");
-                sentencia.AppendLine(" 	IDPAIS = '" + idPais + "', ");
-                sentencia.AppendLine(" 	IDESTADO = " + idEstado + ", ");
-                sentencia.AppendLine(" 	IDCIUDAD = " + idCiudad + ", ");
+
+                if (!string.IsNullOrEmpty(idPais))
+                {
+                    sentencia.AppendLine(" 	IDPAIS = '" + idPais + "', ");
+                }
+
+                if (idEstado != 0)
+                {
+                    sentencia.AppendLine(" 	IDESTADO = " + idEstado + ", ");
+                }
+
+                if (idCiudad != 0)
+                {
+                    sentencia.AppendLine(" 	IDCIUDAD = " + idCiudad + ", ");
+                }
+                
                 sentencia.AppendLine(" 	TELEFONO = '" + telefono + "', ");
-                sentencia.AppendLine(" 	EDAD = " + edad + "  ");
+                sentencia.AppendLine(" 	FECHANACIMIENTO = '" + fechaNacimiento + "',  ");
+                sentencia.AppendLine(" 	GENERO = '" + genero + "'  ");
                 sentencia.AppendLine(" WHERE IDEMPRESA = " + IdEmpresa + " AND IDCOMPETIDOR = " + idCompetidor);
                 query = sentencia.ToString();
                 MySqlCommand cmd = new MySqlCommand(query, mysqlCon);

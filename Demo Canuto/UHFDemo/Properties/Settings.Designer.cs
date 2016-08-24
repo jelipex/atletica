@@ -28,9 +28,9 @@ namespace UHFDemo.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;persistsecurityinfo=True;database=inventariofactura" +
             "cion")]
-        public string inventariofacturacionConnectionString {
+        public string atleticaConnectionString {
             get {
-                return ((string)(this["inventariofacturacionConnectionString"]));
+                return ((string)(this["atleticaConnectionString"]));
             }
         }
     }
