@@ -53,6 +53,8 @@ namespace UHFDemo
             this.cmbCategorias = new System.Windows.Forms.ComboBox();
             this.cmbCompetidores = new System.Windows.Forms.ComboBox();
             this.gridCarrerasCompetidores = new System.Windows.Forms.DataGridView();
+            this.ctxMenuCompetidor = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripEliminarCompetidor = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPuntos = new System.Windows.Forms.TabPage();
             this.cmbPuntos = new System.Windows.Forms.ComboBox();
             this.gridCarrerasPuntos = new System.Windows.Forms.DataGridView();
@@ -63,13 +65,14 @@ namespace UHFDemo
             this.btnCancelarCarrera = new System.Windows.Forms.Button();
             this.btnGuardarCerrarCarrera = new System.Windows.Forms.Button();
             this.btnGuardarCarrera = new System.Windows.Forms.Button();
-            this.ctxMenuCompetidor = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripEliminarCompetidor = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuPunto = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripEliminarPunto = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbDistanciasCarrera = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdCompetidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Competidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDistancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,10 +83,10 @@ namespace UHFDemo
             this.TabCarrerasDetalle.SuspendLayout();
             this.tabCompetidores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrerasCompetidores)).BeginInit();
+            this.ctxMenuCompetidor.SuspendLayout();
             this.tabPuntos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrerasPuntos)).BeginInit();
             this.panel2.SuspendLayout();
-            this.ctxMenuCompetidor.SuspendLayout();
             this.ctxMenuPunto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -276,6 +279,7 @@ namespace UHFDemo
             // 
             // tabCompetidores
             // 
+            this.tabCompetidores.Controls.Add(this.cmbDistanciasCarrera);
             this.tabCompetidores.Controls.Add(this.cmbRama);
             this.tabCompetidores.Controls.Add(this.cmbCategorias);
             this.tabCompetidores.Controls.Add(this.cmbCompetidores);
@@ -334,6 +338,8 @@ namespace UHFDemo
             this.Id,
             this.IdCompetidor,
             this.Competidor,
+            this.IdDistancia,
+            this.Distancia,
             this.IdCategoria,
             this.Categoria,
             this.Rama,
@@ -346,6 +352,19 @@ namespace UHFDemo
             this.gridCarrerasCompetidores.TabIndex = 0;
             this.gridCarrerasCompetidores.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarrerasCompetidores_CellEnter);
             this.gridCarrerasCompetidores.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridCarrerasCompetidores_EditingControlShowing);
+            // 
+            // ctxMenuCompetidor
+            // 
+            this.ctxMenuCompetidor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripEliminarCompetidor});
+            this.ctxMenuCompetidor.Name = "ctxMenuCompetidor";
+            this.ctxMenuCompetidor.Size = new System.Drawing.Size(185, 26);
+            // 
+            // toolStripEliminarCompetidor
+            // 
+            this.toolStripEliminarCompetidor.Name = "toolStripEliminarCompetidor";
+            this.toolStripEliminarCompetidor.Size = new System.Drawing.Size(184, 22);
+            this.toolStripEliminarCompetidor.Text = "Eliminar Competidor";
             // 
             // tabPuntos
             // 
@@ -447,19 +466,6 @@ namespace UHFDemo
             this.btnGuardarCarrera.UseVisualStyleBackColor = true;
             this.btnGuardarCarrera.Click += new System.EventHandler(this.btnGuardarCarrera_Click);
             // 
-            // ctxMenuCompetidor
-            // 
-            this.ctxMenuCompetidor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripEliminarCompetidor});
-            this.ctxMenuCompetidor.Name = "ctxMenuCompetidor";
-            this.ctxMenuCompetidor.Size = new System.Drawing.Size(185, 26);
-            // 
-            // toolStripEliminarCompetidor
-            // 
-            this.toolStripEliminarCompetidor.Name = "toolStripEliminarCompetidor";
-            this.toolStripEliminarCompetidor.Size = new System.Drawing.Size(184, 22);
-            this.toolStripEliminarCompetidor.Text = "Eliminar Competidor";
-            // 
             // ctxMenuPunto
             // 
             this.ctxMenuPunto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -473,6 +479,21 @@ namespace UHFDemo
             this.toolStripEliminarPunto.Size = new System.Drawing.Size(152, 22);
             this.toolStripEliminarPunto.Text = "Eliminar Punto";
             this.toolStripEliminarPunto.Click += new System.EventHandler(this.toolStripEliminarPunto_Click);
+            // 
+            // cmbDistanciasCarrera
+            // 
+            this.cmbDistanciasCarrera.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDistanciasCarrera.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDistanciasCarrera.DropDownWidth = 250;
+            this.cmbDistanciasCarrera.FormattingEnabled = true;
+            this.cmbDistanciasCarrera.Items.AddRange(new object[] {
+            "Varonil",
+            "Femenil"});
+            this.cmbDistanciasCarrera.Location = new System.Drawing.Point(1022, 79);
+            this.cmbDistanciasCarrera.Name = "cmbDistanciasCarrera";
+            this.cmbDistanciasCarrera.Size = new System.Drawing.Size(121, 21);
+            this.cmbDistanciasCarrera.TabIndex = 4;
+            this.cmbDistanciasCarrera.Visible = false;
             // 
             // Id
             // 
@@ -499,6 +520,17 @@ namespace UHFDemo
             this.Competidor.Name = "Competidor";
             this.Competidor.ReadOnly = true;
             this.Competidor.Width = 250;
+            // 
+            // IdDistancia
+            // 
+            this.IdDistancia.HeaderText = "IdDistancia";
+            this.IdDistancia.Name = "IdDistancia";
+            this.IdDistancia.Visible = false;
+            // 
+            // Distancia
+            // 
+            this.Distancia.HeaderText = "Distancia";
+            this.Distancia.Name = "Distancia";
             // 
             // IdCategoria
             // 
@@ -550,10 +582,10 @@ namespace UHFDemo
             this.TabCarrerasDetalle.ResumeLayout(false);
             this.tabCompetidores.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrerasCompetidores)).EndInit();
+            this.ctxMenuCompetidor.ResumeLayout(false);
             this.tabPuntos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrerasPuntos)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.ctxMenuCompetidor.ResumeLayout(false);
             this.ctxMenuPunto.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -599,9 +631,12 @@ namespace UHFDemo
         private System.Windows.Forms.ToolStripMenuItem toolStripEliminarCompetidor;
         private System.Windows.Forms.ContextMenuStrip ctxMenuPunto;
         private System.Windows.Forms.ToolStripMenuItem toolStripEliminarPunto;
+        private System.Windows.Forms.ComboBox cmbDistanciasCarrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCompetidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Competidor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDistancia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Distancia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;

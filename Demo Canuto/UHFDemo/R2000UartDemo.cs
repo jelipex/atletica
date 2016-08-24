@@ -110,7 +110,7 @@ namespace UHFDemo
                 groupBox23.Enabled = false;
             };
 
-            btnMostrarCarrera.Enabled = true;
+           
             //tabEpcTest.Visible = false;
 
             AsignarEventos();
@@ -126,7 +126,7 @@ namespace UHFDemo
         void cmbCarreraConfig_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
-            LlenarComboCategorias(idCarrera);
+           
         }
 
         private void tabOpcionesCatalogos_SelectedIndexChanged(object sender, EventArgs e)
@@ -313,7 +313,7 @@ namespace UHFDemo
             {
                 string strLog = CCommondMethod.ByteArrayToString(btAryReceiveData, 0, btAryReceiveData.Length);
 
-                //WriteLog(lrtxtDataTran, strLog, 1);
+                ////WriteLog(lrtxtDataTran, strLog, 1);
             }            
         }
 
@@ -323,7 +323,7 @@ namespace UHFDemo
             {
                 string strLog = CCommondMethod.ByteArrayToString(btArySendData, 0, btArySendData.Length);
 
-                //WriteLog(lrtxtDataTran, strLog, 0);
+                ////WriteLog(lrtxtDataTran, strLog, 0);
             }            
         }
 
@@ -488,13 +488,13 @@ namespace UHFDemo
                     logRichTxt.AppendTextEx(strLog, Color.Red);
                 }
 
-                if (ckClearOperationRec.Checked)
-                {
-                    if (logRichTxt.Lines.Length > 50)
-                    {
-                        logRichTxt.Clear();
-                    }
-                }
+                //if (ckClearOperationRec.Checked)
+                //{
+                //    if (logRichTxt.Lines.Length > 50)
+                //    {
+                //        logRichTxt.Clear();
+                //    }
+                //}
 
                 logRichTxt.Select(logRichTxt.TextLength, 0);
                 logRichTxt.ScrollToCaret();
@@ -674,15 +674,15 @@ namespace UHFDemo
                             int nEpcCount = 0;
                             int nEpcLength = m_curInventoryBuffer.dtTagTable.Rows.Count;
                                                        
-                            ledReal1.Text = nTagCount.ToString();
-                            ledReal2.Text = nCaculatedReadRate.ToString();
+                            //ledReal1.Text = nTagCount.ToString();
+                            //ledReal2.Text = nCaculatedReadRate.ToString();
                             
-                            ledReal5.Text = nTotalTime.ToString();
-                            ledReal3.Text = nTotalRead.ToString();
-                            ledReal4.Text = nCommandDuation.ToString();  //实际的命令执行时间
+                            //ledReal5.Text = nTotalTime.ToString();
+                            //ledReal3.Text = nTotalRead.ToString();
+                            //ledReal4.Text = nCommandDuation.ToString();  //实际的命令执行时间
                             tbRealMaxRssi.Text = (m_curInventoryBuffer.nMaxRSSI - 129).ToString() + "dBm";
                             tbRealMinRssi.Text = (m_curInventoryBuffer.nMinRSSI - 129).ToString() + "dBm";
-                            lbRealTagCount.Text = "Tag List: " + nTagCount.ToString();
+                            //lbRealTagCount.Text = "Tag List: " + nTagCount.ToString();
 
                             nEpcCount = lvRealList.Items.Count;
 
@@ -702,7 +702,7 @@ namespace UHFDemo
 
                                 if (Globales.GuardarTiemposCarrera)
                                 {
-                                    if (!Globales.capturaCarrera && cmbCategoriaConfig.Items.Count > 0 && cmbCarreraConfig.Items.Count > 0)
+                                    if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
                                     {
                                         ActualizarTiempo(row[2].ToString().Trim());
                                     }
@@ -841,7 +841,7 @@ namespace UHFDemo
             {
                 if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
                 {
-                    if (row.Cells[6].Value != null && row.Cells[6].Value.ToString().Equals(chip.Trim()))
+                    if (row.Cells[8].Value != null && row.Cells[8].Value.ToString().Equals(chip.Trim()))
                     {
                         MessageBox.Show("Ya existe otro competidor con el mismo chip");
                         return;
@@ -1248,7 +1248,7 @@ namespace UHFDemo
         //                    }
         //                    else
         //                    {
-        //                        WriteLog(lrtxtLog, "Inventory stopped", 0);
+        //                        //WriteLog(lrtxtLog, "Inventory stopped", 0);
         //                    }
         //                }
         //                break;
@@ -1429,14 +1429,14 @@ namespace UHFDemo
             if (nRet != 0)
             {
                 string strLog = "Connect reader failed, due to: " + strException; 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
 
                 return;
             }
             else
             {
                 string strLog = "Reader connected " + strComPort + "@" + nBaudrate.ToString();
-                WriteLog(lrtxtLog, strLog, 0);
+                ////WriteLog(lrtxtLog, strLog, 0);
             }
             
             //处理界面元素是否有效
@@ -1483,14 +1483,14 @@ namespace UHFDemo
                 if (nRet != 0)
                 {
                     string strLog = "Connect reader failed, due to: " + strException;
-                    WriteLog(lrtxtLog, strLog, 1);
+                    ////WriteLog(lrtxtLog, strLog, 1);
 
                     return;
                 }
                 else
                 {
                     string strLog = "Reader connected  " + ipIpServer.IpAddressStr + "@" + nPort.ToString();
-                    WriteLog(lrtxtLog, strLog, 0);
+                    ////WriteLog(lrtxtLog, strLog, 0);
                 }
 
                 //处理界面元素是否有效
@@ -1534,12 +1534,12 @@ namespace UHFDemo
             if (nRet != 0)
             {
                 string strLog = "Reset reader failed";
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
                 string strLog = "Reset reader";
-                WriteLog(lrtxtLog, strLog, 0);
+                ////WriteLog(lrtxtLog, strLog, 0);
             }
         }
 
@@ -1571,7 +1571,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -1586,7 +1586,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnGetFirmwareVersion_Click(object sender, EventArgs e)
@@ -1606,7 +1606,7 @@ namespace UHFDemo
                 m_curSetting.btReadId = msgTran.ReadId;
 
                 RefreshReadSetting(msgTran.Cmd);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else if (msgTran.AryData.Length == 1)
@@ -1619,7 +1619,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetUartBaudrate_Click(object sender, EventArgs e)
@@ -1641,7 +1641,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -1656,7 +1656,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnGetReaderTemperature_Click(object sender, EventArgs e)
@@ -1676,7 +1676,7 @@ namespace UHFDemo
                 m_curSetting.btTemperature = msgTran.AryData[1];
 
                 RefreshReadSetting(msgTran.Cmd);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else if (msgTran.AryData.Length == 1)
@@ -1689,7 +1689,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnGetOutputPower_Click(object sender, EventArgs e)
@@ -1708,7 +1708,7 @@ namespace UHFDemo
                 m_curSetting.btOutputPower = msgTran.AryData[0];
 
                 RefreshReadSetting(0x77);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else
@@ -1717,7 +1717,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to:  " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetOutputPower_Click(object sender, EventArgs e)
@@ -1747,7 +1747,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -1762,7 +1762,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnGetWorkAntenna_Click(object sender, EventArgs e)
@@ -1783,7 +1783,7 @@ namespace UHFDemo
                     m_curSetting.btWorkAntenna = msgTran.AryData[0];
 
                     RefreshReadSetting(0x75);
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -1797,7 +1797,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetWorkAntenna_Click(object sender, EventArgs e)
@@ -1825,7 +1825,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     //校验是否盘存操作
                     if (m_bInventory)
@@ -1845,7 +1845,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
 
             if (m_bInventory)
             {
@@ -1873,7 +1873,7 @@ namespace UHFDemo
                     m_curSetting.btDrmMode = msgTran.AryData[0];
 
                     RefreshReadSetting(0x7D);
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -1887,7 +1887,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetDrmMode_Click(object sender, EventArgs e)
@@ -1921,7 +1921,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -1936,7 +1936,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void rdbRegionFcc_CheckedChanged(object sender, EventArgs e)
@@ -2044,7 +2044,7 @@ namespace UHFDemo
                 m_curSetting.btFrequencyEnd = msgTran.AryData[2];
 
                 RefreshReadSetting(0x79);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else if (msgTran.AryData.Length == 6)
@@ -2055,7 +2055,7 @@ namespace UHFDemo
                 m_curSetting.btUserDefineChannelQuantity = msgTran.AryData[2];
                 m_curSetting.nUserDefineStartFrequency = msgTran.AryData[3] * 256 * 256 + msgTran.AryData[4] * 256 + msgTran.AryData[5];
                 RefreshReadSetting(0x79);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
                 
 
@@ -2070,7 +2070,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetFrequencyRegion_Click(object sender, EventArgs e)
@@ -2148,7 +2148,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -2163,7 +2163,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnSetBeeperMode_Click(object sender, EventArgs e)
@@ -2201,7 +2201,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -2216,7 +2216,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnReadGpioValue_Click(object sender, EventArgs e)
@@ -2236,7 +2236,7 @@ namespace UHFDemo
                 m_curSetting.btGpio2Value = msgTran.AryData[1];
 
                 RefreshReadSetting(0x60);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else if (msgTran.AryData.Length == 1)
@@ -2249,7 +2249,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnWriteGpio3Value_Click(object sender, EventArgs e)
@@ -2304,7 +2304,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -2319,7 +2319,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnGetAntDetector_Click(object sender, EventArgs e)
@@ -2338,7 +2338,7 @@ namespace UHFDemo
                 m_curSetting.btAntDetector = msgTran.AryData[0];
                 
                 RefreshReadSetting(0x63);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else
@@ -2347,7 +2347,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void ProcessGetMonzaStatus(Reader.MessageTran msgTran)
@@ -2363,7 +2363,7 @@ namespace UHFDemo
                     m_curSetting.btAntDetector = msgTran.AryData[0];
 
                     RefreshReadSetting(0x8E);
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -2377,7 +2377,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void ProcessSetMonzaStatus(Reader.MessageTran msgTran)
@@ -2392,7 +2392,7 @@ namespace UHFDemo
                     m_curSetting.btReadId = msgTran.ReadId;
                     m_curSetting.btAntDetector = msgTran.AryData[0];
 
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -2406,7 +2406,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void ProcessSetProfile(Reader.MessageTran msgTran)
@@ -2421,7 +2421,7 @@ namespace UHFDemo
                     m_curSetting.btReadId = msgTran.ReadId;
                     m_curSetting.btLinkProfile = msgTran.AryData[0];
 
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -2435,7 +2435,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void ProcessGetProfile(Reader.MessageTran msgTran)
@@ -2451,7 +2451,7 @@ namespace UHFDemo
                     m_curSetting.btLinkProfile = msgTran.AryData[0];
 
                     RefreshReadSetting(0x6A);
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -2465,7 +2465,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
 
@@ -2489,7 +2489,7 @@ namespace UHFDemo
                 m_curSetting.btReaderIdentifier = readerIdentifier;
                 RefreshReadSetting(0x68);
                 
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else
@@ -2498,7 +2498,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void ProcessGetImpedanceMatch(Reader.MessageTran msgTran)
@@ -2514,7 +2514,7 @@ namespace UHFDemo
                 m_curSetting.btAntImpedance = msgTran.AryData[0];
                 RefreshReadSetting(0x7E);
                 
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 return;
             }
             else
@@ -2523,7 +2523,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         
@@ -2538,7 +2538,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
             }
@@ -2548,7 +2548,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
 
@@ -2579,7 +2579,7 @@ namespace UHFDemo
                 if (msgTran.AryData[0] == 0x10)
                 {
                     m_curSetting.btReadId = msgTran.ReadId;
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
 
                     return;
                 }
@@ -2594,7 +2594,7 @@ namespace UHFDemo
             }
 
             string strLog = strCmd + "failed , due to: " + strErrorCode;
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
         
         private void rdbInventoryTag_CheckedChanged(object sender, EventArgs e)
@@ -2814,7 +2814,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //        string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //        RefreshFastSwitch(0x01);
         //        RunLoopFastSwitch();
         //    }
@@ -2823,7 +2823,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[1]);
         //        string strLog = strCmd + "failed, due to: " + strErrorCode + "--" + "antenna " + (msgTran.AryData[0] + 1);
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
 
         //    else if (msgTran.AryData.Length == 7)
@@ -2833,7 +2833,7 @@ namespace UHFDemo
 
         //        m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
         //        m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
         //        RefreshFastSwitch(0x02);
         //        RunLoopFastSwitch();
         //    }
@@ -2846,7 +2846,7 @@ namespace UHFDemo
 
         //        m_curInventoryBuffer.nDataCount = m_nSwitchTotal;
         //        m_curInventoryBuffer.nCommandDuration = m_nSwitchTime;
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
         //        RefreshFastSwitch(0x02);
         //        RunLoopFastSwitch();
         //    }*/
@@ -2987,7 +2987,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to： " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
                 RefreshInventoryReal(0x00);
                 RunLoopInventroy();
             }
@@ -2996,7 +2996,7 @@ namespace UHFDemo
                 m_curInventoryBuffer.nReadRate = Convert.ToInt32(msgTran.AryData[1]) * 256 + Convert.ToInt32(msgTran.AryData[2]);
                 m_curInventoryBuffer.nDataCount = Convert.ToInt32(msgTran.AryData[3]) * 256 * 256 * 256 + Convert.ToInt32(msgTran.AryData[4]) * 256 * 256 + Convert.ToInt32(msgTran.AryData[5]) * 256 + Convert.ToInt32(msgTran.AryData[6]);
 
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
                 RefreshInventoryReal(0x01);
                 RunLoopInventroy();
             }
@@ -3091,7 +3091,7 @@ namespace UHFDemo
         //        m_curInventoryBuffer.dtEndInventory = DateTime.Now;
 
         //        RefreshInventory(0x80);
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
 
         //        RunLoopInventroy();
 
@@ -3107,7 +3107,7 @@ namespace UHFDemo
         //    }
 
         //    string strLog = strCmd + "failed, due to: " + strErrorCode;
-        //    WriteLog(lrtxtLog, strLog, 1);
+        //    //WriteLog(lrtxtLog, strLog, 1);
 
         //    RunLoopInventroy();
         //}
@@ -3146,7 +3146,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //        string strLog = strCmd + "failed due to: " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
         //    else
         //    {
@@ -3175,7 +3175,7 @@ namespace UHFDemo
         //        m_curInventoryBuffer.dtTagTable.AcceptChanges();
 
         //        RefreshInventory(0x90);
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
         //    }
         //}
 
@@ -3196,7 +3196,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //        string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
         //    else
         //    {
@@ -3225,7 +3225,7 @@ namespace UHFDemo
         //        m_curInventoryBuffer.dtTagTable.AcceptChanges();
 
         //        RefreshInventory(0x91);
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
         //    }
         //}
         
@@ -3245,7 +3245,7 @@ namespace UHFDemo
 
                 //RefreshInventory(0x92);
                 string strLog1 = strCmd + " " + m_curInventoryBuffer.nTagCount.ToString();
-                WriteLog(lrtxtLog, strLog1, 0);
+                ////WriteLog(lrtxtLog, strLog1, 0);
                 return;
             }
             else if (msgTran.AryData.Length == 1)
@@ -3259,7 +3259,7 @@ namespace UHFDemo
 
             string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         private void btnResetInventoryBuffer_Click(object sender, EventArgs e)
@@ -3277,7 +3277,7 @@ namespace UHFDemo
         //        if (msgTran.AryData[0] == 0x10)
         //        {
         //            RefreshInventory(0x93);
-        //            WriteLog(lrtxtLog, strCmd, 0);
+        //            //WriteLog(lrtxtLog, strCmd, 0);
         //            return;
         //        }
         //        else
@@ -3292,7 +3292,7 @@ namespace UHFDemo
 
         //    string strLog = strCmd + "failed due to: " + strErrorCode;
 
-        //    WriteLog(lrtxtLog, strLog, 1);
+        //    //WriteLog(lrtxtLog, strLog, 1);
         //}
 
         //private void cbAccessEpcMatch_CheckedChanged(object sender, EventArgs e)
@@ -3318,7 +3318,7 @@ namespace UHFDemo
         //    {
         //        if (msgTran.AryData[0] == 0x01)
         //        {
-        //            WriteLog(lrtxtLog, "No tag has been selected ", 0);
+        //            //WriteLog(lrtxtLog, "No tag has been selected ", 0);
         //            return;
         //        }
         //        else
@@ -3333,7 +3333,7 @@ namespace UHFDemo
         //            m_curOperateTagBuffer.strAccessEpcMatch = CCommondMethod.ByteArrayToString(msgTran.AryData, 2, Convert.ToInt32(msgTran.AryData[1]));
                     
         //            RefreshOpTag(0x86);
-        //            WriteLog(lrtxtLog, strCmd, 0);
+        //            //WriteLog(lrtxtLog, strCmd, 0);
         //            return;
         //        }
         //        else
@@ -3344,7 +3344,7 @@ namespace UHFDemo
 
         //    string strLog = strCmd + "failed, due to " + strErrorCode;
 
-        //    WriteLog(lrtxtLog, strLog, 1);
+        //    //WriteLog(lrtxtLog, strLog, 1);
         //}
 
         //private void btnSetAccessEpcMatch_Click(object sender, EventArgs e)
@@ -3374,7 +3374,7 @@ namespace UHFDemo
             {
                 if (msgTran.AryData[0] == 0x10)
                 {
-                    WriteLog(lrtxtLog, strCmd, 0);
+                    ////WriteLog(lrtxtLog, strCmd, 0);
                     return;
                 }
                 else
@@ -3389,7 +3389,7 @@ namespace UHFDemo
 
             string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-            WriteLog(lrtxtLog, strLog, 1);
+            ////WriteLog(lrtxtLog, strLog, 1);
         }
 
         //private void btnReadTag_Click(object sender, EventArgs e)
@@ -3463,7 +3463,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -3495,7 +3495,7 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
                 //RefreshOpTag(0x81);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
@@ -3586,7 +3586,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -3598,7 +3598,7 @@ namespace UHFDemo
                     strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[nLen - 3]);
                     string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                    WriteLog(lrtxtLog, strLog, 1);
+                    ////WriteLog(lrtxtLog, strLog, 1);
                     return;
                 }
 
@@ -3626,7 +3626,7 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
                 //RefreshOpTag(0x82);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
@@ -3713,7 +3713,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -3725,7 +3725,7 @@ namespace UHFDemo
                     strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[nLen - 3]);
                     string strLog = strCmd + "failed, due to  " + strErrorCode;
 
-                    WriteLog(lrtxtLog, strLog, 1);
+                    ////WriteLog(lrtxtLog, strLog, 1);
                     return;
                 }
 
@@ -3753,7 +3753,7 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
                 //RefreshOpTag(0x83);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
@@ -3789,7 +3789,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                ////WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -3801,7 +3801,7 @@ namespace UHFDemo
                     strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[nLen - 3]);
                     string strLog = strCmd + "failed, due to  " + strErrorCode;
 
-                    WriteLog(lrtxtLog, strLog, 1);
+                    ////WriteLog(lrtxtLog, strLog, 1);
                     return;
                 }
 
@@ -3829,7 +3829,7 @@ namespace UHFDemo
                 m_curOperateTagBuffer.dtTagTable.AcceptChanges();
 
                 //RefreshOpTag(0x84);
-                WriteLog(lrtxtLog, strCmd, 0);
+                ////WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
@@ -3866,7 +3866,7 @@ namespace UHFDemo
         //        btnInventoryISO18000.Text = "Stop inventory";
 
         //        string strCmd = "Tag inventory";
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
                 
         //        reader.InventoryISO18000(m_curSetting.btReadId);
         //    }            
@@ -3884,7 +3884,7 @@ namespace UHFDemo
         //            strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //            string strLog = strCmd + "failed, due to: " + strErrorCode;
 
-        //            WriteLog(lrtxtLog, strLog, 1);
+        //            //WriteLog(lrtxtLog, strLog, 1);
         //        }                
         //    }
         //    else if (msgTran.AryData.Length == 9)
@@ -3917,14 +3917,14 @@ namespace UHFDemo
         //        m_curOperateTagISO18000Buffer.nTagCnt = Convert.ToInt32(msgTran.AryData[1]);
         //        RefreshISO18000(msgTran.Cmd);
 
-        //        //WriteLog(lrtxtLog, strCmd, 0);
+        //        ////WriteLog(lrtxtLog, strCmd, 0);
         //    }
         //    else
         //    {
         //        strErrorCode = "Unknown error ";
         //        string strLog = strCmd + "failed, due to " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
         //}
 
@@ -3973,7 +3973,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //        string strLog = strCmd + "failed, due to " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
         //    else
         //    {
@@ -3985,7 +3985,7 @@ namespace UHFDemo
 
         //        RefreshISO18000(msgTran.Cmd);
 
-        //        WriteLog(lrtxtLog, strCmd, 0);
+        //        //WriteLog(lrtxtLog, strCmd, 0);
         //    }
         //}
 
@@ -4078,7 +4078,7 @@ namespace UHFDemo
         //        strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
         //        string strLog = strCmd + "failed, due to : " + strErrorCode;
 
-        //        WriteLog(lrtxtLog, strLog, 1);
+        //        //WriteLog(lrtxtLog, strLog, 1);
         //    }
         //    else
         //    {
@@ -4091,7 +4091,7 @@ namespace UHFDemo
         //        //RefreshISO18000(msgTran.Cmd);
         //        string strLength = msgTran.AryData[1].ToString();
         //        string strLog = strCmd + ": " + "successfully wrote " + strLength + " byte(s)";
-        //        WriteLog(lrtxtLog, strLog, 0);
+        //        //WriteLog(lrtxtLog, strLog, 0);
         //        RunLoopISO18000(Convert.ToInt32(msgTran.AryData[1]));
         //    }
         //}
@@ -4144,7 +4144,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                //WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -4171,7 +4171,7 @@ namespace UHFDemo
                         break;
                 }
 
-                WriteLog(lrtxtLog, strLog, 0);
+                ////WriteLog(lrtxtLog, strLog, 0);
                 
             }
         }
@@ -4218,7 +4218,7 @@ namespace UHFDemo
                 strErrorCode = CCommondMethod.FormatErrorCode(msgTran.AryData[0]);
                 string strLog = strCmd + "failed, due to " + strErrorCode;
 
-                WriteLog(lrtxtLog, strLog, 1);
+                //WriteLog(lrtxtLog, strLog, 1);
             }
             else
             {
@@ -4230,7 +4230,7 @@ namespace UHFDemo
 
                 //RefreshISO18000(msgTran.Cmd);
 
-                WriteLog(lrtxtLog, strCmd, 0);
+                //WriteLog(lrtxtLog, strCmd, 0);
             }
         }
 
@@ -4276,7 +4276,7 @@ namespace UHFDemo
 
         private void lrtxtLog_DoubleClick(object sender, EventArgs e)
         {
-            lrtxtLog.Text = "";
+            //lrtxtLog.Text = "";
         }
 
         private void tabCtrMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -4433,14 +4433,14 @@ namespace UHFDemo
 
         private void ckDisplayLog_CheckedChanged(object sender, EventArgs e)
         {
-            if (ckDisplayLog.Checked)
-            {
-                m_bDisplayLog = true;
-            }
-            else
-            {
-                m_bDisplayLog = false;
-            }
+            //if (ckDisplayLog.Checked)
+            //{
+            //    m_bDisplayLog = true;
+            //}
+            //else
+            //{
+            //    m_bDisplayLog = false;
+            //}
         }
 
        
@@ -4451,19 +4451,12 @@ namespace UHFDemo
                 bool mostrarTiempos = false;
                 if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
                 {
-                    //if (Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0)
-                    //{
-                    //    MessageBox.Show("Debe de seleccionar una carrera");
-                    //    return;
-                    //}
-
-                    //if (Convert.ToInt32(((Item)cmbCategoriaConfig.SelectedValue).Value) == 0)
-                    //{
-
-                    //    MessageBox.Show("Debe de seleccionar una categoria");
-                    //    return;
-                    //}
-                    //mostrarTiempos = true;
+                    if (Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0)
+                    {
+                        MessageBox.Show("Debe de seleccionar una carrera");
+                        return;
+                    }
+                    mostrarTiempos = true;
                 }
                 else
                 {
@@ -4586,11 +4579,11 @@ namespace UHFDemo
             
             lvRealList.Items.Clear();
             lvRealList.Items.Clear();
-            ledReal1.Text = "0";
-            ledReal2.Text = "0";
-            ledReal3.Text = "0";
-            ledReal4.Text = "0";
-            ledReal5.Text = "0";
+            //ledReal1.Text = "0";
+            //ledReal2.Text = "0";
+            //ledReal3.Text = "0";
+            //ledReal4.Text = "0";
+            //ledReal5.Text = "0";
             tbRealMaxRssi.Text = "0";
             tbRealMinRssi.Text = "0";
             textRealRound.Text = "1";
@@ -4598,7 +4591,7 @@ namespace UHFDemo
             cbRealWorkant2.Checked = false;
             cbRealWorkant3.Checked = false;
             cbRealWorkant4.Checked = false;
-            lbRealTagCount.Text = "Tag List: ";
+            //lbRealTagCount.Text = "Tag List: ";
        
            
         }
@@ -5370,55 +5363,55 @@ namespace UHFDemo
             }
         }
 
-        private void LlenarComboCategorias(int idCarrera)
-        {
-            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
-            MySqlConnection mysqlCon = new MySqlConnection(connectionString);
-            StringBuilder sentencia = new StringBuilder();
-            sentencia.AppendLine("SELECT DISTINCT ");
-            sentencia.AppendLine("	A.IDCATEGORIA, ");
-            sentencia.AppendLine("	B.DESCRIPCION");
-            sentencia.AppendLine("FROM ");
-            sentencia.AppendLine("	CARRERASDETALLE AS A ");
-            sentencia.AppendLine("LEFT JOIN CATEGORIAS AS B ON B.IDEMPRESA = A.IDEMPRESA ");
-            sentencia.AppendLine("AND B.IDCATEGORIA = A.IDCATEGORIA ");
-            sentencia.AppendLine("WHERE ");
-            sentencia.AppendLine("	A.IDEMPRESA =" + IdEmpresa);
-            sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
+        //private void LlenarComboCategorias(int idCarrera)
+        //{
+        //    string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+        //    MySqlConnection mysqlCon = new MySqlConnection(connectionString);
+        //    StringBuilder sentencia = new StringBuilder();
+        //    sentencia.AppendLine("SELECT DISTINCT ");
+        //    sentencia.AppendLine("	A.IDCATEGORIA, ");
+        //    sentencia.AppendLine("	B.DESCRIPCION");
+        //    sentencia.AppendLine("FROM ");
+        //    sentencia.AppendLine("	CARRERASDETALLE AS A ");
+        //    sentencia.AppendLine("LEFT JOIN CATEGORIAS AS B ON B.IDEMPRESA = A.IDEMPRESA ");
+        //    sentencia.AppendLine("AND B.IDCATEGORIA = A.IDCATEGORIA ");
+        //    sentencia.AppendLine("WHERE ");
+        //    sentencia.AppendLine("	A.IDEMPRESA =" + IdEmpresa);
+        //    sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
 
-            string query = sentencia.ToString();
-            try
-            {
-                mysqlCon.Open();
-                List<Item> lista = new List<Item>();
-                MySqlCommand sc = new MySqlCommand(query, mysqlCon);
-                MySqlDataReader reader;
+        //    string query = sentencia.ToString();
+        //    try
+        //    {
+        //        mysqlCon.Open();
+        //        List<Item> lista = new List<Item>();
+        //        MySqlCommand sc = new MySqlCommand(query, mysqlCon);
+        //        MySqlDataReader reader;
 
-                reader = sc.ExecuteReader();
-                lista.Add(new Item("Seleccionar", 0));
-                while (reader.Read())
-                {
-                    int indice = 0;
-                    int idCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
-                    string descripcion = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+        //        reader = sc.ExecuteReader();
+        //        lista.Add(new Item("Seleccionar", 0));
+        //        while (reader.Read())
+        //        {
+        //            int indice = 0;
+        //            int idCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+        //            string descripcion = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
 
-                    lista.Add(new Item(descripcion, idCategoria));
-                }
+        //            lista.Add(new Item(descripcion, idCategoria));
+        //        }
 
-                cmbCategoriaConfig.DisplayMember = "Descripcion";
-                cmbCategoriaConfig.ValueMember = "IdCategoria";
-                cmbCategoriaConfig.DataSource = lista;
+        //        cmbCategoriaConfig.DisplayMember = "Descripcion";
+        //        cmbCategoriaConfig.ValueMember = "IdCategoria";
+        //        cmbCategoriaConfig.DataSource = lista;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mysqlCon.Close();
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        mysqlCon.Close();
+        //    }
+        //}
 
         public void MostrarVentanaCompetidores()
         {
@@ -5428,7 +5421,7 @@ namespace UHFDemo
             VistaCarreraTiempos vista = new VistaCarreraTiempos();
 
             vista.txtCarreraDescripcion.Text = ((Item)cmbCarreraConfig.SelectedValue).Name;
-            vista.txtCategoriaDescripción.Text = ((Item)cmbCategoriaConfig.SelectedValue).Name;
+            //vista.txtCategoriaDescripción.Text = ((Item)cmbCategoriaConfig.SelectedValue).Name;
             string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);
@@ -5439,7 +5432,7 @@ namespace UHFDemo
                 mysqlCon.Open();
 
                 int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
-                int idCategoria = Convert.ToInt32(((Item)cmbCategoriaConfig.SelectedValue).Value);
+                //int idCategoria = Convert.ToInt32(((Item)cmbCategoriaConfig.SelectedValue).Value);
 
                 StringBuilder sentencia = new StringBuilder();
                 sentencia.AppendLine("SELECT ");
@@ -5461,7 +5454,6 @@ namespace UHFDemo
                 sentencia.AppendLine("WHERE ");
                 sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
                 sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
-                sentencia.AppendLine("AND B.IDCATEGORIA = " + idCategoria);
 
                 MySqlCommand comando = new MySqlCommand(sentencia.ToString(), mysqlCon);
                 MySqlDataReader reader = comando.ExecuteReader();
@@ -5520,7 +5512,6 @@ namespace UHFDemo
             {
                 mysqlCon.Open();
                 int.TryParse(((Item)cmbCarreraConfig.SelectedValue).Value.ToString(), out idCarrera);
-                int.TryParse(((Item)cmbCategoriaConfig.SelectedValue).Value.ToString(), out idCategoria);
                 //tiempo = DateTime.Now.ToString("HH:mm:ss");
                 StringBuilder sentencia = new StringBuilder();
                 sentencia.AppendLine("UPDATE CARRERASDETALLE SET TIEMPO = NOW(6) WHERE IDEMPRESA =" + IdEmpresa + " AND IDCARRERA= " + idCarrera + " AND IDCATEGORIA =" + idCategoria + " AND CHIP = '" + chip + "' AND (TIEMPO IS NULL)");
@@ -5558,11 +5549,6 @@ namespace UHFDemo
                 return;
             }
 
-            if (Convert.ToInt32(((Item)cmbCategoriaConfig.SelectedValue).Value) == 0)
-            {
-                MessageBox.Show("Debe de seleccionar una categoria");
-                return;
-            }
 
             MostrarVentanaCompetidores();
         }
@@ -5816,6 +5802,7 @@ namespace UHFDemo
         {
             btnModificarCarrera.PerformClick();
         }
+
 
     }
 }

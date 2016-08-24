@@ -29,14 +29,126 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(R2000UartDemo));
-            this.tabCtrMain = new System.Windows.Forms.TabControl();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.lxLedControl9 = new LxControl.LxLedControl();
+            this.lxLedControl10 = new LxControl.LxLedControl();
+            this.lxLedControl11 = new LxControl.LxLedControl();
+            this.lxLedControl12 = new LxControl.LxLedControl();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.lxLedControl13 = new LxControl.LxLedControl();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.lxLedControl14 = new LxControl.LxLedControl();
+            this.lxLedControl15 = new LxControl.LxLedControl();
+            this.lxLedControl16 = new LxControl.LxLedControl();
+            this.lxLedControl17 = new LxControl.LxLedControl();
+            this.lxLedControl18 = new LxControl.LxLedControl();
+            this.TabCarreras = new System.Windows.Forms.TabPage();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.tablaCarreras = new System.Windows.Forms.DataGridView();
+            this.IdCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescripcionCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaisCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CiudadCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.txtExportarExcel = new System.Windows.Forms.Button();
+            this.btnModificarCarrera = new System.Windows.Forms.Button();
+            this.btnRegistrarCarrera = new System.Windows.Forms.Button();
+            this.TabCatalogos = new System.Windows.Forms.TabPage();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.tabOpcionesCatalogos = new System.Windows.Forms.TabControl();
+            this.tabCategorias = new System.Windows.Forms.TabPage();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.tablaCategorias = new System.Windows.Forms.DataGridView();
+            this.IdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnRegistrarCategoria = new System.Windows.Forms.Button();
+            this.btnEliminarCategoria = new System.Windows.Forms.Button();
+            this.btnModificarCategoria = new System.Windows.Forms.Button();
+            this.tabCompetidores = new System.Windows.Forms.TabPage();
+            this.tablaCompetidores = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.btnRegistrarCompetidor = new System.Windows.Forms.Button();
+            this.btnEliminarCompetidor = new System.Windows.Forms.Button();
+            this.btnModificarCompetidor = new System.Windows.Forms.Button();
+            this.pageEpcTest = new System.Windows.Forms.TabPage();
+            this.tabEpcTest = new System.Windows.Forms.TabControl();
+            this.pageRealMode = new System.Windows.Forms.TabPage();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.cbRealWorkant1 = new System.Windows.Forms.CheckBox();
+            this.cbRealWorkant4 = new System.Windows.Forms.CheckBox();
+            this.tbRealMaxRssi = new System.Windows.Forms.TextBox();
+            this.tbRealMinRssi = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.cbRealWorkant3 = new System.Windows.Forms.CheckBox();
+            this.cbRealWorkant2 = new System.Windows.Forms.CheckBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.btRealFresh = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.cbRealSession = new System.Windows.Forms.CheckBox();
+            this.cmbTarget = new System.Windows.Forms.ComboBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.cmbSession = new System.Windows.Forms.ComboBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCarreraConfig = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textRealRound = new System.Windows.Forms.TextBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.btRealTimeInventory = new System.Windows.Forms.Button();
+            this.lvRealList = new System.Windows.Forms.ListView();
+            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PagReaderSetting = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmbCategoriaConfig = new System.Windows.Forms.ComboBox();
-            this.cmbCarreraConfig = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.btReaderSetupRefresh = new System.Windows.Forms.Button();
             this.gbCmdReadGpio = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -170,139 +282,50 @@
             this.btnSetOutputPower = new System.Windows.Forms.Button();
             this.txtOutputPower = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.pageEpcTest = new System.Windows.Forms.TabPage();
-            this.tabEpcTest = new System.Windows.Forms.TabControl();
-            this.pageRealMode = new System.Windows.Forms.TabPage();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.cbRealWorkant1 = new System.Windows.Forms.CheckBox();
-            this.cbRealWorkant4 = new System.Windows.Forms.CheckBox();
-            this.cbRealWorkant3 = new System.Windows.Forms.CheckBox();
-            this.cbRealWorkant2 = new System.Windows.Forms.CheckBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textRealRound = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
-            this.btRealTimeInventory = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.cbRealSession = new System.Windows.Forms.CheckBox();
-            this.cmbTarget = new System.Windows.Forms.ComboBox();
-            this.label98 = new System.Windows.Forms.Label();
-            this.cmbSession = new System.Windows.Forms.ComboBox();
-            this.label97 = new System.Windows.Forms.Label();
-            this.tbRealMinRssi = new System.Windows.Forms.TextBox();
-            this.tbRealMaxRssi = new System.Windows.Forms.TextBox();
-            this.btRealFresh = new System.Windows.Forms.Button();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.lbRealTagCount = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ledReal3 = new LxControl.LxLedControl();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.ledReal5 = new LxControl.LxLedControl();
-            this.ledReal2 = new LxControl.LxLedControl();
-            this.ledReal4 = new LxControl.LxLedControl();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.ledReal1 = new LxControl.LxLedControl();
-            this.lvRealList = new System.Windows.Forms.ListView();
-            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TabCatalogos = new System.Windows.Forms.TabPage();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.tabOpcionesCatalogos = new System.Windows.Forms.TabControl();
-            this.tabCategorias = new System.Windows.Forms.TabPage();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.tablaCategorias = new System.Windows.Forms.DataGridView();
-            this.IdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.btnRegistrarCategoria = new System.Windows.Forms.Button();
-            this.btnEliminarCategoria = new System.Windows.Forms.Button();
-            this.btnModificarCategoria = new System.Windows.Forms.Button();
-            this.tabCompetidores = new System.Windows.Forms.TabPage();
-            this.tablaCompetidores = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.btnRegistrarCompetidor = new System.Windows.Forms.Button();
-            this.btnEliminarCompetidor = new System.Windows.Forms.Button();
-            this.btnModificarCompetidor = new System.Windows.Forms.Button();
-            this.TabCarreras = new System.Windows.Forms.TabPage();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.tablaCarreras = new System.Windows.Forms.DataGridView();
-            this.IdCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescripcionCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PaisCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CiudadCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.txtExportarExcel = new System.Windows.Forms.Button();
-            this.btnModificarCarrera = new System.Windows.Forms.Button();
-            this.btnRegistrarCarrera = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.ckDisplayLog = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.lxLedControl9 = new LxControl.LxLedControl();
-            this.lxLedControl10 = new LxControl.LxLedControl();
-            this.lxLedControl11 = new LxControl.LxLedControl();
-            this.lxLedControl12 = new LxControl.LxLedControl();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label82 = new System.Windows.Forms.Label();
-            this.label83 = new System.Windows.Forms.Label();
-            this.lxLedControl13 = new LxControl.LxLedControl();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.label87 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.ckClearOperationRec = new System.Windows.Forms.CheckBox();
-            this.lrtxtLog = new CustomControl.LogRichTextBox();
-            this.lxLedControl14 = new LxControl.LxLedControl();
-            this.lxLedControl15 = new LxControl.LxLedControl();
-            this.lxLedControl16 = new LxControl.LxLedControl();
-            this.lxLedControl17 = new LxControl.LxLedControl();
-            this.lxLedControl18 = new LxControl.LxLedControl();
-            this.tabCtrMain.SuspendLayout();
+            this.tabCtrMain = new System.Windows.Forms.TabControl();
+            this.gridCarreraDetalle = new System.Windows.Forms.DataGridView();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl18)).BeginInit();
+            this.TabCarreras.SuspendLayout();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).BeginInit();
+            this.panel15.SuspendLayout();
+            this.TabCatalogos.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.tabOpcionesCatalogos.SuspendLayout();
+            this.tabCategorias.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).BeginInit();
+            this.panel12.SuspendLayout();
+            this.tabCompetidores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).BeginInit();
+            this.panel14.SuspendLayout();
+            this.pageEpcTest.SuspendLayout();
+            this.tabEpcTest.SuspendLayout();
+            this.pageRealMode.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.PagReaderSetting.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -332,63 +355,1357 @@
             this.groupBox23.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.gbCmdOutputPower.SuspendLayout();
-            this.pageEpcTest.SuspendLayout();
-            this.tabEpcTest.SuspendLayout();
-            this.pageRealMode.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).BeginInit();
-            this.TabCatalogos.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.tabOpcionesCatalogos.SuspendLayout();
-            this.tabCategorias.SuspendLayout();
-            this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).BeginInit();
-            this.panel12.SuspendLayout();
-            this.tabCompetidores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).BeginInit();
-            this.panel14.SuspendLayout();
-            this.TabCarreras.SuspendLayout();
-            this.panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).BeginInit();
-            this.panel15.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl18)).BeginInit();
+            this.tabCtrMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCarreraDetalle)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabCtrMain
+            // tableLayoutPanel3
             // 
-            this.tabCtrMain.Controls.Add(this.PagReaderSetting);
-            this.tabCtrMain.Controls.Add(this.pageEpcTest);
-            this.tabCtrMain.Controls.Add(this.TabCatalogos);
-            this.tabCtrMain.Controls.Add(this.TabCarreras);
-            this.tabCtrMain.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabCtrMain.Location = new System.Drawing.Point(0, 0);
-            this.tabCtrMain.Name = "tabCtrMain";
-            this.tabCtrMain.SelectedIndex = 0;
-            this.tabCtrMain.Size = new System.Drawing.Size(1018, 629);
-            this.tabCtrMain.TabIndex = 0;
-            this.tabCtrMain.SelectedIndexChanged += new System.EventHandler(this.tabCtrMain_SelectedIndexChanged);
-            this.tabCtrMain.Click += new System.EventHandler(this.tabCtrMain_Click);
+            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.66265F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.33735F));
+            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel7, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(996, 55);
+            this.tableLayoutPanel3.TabIndex = 48;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(4, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(397, 47);
+            this.panel6.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.button4.Location = new System.Drawing.Point(126, 4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(144, 38);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "开始盘存";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.checkBox5);
+            this.panel7.Controls.Add(this.checkBox6);
+            this.panel7.Controls.Add(this.checkBox7);
+            this.panel7.Controls.Add(this.checkBox8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(408, 4);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(584, 47);
+            this.panel7.TabIndex = 1;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox5.Location = new System.Drawing.Point(64, 17);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(57, 16);
+            this.checkBox5.TabIndex = 3;
+            this.checkBox5.Text = "天线1";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox6.Location = new System.Drawing.Point(436, 17);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(57, 16);
+            this.checkBox6.TabIndex = 2;
+            this.checkBox6.Text = "天线4";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox7.Location = new System.Drawing.Point(312, 17);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(57, 16);
+            this.checkBox7.TabIndex = 1;
+            this.checkBox7.Text = "天线3";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox8.Location = new System.Drawing.Point(188, 17);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(57, 16);
+            this.checkBox8.TabIndex = 0;
+            this.checkBox8.Text = "天线2";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(704, 234);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(89, 20);
+            this.textBox5.TabIndex = 46;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(502, 234);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(89, 20);
+            this.textBox6.TabIndex = 47;
+            // 
+            // button5
+            // 
+            this.button5.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.button5.Location = new System.Drawing.Point(907, 232);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(89, 23);
+            this.button5.TabIndex = 45;
+            this.button5.Text = "刷新界面";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label76.Location = new System.Drawing.Point(633, 237);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(65, 12);
+            this.label76.TabIndex = 43;
+            this.label76.Text = "Max RSSI：";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label77.Location = new System.Drawing.Point(431, 238);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(65, 12);
+            this.label77.TabIndex = 44;
+            this.label77.Text = "Min RSSI：";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label78.Location = new System.Drawing.Point(6, 237);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(71, 12);
+            this.label78.TabIndex = 42;
+            this.label78.Text = "标签列表： ";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.comboBox9);
+            this.groupBox8.Controls.Add(this.lxLedControl9);
+            this.groupBox8.Controls.Add(this.lxLedControl10);
+            this.groupBox8.Controls.Add(this.lxLedControl11);
+            this.groupBox8.Controls.Add(this.lxLedControl12);
+            this.groupBox8.Controls.Add(this.label79);
+            this.groupBox8.Controls.Add(this.label80);
+            this.groupBox8.Controls.Add(this.label81);
+            this.groupBox8.Controls.Add(this.label82);
+            this.groupBox8.Controls.Add(this.label83);
+            this.groupBox8.Controls.Add(this.lxLedControl13);
+            this.groupBox8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox8.Location = new System.Drawing.Point(2, 64);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(996, 162);
+            this.groupBox8.TabIndex = 24;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "数据";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox9.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "天线1",
+            "天线2",
+            "天线3",
+            "天线4",
+            "不选"});
+            this.comboBox9.Location = new System.Drawing.Point(-165, 111);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(55, 21);
+            this.comboBox9.TabIndex = 39;
+            // 
+            // lxLedControl9
+            // 
+            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl9.BevelRate = 0.1F;
+            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl9.HighlightOpaque = ((byte)(20));
+            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
+            this.lxLedControl9.Name = "lxLedControl9";
+            this.lxLedControl9.RoundCorner = true;
+            this.lxLedControl9.SegmentIntervalRatio = 50;
+            this.lxLedControl9.ShowHighlight = true;
+            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
+            this.lxLedControl9.TabIndex = 35;
+            this.lxLedControl9.Text = "0";
+            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.lxLedControl9.TotalCharCount = 10;
+            // 
+            // lxLedControl10
+            // 
+            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl10.BevelRate = 0.1F;
+            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl10.HighlightOpaque = ((byte)(20));
+            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
+            this.lxLedControl10.Name = "lxLedControl10";
+            this.lxLedControl10.RoundCorner = true;
+            this.lxLedControl10.SegmentIntervalRatio = 50;
+            this.lxLedControl10.ShowHighlight = true;
+            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl10.TabIndex = 34;
+            this.lxLedControl10.Text = "0";
+            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl11
+            // 
+            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl11.BevelRate = 0.1F;
+            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl11.HighlightOpaque = ((byte)(20));
+            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
+            this.lxLedControl11.Name = "lxLedControl11";
+            this.lxLedControl11.RoundCorner = true;
+            this.lxLedControl11.SegmentIntervalRatio = 50;
+            this.lxLedControl11.ShowHighlight = true;
+            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl11.TabIndex = 33;
+            this.lxLedControl11.Text = "0";
+            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl12
+            // 
+            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl12.BevelRate = 0.1F;
+            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl12.HighlightOpaque = ((byte)(20));
+            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
+            this.lxLedControl12.Name = "lxLedControl12";
+            this.lxLedControl12.RoundCorner = true;
+            this.lxLedControl12.SegmentIntervalRatio = 50;
+            this.lxLedControl12.ShowHighlight = true;
+            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl12.TabIndex = 32;
+            this.lxLedControl12.Text = "0";
+            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label79.Location = new System.Drawing.Point(700, 103);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(127, 13);
+            this.label79.TabIndex = 30;
+            this.label79.Text = "累计运行的时间(毫秒)：";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label80.Location = new System.Drawing.Point(495, 17);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(117, 13);
+            this.label80.TabIndex = 29;
+            this.label80.Text = "命令识别速度(个/秒)：";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label81.Location = new System.Drawing.Point(498, 88);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(115, 13);
+            this.label81.TabIndex = 28;
+            this.label81.Text = "命令执行时间(毫秒)：";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label82.Location = new System.Drawing.Point(700, 17);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(103, 13);
+            this.label82.TabIndex = 27;
+            this.label82.Text = "命令返回数据(条)：";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label83.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label83.Location = new System.Drawing.Point(104, 17);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(149, 12);
+            this.label83.TabIndex = 26;
+            this.label83.Text = "已盘存的标签总数量(个)：";
+            // 
+            // lxLedControl13
+            // 
+            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl13.BevelRate = 0.1F;
+            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
+            this.lxLedControl13.HighlightOpaque = ((byte)(20));
+            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
+            this.lxLedControl13.Name = "lxLedControl13";
+            this.lxLedControl13.RoundCorner = true;
+            this.lxLedControl13.SegmentIntervalRatio = 50;
+            this.lxLedControl13.ShowHighlight = true;
+            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
+            this.lxLedControl13.TabIndex = 21;
+            this.lxLedControl13.Text = "0";
+            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader43,
+            this.columnHeader44,
+            this.columnHeader45,
+            this.columnHeader46,
+            this.columnHeader47,
+            this.columnHeader48});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listView1.Location = new System.Drawing.Point(3, 261);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(996, 267);
+            this.listView1.TabIndex = 23;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader43
+            // 
+            this.columnHeader43.Text = "ID";
+            this.columnHeader43.Width = 56;
+            // 
+            // columnHeader44
+            // 
+            this.columnHeader44.Text = "EPC";
+            this.columnHeader44.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader44.Width = 486;
+            // 
+            // columnHeader45
+            // 
+            this.columnHeader45.Text = "PC";
+            this.columnHeader45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader45.Width = 83;
+            // 
+            // columnHeader46
+            // 
+            this.columnHeader46.Text = "识别次数";
+            this.columnHeader46.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader46.Width = 129;
+            // 
+            // columnHeader47
+            // 
+            this.columnHeader47.Text = "RSSI";
+            this.columnHeader47.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader47.Width = 95;
+            // 
+            // columnHeader48
+            // 
+            this.columnHeader48.Text = "载波频率";
+            this.columnHeader48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader48.Width = 92;
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox10.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Items.AddRange(new object[] {
+            "天线1",
+            "天线2",
+            "天线3",
+            "天线4",
+            "不选"});
+            this.comboBox10.Location = new System.Drawing.Point(-165, 111);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(55, 21);
+            this.comboBox10.TabIndex = 39;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label87.Location = new System.Drawing.Point(700, 103);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(137, 12);
+            this.label87.TabIndex = 30;
+            this.label87.Text = "累计运行的时间(毫秒)：";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label88.Location = new System.Drawing.Point(495, 17);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(131, 12);
+            this.label88.TabIndex = 29;
+            this.label88.Text = "命令识别速度(个/秒)：";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label89.Location = new System.Drawing.Point(498, 88);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(125, 12);
+            this.label89.TabIndex = 28;
+            this.label89.Text = "命令执行时间(毫秒)：";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label90.Location = new System.Drawing.Point(700, 17);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(113, 12);
+            this.label90.TabIndex = 27;
+            this.label90.Text = "命令返回数据(条)：";
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label91.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label91.Location = new System.Drawing.Point(104, 17);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(149, 12);
+            this.label91.TabIndex = 26;
+            this.label91.Text = "已盘存的标签总数量(个)：";
+            // 
+            // lxLedControl14
+            // 
+            this.lxLedControl14.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl14.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl14.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl14.BevelRate = 0.1F;
+            this.lxLedControl14.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl14.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl14.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl14.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl14.HighlightOpaque = ((byte)(20));
+            this.lxLedControl14.Location = new System.Drawing.Point(702, 118);
+            this.lxLedControl14.Name = "lxLedControl14";
+            this.lxLedControl14.RoundCorner = true;
+            this.lxLedControl14.SegmentIntervalRatio = 50;
+            this.lxLedControl14.ShowHighlight = true;
+            this.lxLedControl14.Size = new System.Drawing.Size(183, 35);
+            this.lxLedControl14.TabIndex = 35;
+            this.lxLedControl14.Text = "0";
+            this.lxLedControl14.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.lxLedControl14.TotalCharCount = 10;
+            // 
+            // lxLedControl15
+            // 
+            this.lxLedControl15.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl15.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl15.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl15.BevelRate = 0.1F;
+            this.lxLedControl15.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl15.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl15.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl15.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl15.HighlightOpaque = ((byte)(20));
+            this.lxLedControl15.Location = new System.Drawing.Point(496, 35);
+            this.lxLedControl15.Name = "lxLedControl15";
+            this.lxLedControl15.RoundCorner = true;
+            this.lxLedControl15.SegmentIntervalRatio = 50;
+            this.lxLedControl15.ShowHighlight = true;
+            this.lxLedControl15.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl15.TabIndex = 34;
+            this.lxLedControl15.Text = "0";
+            this.lxLedControl15.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl16
+            // 
+            this.lxLedControl16.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl16.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl16.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl16.BevelRate = 0.1F;
+            this.lxLedControl16.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl16.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl16.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl16.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl16.HighlightOpaque = ((byte)(20));
+            this.lxLedControl16.Location = new System.Drawing.Point(497, 103);
+            this.lxLedControl16.Name = "lxLedControl16";
+            this.lxLedControl16.RoundCorner = true;
+            this.lxLedControl16.SegmentIntervalRatio = 50;
+            this.lxLedControl16.ShowHighlight = true;
+            this.lxLedControl16.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl16.TabIndex = 33;
+            this.lxLedControl16.Text = "0";
+            this.lxLedControl16.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl17
+            // 
+            this.lxLedControl17.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl17.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl17.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl17.BevelRate = 0.1F;
+            this.lxLedControl17.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl17.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl17.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl17.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl17.HighlightOpaque = ((byte)(20));
+            this.lxLedControl17.Location = new System.Drawing.Point(702, 35);
+            this.lxLedControl17.Name = "lxLedControl17";
+            this.lxLedControl17.RoundCorner = true;
+            this.lxLedControl17.SegmentIntervalRatio = 50;
+            this.lxLedControl17.ShowHighlight = true;
+            this.lxLedControl17.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl17.TabIndex = 32;
+            this.lxLedControl17.Text = "0";
+            this.lxLedControl17.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl18
+            // 
+            this.lxLedControl18.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl18.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl18.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl18.BevelRate = 0.1F;
+            this.lxLedControl18.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl18.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl18.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl18.ForeColor = System.Drawing.Color.Purple;
+            this.lxLedControl18.HighlightOpaque = ((byte)(20));
+            this.lxLedControl18.Location = new System.Drawing.Point(106, 35);
+            this.lxLedControl18.Name = "lxLedControl18";
+            this.lxLedControl18.RoundCorner = true;
+            this.lxLedControl18.SegmentIntervalRatio = 50;
+            this.lxLedControl18.ShowHighlight = true;
+            this.lxLedControl18.Size = new System.Drawing.Size(310, 118);
+            this.lxLedControl18.TabIndex = 21;
+            this.lxLedControl18.Text = "0";
+            this.lxLedControl18.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // TabCarreras
+            // 
+            this.TabCarreras.Controls.Add(this.panel16);
+            this.TabCarreras.Controls.Add(this.panel15);
+            this.TabCarreras.Location = new System.Drawing.Point(4, 22);
+            this.TabCarreras.Name = "TabCarreras";
+            this.TabCarreras.Padding = new System.Windows.Forms.Padding(3);
+            this.TabCarreras.Size = new System.Drawing.Size(1010, 707);
+            this.TabCarreras.TabIndex = 7;
+            this.TabCarreras.Text = "Capturar Carreras";
+            this.TabCarreras.UseVisualStyleBackColor = true;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.tablaCarreras);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(3, 41);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(1004, 663);
+            this.panel16.TabIndex = 1;
+            // 
+            // tablaCarreras
+            // 
+            this.tablaCarreras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCarreras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdCarrera,
+            this.DescripcionCarrera,
+            this.Fecha,
+            this.PaisCarrera,
+            this.EstadoCarrera,
+            this.CiudadCarrera});
+            this.tablaCarreras.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaCarreras.Location = new System.Drawing.Point(0, 0);
+            this.tablaCarreras.Name = "tablaCarreras";
+            this.tablaCarreras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCarreras.Size = new System.Drawing.Size(1004, 663);
+            this.tablaCarreras.TabIndex = 0;
+            this.tablaCarreras.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCarreras_CellContentDoubleClick);
+            // 
+            // IdCarrera
+            // 
+            this.IdCarrera.DataPropertyName = "IdCarrera";
+            this.IdCarrera.HeaderText = "Clave";
+            this.IdCarrera.Name = "IdCarrera";
+            this.IdCarrera.ReadOnly = true;
+            this.IdCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IdCarrera.Width = 60;
+            // 
+            // DescripcionCarrera
+            // 
+            this.DescripcionCarrera.DataPropertyName = "DescripcionCarrera";
+            this.DescripcionCarrera.HeaderText = "Descripcion";
+            this.DescripcionCarrera.Name = "DescripcionCarrera";
+            this.DescripcionCarrera.ReadOnly = true;
+            this.DescripcionCarrera.Width = 200;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Fecha.Width = 80;
+            // 
+            // PaisCarrera
+            // 
+            this.PaisCarrera.DataPropertyName = "Pais";
+            this.PaisCarrera.HeaderText = "Pais";
+            this.PaisCarrera.Name = "PaisCarrera";
+            this.PaisCarrera.ReadOnly = true;
+            this.PaisCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PaisCarrera.Width = 150;
+            // 
+            // EstadoCarrera
+            // 
+            this.EstadoCarrera.DataPropertyName = "Estado";
+            this.EstadoCarrera.HeaderText = "Estado";
+            this.EstadoCarrera.Name = "EstadoCarrera";
+            this.EstadoCarrera.ReadOnly = true;
+            this.EstadoCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EstadoCarrera.Width = 150;
+            // 
+            // CiudadCarrera
+            // 
+            this.CiudadCarrera.DataPropertyName = "Ciudad";
+            this.CiudadCarrera.HeaderText = "Ciudad";
+            this.CiudadCarrera.Name = "CiudadCarrera";
+            this.CiudadCarrera.ReadOnly = true;
+            this.CiudadCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CiudadCarrera.Width = 150;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.txtExportarExcel);
+            this.panel15.Controls.Add(this.btnModificarCarrera);
+            this.panel15.Controls.Add(this.btnRegistrarCarrera);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(1004, 38);
+            this.panel15.TabIndex = 0;
+            // 
+            // txtExportarExcel
+            // 
+            this.txtExportarExcel.Location = new System.Drawing.Point(167, 6);
+            this.txtExportarExcel.Name = "txtExportarExcel";
+            this.txtExportarExcel.Size = new System.Drawing.Size(75, 23);
+            this.txtExportarExcel.TabIndex = 2;
+            this.txtExportarExcel.Text = "Exportar";
+            this.txtExportarExcel.UseVisualStyleBackColor = true;
+            this.txtExportarExcel.Click += new System.EventHandler(this.txtExportarExcel_Click);
+            // 
+            // btnModificarCarrera
+            // 
+            this.btnModificarCarrera.Location = new System.Drawing.Point(86, 6);
+            this.btnModificarCarrera.Name = "btnModificarCarrera";
+            this.btnModificarCarrera.Size = new System.Drawing.Size(75, 23);
+            this.btnModificarCarrera.TabIndex = 1;
+            this.btnModificarCarrera.Text = "Modificar";
+            this.btnModificarCarrera.UseVisualStyleBackColor = true;
+            this.btnModificarCarrera.Click += new System.EventHandler(this.btnModificarCarrera_Click);
+            // 
+            // btnRegistrarCarrera
+            // 
+            this.btnRegistrarCarrera.Location = new System.Drawing.Point(5, 6);
+            this.btnRegistrarCarrera.Name = "btnRegistrarCarrera";
+            this.btnRegistrarCarrera.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrarCarrera.TabIndex = 0;
+            this.btnRegistrarCarrera.Text = "Registrar";
+            this.btnRegistrarCarrera.UseVisualStyleBackColor = true;
+            this.btnRegistrarCarrera.Click += new System.EventHandler(this.btnRegistrarCarrera_Click);
+            // 
+            // TabCatalogos
+            // 
+            this.TabCatalogos.Controls.Add(this.panel11);
+            this.TabCatalogos.Location = new System.Drawing.Point(4, 22);
+            this.TabCatalogos.Name = "TabCatalogos";
+            this.TabCatalogos.Size = new System.Drawing.Size(1010, 707);
+            this.TabCatalogos.TabIndex = 6;
+            this.TabCatalogos.Text = "Catalogos";
+            this.TabCatalogos.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.AutoSize = true;
+            this.panel11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel11.Controls.Add(this.tabOpcionesCatalogos);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1010, 707);
+            this.panel11.TabIndex = 0;
+            // 
+            // tabOpcionesCatalogos
+            // 
+            this.tabOpcionesCatalogos.Controls.Add(this.tabCategorias);
+            this.tabOpcionesCatalogos.Controls.Add(this.tabCompetidores);
+            this.tabOpcionesCatalogos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabOpcionesCatalogos.Location = new System.Drawing.Point(0, 0);
+            this.tabOpcionesCatalogos.Name = "tabOpcionesCatalogos";
+            this.tabOpcionesCatalogos.SelectedIndex = 0;
+            this.tabOpcionesCatalogos.Size = new System.Drawing.Size(1010, 707);
+            this.tabOpcionesCatalogos.TabIndex = 0;
+            // 
+            // tabCategorias
+            // 
+            this.tabCategorias.Controls.Add(this.panel13);
+            this.tabCategorias.Controls.Add(this.panel12);
+            this.tabCategorias.Location = new System.Drawing.Point(4, 22);
+            this.tabCategorias.Name = "tabCategorias";
+            this.tabCategorias.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCategorias.Size = new System.Drawing.Size(1002, 681);
+            this.tabCategorias.TabIndex = 0;
+            this.tabCategorias.Text = "Categorias";
+            this.tabCategorias.UseVisualStyleBackColor = true;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.tablaCategorias);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(3, 34);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(996, 644);
+            this.panel13.TabIndex = 4;
+            // 
+            // tablaCategorias
+            // 
+            this.tablaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdCategoria,
+            this.Descripcion});
+            this.tablaCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaCategorias.Location = new System.Drawing.Point(0, 0);
+            this.tablaCategorias.Name = "tablaCategorias";
+            this.tablaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCategorias.Size = new System.Drawing.Size(996, 644);
+            this.tablaCategorias.TabIndex = 0;
+            this.tablaCategorias.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellContentDoubleClick);
+            // 
+            // IdCategoria
+            // 
+            this.IdCategoria.DataPropertyName = "IdCategoria";
+            this.IdCategoria.HeaderText = "Clave";
+            this.IdCategoria.Name = "IdCategoria";
+            this.IdCategoria.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Descripcion.Width = 300;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.btnRegistrarCategoria);
+            this.panel12.Controls.Add(this.btnEliminarCategoria);
+            this.panel12.Controls.Add(this.btnModificarCategoria);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(3, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(996, 31);
+            this.panel12.TabIndex = 3;
+            // 
+            // btnRegistrarCategoria
+            // 
+            this.btnRegistrarCategoria.Location = new System.Drawing.Point(3, 3);
+            this.btnRegistrarCategoria.Name = "btnRegistrarCategoria";
+            this.btnRegistrarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrarCategoria.TabIndex = 0;
+            this.btnRegistrarCategoria.Text = "Registrar";
+            this.btnRegistrarCategoria.UseVisualStyleBackColor = true;
+            this.btnRegistrarCategoria.Click += new System.EventHandler(this.btnRegistrarCategoria_Click);
+            // 
+            // btnEliminarCategoria
+            // 
+            this.btnEliminarCategoria.Location = new System.Drawing.Point(165, 3);
+            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
+            this.btnEliminarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarCategoria.TabIndex = 2;
+            this.btnEliminarCategoria.Text = "Eliminar";
+            this.btnEliminarCategoria.UseVisualStyleBackColor = true;
+            this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
+            // 
+            // btnModificarCategoria
+            // 
+            this.btnModificarCategoria.Location = new System.Drawing.Point(84, 3);
+            this.btnModificarCategoria.Name = "btnModificarCategoria";
+            this.btnModificarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnModificarCategoria.TabIndex = 1;
+            this.btnModificarCategoria.Text = "Modificar";
+            this.btnModificarCategoria.UseVisualStyleBackColor = true;
+            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
+            // 
+            // tabCompetidores
+            // 
+            this.tabCompetidores.Controls.Add(this.tablaCompetidores);
+            this.tabCompetidores.Controls.Add(this.panel14);
+            this.tabCompetidores.Location = new System.Drawing.Point(4, 22);
+            this.tabCompetidores.Name = "tabCompetidores";
+            this.tabCompetidores.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCompetidores.Size = new System.Drawing.Size(1002, 681);
+            this.tabCompetidores.TabIndex = 1;
+            this.tabCompetidores.Text = "Competidores";
+            this.tabCompetidores.UseVisualStyleBackColor = true;
+            // 
+            // tablaCompetidores
+            // 
+            this.tablaCompetidores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCompetidores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.Direccion,
+            this.Pais,
+            this.Estado,
+            this.Ciudad,
+            this.Telefono,
+            this.FechaNacimiento});
+            this.tablaCompetidores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaCompetidores.Location = new System.Drawing.Point(3, 34);
+            this.tablaCompetidores.Name = "tablaCompetidores";
+            this.tablaCompetidores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCompetidores.Size = new System.Drawing.Size(996, 644);
+            this.tablaCompetidores.TabIndex = 5;
+            this.tablaCompetidores.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCompetidores_CellContentDoubleClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCompetidor";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Clave";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCompleto";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn2.Width = 220;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 180;
+            // 
+            // Pais
+            // 
+            this.Pais.DataPropertyName = "Pais";
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.DataPropertyName = "Estado";
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.DataPropertyName = "Ciudad";
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            this.Ciudad.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 70;
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "Fecha Nacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.btnRegistrarCompetidor);
+            this.panel14.Controls.Add(this.btnEliminarCompetidor);
+            this.panel14.Controls.Add(this.btnModificarCompetidor);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel14.Location = new System.Drawing.Point(3, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(996, 31);
+            this.panel14.TabIndex = 4;
+            // 
+            // btnRegistrarCompetidor
+            // 
+            this.btnRegistrarCompetidor.Location = new System.Drawing.Point(3, 3);
+            this.btnRegistrarCompetidor.Name = "btnRegistrarCompetidor";
+            this.btnRegistrarCompetidor.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrarCompetidor.TabIndex = 0;
+            this.btnRegistrarCompetidor.Text = "Registrar";
+            this.btnRegistrarCompetidor.UseVisualStyleBackColor = true;
+            this.btnRegistrarCompetidor.Click += new System.EventHandler(this.btnRegistrarCompetidor_Click_1);
+            // 
+            // btnEliminarCompetidor
+            // 
+            this.btnEliminarCompetidor.Location = new System.Drawing.Point(165, 3);
+            this.btnEliminarCompetidor.Name = "btnEliminarCompetidor";
+            this.btnEliminarCompetidor.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarCompetidor.TabIndex = 2;
+            this.btnEliminarCompetidor.Text = "Eliminar";
+            this.btnEliminarCompetidor.UseVisualStyleBackColor = true;
+            this.btnEliminarCompetidor.Click += new System.EventHandler(this.btnEliminarCompetidor_Click_1);
+            // 
+            // btnModificarCompetidor
+            // 
+            this.btnModificarCompetidor.Location = new System.Drawing.Point(84, 3);
+            this.btnModificarCompetidor.Name = "btnModificarCompetidor";
+            this.btnModificarCompetidor.Size = new System.Drawing.Size(75, 23);
+            this.btnModificarCompetidor.TabIndex = 1;
+            this.btnModificarCompetidor.Text = "Modificar";
+            this.btnModificarCompetidor.UseVisualStyleBackColor = true;
+            this.btnModificarCompetidor.Click += new System.EventHandler(this.btnModificarCompetidor_Click_1);
+            // 
+            // pageEpcTest
+            // 
+            this.pageEpcTest.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pageEpcTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pageEpcTest.Controls.Add(this.tabEpcTest);
+            this.pageEpcTest.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pageEpcTest.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.pageEpcTest.Location = new System.Drawing.Point(4, 22);
+            this.pageEpcTest.Name = "pageEpcTest";
+            this.pageEpcTest.Size = new System.Drawing.Size(1010, 707);
+            this.pageEpcTest.TabIndex = 5;
+            this.pageEpcTest.Text = "Carrera";
+            // 
+            // tabEpcTest
+            // 
+            this.tabEpcTest.Controls.Add(this.pageRealMode);
+            this.tabEpcTest.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabEpcTest.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabEpcTest.Location = new System.Drawing.Point(0, 2);
+            this.tabEpcTest.Name = "tabEpcTest";
+            this.tabEpcTest.SelectedIndex = 0;
+            this.tabEpcTest.Size = new System.Drawing.Size(1008, 703);
+            this.tabEpcTest.TabIndex = 0;
+            // 
+            // pageRealMode
+            // 
+            this.pageRealMode.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pageRealMode.Controls.Add(this.gridCarreraDetalle);
+            this.pageRealMode.Controls.Add(this.groupBox20);
+            this.pageRealMode.Controls.Add(this.tableLayoutPanel1);
+            this.pageRealMode.Controls.Add(this.lvRealList);
+            this.pageRealMode.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pageRealMode.Location = new System.Drawing.Point(4, 22);
+            this.pageRealMode.Name = "pageRealMode";
+            this.pageRealMode.Padding = new System.Windows.Forms.Padding(3);
+            this.pageRealMode.Size = new System.Drawing.Size(1000, 677);
+            this.pageRealMode.TabIndex = 1;
+            this.pageRealMode.Text = "Carrera General";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.cbRealWorkant1);
+            this.groupBox20.Controls.Add(this.cbRealWorkant4);
+            this.groupBox20.Controls.Add(this.tbRealMaxRssi);
+            this.groupBox20.Controls.Add(this.tbRealMinRssi);
+            this.groupBox20.Controls.Add(this.label70);
+            this.groupBox20.Controls.Add(this.cbRealWorkant3);
+            this.groupBox20.Controls.Add(this.cbRealWorkant2);
+            this.groupBox20.Controls.Add(this.label74);
+            this.groupBox20.Controls.Add(this.btRealFresh);
+            this.groupBox20.Controls.Add(this.label19);
+            this.groupBox20.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox20.ForeColor = System.Drawing.Color.Black;
+            this.groupBox20.Location = new System.Drawing.Point(3, 65);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(994, 57);
+            this.groupBox20.TabIndex = 49;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Selección de Antenas";
+            // 
+            // cbRealWorkant1
+            // 
+            this.cbRealWorkant1.AutoSize = true;
+            this.cbRealWorkant1.Checked = true;
+            this.cbRealWorkant1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRealWorkant1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbRealWorkant1.Location = new System.Drawing.Point(283, 24);
+            this.cbRealWorkant1.Name = "cbRealWorkant1";
+            this.cbRealWorkant1.Size = new System.Drawing.Size(48, 16);
+            this.cbRealWorkant1.TabIndex = 68;
+            this.cbRealWorkant1.Text = "Ant1";
+            this.cbRealWorkant1.UseVisualStyleBackColor = true;
+            // 
+            // cbRealWorkant4
+            // 
+            this.cbRealWorkant4.AutoSize = true;
+            this.cbRealWorkant4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbRealWorkant4.Location = new System.Drawing.Point(649, 24);
+            this.cbRealWorkant4.Name = "cbRealWorkant4";
+            this.cbRealWorkant4.Size = new System.Drawing.Size(48, 16);
+            this.cbRealWorkant4.TabIndex = 67;
+            this.cbRealWorkant4.Text = "Ant4";
+            this.cbRealWorkant4.UseVisualStyleBackColor = true;
+            // 
+            // tbRealMaxRssi
+            // 
+            this.tbRealMaxRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbRealMaxRssi.Location = new System.Drawing.Point(208, 23);
+            this.tbRealMaxRssi.Name = "tbRealMaxRssi";
+            this.tbRealMaxRssi.ReadOnly = true;
+            this.tbRealMaxRssi.Size = new System.Drawing.Size(62, 21);
+            this.tbRealMaxRssi.TabIndex = 47;
+            this.tbRealMaxRssi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRealMaxRssi.Visible = false;
+            // 
+            // tbRealMinRssi
+            // 
+            this.tbRealMinRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbRealMinRssi.Location = new System.Drawing.Point(72, 24);
+            this.tbRealMinRssi.Name = "tbRealMinRssi";
+            this.tbRealMinRssi.ReadOnly = true;
+            this.tbRealMinRssi.Size = new System.Drawing.Size(62, 21);
+            this.tbRealMinRssi.TabIndex = 46;
+            this.tbRealMinRssi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRealMinRssi.Visible = false;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label70.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label70.Location = new System.Drawing.Point(143, 26);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(59, 12);
+            this.label70.TabIndex = 43;
+            this.label70.Text = "Max RSSI:";
+            this.label70.Visible = false;
+            // 
+            // cbRealWorkant3
+            // 
+            this.cbRealWorkant3.AutoSize = true;
+            this.cbRealWorkant3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbRealWorkant3.Location = new System.Drawing.Point(527, 24);
+            this.cbRealWorkant3.Name = "cbRealWorkant3";
+            this.cbRealWorkant3.Size = new System.Drawing.Size(48, 16);
+            this.cbRealWorkant3.TabIndex = 66;
+            this.cbRealWorkant3.Text = "Ant3";
+            this.cbRealWorkant3.UseVisualStyleBackColor = true;
+            // 
+            // cbRealWorkant2
+            // 
+            this.cbRealWorkant2.AutoSize = true;
+            this.cbRealWorkant2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbRealWorkant2.Location = new System.Drawing.Point(405, 24);
+            this.cbRealWorkant2.Name = "cbRealWorkant2";
+            this.cbRealWorkant2.Size = new System.Drawing.Size(48, 16);
+            this.cbRealWorkant2.TabIndex = 65;
+            this.cbRealWorkant2.Text = "Ant2";
+            this.cbRealWorkant2.UseVisualStyleBackColor = true;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label74.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label74.Location = new System.Drawing.Point(7, 28);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(59, 12);
+            this.label74.TabIndex = 44;
+            this.label74.Text = "Min RSSI:";
+            this.label74.Visible = false;
+            // 
+            // btRealFresh
+            // 
+            this.btRealFresh.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btRealFresh.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btRealFresh.Location = new System.Drawing.Point(809, 20);
+            this.btRealFresh.Name = "btRealFresh";
+            this.btRealFresh.Size = new System.Drawing.Size(179, 25);
+            this.btRealFresh.TabIndex = 45;
+            this.btRealFresh.Text = "Borrar Listado";
+            this.btRealFresh.UseVisualStyleBackColor = true;
+            this.btRealFresh.Click += new System.EventHandler(this.btRealFresh_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(51, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(0, 12);
+            this.label19.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 60);
+            this.tableLayoutPanel1.TabIndex = 48;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.cbRealSession);
+            this.panel5.Controls.Add(this.cmbTarget);
+            this.panel5.Controls.Add(this.label98);
+            this.panel5.Controls.Add(this.cmbSession);
+            this.panel5.Controls.Add(this.label97);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(698, 4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(292, 52);
+            this.panel5.TabIndex = 1;
+            this.panel5.Visible = false;
+            // 
+            // cbRealSession
+            // 
+            this.cbRealSession.AutoSize = true;
+            this.cbRealSession.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbRealSession.Location = new System.Drawing.Point(3, 20);
+            this.cbRealSession.Name = "cbRealSession";
+            this.cbRealSession.Size = new System.Drawing.Size(96, 28);
+            this.cbRealSession.TabIndex = 55;
+            this.cbRealSession.Text = "User Define \r\nSession";
+            this.cbRealSession.UseVisualStyleBackColor = true;
+            this.cbRealSession.CheckedChanged += new System.EventHandler(this.cbRealSession_CheckedChanged);
+            // 
+            // cmbTarget
+            // 
+            this.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTarget.Enabled = false;
+            this.cmbTarget.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbTarget.FormattingEnabled = true;
+            this.cmbTarget.Items.AddRange(new object[] {
+            "A",
+            "B"});
+            this.cmbTarget.Location = new System.Drawing.Point(227, 25);
+            this.cmbTarget.Name = "cmbTarget";
+            this.cmbTarget.Size = new System.Drawing.Size(62, 20);
+            this.cmbTarget.TabIndex = 54;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Enabled = false;
+            this.label98.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label98.Location = new System.Drawing.Point(189, 10);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(107, 12);
+            this.label98.TabIndex = 53;
+            this.label98.Text = "Inventoried Flag:";
+            // 
+            // cmbSession
+            // 
+            this.cmbSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSession.Enabled = false;
+            this.cmbSession.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbSession.FormattingEnabled = true;
+            this.cmbSession.Items.AddRange(new object[] {
+            "S0",
+            "S1",
+            "S2",
+            "S3"});
+            this.cmbSession.Location = new System.Drawing.Point(114, 25);
+            this.cmbSession.Name = "cmbSession";
+            this.cmbSession.Size = new System.Drawing.Size(62, 20);
+            this.cmbSession.TabIndex = 52;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Enabled = false;
+            this.label97.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label97.Location = new System.Drawing.Point(105, 10);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(71, 12);
+            this.label97.TabIndex = 51;
+            this.label97.Text = "Session ID:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cmbCarreraConfig);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.btRealTimeInventory);
+            this.panel1.Controls.Add(this.textRealRound);
+            this.panel1.Controls.Add(this.label84);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(687, 52);
+            this.panel1.TabIndex = 0;
+            // 
+            // cmbCarreraConfig
+            // 
+            this.cmbCarreraConfig.AccessibleName = "cmbCarreraConfig";
+            this.cmbCarreraConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCarreraConfig.FormattingEnabled = true;
+            this.cmbCarreraConfig.Location = new System.Drawing.Point(79, 17);
+            this.cmbCarreraConfig.Name = "cmbCarreraConfig";
+            this.cmbCarreraConfig.Size = new System.Drawing.Size(140, 22);
+            this.cmbCarreraConfig.TabIndex = 50;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(17, 20);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 14);
+            this.label15.TabIndex = 49;
+            this.label15.Text = "Carrera";
+            // 
+            // textRealRound
+            // 
+            this.textRealRound.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textRealRound.Location = new System.Drawing.Point(645, 27);
+            this.textRealRound.Name = "textRealRound";
+            this.textRealRound.Size = new System.Drawing.Size(28, 21);
+            this.textRealRound.TabIndex = 48;
+            this.textRealRound.Text = "1";
+            this.textRealRound.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textRealRound.Visible = false;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label84.Location = new System.Drawing.Point(565, 10);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(119, 12);
+            this.label84.TabIndex = 2;
+            this.label84.Text = "Repeat Per Command:";
+            this.label84.Visible = false;
+            // 
+            // btRealTimeInventory
+            // 
+            this.btRealTimeInventory.AccessibleName = "btnRealTimeInventory";
+            this.btRealTimeInventory.BackColor = System.Drawing.Color.Green;
+            this.btRealTimeInventory.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btRealTimeInventory.ForeColor = System.Drawing.Color.White;
+            this.btRealTimeInventory.Location = new System.Drawing.Point(229, 5);
+            this.btRealTimeInventory.Name = "btRealTimeInventory";
+            this.btRealTimeInventory.Size = new System.Drawing.Size(202, 40);
+            this.btRealTimeInventory.TabIndex = 1;
+            this.btRealTimeInventory.Text = "Empezar Carrera";
+            this.btRealTimeInventory.UseVisualStyleBackColor = false;
+            this.btRealTimeInventory.Click += new System.EventHandler(this.btRealTimeInventory_Click);
+            // 
+            // lvRealList
+            // 
+            this.lvRealList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader37,
+            this.columnHeader38,
+            this.columnHeader39,
+            this.columnHeader40,
+            this.columnHeader41,
+            this.columnHeader42});
+            this.lvRealList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lvRealList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lvRealList.GridLines = true;
+            this.lvRealList.Location = new System.Drawing.Point(3, 632);
+            this.lvRealList.Name = "lvRealList";
+            this.lvRealList.Size = new System.Drawing.Size(994, 42);
+            this.lvRealList.TabIndex = 23;
+            this.lvRealList.UseCompatibleStateImageBehavior = false;
+            this.lvRealList.View = System.Windows.Forms.View.Details;
+            this.lvRealList.Visible = false;
+            // 
+            // columnHeader37
+            // 
+            this.columnHeader37.Text = "ID";
+            this.columnHeader37.Width = 56;
+            // 
+            // columnHeader38
+            // 
+            this.columnHeader38.Text = "EPC";
+            this.columnHeader38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader38.Width = 486;
+            // 
+            // columnHeader39
+            // 
+            this.columnHeader39.Text = "PC";
+            this.columnHeader39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader39.Width = 83;
+            // 
+            // columnHeader40
+            // 
+            this.columnHeader40.Text = "Identification Count";
+            this.columnHeader40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader40.Width = 162;
+            // 
+            // columnHeader41
+            // 
+            this.columnHeader41.Text = "RSSI";
+            this.columnHeader41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader41.Width = 72;
+            // 
+            // columnHeader42
+            // 
+            this.columnHeader42.Text = "Carrier Frequency";
+            this.columnHeader42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader42.Width = 117;
             // 
             // PagReaderSetting
             // 
@@ -397,7 +1714,7 @@
             this.PagReaderSetting.Location = new System.Drawing.Point(4, 22);
             this.PagReaderSetting.Name = "PagReaderSetting";
             this.PagReaderSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.PagReaderSetting.Size = new System.Drawing.Size(1010, 603);
+            this.PagReaderSetting.Size = new System.Drawing.Size(1010, 707);
             this.PagReaderSetting.TabIndex = 0;
             this.PagReaderSetting.Text = "Reader Setup";
             // 
@@ -406,19 +1723,15 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(3, 7);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1004, 593);
+            this.tabControl1.Size = new System.Drawing.Size(1004, 701);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.cmbCategoriaConfig);
-            this.tabPage1.Controls.Add(this.cmbCarreraConfig);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.btReaderSetupRefresh);
             this.tabPage1.Controls.Add(this.gbCmdReadGpio);
             this.tabPage1.Controls.Add(this.gbCmdBeeper);
@@ -433,46 +1746,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(996, 567);
+            this.tabPage1.Size = new System.Drawing.Size(996, 675);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Setup";
-            // 
-            // cmbCategoriaConfig
-            // 
-            this.cmbCategoriaConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoriaConfig.FormattingEnabled = true;
-            this.cmbCategoriaConfig.Location = new System.Drawing.Point(709, 517);
-            this.cmbCategoriaConfig.Name = "cmbCategoriaConfig";
-            this.cmbCategoriaConfig.Size = new System.Drawing.Size(150, 21);
-            this.cmbCategoriaConfig.TabIndex = 19;
-            // 
-            // cmbCarreraConfig
-            // 
-            this.cmbCarreraConfig.AccessibleName = "cmbCarreraConfig";
-            this.cmbCarreraConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCarreraConfig.FormattingEnabled = true;
-            this.cmbCarreraConfig.Location = new System.Drawing.Point(503, 517);
-            this.cmbCarreraConfig.Name = "cmbCarreraConfig";
-            this.cmbCarreraConfig.Size = new System.Drawing.Size(140, 21);
-            this.cmbCarreraConfig.TabIndex = 18;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(652, 520);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 13);
-            this.label18.TabIndex = 17;
-            this.label18.Text = "Categoría";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(460, 520);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Carrera";
             // 
             // btReaderSetupRefresh
             // 
@@ -1180,7 +2456,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(996, 567);
+            this.tabPage2.Size = new System.Drawing.Size(996, 675);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "RF Setup";
             // 
@@ -1988,1584 +3264,86 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "dBm";
             // 
-            // pageEpcTest
-            // 
-            this.pageEpcTest.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pageEpcTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pageEpcTest.Controls.Add(this.tabEpcTest);
-            this.pageEpcTest.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pageEpcTest.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.pageEpcTest.Location = new System.Drawing.Point(4, 22);
-            this.pageEpcTest.Name = "pageEpcTest";
-            this.pageEpcTest.Size = new System.Drawing.Size(1010, 603);
-            this.pageEpcTest.TabIndex = 5;
-            this.pageEpcTest.Text = "Carrera";
-            // 
-            // tabEpcTest
-            // 
-            this.tabEpcTest.Controls.Add(this.pageRealMode);
-            this.tabEpcTest.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabEpcTest.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabEpcTest.Location = new System.Drawing.Point(0, 7);
-            this.tabEpcTest.Name = "tabEpcTest";
-            this.tabEpcTest.SelectedIndex = 0;
-            this.tabEpcTest.Size = new System.Drawing.Size(1008, 594);
-            this.tabEpcTest.TabIndex = 0;
-            // 
-            // pageRealMode
-            // 
-            this.pageRealMode.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pageRealMode.Controls.Add(this.groupBox20);
-            this.pageRealMode.Controls.Add(this.tableLayoutPanel1);
-            this.pageRealMode.Controls.Add(this.tbRealMinRssi);
-            this.pageRealMode.Controls.Add(this.tbRealMaxRssi);
-            this.pageRealMode.Controls.Add(this.btRealFresh);
-            this.pageRealMode.Controls.Add(this.label70);
-            this.pageRealMode.Controls.Add(this.label74);
-            this.pageRealMode.Controls.Add(this.lbRealTagCount);
-            this.pageRealMode.Controls.Add(this.lvRealList);
-            this.pageRealMode.Controls.Add(this.groupBox1);
-            this.pageRealMode.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pageRealMode.Location = new System.Drawing.Point(4, 22);
-            this.pageRealMode.Name = "pageRealMode";
-            this.pageRealMode.Padding = new System.Windows.Forms.Padding(3);
-            this.pageRealMode.Size = new System.Drawing.Size(1000, 568);
-            this.pageRealMode.TabIndex = 1;
-            this.pageRealMode.Text = "Carrera General";
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Controls.Add(this.cbRealWorkant1);
-            this.groupBox20.Controls.Add(this.cbRealWorkant4);
-            this.groupBox20.Controls.Add(this.cbRealWorkant3);
-            this.groupBox20.Controls.Add(this.cbRealWorkant2);
-            this.groupBox20.Controls.Add(this.label19);
-            this.groupBox20.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox20.ForeColor = System.Drawing.Color.Black;
-            this.groupBox20.Location = new System.Drawing.Point(3, 65);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(994, 57);
-            this.groupBox20.TabIndex = 49;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Selección de Antenas";
-            // 
-            // cbRealWorkant1
-            // 
-            this.cbRealWorkant1.AutoSize = true;
-            this.cbRealWorkant1.Checked = true;
-            this.cbRealWorkant1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRealWorkant1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealWorkant1.Location = new System.Drawing.Point(283, 24);
-            this.cbRealWorkant1.Name = "cbRealWorkant1";
-            this.cbRealWorkant1.Size = new System.Drawing.Size(48, 16);
-            this.cbRealWorkant1.TabIndex = 68;
-            this.cbRealWorkant1.Text = "Ant1";
-            this.cbRealWorkant1.UseVisualStyleBackColor = true;
-            // 
-            // cbRealWorkant4
-            // 
-            this.cbRealWorkant4.AutoSize = true;
-            this.cbRealWorkant4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealWorkant4.Location = new System.Drawing.Point(649, 24);
-            this.cbRealWorkant4.Name = "cbRealWorkant4";
-            this.cbRealWorkant4.Size = new System.Drawing.Size(48, 16);
-            this.cbRealWorkant4.TabIndex = 67;
-            this.cbRealWorkant4.Text = "Ant4";
-            this.cbRealWorkant4.UseVisualStyleBackColor = true;
-            // 
-            // cbRealWorkant3
-            // 
-            this.cbRealWorkant3.AutoSize = true;
-            this.cbRealWorkant3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealWorkant3.Location = new System.Drawing.Point(527, 24);
-            this.cbRealWorkant3.Name = "cbRealWorkant3";
-            this.cbRealWorkant3.Size = new System.Drawing.Size(48, 16);
-            this.cbRealWorkant3.TabIndex = 66;
-            this.cbRealWorkant3.Text = "Ant3";
-            this.cbRealWorkant3.UseVisualStyleBackColor = true;
-            // 
-            // cbRealWorkant2
-            // 
-            this.cbRealWorkant2.AutoSize = true;
-            this.cbRealWorkant2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealWorkant2.Location = new System.Drawing.Point(405, 24);
-            this.cbRealWorkant2.Name = "cbRealWorkant2";
-            this.cbRealWorkant2.Size = new System.Drawing.Size(48, 16);
-            this.cbRealWorkant2.TabIndex = 65;
-            this.cbRealWorkant2.Text = "Ant2";
-            this.cbRealWorkant2.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(51, 21);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 12);
-            this.label19.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.7996F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.2004F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 60);
-            this.tableLayoutPanel1.TabIndex = 48;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.textRealRound);
-            this.panel1.Controls.Add(this.label84);
-            this.panel1.Controls.Add(this.btRealTimeInventory);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 52);
-            this.panel1.TabIndex = 0;
-            // 
-            // textRealRound
-            // 
-            this.textRealRound.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textRealRound.Location = new System.Drawing.Point(384, 15);
-            this.textRealRound.Name = "textRealRound";
-            this.textRealRound.Size = new System.Drawing.Size(28, 21);
-            this.textRealRound.TabIndex = 48;
-            this.textRealRound.Text = "1";
-            this.textRealRound.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label84.Location = new System.Drawing.Point(261, 20);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(119, 12);
-            this.label84.TabIndex = 2;
-            this.label84.Text = "Repeat Per Command:";
-            // 
-            // btRealTimeInventory
-            // 
-            this.btRealTimeInventory.AccessibleName = "btnRealTimeInventory";
-            this.btRealTimeInventory.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btRealTimeInventory.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btRealTimeInventory.Location = new System.Drawing.Point(129, 9);
-            this.btRealTimeInventory.Name = "btRealTimeInventory";
-            this.btRealTimeInventory.Size = new System.Drawing.Size(126, 30);
-            this.btRealTimeInventory.TabIndex = 1;
-            this.btRealTimeInventory.Text = "Inventory";
-            this.btRealTimeInventory.UseVisualStyleBackColor = true;
-            this.btRealTimeInventory.Click += new System.EventHandler(this.btRealTimeInventory_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.cbRealSession);
-            this.panel5.Controls.Add(this.cmbTarget);
-            this.panel5.Controls.Add(this.label98);
-            this.panel5.Controls.Add(this.cmbSession);
-            this.panel5.Controls.Add(this.label97);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(429, 4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(561, 52);
-            this.panel5.TabIndex = 1;
-            this.panel5.Visible = false;
-            // 
-            // cbRealSession
-            // 
-            this.cbRealSession.AutoSize = true;
-            this.cbRealSession.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealSession.Location = new System.Drawing.Point(29, 18);
-            this.cbRealSession.Name = "cbRealSession";
-            this.cbRealSession.Size = new System.Drawing.Size(138, 16);
-            this.cbRealSession.TabIndex = 55;
-            this.cbRealSession.Text = "User Define Session";
-            this.cbRealSession.UseVisualStyleBackColor = true;
-            this.cbRealSession.CheckedChanged += new System.EventHandler(this.cbRealSession_CheckedChanged);
-            // 
-            // cmbTarget
-            // 
-            this.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTarget.Enabled = false;
-            this.cmbTarget.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbTarget.FormattingEnabled = true;
-            this.cmbTarget.Items.AddRange(new object[] {
-            "A",
-            "B"});
-            this.cmbTarget.Location = new System.Drawing.Point(472, 16);
-            this.cmbTarget.Name = "cmbTarget";
-            this.cmbTarget.Size = new System.Drawing.Size(62, 20);
-            this.cmbTarget.TabIndex = 54;
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Enabled = false;
-            this.label98.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label98.Location = new System.Drawing.Point(359, 21);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(107, 12);
-            this.label98.TabIndex = 53;
-            this.label98.Text = "Inventoried Flag:";
-            // 
-            // cmbSession
-            // 
-            this.cmbSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSession.Enabled = false;
-            this.cmbSession.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbSession.FormattingEnabled = true;
-            this.cmbSession.Items.AddRange(new object[] {
-            "S0",
-            "S1",
-            "S2",
-            "S3"});
-            this.cmbSession.Location = new System.Drawing.Point(273, 16);
-            this.cmbSession.Name = "cmbSession";
-            this.cmbSession.Size = new System.Drawing.Size(62, 20);
-            this.cmbSession.TabIndex = 52;
-            // 
-            // label97
-            // 
-            this.label97.AutoSize = true;
-            this.label97.Enabled = false;
-            this.label97.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label97.Location = new System.Drawing.Point(196, 21);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(71, 12);
-            this.label97.TabIndex = 51;
-            this.label97.Text = "Session ID:";
-            // 
-            // tbRealMinRssi
-            // 
-            this.tbRealMinRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbRealMinRssi.Location = new System.Drawing.Point(500, 311);
-            this.tbRealMinRssi.Name = "tbRealMinRssi";
-            this.tbRealMinRssi.ReadOnly = true;
-            this.tbRealMinRssi.Size = new System.Drawing.Size(62, 21);
-            this.tbRealMinRssi.TabIndex = 46;
-            this.tbRealMinRssi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbRealMaxRssi
-            // 
-            this.tbRealMaxRssi.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbRealMaxRssi.Location = new System.Drawing.Point(705, 311);
-            this.tbRealMaxRssi.Name = "tbRealMaxRssi";
-            this.tbRealMaxRssi.ReadOnly = true;
-            this.tbRealMaxRssi.Size = new System.Drawing.Size(62, 21);
-            this.tbRealMaxRssi.TabIndex = 47;
-            this.tbRealMaxRssi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btRealFresh
-            // 
-            this.btRealFresh.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btRealFresh.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btRealFresh.Location = new System.Drawing.Point(908, 309);
-            this.btRealFresh.Name = "btRealFresh";
-            this.btRealFresh.Size = new System.Drawing.Size(89, 25);
-            this.btRealFresh.TabIndex = 45;
-            this.btRealFresh.Text = "Refresh";
-            this.btRealFresh.UseVisualStyleBackColor = true;
-            this.btRealFresh.Click += new System.EventHandler(this.btRealFresh_Click);
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label70.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label70.Location = new System.Drawing.Point(634, 314);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(59, 12);
-            this.label70.TabIndex = 43;
-            this.label70.Text = "Max RSSI:";
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label74.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label74.Location = new System.Drawing.Point(432, 315);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(59, 12);
-            this.label74.TabIndex = 44;
-            this.label74.Text = "Min RSSI:";
-            // 
-            // lbRealTagCount
-            // 
-            this.lbRealTagCount.AutoSize = true;
-            this.lbRealTagCount.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbRealTagCount.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbRealTagCount.Location = new System.Drawing.Point(7, 314);
-            this.lbRealTagCount.Name = "lbRealTagCount";
-            this.lbRealTagCount.Size = new System.Drawing.Size(65, 12);
-            this.lbRealTagCount.TabIndex = 42;
-            this.lbRealTagCount.Text = "Tag List: ";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ledReal3);
-            this.groupBox1.Controls.Add(this.comboBox6);
-            this.groupBox1.Controls.Add(this.ledReal5);
-            this.groupBox1.Controls.Add(this.ledReal2);
-            this.groupBox1.Controls.Add(this.ledReal4);
-            this.groupBox1.Controls.Add(this.label53);
-            this.groupBox1.Controls.Add(this.label66);
-            this.groupBox1.Controls.Add(this.label67);
-            this.groupBox1.Controls.Add(this.label68);
-            this.groupBox1.Controls.Add(this.label69);
-            this.groupBox1.Controls.Add(this.ledReal1);
-            this.groupBox1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(1, 129);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(996, 176);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tag Data";
-            this.groupBox1.Visible = false;
-            // 
-            // ledReal3
-            // 
-            this.ledReal3.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal3.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal3.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal3.BevelRate = 0.1F;
-            this.ledReal3.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal3.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal3.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal3.HighlightOpaque = ((byte)(20));
-            this.ledReal3.Location = new System.Drawing.Point(702, 54);
-            this.ledReal3.Name = "ledReal3";
-            this.ledReal3.RoundCorner = true;
-            this.ledReal3.SegmentIntervalRatio = 50;
-            this.ledReal3.ShowHighlight = true;
-            this.ledReal3.Size = new System.Drawing.Size(183, 38);
-            this.ledReal3.TabIndex = 40;
-            this.ledReal3.Text = "0";
-            this.ledReal3.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal3.TotalCharCount = 10;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "天线1",
-            "天线2",
-            "天线3",
-            "天线4",
-            "不选"});
-            this.comboBox6.Location = new System.Drawing.Point(-165, 120);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(55, 20);
-            this.comboBox6.TabIndex = 39;
-            // 
-            // ledReal5
-            // 
-            this.ledReal5.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal5.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal5.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal5.BevelRate = 0.1F;
-            this.ledReal5.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal5.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal5.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal5.HighlightOpaque = ((byte)(20));
-            this.ledReal5.Location = new System.Drawing.Point(702, 128);
-            this.ledReal5.Name = "ledReal5";
-            this.ledReal5.RoundCorner = true;
-            this.ledReal5.SegmentIntervalRatio = 50;
-            this.ledReal5.ShowHighlight = true;
-            this.ledReal5.Size = new System.Drawing.Size(183, 38);
-            this.ledReal5.TabIndex = 35;
-            this.ledReal5.Text = "0";
-            this.ledReal5.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal5.TotalCharCount = 10;
-            // 
-            // ledReal2
-            // 
-            this.ledReal2.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal2.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal2.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal2.BevelRate = 0.1F;
-            this.ledReal2.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal2.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal2.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal2.ForeColor = System.Drawing.Color.Purple;
-            this.ledReal2.HighlightOpaque = ((byte)(20));
-            this.ledReal2.Location = new System.Drawing.Point(496, 38);
-            this.ledReal2.Name = "ledReal2";
-            this.ledReal2.RoundCorner = true;
-            this.ledReal2.SegmentIntervalRatio = 50;
-            this.ledReal2.ShowHighlight = true;
-            this.ledReal2.Size = new System.Drawing.Size(162, 54);
-            this.ledReal2.TabIndex = 34;
-            this.ledReal2.Text = "0";
-            this.ledReal2.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal2.TotalCharCount = 6;
-            // 
-            // ledReal4
-            // 
-            this.ledReal4.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal4.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal4.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal4.BevelRate = 0.1F;
-            this.ledReal4.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal4.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal4.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal4.ForeColor = System.Drawing.Color.Purple;
-            this.ledReal4.HighlightOpaque = ((byte)(20));
-            this.ledReal4.Location = new System.Drawing.Point(497, 112);
-            this.ledReal4.Name = "ledReal4";
-            this.ledReal4.RoundCorner = true;
-            this.ledReal4.SegmentIntervalRatio = 50;
-            this.ledReal4.ShowHighlight = true;
-            this.ledReal4.Size = new System.Drawing.Size(161, 54);
-            this.ledReal4.TabIndex = 33;
-            this.ledReal4.Text = "0";
-            this.ledReal4.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.ledReal4.TotalCharCount = 6;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label53.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label53.Location = new System.Drawing.Point(700, 112);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(179, 12);
-            this.label53.TabIndex = 30;
-            this.label53.Text = "Total Inventory Duration(mS):";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label66.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label66.Location = new System.Drawing.Point(495, 18);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(101, 12);
-            this.label66.TabIndex = 29;
-            this.label66.Text = "Speed:(Tag/Sec):";
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label67.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label67.Location = new System.Drawing.Point(498, 95);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(131, 12);
-            this.label67.TabIndex = 28;
-            this.label67.Text = "Command duration(mS):";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label68.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label68.Location = new System.Drawing.Point(700, 38);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(149, 12);
-            this.label68.TabIndex = 27;
-            this.label68.Text = "Total Tag Communication:";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label69.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label69.Location = new System.Drawing.Point(104, 18);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(131, 12);
-            this.label69.TabIndex = 26;
-            this.label69.Text = "Inventoried Quantity:";
-            // 
-            // ledReal1
-            // 
-            this.ledReal1.BackColor = System.Drawing.Color.Transparent;
-            this.ledReal1.BackColor_1 = System.Drawing.Color.Transparent;
-            this.ledReal1.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.ledReal1.BevelRate = 0.1F;
-            this.ledReal1.BorderColor = System.Drawing.Color.Lavender;
-            this.ledReal1.BorderWidth = 3;
-            this.ledReal1.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.ledReal1.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.ledReal1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.ledReal1.HighlightOpaque = ((byte)(20));
-            this.ledReal1.Location = new System.Drawing.Point(106, 38);
-            this.ledReal1.Name = "ledReal1";
-            this.ledReal1.RoundCorner = true;
-            this.ledReal1.SegmentIntervalRatio = 50;
-            this.ledReal1.ShowHighlight = true;
-            this.ledReal1.Size = new System.Drawing.Size(310, 128);
-            this.ledReal1.TabIndex = 21;
-            this.ledReal1.Text = "0";
-            this.ledReal1.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lvRealList
-            // 
-            this.lvRealList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader37,
-            this.columnHeader38,
-            this.columnHeader39,
-            this.columnHeader40,
-            this.columnHeader41,
-            this.columnHeader42});
-            this.lvRealList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lvRealList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lvRealList.GridLines = true;
-            this.lvRealList.Location = new System.Drawing.Point(3, 342);
-            this.lvRealList.Name = "lvRealList";
-            this.lvRealList.Size = new System.Drawing.Size(994, 223);
-            this.lvRealList.TabIndex = 23;
-            this.lvRealList.UseCompatibleStateImageBehavior = false;
-            this.lvRealList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader37
-            // 
-            this.columnHeader37.Text = "ID";
-            this.columnHeader37.Width = 56;
-            // 
-            // columnHeader38
-            // 
-            this.columnHeader38.Text = "EPC";
-            this.columnHeader38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader38.Width = 486;
-            // 
-            // columnHeader39
-            // 
-            this.columnHeader39.Text = "PC";
-            this.columnHeader39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader39.Width = 83;
-            // 
-            // columnHeader40
-            // 
-            this.columnHeader40.Text = "Identification Count";
-            this.columnHeader40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader40.Width = 162;
-            // 
-            // columnHeader41
-            // 
-            this.columnHeader41.Text = "RSSI";
-            this.columnHeader41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader41.Width = 72;
-            // 
-            // columnHeader42
-            // 
-            this.columnHeader42.Text = "Carrier Frequency";
-            this.columnHeader42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader42.Width = 117;
-            // 
-            // TabCatalogos
-            // 
-            this.TabCatalogos.Controls.Add(this.panel11);
-            this.TabCatalogos.Location = new System.Drawing.Point(4, 22);
-            this.TabCatalogos.Name = "TabCatalogos";
-            this.TabCatalogos.Size = new System.Drawing.Size(1010, 603);
-            this.TabCatalogos.TabIndex = 6;
-            this.TabCatalogos.Text = "Catalogos";
-            this.TabCatalogos.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.AutoSize = true;
-            this.panel11.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel11.Controls.Add(this.tabOpcionesCatalogos);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1010, 603);
-            this.panel11.TabIndex = 0;
-            // 
-            // tabOpcionesCatalogos
-            // 
-            this.tabOpcionesCatalogos.Controls.Add(this.tabCategorias);
-            this.tabOpcionesCatalogos.Controls.Add(this.tabCompetidores);
-            this.tabOpcionesCatalogos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabOpcionesCatalogos.Location = new System.Drawing.Point(0, 0);
-            this.tabOpcionesCatalogos.Name = "tabOpcionesCatalogos";
-            this.tabOpcionesCatalogos.SelectedIndex = 0;
-            this.tabOpcionesCatalogos.Size = new System.Drawing.Size(1010, 603);
-            this.tabOpcionesCatalogos.TabIndex = 0;
-            // 
-            // tabCategorias
-            // 
-            this.tabCategorias.Controls.Add(this.panel13);
-            this.tabCategorias.Controls.Add(this.panel12);
-            this.tabCategorias.Location = new System.Drawing.Point(4, 22);
-            this.tabCategorias.Name = "tabCategorias";
-            this.tabCategorias.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCategorias.Size = new System.Drawing.Size(1002, 577);
-            this.tabCategorias.TabIndex = 0;
-            this.tabCategorias.Text = "Categorias";
-            this.tabCategorias.UseVisualStyleBackColor = true;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.tablaCategorias);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(3, 34);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(996, 540);
-            this.panel13.TabIndex = 4;
-            // 
-            // tablaCategorias
-            // 
-            this.tablaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdCategoria,
-            this.Descripcion});
-            this.tablaCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablaCategorias.Location = new System.Drawing.Point(0, 0);
-            this.tablaCategorias.Name = "tablaCategorias";
-            this.tablaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCategorias.Size = new System.Drawing.Size(996, 540);
-            this.tablaCategorias.TabIndex = 0;
-            this.tablaCategorias.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellContentDoubleClick);
-            // 
-            // IdCategoria
-            // 
-            this.IdCategoria.DataPropertyName = "IdCategoria";
-            this.IdCategoria.HeaderText = "Clave";
-            this.IdCategoria.Name = "IdCategoria";
-            this.IdCategoria.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Descripcion.Width = 300;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.btnRegistrarCategoria);
-            this.panel12.Controls.Add(this.btnEliminarCategoria);
-            this.panel12.Controls.Add(this.btnModificarCategoria);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(3, 3);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(996, 31);
-            this.panel12.TabIndex = 3;
-            // 
-            // btnRegistrarCategoria
-            // 
-            this.btnRegistrarCategoria.Location = new System.Drawing.Point(3, 3);
-            this.btnRegistrarCategoria.Name = "btnRegistrarCategoria";
-            this.btnRegistrarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrarCategoria.TabIndex = 0;
-            this.btnRegistrarCategoria.Text = "Registrar";
-            this.btnRegistrarCategoria.UseVisualStyleBackColor = true;
-            this.btnRegistrarCategoria.Click += new System.EventHandler(this.btnRegistrarCategoria_Click);
-            // 
-            // btnEliminarCategoria
-            // 
-            this.btnEliminarCategoria.Location = new System.Drawing.Point(165, 3);
-            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
-            this.btnEliminarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarCategoria.TabIndex = 2;
-            this.btnEliminarCategoria.Text = "Eliminar";
-            this.btnEliminarCategoria.UseVisualStyleBackColor = true;
-            this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
-            // 
-            // btnModificarCategoria
-            // 
-            this.btnModificarCategoria.Location = new System.Drawing.Point(84, 3);
-            this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarCategoria.TabIndex = 1;
-            this.btnModificarCategoria.Text = "Modificar";
-            this.btnModificarCategoria.UseVisualStyleBackColor = true;
-            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
-            // 
-            // tabCompetidores
-            // 
-            this.tabCompetidores.Controls.Add(this.tablaCompetidores);
-            this.tabCompetidores.Controls.Add(this.panel14);
-            this.tabCompetidores.Location = new System.Drawing.Point(4, 22);
-            this.tabCompetidores.Name = "tabCompetidores";
-            this.tabCompetidores.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCompetidores.Size = new System.Drawing.Size(1002, 577);
-            this.tabCompetidores.TabIndex = 1;
-            this.tabCompetidores.Text = "Competidores";
-            this.tabCompetidores.UseVisualStyleBackColor = true;
-            // 
-            // tablaCompetidores
-            // 
-            this.tablaCompetidores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaCompetidores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.Direccion,
-            this.Pais,
-            this.Estado,
-            this.Ciudad,
-            this.Telefono,
-            this.FechaNacimiento});
-            this.tablaCompetidores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablaCompetidores.Location = new System.Drawing.Point(3, 34);
-            this.tablaCompetidores.Name = "tablaCompetidores";
-            this.tablaCompetidores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCompetidores.Size = new System.Drawing.Size(996, 540);
-            this.tablaCompetidores.TabIndex = 5;
-            this.tablaCompetidores.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCompetidores_CellContentDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCompetidor";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Clave";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCompleto";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn2.Width = 220;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            this.Direccion.Width = 180;
-            // 
-            // Pais
-            // 
-            this.Pais.DataPropertyName = "Pais";
-            this.Pais.HeaderText = "Pais";
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.DataPropertyName = "Estado";
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Ciudad
-            // 
-            this.Ciudad.DataPropertyName = "Ciudad";
-            this.Ciudad.HeaderText = "Ciudad";
-            this.Ciudad.Name = "Ciudad";
-            this.Ciudad.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 70;
-            // 
-            // FechaNacimiento
-            // 
-            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
-            this.FechaNacimiento.HeaderText = "Fecha Nacimiento";
-            this.FechaNacimiento.Name = "FechaNacimiento";
-            this.FechaNacimiento.ReadOnly = true;
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.btnRegistrarCompetidor);
-            this.panel14.Controls.Add(this.btnEliminarCompetidor);
-            this.panel14.Controls.Add(this.btnModificarCompetidor);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel14.Location = new System.Drawing.Point(3, 3);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(996, 31);
-            this.panel14.TabIndex = 4;
-            // 
-            // btnRegistrarCompetidor
-            // 
-            this.btnRegistrarCompetidor.Location = new System.Drawing.Point(3, 3);
-            this.btnRegistrarCompetidor.Name = "btnRegistrarCompetidor";
-            this.btnRegistrarCompetidor.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrarCompetidor.TabIndex = 0;
-            this.btnRegistrarCompetidor.Text = "Registrar";
-            this.btnRegistrarCompetidor.UseVisualStyleBackColor = true;
-            this.btnRegistrarCompetidor.Click += new System.EventHandler(this.btnRegistrarCompetidor_Click_1);
-            // 
-            // btnEliminarCompetidor
-            // 
-            this.btnEliminarCompetidor.Location = new System.Drawing.Point(165, 3);
-            this.btnEliminarCompetidor.Name = "btnEliminarCompetidor";
-            this.btnEliminarCompetidor.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarCompetidor.TabIndex = 2;
-            this.btnEliminarCompetidor.Text = "Eliminar";
-            this.btnEliminarCompetidor.UseVisualStyleBackColor = true;
-            this.btnEliminarCompetidor.Click += new System.EventHandler(this.btnEliminarCompetidor_Click_1);
-            // 
-            // btnModificarCompetidor
-            // 
-            this.btnModificarCompetidor.Location = new System.Drawing.Point(84, 3);
-            this.btnModificarCompetidor.Name = "btnModificarCompetidor";
-            this.btnModificarCompetidor.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarCompetidor.TabIndex = 1;
-            this.btnModificarCompetidor.Text = "Modificar";
-            this.btnModificarCompetidor.UseVisualStyleBackColor = true;
-            this.btnModificarCompetidor.Click += new System.EventHandler(this.btnModificarCompetidor_Click_1);
-            // 
-            // TabCarreras
-            // 
-            this.TabCarreras.Controls.Add(this.panel16);
-            this.TabCarreras.Controls.Add(this.panel15);
-            this.TabCarreras.Location = new System.Drawing.Point(4, 22);
-            this.TabCarreras.Name = "TabCarreras";
-            this.TabCarreras.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCarreras.Size = new System.Drawing.Size(1010, 603);
-            this.TabCarreras.TabIndex = 7;
-            this.TabCarreras.Text = "Carreras";
-            this.TabCarreras.UseVisualStyleBackColor = true;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.tablaCarreras);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(3, 41);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1004, 559);
-            this.panel16.TabIndex = 1;
-            // 
-            // tablaCarreras
-            // 
-            this.tablaCarreras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaCarreras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdCarrera,
-            this.DescripcionCarrera,
-            this.Fecha,
-            this.PaisCarrera,
-            this.EstadoCarrera,
-            this.CiudadCarrera});
-            this.tablaCarreras.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablaCarreras.Location = new System.Drawing.Point(0, 0);
-            this.tablaCarreras.Name = "tablaCarreras";
-            this.tablaCarreras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCarreras.Size = new System.Drawing.Size(1004, 559);
-            this.tablaCarreras.TabIndex = 0;
-            this.tablaCarreras.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCarreras_CellContentDoubleClick);
-            // 
-            // IdCarrera
-            // 
-            this.IdCarrera.DataPropertyName = "IdCarrera";
-            this.IdCarrera.HeaderText = "Clave";
-            this.IdCarrera.Name = "IdCarrera";
-            this.IdCarrera.ReadOnly = true;
-            this.IdCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IdCarrera.Width = 60;
-            // 
-            // DescripcionCarrera
-            // 
-            this.DescripcionCarrera.DataPropertyName = "DescripcionCarrera";
-            this.DescripcionCarrera.HeaderText = "Descripcion";
-            this.DescripcionCarrera.Name = "DescripcionCarrera";
-            this.DescripcionCarrera.ReadOnly = true;
-            this.DescripcionCarrera.Width = 200;
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "Fecha";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Fecha.Width = 80;
-            // 
-            // PaisCarrera
-            // 
-            this.PaisCarrera.DataPropertyName = "Pais";
-            this.PaisCarrera.HeaderText = "Pais";
-            this.PaisCarrera.Name = "PaisCarrera";
-            this.PaisCarrera.ReadOnly = true;
-            this.PaisCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PaisCarrera.Width = 150;
-            // 
-            // EstadoCarrera
-            // 
-            this.EstadoCarrera.DataPropertyName = "Estado";
-            this.EstadoCarrera.HeaderText = "Estado";
-            this.EstadoCarrera.Name = "EstadoCarrera";
-            this.EstadoCarrera.ReadOnly = true;
-            this.EstadoCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.EstadoCarrera.Width = 150;
-            // 
-            // CiudadCarrera
-            // 
-            this.CiudadCarrera.DataPropertyName = "Ciudad";
-            this.CiudadCarrera.HeaderText = "Ciudad";
-            this.CiudadCarrera.Name = "CiudadCarrera";
-            this.CiudadCarrera.ReadOnly = true;
-            this.CiudadCarrera.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CiudadCarrera.Width = 150;
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.txtExportarExcel);
-            this.panel15.Controls.Add(this.btnModificarCarrera);
-            this.panel15.Controls.Add(this.btnRegistrarCarrera);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(3, 3);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1004, 38);
-            this.panel15.TabIndex = 0;
-            // 
-            // txtExportarExcel
-            // 
-            this.txtExportarExcel.Location = new System.Drawing.Point(167, 6);
-            this.txtExportarExcel.Name = "txtExportarExcel";
-            this.txtExportarExcel.Size = new System.Drawing.Size(75, 23);
-            this.txtExportarExcel.TabIndex = 2;
-            this.txtExportarExcel.Text = "Exportar";
-            this.txtExportarExcel.UseVisualStyleBackColor = true;
-            this.txtExportarExcel.Click += new System.EventHandler(this.txtExportarExcel_Click);
-            // 
-            // btnModificarCarrera
-            // 
-            this.btnModificarCarrera.Location = new System.Drawing.Point(86, 6);
-            this.btnModificarCarrera.Name = "btnModificarCarrera";
-            this.btnModificarCarrera.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarCarrera.TabIndex = 1;
-            this.btnModificarCarrera.Text = "Modificar";
-            this.btnModificarCarrera.UseVisualStyleBackColor = true;
-            this.btnModificarCarrera.Click += new System.EventHandler(this.btnModificarCarrera_Click);
-            // 
-            // btnRegistrarCarrera
-            // 
-            this.btnRegistrarCarrera.Location = new System.Drawing.Point(5, 6);
-            this.btnRegistrarCarrera.Name = "btnRegistrarCarrera";
-            this.btnRegistrarCarrera.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrarCarrera.TabIndex = 0;
-            this.btnRegistrarCarrera.Text = "Registrar";
-            this.btnRegistrarCarrera.UseVisualStyleBackColor = true;
-            this.btnRegistrarCarrera.Click += new System.EventHandler(this.btnRegistrarCarrera_Click);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(9, 637);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(91, 13);
-            this.label35.TabIndex = 13;
-            this.label35.Text = "Operation History:";
-            // 
-            // ckDisplayLog
-            // 
-            this.ckDisplayLog.AutoSize = true;
-            this.ckDisplayLog.ForeColor = System.Drawing.Color.Indigo;
-            this.ckDisplayLog.Location = new System.Drawing.Point(819, 636);
-            this.ckDisplayLog.Name = "ckDisplayLog";
-            this.ckDisplayLog.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ckDisplayLog.Size = new System.Drawing.Size(154, 17);
-            this.ckDisplayLog.TabIndex = 16;
-            this.ckDisplayLog.Text = "Activate Serial Port Monitor";
-            this.ckDisplayLog.UseVisualStyleBackColor = true;
-            this.ckDisplayLog.CheckedChanged += new System.EventHandler(this.ckDisplayLog_CheckedChanged);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.66265F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.33735F));
-            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panel7, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(996, 55);
-            this.tableLayoutPanel3.TabIndex = 48;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(4, 4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(397, 47);
-            this.panel6.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button4.Location = new System.Drawing.Point(126, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(144, 38);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "开始盘存";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.checkBox5);
-            this.panel7.Controls.Add(this.checkBox6);
-            this.panel7.Controls.Add(this.checkBox7);
-            this.panel7.Controls.Add(this.checkBox8);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(408, 4);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(584, 47);
-            this.panel7.TabIndex = 1;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox5.Location = new System.Drawing.Point(64, 17);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(57, 16);
-            this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "天线1";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox6.Location = new System.Drawing.Point(436, 17);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(57, 16);
-            this.checkBox6.TabIndex = 2;
-            this.checkBox6.Text = "天线4";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox7.Location = new System.Drawing.Point(312, 17);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(57, 16);
-            this.checkBox7.TabIndex = 1;
-            this.checkBox7.Text = "天线3";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox8.Location = new System.Drawing.Point(188, 17);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(57, 16);
-            this.checkBox8.TabIndex = 0;
-            this.checkBox8.Text = "天线2";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(704, 234);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(89, 20);
-            this.textBox5.TabIndex = 46;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(502, 234);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(89, 20);
-            this.textBox6.TabIndex = 47;
-            // 
-            // button5
-            // 
-            this.button5.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button5.Location = new System.Drawing.Point(907, 232);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 23);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "刷新界面";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label76.Location = new System.Drawing.Point(633, 237);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(65, 12);
-            this.label76.TabIndex = 43;
-            this.label76.Text = "Max RSSI：";
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label77.Location = new System.Drawing.Point(431, 238);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(65, 12);
-            this.label77.TabIndex = 44;
-            this.label77.Text = "Min RSSI：";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label78.Location = new System.Drawing.Point(6, 237);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(71, 12);
-            this.label78.TabIndex = 42;
-            this.label78.Text = "标签列表： ";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.comboBox9);
-            this.groupBox8.Controls.Add(this.lxLedControl9);
-            this.groupBox8.Controls.Add(this.lxLedControl10);
-            this.groupBox8.Controls.Add(this.lxLedControl11);
-            this.groupBox8.Controls.Add(this.lxLedControl12);
-            this.groupBox8.Controls.Add(this.label79);
-            this.groupBox8.Controls.Add(this.label80);
-            this.groupBox8.Controls.Add(this.label81);
-            this.groupBox8.Controls.Add(this.label82);
-            this.groupBox8.Controls.Add(this.label83);
-            this.groupBox8.Controls.Add(this.lxLedControl13);
-            this.groupBox8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox8.Location = new System.Drawing.Point(2, 64);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(996, 162);
-            this.groupBox8.TabIndex = 24;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "数据";
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox9.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "天线1",
-            "天线2",
-            "天线3",
-            "天线4",
-            "不选"});
-            this.comboBox9.Location = new System.Drawing.Point(-165, 111);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(55, 21);
-            this.comboBox9.TabIndex = 39;
-            // 
-            // lxLedControl9
-            // 
-            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl9.BevelRate = 0.1F;
-            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl9.HighlightOpaque = ((byte)(20));
-            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
-            this.lxLedControl9.Name = "lxLedControl9";
-            this.lxLedControl9.RoundCorner = true;
-            this.lxLedControl9.SegmentIntervalRatio = 50;
-            this.lxLedControl9.ShowHighlight = true;
-            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
-            this.lxLedControl9.TabIndex = 35;
-            this.lxLedControl9.Text = "0";
-            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.lxLedControl9.TotalCharCount = 10;
-            // 
-            // lxLedControl10
-            // 
-            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl10.BevelRate = 0.1F;
-            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl10.HighlightOpaque = ((byte)(20));
-            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
-            this.lxLedControl10.Name = "lxLedControl10";
-            this.lxLedControl10.RoundCorner = true;
-            this.lxLedControl10.SegmentIntervalRatio = 50;
-            this.lxLedControl10.ShowHighlight = true;
-            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl10.TabIndex = 34;
-            this.lxLedControl10.Text = "0";
-            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl11
-            // 
-            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl11.BevelRate = 0.1F;
-            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl11.HighlightOpaque = ((byte)(20));
-            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
-            this.lxLedControl11.Name = "lxLedControl11";
-            this.lxLedControl11.RoundCorner = true;
-            this.lxLedControl11.SegmentIntervalRatio = 50;
-            this.lxLedControl11.ShowHighlight = true;
-            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl11.TabIndex = 33;
-            this.lxLedControl11.Text = "0";
-            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl12
-            // 
-            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl12.BevelRate = 0.1F;
-            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl12.HighlightOpaque = ((byte)(20));
-            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
-            this.lxLedControl12.Name = "lxLedControl12";
-            this.lxLedControl12.RoundCorner = true;
-            this.lxLedControl12.SegmentIntervalRatio = 50;
-            this.lxLedControl12.ShowHighlight = true;
-            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl12.TabIndex = 32;
-            this.lxLedControl12.Text = "0";
-            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label79.Location = new System.Drawing.Point(700, 103);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(127, 13);
-            this.label79.TabIndex = 30;
-            this.label79.Text = "累计运行的时间(毫秒)：";
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label80.Location = new System.Drawing.Point(495, 17);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(117, 13);
-            this.label80.TabIndex = 29;
-            this.label80.Text = "命令识别速度(个/秒)：";
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label81.Location = new System.Drawing.Point(498, 88);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(115, 13);
-            this.label81.TabIndex = 28;
-            this.label81.Text = "命令执行时间(毫秒)：";
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label82.Location = new System.Drawing.Point(700, 17);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(103, 13);
-            this.label82.TabIndex = 27;
-            this.label82.Text = "命令返回数据(条)：";
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label83.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label83.Location = new System.Drawing.Point(104, 17);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(149, 12);
-            this.label83.TabIndex = 26;
-            this.label83.Text = "已盘存的标签总数量(个)：";
-            // 
-            // lxLedControl13
-            // 
-            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl13.BevelRate = 0.1F;
-            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
-            this.lxLedControl13.HighlightOpaque = ((byte)(20));
-            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
-            this.lxLedControl13.Name = "lxLedControl13";
-            this.lxLedControl13.RoundCorner = true;
-            this.lxLedControl13.SegmentIntervalRatio = 50;
-            this.lxLedControl13.ShowHighlight = true;
-            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
-            this.lxLedControl13.TabIndex = 21;
-            this.lxLedControl13.Text = "0";
-            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader43,
-            this.columnHeader44,
-            this.columnHeader45,
-            this.columnHeader46,
-            this.columnHeader47,
-            this.columnHeader48});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listView1.Location = new System.Drawing.Point(3, 261);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(996, 267);
-            this.listView1.TabIndex = 23;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader43
-            // 
-            this.columnHeader43.Text = "ID";
-            this.columnHeader43.Width = 56;
-            // 
-            // columnHeader44
-            // 
-            this.columnHeader44.Text = "EPC";
-            this.columnHeader44.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader44.Width = 486;
-            // 
-            // columnHeader45
-            // 
-            this.columnHeader45.Text = "PC";
-            this.columnHeader45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader45.Width = 83;
-            // 
-            // columnHeader46
-            // 
-            this.columnHeader46.Text = "识别次数";
-            this.columnHeader46.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader46.Width = 129;
-            // 
-            // columnHeader47
-            // 
-            this.columnHeader47.Text = "RSSI";
-            this.columnHeader47.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader47.Width = 95;
-            // 
-            // columnHeader48
-            // 
-            this.columnHeader48.Text = "载波频率";
-            this.columnHeader48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader48.Width = 92;
-            // 
-            // comboBox10
-            // 
-            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox10.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Items.AddRange(new object[] {
-            "天线1",
-            "天线2",
-            "天线3",
-            "天线4",
-            "不选"});
-            this.comboBox10.Location = new System.Drawing.Point(-165, 111);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(55, 21);
-            this.comboBox10.TabIndex = 39;
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label87.Location = new System.Drawing.Point(700, 103);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(137, 12);
-            this.label87.TabIndex = 30;
-            this.label87.Text = "累计运行的时间(毫秒)：";
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label88.Location = new System.Drawing.Point(495, 17);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(131, 12);
-            this.label88.TabIndex = 29;
-            this.label88.Text = "命令识别速度(个/秒)：";
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label89.Location = new System.Drawing.Point(498, 88);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(125, 12);
-            this.label89.TabIndex = 28;
-            this.label89.Text = "命令执行时间(毫秒)：";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label90.Location = new System.Drawing.Point(700, 17);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(113, 12);
-            this.label90.TabIndex = 27;
-            this.label90.Text = "命令返回数据(条)：";
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label91.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label91.Location = new System.Drawing.Point(104, 17);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(149, 12);
-            this.label91.TabIndex = 26;
-            this.label91.Text = "已盘存的标签总数量(个)：";
-            // 
-            // ckClearOperationRec
-            // 
-            this.ckClearOperationRec.AutoSize = true;
-            this.ckClearOperationRec.Checked = true;
-            this.ckClearOperationRec.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckClearOperationRec.Location = new System.Drawing.Point(128, 636);
-            this.ckClearOperationRec.Name = "ckClearOperationRec";
-            this.ckClearOperationRec.Size = new System.Drawing.Size(75, 17);
-            this.ckClearOperationRec.TabIndex = 17;
-            this.ckClearOperationRec.Text = "Auto Clear";
-            this.ckClearOperationRec.UseVisualStyleBackColor = true;
-            // 
-            // lrtxtLog
-            // 
-            this.lrtxtLog.Location = new System.Drawing.Point(0, 605);
-            this.lrtxtLog.Name = "lrtxtLog";
-            this.lrtxtLog.Size = new System.Drawing.Size(1018, 128);
-            this.lrtxtLog.TabIndex = 1;
-            this.lrtxtLog.Text = "";
-            this.lrtxtLog.Visible = false;
-            this.lrtxtLog.DoubleClick += new System.EventHandler(this.lrtxtLog_DoubleClick);
-            // 
-            // lxLedControl14
-            // 
-            this.lxLedControl14.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl14.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl14.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl14.BevelRate = 0.1F;
-            this.lxLedControl14.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl14.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl14.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl14.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl14.HighlightOpaque = ((byte)(20));
-            this.lxLedControl14.Location = new System.Drawing.Point(702, 118);
-            this.lxLedControl14.Name = "lxLedControl14";
-            this.lxLedControl14.RoundCorner = true;
-            this.lxLedControl14.SegmentIntervalRatio = 50;
-            this.lxLedControl14.ShowHighlight = true;
-            this.lxLedControl14.Size = new System.Drawing.Size(183, 35);
-            this.lxLedControl14.TabIndex = 35;
-            this.lxLedControl14.Text = "0";
-            this.lxLedControl14.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.lxLedControl14.TotalCharCount = 10;
-            // 
-            // lxLedControl15
-            // 
-            this.lxLedControl15.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl15.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl15.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl15.BevelRate = 0.1F;
-            this.lxLedControl15.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl15.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl15.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl15.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl15.HighlightOpaque = ((byte)(20));
-            this.lxLedControl15.Location = new System.Drawing.Point(496, 35);
-            this.lxLedControl15.Name = "lxLedControl15";
-            this.lxLedControl15.RoundCorner = true;
-            this.lxLedControl15.SegmentIntervalRatio = 50;
-            this.lxLedControl15.ShowHighlight = true;
-            this.lxLedControl15.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl15.TabIndex = 34;
-            this.lxLedControl15.Text = "0";
-            this.lxLedControl15.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl16
-            // 
-            this.lxLedControl16.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl16.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl16.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl16.BevelRate = 0.1F;
-            this.lxLedControl16.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl16.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl16.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl16.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl16.HighlightOpaque = ((byte)(20));
-            this.lxLedControl16.Location = new System.Drawing.Point(497, 103);
-            this.lxLedControl16.Name = "lxLedControl16";
-            this.lxLedControl16.RoundCorner = true;
-            this.lxLedControl16.SegmentIntervalRatio = 50;
-            this.lxLedControl16.ShowHighlight = true;
-            this.lxLedControl16.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl16.TabIndex = 33;
-            this.lxLedControl16.Text = "0";
-            this.lxLedControl16.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl17
-            // 
-            this.lxLedControl17.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl17.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl17.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl17.BevelRate = 0.1F;
-            this.lxLedControl17.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl17.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl17.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl17.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl17.HighlightOpaque = ((byte)(20));
-            this.lxLedControl17.Location = new System.Drawing.Point(702, 35);
-            this.lxLedControl17.Name = "lxLedControl17";
-            this.lxLedControl17.RoundCorner = true;
-            this.lxLedControl17.SegmentIntervalRatio = 50;
-            this.lxLedControl17.ShowHighlight = true;
-            this.lxLedControl17.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl17.TabIndex = 32;
-            this.lxLedControl17.Text = "0";
-            this.lxLedControl17.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl18
-            // 
-            this.lxLedControl18.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl18.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl18.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl18.BevelRate = 0.1F;
-            this.lxLedControl18.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl18.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl18.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl18.ForeColor = System.Drawing.Color.Purple;
-            this.lxLedControl18.HighlightOpaque = ((byte)(20));
-            this.lxLedControl18.Location = new System.Drawing.Point(106, 35);
-            this.lxLedControl18.Name = "lxLedControl18";
-            this.lxLedControl18.RoundCorner = true;
-            this.lxLedControl18.SegmentIntervalRatio = 50;
-            this.lxLedControl18.ShowHighlight = true;
-            this.lxLedControl18.Size = new System.Drawing.Size(310, 118);
-            this.lxLedControl18.TabIndex = 21;
-            this.lxLedControl18.Text = "0";
-            this.lxLedControl18.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // tabCtrMain
+            // 
+            this.tabCtrMain.Controls.Add(this.PagReaderSetting);
+            this.tabCtrMain.Controls.Add(this.pageEpcTest);
+            this.tabCtrMain.Controls.Add(this.TabCatalogos);
+            this.tabCtrMain.Controls.Add(this.TabCarreras);
+            this.tabCtrMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCtrMain.Location = new System.Drawing.Point(0, 0);
+            this.tabCtrMain.Name = "tabCtrMain";
+            this.tabCtrMain.SelectedIndex = 0;
+            this.tabCtrMain.Size = new System.Drawing.Size(1018, 733);
+            this.tabCtrMain.TabIndex = 0;
+            this.tabCtrMain.SelectedIndexChanged += new System.EventHandler(this.tabCtrMain_SelectedIndexChanged);
+            this.tabCtrMain.Click += new System.EventHandler(this.tabCtrMain_Click);
+            // 
+            // gridCarreraDetalle
+            // 
+            this.gridCarreraDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCarreraDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Lugar,
+            this.Num,
+            this.Nombre,
+            this.Distancia,
+            this.Categoria,
+            this.Rama,
+            this.Tiempo});
+            this.gridCarreraDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCarreraDetalle.Location = new System.Drawing.Point(3, 63);
+            this.gridCarreraDetalle.Name = "gridCarreraDetalle";
+            this.gridCarreraDetalle.Size = new System.Drawing.Size(994, 569);
+            this.gridCarreraDetalle.TabIndex = 50;
+            // 
+            // Lugar
+            // 
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            this.Lugar.Width = 60;
+            // 
+            // Num
+            // 
+            this.Num.HeaderText = "Num";
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Width = 50;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 250;
+            // 
+            // Distancia
+            // 
+            this.Distancia.HeaderText = "Distancia";
+            this.Distancia.Name = "Distancia";
+            this.Distancia.ReadOnly = true;
+            this.Distancia.Width = 110;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 200;
+            // 
+            // Rama
+            // 
+            this.Rama.HeaderText = "Rama";
+            this.Rama.Name = "Rama";
+            this.Rama.ReadOnly = true;
+            this.Rama.Width = 160;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            this.Tiempo.Width = 120;
             // 
             // R2000UartDemo
             // 
@@ -3573,10 +3351,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1018, 733);
-            this.Controls.Add(this.ckClearOperationRec);
-            this.Controls.Add(this.ckDisplayLog);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.lrtxtLog);
             this.Controls.Add(this.tabCtrMain);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -3586,11 +3360,50 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UHF RFID Reader Demo v3.62";
             this.Load += new System.EventHandler(this.R2000UartDemo_Load);
-            this.tabCtrMain.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl18)).EndInit();
+            this.TabCarreras.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).EndInit();
+            this.panel15.ResumeLayout(false);
+            this.TabCatalogos.ResumeLayout(false);
+            this.TabCatalogos.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.tabOpcionesCatalogos.ResumeLayout(false);
+            this.tabCategorias.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.tabCompetidores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.pageEpcTest.ResumeLayout(false);
+            this.tabEpcTest.ResumeLayout(false);
+            this.pageRealMode.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.PagReaderSetting.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.gbCmdReadGpio.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -3639,95 +3452,14 @@
             this.groupBox21.PerformLayout();
             this.gbCmdOutputPower.ResumeLayout(false);
             this.gbCmdOutputPower.PerformLayout();
-            this.pageEpcTest.ResumeLayout(false);
-            this.tabEpcTest.ResumeLayout(false);
-            this.pageRealMode.ResumeLayout(false);
-            this.pageRealMode.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ledReal1)).EndInit();
-            this.TabCatalogos.ResumeLayout(false);
-            this.TabCatalogos.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.tabOpcionesCatalogos.ResumeLayout(false);
-            this.tabCategorias.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();
-            this.panel12.ResumeLayout(false);
-            this.tabCompetidores.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCompetidores)).EndInit();
-            this.panel14.ResumeLayout(false);
-            this.TabCarreras.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl18)).EndInit();
+            this.tabCtrMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCarreraDetalle)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabCtrMain;
-        private System.Windows.Forms.TabPage PagReaderSetting;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.CheckBox ckDisplayLog;
-        private System.Windows.Forms.TabPage pageEpcTest;
-        private System.Windows.Forms.TabControl tabEpcTest;
-        private System.Windows.Forms.TabPage pageRealMode;
-        private System.Windows.Forms.ColumnHeader columnHeader37;
-        private System.Windows.Forms.ColumnHeader columnHeader38;
-        private System.Windows.Forms.ColumnHeader columnHeader39;
-        private System.Windows.Forms.ColumnHeader columnHeader40;
-        private System.Windows.Forms.ColumnHeader columnHeader41;
-        private System.Windows.Forms.ColumnHeader columnHeader42;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox tbRealMinRssi;
-        private System.Windows.Forms.TextBox tbRealMaxRssi;
-        private System.Windows.Forms.Button btRealFresh;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Label lbRealTagCount;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private LxControl.LxLedControl ledReal5;
-        private LxControl.LxLedControl ledReal2;
-        private LxControl.LxLedControl ledReal4;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Label label69;
-        private LxControl.LxLedControl ledReal1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button4;
@@ -3772,31 +3504,102 @@
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label label91;
         private LxControl.LxLedControl lxLedControl18;
+        private System.Windows.Forms.TabPage TabCarreras;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.DataGridView tablaCarreras;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCarrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionCarrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaisCarrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCarrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CiudadCarrera;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Button txtExportarExcel;
+        private System.Windows.Forms.Button btnModificarCarrera;
+        private System.Windows.Forms.Button btnRegistrarCarrera;
+        private System.Windows.Forms.TabPage TabCatalogos;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TabControl tabOpcionesCatalogos;
+        private System.Windows.Forms.TabPage tabCategorias;
+        private System.Windows.Forms.Panel panel13;
+        public System.Windows.Forms.DataGridView tablaCategorias;
+        public System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button btnRegistrarCategoria;
+        private System.Windows.Forms.Button btnEliminarCategoria;
+        private System.Windows.Forms.Button btnModificarCategoria;
+        private System.Windows.Forms.TabPage tabCompetidores;
+        private System.Windows.Forms.DataGridView tablaCompetidores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button btnRegistrarCompetidor;
+        private System.Windows.Forms.Button btnEliminarCompetidor;
+        private System.Windows.Forms.Button btnModificarCompetidor;
+        private System.Windows.Forms.TabPage pageEpcTest;
+        private System.Windows.Forms.TabControl tabEpcTest;
+        private System.Windows.Forms.TabPage pageRealMode;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.CheckBox cbRealWorkant1;
+        private System.Windows.Forms.CheckBox cbRealWorkant4;
+        private System.Windows.Forms.TextBox tbRealMaxRssi;
+        private System.Windows.Forms.TextBox tbRealMinRssi;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.CheckBox cbRealWorkant3;
+        private System.Windows.Forms.CheckBox cbRealWorkant2;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Button btRealFresh;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textRealRound;
         private System.Windows.Forms.Label label84;
+        public System.Windows.Forms.Button btRealTimeInventory;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.CheckBox cbRealSession;
+        private System.Windows.Forms.ComboBox cmbTarget;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.ComboBox cmbSession;
+        private System.Windows.Forms.Label label97;
         private System.Windows.Forms.ListView lvRealList;
-        private LxControl.LxLedControl ledReal3;
+        private System.Windows.Forms.ColumnHeader columnHeader37;
+        private System.Windows.Forms.ColumnHeader columnHeader38;
+        private System.Windows.Forms.ColumnHeader columnHeader39;
+        private System.Windows.Forms.ColumnHeader columnHeader40;
+        private System.Windows.Forms.ColumnHeader columnHeader41;
+        private System.Windows.Forms.ColumnHeader columnHeader42;
+        private System.Windows.Forms.TabPage PagReaderSetting;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btReaderSetupRefresh;
         private System.Windows.Forms.GroupBox gbCmdReadGpio;
-        private System.Windows.Forms.Button btnWriteGpio4Value;
-        private System.Windows.Forms.Button btnWriteGpio3Value;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.RadioButton rdbGpio4High;
-        private System.Windows.Forms.RadioButton rdbGpio4Low;
+        private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.RadioButton rdbGpio3High;
         private System.Windows.Forms.RadioButton rdbGpio3Low;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.RadioButton rdbGpio2High;
-        private System.Windows.Forms.RadioButton rdbGpio2Low;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.RadioButton rdbGpio4High;
+        private System.Windows.Forms.RadioButton rdbGpio4Low;
+        private System.Windows.Forms.Button btnWriteGpio4Value;
+        private System.Windows.Forms.Button btnWriteGpio3Value;
+        private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.RadioButton rdbGpio1High;
         private System.Windows.Forms.RadioButton rdbGpio1Low;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.RadioButton rdbGpio2High;
+        private System.Windows.Forms.RadioButton rdbGpio2Low;
         private System.Windows.Forms.Button btnReadGpioValue;
         private System.Windows.Forms.GroupBox gbCmdBeeper;
         private System.Windows.Forms.Button btnSetBeeperMode;
@@ -3839,53 +3642,13 @@
         private System.Windows.Forms.RadioButton rdbTcpIp;
         private System.Windows.Forms.RadioButton rdbRS232;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox gbMonza;
-        private System.Windows.Forms.RadioButton rdbMonzaOff;
-        private System.Windows.Forms.Button btSetMonzaStatus;
-        private System.Windows.Forms.Button btGetMonzaStatus;
-        private System.Windows.Forms.RadioButton rdbMonzaOn;
-        private System.Windows.Forms.GroupBox gbCmdAntenna;
-        private System.Windows.Forms.Button btnGetWorkAntenna;
-        private System.Windows.Forms.Button btnSetWorkAntenna;
-        private System.Windows.Forms.GroupBox gbCmdAntDetector;
-        private System.Windows.Forms.Button btnGetAntDetector;
-        private System.Windows.Forms.Button btnSetAntDetector;
-        private System.Windows.Forms.GroupBox gbCmdDrm;
-        private System.Windows.Forms.Button btnGetDrmMode;
-        private System.Windows.Forms.Button btnSetDrmMode;
-        private System.Windows.Forms.RadioButton rdbDrmModeClose;
-        private System.Windows.Forms.RadioButton rdbDrmModeOpen;
-        private System.Windows.Forms.GroupBox gbCmdRegion;
-        private System.Windows.Forms.Button btnGetFrequencyRegion;
-        private System.Windows.Forms.Button btnSetFrequencyRegion;
-        private System.Windows.Forms.GroupBox gbCmdOutputPower;
-        private System.Windows.Forms.Button btnGetOutputPower;
-        private System.Windows.Forms.Button btnSetOutputPower;
-        private System.Windows.Forms.TextBox txtOutputPower;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btReaderSetupRefresh;
-        private System.Windows.Forms.Button btRfSetup;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.TextBox tbAntDectector;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.CheckBox cbRealWorkant1;
-        private System.Windows.Forms.CheckBox cbRealWorkant4;
-        private System.Windows.Forms.CheckBox cbRealWorkant3;
-        private System.Windows.Forms.CheckBox cbRealWorkant2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.CheckBox cbRealSession;
-        private System.Windows.Forms.ComboBox cmbTarget;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.ComboBox cmbSession;
-        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.GroupBox gbReturnLoss;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.ComboBox cmbReturnLossFreq;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.TextBox textReturnLoss;
+        private System.Windows.Forms.Button btReturnLoss;
         private System.Windows.Forms.GroupBox gbProfile;
         private System.Windows.Forms.Button btGetProfile;
         private System.Windows.Forms.Button btSetProfile;
@@ -3893,7 +3656,41 @@
         private System.Windows.Forms.RadioButton rdbProfile2;
         private System.Windows.Forms.RadioButton rdbProfile1;
         private System.Windows.Forms.RadioButton rdbProfile0;
+        private System.Windows.Forms.Button btRfSetup;
+        private System.Windows.Forms.GroupBox gbMonza;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RadioButton rdbMonzaOff;
+        private System.Windows.Forms.Button btSetMonzaStatus;
+        private System.Windows.Forms.Button btGetMonzaStatus;
+        private System.Windows.Forms.RadioButton rdbMonzaOn;
+        private System.Windows.Forms.GroupBox gbCmdAntDetector;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbAntDectector;
+        private System.Windows.Forms.Button btnGetAntDetector;
+        private System.Windows.Forms.Button btnSetAntDetector;
+        private System.Windows.Forms.GroupBox gbCmdDrm;
+        private System.Windows.Forms.Button btnGetDrmMode;
+        private System.Windows.Forms.Button btnSetDrmMode;
+        private System.Windows.Forms.RadioButton rdbDrmModeClose;
+        private System.Windows.Forms.RadioButton rdbDrmModeOpen;
+        private System.Windows.Forms.GroupBox gbCmdAntenna;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.ComboBox cmbWorkAnt;
+        private System.Windows.Forms.Button btnGetWorkAntenna;
+        private System.Windows.Forms.Button btnSetWorkAntenna;
+        private System.Windows.Forms.GroupBox gbCmdRegion;
+        private System.Windows.Forms.CheckBox cbUserDefineFreq;
         private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.Label label75;
         private System.Windows.Forms.TextBox textFreqQuantity;
         private System.Windows.Forms.TextBox TextFreqInterval;
         private System.Windows.Forms.TextBox textStartFreq;
@@ -3907,67 +3704,24 @@
         private System.Windows.Forms.RadioButton rdbRegionChn;
         private System.Windows.Forms.RadioButton rdbRegionEtsi;
         private System.Windows.Forms.RadioButton rdbRegionFcc;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.Label label103;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.GroupBox gbReturnLoss;
-        private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.TextBox textReturnLoss;
-        private System.Windows.Forms.Button btReturnLoss;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.ComboBox cmbWorkAnt;
-        private System.Windows.Forms.Label label110;
-        private System.Windows.Forms.Label label109;
-        private System.Windows.Forms.ComboBox cmbReturnLossFreq;
-        private System.Windows.Forms.CheckBox ckClearOperationRec;
-        private System.Windows.Forms.CheckBox cbUserDefineFreq;
-        private System.Windows.Forms.TabPage TabCatalogos;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TabControl tabOpcionesCatalogos;
-        private System.Windows.Forms.TabPage tabCategorias;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Button btnRegistrarCategoria;
-        private System.Windows.Forms.Button btnEliminarCategoria;
-        private System.Windows.Forms.Button btnModificarCategoria;
-        private System.Windows.Forms.TabPage tabCompetidores;
-        public System.Windows.Forms.DataGridView tablaCategorias;
-        public CustomControl.LogRichTextBox lrtxtLog;
-        public System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
-        public System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridView tablaCompetidores;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Button btnRegistrarCompetidor;
-        private System.Windows.Forms.Button btnEliminarCompetidor;
-        private System.Windows.Forms.Button btnModificarCompetidor;
-        private System.Windows.Forms.TabPage TabCarreras;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.DataGridView tablaCarreras;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Button btnModificarCarrera;
-        private System.Windows.Forms.Button btnRegistrarCarrera;
-        public System.Windows.Forms.Button btRealTimeInventory;
-        public System.Windows.Forms.ComboBox cmbCategoriaConfig;
+        private System.Windows.Forms.Button btnGetFrequencyRegion;
+        private System.Windows.Forms.Button btnSetFrequencyRegion;
+        private System.Windows.Forms.GroupBox gbCmdOutputPower;
+        private System.Windows.Forms.Button btnGetOutputPower;
+        private System.Windows.Forms.Button btnSetOutputPower;
+        private System.Windows.Forms.TextBox txtOutputPower;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TabControl tabCtrMain;
         public System.Windows.Forms.ComboBox cmbCarreraConfig;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button txtExportarExcel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdCarrera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionCarrera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PaisCarrera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCarrera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CiudadCarrera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridView gridCarreraDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Distancia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
     }
 }
 
