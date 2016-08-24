@@ -106,6 +106,8 @@
   <ItemGroup>
     <Compile Include="Entidades\CarreraDetalle.cs" />
     <Compile Include="CCommondMethod.cs" />
+    <Compile Include="Entidades\CarreraDetalleTiempos.cs" />
+    <Compile Include="Entidades\CarreraPuntos.cs" />
     <Compile Include="Entidades\Ciudad.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Pais.cs" />

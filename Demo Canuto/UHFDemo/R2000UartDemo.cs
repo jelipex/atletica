@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.IO;
+using UHFDemo.Entidades;
 
 namespace UHFDemo
 {
@@ -26,7 +27,8 @@ namespace UHFDemo
         private Reader.ReaderMethod reader;
         private byte btCmdGlobal { get; set; }
         public DataGridView tablaCarreraDetalle { get; set; }
-        
+        public List<CarreraPuntos> listaCarreraPuntos { get; set; }
+        public int indicePunto = 0;
 
         private ReaderSetting m_curSetting = new ReaderSetting();
         private InventoryBuffer m_curInventoryBuffer = new InventoryBuffer();
@@ -3023,7 +3025,15 @@ namespace UHFDemo
                 byte btFreq = (byte)(btTemp >> 2);
                 string strFreq = GetFreqString(btFreq);
 
-                AsignarChip(strEPC.Trim());
+                if (Globales.capturaCarrera)
+                {
+                    AsignarChip(strEPC.Trim());
+                }
+                else
+                {
+                    GuardarTiempos(strEPC.Trim());
+                }
+                
                 
                 //DataRow row = m_curInventoryBuffer.dtTagDetailTable.NewRow();
                 //row[0] = strEPC;
@@ -4443,6 +4453,50 @@ namespace UHFDemo
             //}
         }
 
+        private void LlenarListaCarreraPuntos(int idCarrera)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            listaCarreraPuntos = new List<CarreraPuntos>();
+            try
+            {
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("SELECT ");
+                sentencia.AppendLine("	* ");
+                sentencia.AppendLine("FROM ");
+                sentencia.AppendLine("	CARRERASPUNTOS ");
+                sentencia.AppendLine("WHERE ");
+                sentencia.AppendLine("	IDEMPRESA = " + IdEmpresa);
+                sentencia.AppendLine("AND IDCARRERA = " + idCarrera);
+
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                MySqlDataReader reader = comando.ExecuteReader();
+                CarreraPuntos entidad = new CarreraPuntos();
+
+                while (reader.Read())
+                {
+                    int indice = 0;
+                    entidad.IdEmpresa = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdPunto = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Intervalo = (reader[indice] is DBNull) ? 0 : reader.GetDouble(indice); indice++;
+                    listaCarreraPuntos.Add(entidad);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
        
         public void btRealTimeInventory_Click(object sender, EventArgs e)
         {
@@ -5556,6 +5610,178 @@ namespace UHFDemo
         private void button1_Click(object sender, EventArgs e)
         {
             MostrarVentanaCompetidores();
+        }
+
+        private CarreraDetalleTiempos ObtenerEntidadDetalleTiempos(int idCarrera, string chip)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            CarreraDetalleTiempos entidad = new CarreraDetalleTiempos();
+
+            try
+            {
+
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("		SELECT ");
+                sentencia.AppendLine("			A.IDEMPRESA, ");
+                sentencia.AppendLine("			A.IDCARRERA, ");
+                sentencia.AppendLine("			A.ID, ");
+                sentencia.AppendLine("			(SELECT IF(MAX(B.ID) IS NULL, 1, MAX(B.ID) + 1 ) FROM CARRERASDETALLETIEMPOS AS B WHERE B.IDEMPRESA = " + IdEmpresa + " AND B.IDCARRERA = " + idCarrera + " AND B.IDCARRERADETALLE = A.ID), ");
+                sentencia.AppendLine("			A.IDCOMPETIDOR, ");
+                sentencia.AppendLine("			CONCAT(B.APELLIDOPATERNO, ' ', B.APELLIDOMATERNO, ' ', B.NOMBRE), ");
+                sentencia.AppendLine("			A.IDCATEGORIA, ");
+                sentencia.AppendLine("			C.DESCRICPION, ");
+                sentencia.AppendLine("			A.IDDISTANCIA, ");
+                sentencia.AppendLine("			D.DESCRIPCION, ");
+                sentencia.AppendLine("			" + listaCarreraPuntos[indicePunto].IdPunto + ", ");
+                sentencia.AppendLine("			E.DESCRIPCION, ");
+                sentencia.AppendLine("			A.RAMA, ");
+                sentencia.AppendLine("			NOW() ");
+                sentencia.AppendLine("		FROM ");
+                sentencia.AppendLine("			CARRERASDETALLE AS A ");
+                sentencia.AppendLine("		LEFT JOIN COMPETIDORES AS B ");
+                sentencia.AppendLine("			ON B.IDEMPRESA = A.IDEMPRESA AND B.IDCOMPETIDOR = A.IDCOMPETIDOR");
+                sentencia.AppendLine("		LEFT JOIN CATEGORIAS AS C ");
+                sentencia.AppendLine("			ON C.IDEMPRESA = A.IDEMPRESA AND C.IDCATEGORIA = A.IDCATEGORIA");
+                sentencia.AppendLine("		LEFT JOIN DISTANCIASCARRERA AS D ");
+                sentencia.AppendLine("			ON D.IDEMPRESA = A.IDEMPRESA AND D.IDDISTANCIA = A.IDDISTANCIA");
+                sentencia.AppendLine("		LEFT JOIN PUNTOSCARRERA AS E ");
+                sentencia.AppendLine("			ON E.IDEMPRESA = A.IDEMPRESA AND E.IDPUNTO = " + listaCarreraPuntos[indicePunto].IdPunto);
+                sentencia.AppendLine("		WHERE ");
+                sentencia.AppendLine("			A.IDEMPRESA = " + IdEmpresa);
+                sentencia.AppendLine("		AND A.IDCARRERA = " + idCarrera);
+                sentencia.AppendLine("		AND A.CHIP = '" + chip + "' ");
+
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                MySqlDataReader reader = comando.ExecuteReader();
+                
+
+                while (reader.Read())
+                {
+                    int indice = 0;
+                    entidad = new CarreraDetalleTiempos();
+                    entidad.IdEmpresa = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCarreraDetalle = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Id = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCompetidor = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Competidor = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.IdCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.IdDistancia = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Distancia = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.IdPunto = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Punto = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.Rama = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.Tiempo = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
+
+                }
+
+                return entidad;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
+        private void InsertarTiempoCarrera(int idCarrera, string chip)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            try
+            {
+                conexion.Open();
+                CarreraDetalleTiempos entidad = ObtenerEntidadDetalleTiempos(idCarrera, chip);
+
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("INSERT INTO ");
+                sentencia.AppendLine("	CARRERASDETALLETIEMPOS ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("	IDEMPRESA, ");
+                sentencia.AppendLine("	IDCARRERA, ");
+                sentencia.AppendLine("	IDCARRERADETALLE, ");
+                sentencia.AppendLine("	ID, ");
+                sentencia.AppendLine("	IDCOMPETIDOR, ");
+                sentencia.AppendLine("	IDCATEGORIA, ");
+                sentencia.AppendLine("	IDDISTANCIA, ");
+                sentencia.AppendLine("	IDPUNTO, ");
+                sentencia.AppendLine("	RAMA, ");
+                sentencia.AppendLine("	TIEMPO ");
+                sentencia.AppendLine("	) ");
+                sentencia.AppendLine("VALUES ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("	 " + entidad.IdEmpresa + ", ");
+                sentencia.AppendLine("	 " + entidad.IdCarrera + ", ");
+                sentencia.AppendLine("	 " + entidad.IdCarreraDetalle + ", ");
+                sentencia.AppendLine("	 " + entidad.Id + ", ");
+                sentencia.AppendLine("	 " + entidad.IdCompetidor + ", ");
+                sentencia.AppendLine("	 " + entidad.IdCategoria + ", ");
+                sentencia.AppendLine("	 " + entidad.IdDistancia + ", ");
+                sentencia.AppendLine("	 " + entidad.IdPunto + ", ");
+                sentencia.AppendLine("	'" + entidad.Rama + "', ");
+                sentencia.AppendLine("  '" + entidad.Tiempo + "', ");
+                sentencia.AppendLine("	) ");
+
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                if (comando.ExecuteNonQuery() > 0)
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void InsertarRenglonCarreraTiempo(CarreraDetalleTiempos entidad)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+
+            string[] rowNuevo = new string[] { entidad.Id.ToString(), entidad.IdCompetidor.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, ""};
+            gridCarreraDetalle.Rows.Add(rowNuevo);
+        }
+
+        private void InsertarTiempo(int idCarrera, string chip)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            try
+            {
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+
+                if (indicePunto == 0)
+                {
+                    
+
+
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         private void ActualizarTiempo(string chip)
