@@ -78,4 +78,3 @@ C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_sourc
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Debug\CustomControl.csproj.GenerateResource.Cache
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Debug\CustomControl.dll
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Debug\CustomControl.pdb
-C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\CustomControl\obj\x86\Debug\CustomControl.csprojResolveAssemblyReference.cache

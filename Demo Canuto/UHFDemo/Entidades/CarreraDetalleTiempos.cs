@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UHFDemo.Entidades
 {
-    class CarreraDetalleTiempos
+    public class CarreraDetalleTiempos
     {
         public int IdEmpresa { get; set; }
         public int IdCarrera { get; set; }
@@ -20,7 +20,8 @@ namespace UHFDemo.Entidades
         public int IdPunto { get; set; }
         public string Punto { get; set; }
         public string Rama { get; set; }
-        public DateTime Tiempo { get; set; }
+        public DateTime FechaHora { get; set; }
+        public double Tiempo { get; set; }
 
         public CarreraDetalleTiempos()
         {

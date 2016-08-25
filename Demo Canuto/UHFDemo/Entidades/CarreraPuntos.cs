@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UHFDemo.Entidades
 {
-    class CarreraPuntos
+    public class CarreraPuntos
     {
         public int IdEmpresa { get; set; }
         public int IdCarrera { get; set; }

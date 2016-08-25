@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.IO;
 using UHFDemo.Entidades;
+using System.Globalization;
 
 namespace UHFDemo
 {
@@ -29,6 +30,10 @@ namespace UHFDemo
         public DataGridView tablaCarreraDetalle { get; set; }
         public List<CarreraPuntos> listaCarreraPuntos { get; set; }
         public int indicePunto = 0;
+        public DateTime tiempoInicialCarrera { get; set; }
+        public DateTime ultimoTiempoInsertado { get; set; }
+        public int idCarreraDetalleActual { get; set; }
+        public int idCarreraActual { get; set; }
 
         private ReaderSetting m_curSetting = new ReaderSetting();
         private InventoryBuffer m_curInventoryBuffer = new InventoryBuffer();
@@ -128,7 +133,7 @@ namespace UHFDemo
         void cmbCarreraConfig_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
-           
+            LlenarListaCarreraPuntos(idCarrera);
         }
 
         private void tabOpcionesCatalogos_SelectedIndexChanged(object sender, EventArgs e)
@@ -701,14 +706,6 @@ namespace UHFDemo
                                 item.SubItems.Add(row[6].ToString());
                                 lvRealList.Items.Add(item);
                                 lvRealList.Items[nEpcCount].EnsureVisible();
-
-                                if (Globales.GuardarTiemposCarrera)
-                                {
-                                    if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
-                                    {
-                                        ActualizarTiempo(row[2].ToString().Trim());
-                                    }
-                                }
                                 
                                 
                             }
@@ -3031,7 +3028,7 @@ namespace UHFDemo
                 }
                 else
                 {
-                    GuardarTiempos(strEPC.Trim());
+                    InsertarTiempoDetalle(strEPC.Trim());
                 }
                 
                 
@@ -4477,6 +4474,7 @@ namespace UHFDemo
                 while (reader.Read())
                 {
                     int indice = 0;
+                    entidad = new CarreraPuntos();
                     entidad.IdEmpresa = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.IdPunto = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
@@ -4516,6 +4514,13 @@ namespace UHFDemo
                 {
                     mostrarTiempos = false;
                 }
+
+                tiempoInicialCarrera = new DateTime();
+                ultimoTiempoInsertado = new DateTime();
+                indicePunto = 0;
+                idCarreraActual = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+                idCarreraDetalleActual = 0;
+                InsertarTiempoInicial(Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value));
                 
                 m_curInventoryBuffer.ClearInventoryPar();
 
@@ -4573,9 +4578,9 @@ namespace UHFDemo
                 {
                     m_bInventory = false;
                     m_curInventoryBuffer.bLoopInventory = false;
-                    btRealTimeInventory.BackColor = Color.WhiteSmoke;
-                    btRealTimeInventory.ForeColor = Color.DarkBlue;
-                    btRealTimeInventory.Text = "Inventory ";
+                    btRealTimeInventory.BackColor = Color.Green;
+                    btRealTimeInventory.ForeColor = Color.White;
+                    btRealTimeInventory.Text = "Empezar Carrera ";
                     return;
                 }
                 else
@@ -4596,9 +4601,10 @@ namespace UHFDemo
 
                     m_bInventory = true;
                     m_curInventoryBuffer.bLoopInventory = true;
-                    btRealTimeInventory.BackColor = Color.DarkBlue;
+                    btRealTimeInventory.BackColor = Color.Firebrick;
                     btRealTimeInventory.ForeColor = Color.White;
-                    btRealTimeInventory.Text = "Stop";
+                    btRealTimeInventory.Text = "Detener Carrera";
+                    gridCarreraDetalle.Rows.Clear();
 
                     //Abrir Ventana de competidores
                     //MostrarVentanaCompetidores();
@@ -5631,13 +5637,13 @@ namespace UHFDemo
                 sentencia.AppendLine("			A.IDCOMPETIDOR, ");
                 sentencia.AppendLine("			CONCAT(B.APELLIDOPATERNO, ' ', B.APELLIDOMATERNO, ' ', B.NOMBRE), ");
                 sentencia.AppendLine("			A.IDCATEGORIA, ");
-                sentencia.AppendLine("			C.DESCRICPION, ");
+                sentencia.AppendLine("			C.DESCRIPCION, ");
                 sentencia.AppendLine("			A.IDDISTANCIA, ");
                 sentencia.AppendLine("			D.DESCRIPCION, ");
                 sentencia.AppendLine("			" + listaCarreraPuntos[indicePunto].IdPunto + ", ");
                 sentencia.AppendLine("			E.DESCRIPCION, ");
                 sentencia.AppendLine("			A.RAMA, ");
-                sentencia.AppendLine("			NOW() ");
+                sentencia.AppendLine("			NOW(6) ");
                 sentencia.AppendLine("		FROM ");
                 sentencia.AppendLine("			CARRERASDETALLE AS A ");
                 sentencia.AppendLine("		LEFT JOIN COMPETIDORES AS B ");
@@ -5646,7 +5652,7 @@ namespace UHFDemo
                 sentencia.AppendLine("			ON C.IDEMPRESA = A.IDEMPRESA AND C.IDCATEGORIA = A.IDCATEGORIA");
                 sentencia.AppendLine("		LEFT JOIN DISTANCIASCARRERA AS D ");
                 sentencia.AppendLine("			ON D.IDEMPRESA = A.IDEMPRESA AND D.IDDISTANCIA = A.IDDISTANCIA");
-                sentencia.AppendLine("		LEFT JOIN PUNTOSCARRERA AS E ");
+                sentencia.AppendLine("		LEFT JOIN PUNTOS AS E ");
                 sentencia.AppendLine("			ON E.IDEMPRESA = A.IDEMPRESA AND E.IDPUNTO = " + listaCarreraPuntos[indicePunto].IdPunto);
                 sentencia.AppendLine("		WHERE ");
                 sentencia.AppendLine("			A.IDEMPRESA = " + IdEmpresa);
@@ -5674,7 +5680,7 @@ namespace UHFDemo
                     entidad.IdPunto = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Punto = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     entidad.Rama = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    entidad.Tiempo = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
+                    entidad.FechaHora = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
 
                 }
 
@@ -5694,6 +5700,63 @@ namespace UHFDemo
             }
         }
 
+        public void InsertarTiempoInicial(int idCarrera)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            try
+            {
+                DateTime tiempo = DateTime.Now;
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("UPDATE CARRERAS SET TIEMPOINICIALCARRERA = NOW(6) WHERE IDEMPRESA = " + IdEmpresa + " AND IDCARRERA =" + idCarrera);
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                if (comando.ExecuteNonQuery() > 0)
+                {
+                    StringBuilder sentenciaNueva = new StringBuilder();
+                    sentenciaNueva.AppendLine("SELECT TIEMPOINICIALCARRERA FROM CARRERAS WHERE IDEMPRESA =" + IdEmpresa + " AND IDCARRERA =" + idCarrera);
+                    MySqlCommand comandoNuevo = new MySqlCommand(sentenciaNueva.ToString(), conexion);
+                    tiempoInicialCarrera = Convert.ToDateTime(comandoNuevo.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
+        private int ObtenerIndicePunto(int idCarrera, string chip)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            int indice = 0;
+            try
+            {
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("SELECT COUNT(*) FROM CARRERASDETALLETIEMPOS WHERE IDEMPRESA =" + IdEmpresa + " AND IDCARRERA =" + idCarrera + " AND IDCARRERADETALLE = (SELECT ID FROM CARRERASDETALLE WHERE IDEMPRESA = " + IdEmpresa + " AND IDCARRERA = " + idCarrera + " AND CHIP = '" + chip + "' )");
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                indice = Convert.ToInt32(comando.ExecuteScalar());
+                return indice;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         private void InsertarTiempoCarrera(int idCarrera, string chip)
         {
             string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
@@ -5701,7 +5764,17 @@ namespace UHFDemo
             try
             {
                 conexion.Open();
+                
                 CarreraDetalleTiempos entidad = ObtenerEntidadDetalleTiempos(idCarrera, chip);
+
+                if (indicePunto == 0)
+                {
+                    entidad.Tiempo = (entidad.FechaHora - tiempoInicialCarrera).TotalSeconds;
+                }
+                else
+                {
+                    entidad.Tiempo = (entidad.FechaHora - ObtenerUltimaFechaHora(idCarrera)).TotalSeconds;
+                }
 
                 StringBuilder sentencia = new StringBuilder();
                 sentencia.AppendLine("INSERT INTO ");
@@ -5716,6 +5789,7 @@ namespace UHFDemo
                 sentencia.AppendLine("	IDDISTANCIA, ");
                 sentencia.AppendLine("	IDPUNTO, ");
                 sentencia.AppendLine("	RAMA, ");
+                sentencia.AppendLine("	FECHAHORA, ");
                 sentencia.AppendLine("	TIEMPO ");
                 sentencia.AppendLine("	) ");
                 sentencia.AppendLine("VALUES ");
@@ -5729,13 +5803,16 @@ namespace UHFDemo
                 sentencia.AppendLine("	 " + entidad.IdDistancia + ", ");
                 sentencia.AppendLine("	 " + entidad.IdPunto + ", ");
                 sentencia.AppendLine("	'" + entidad.Rama + "', ");
-                sentencia.AppendLine("  '" + entidad.Tiempo + "', ");
+                sentencia.AppendLine("	'" + entidad.FechaHora.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + "', ");
+                sentencia.AppendLine("   " + entidad.Tiempo + " ");
                 sentencia.AppendLine("	) ");
 
                 MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
                 if (comando.ExecuteNonQuery() > 0)
                 {
-
+                    InsertarRenglonCarreraTiempo(entidad);
+                    ultimoTiempoInsertado = entidad.FechaHora;
+                    
                 }
             }
             catch (Exception)
@@ -5745,42 +5822,114 @@ namespace UHFDemo
             }
             finally
             {
-
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
             }
         }
 
         private void InsertarRenglonCarreraTiempo(CarreraDetalleTiempos entidad)
         {
+            TimeSpan tiempo = TimeSpan.FromSeconds((entidad.FechaHora - tiempoInicialCarrera).TotalSeconds);
+
+            string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
             DataGridViewRow row = new DataGridViewRow();
 
-            string[] rowNuevo = new string[] { entidad.Id.ToString(), entidad.IdCompetidor.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, ""};
-            gridCarreraDetalle.Rows.Add(rowNuevo);
+            string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, tiempoFormateado };
+
+            Invoke(new MethodInvoker(delegate
+            {
+
+                //  Ejemplo: Mostrar datos de los eventos
+                // enviados por el Thread en una ListBox
+                gridCarreraDetalle.Rows.Add(rowNuevo);
+            }));
+            
         }
 
-        private void InsertarTiempo(int idCarrera, string chip)
+        private void InsertarTiempoDetalle(string chip)
         {
-            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
-            MySqlConnection conexion = new MySqlConnection(connectionString);
             try
             {
-                conexion.Open();
-                StringBuilder sentencia = new StringBuilder();
-
-                if (indicePunto == 0)
+                indicePunto = ObtenerIndicePunto(idCarreraActual, chip);
+                if (indicePunto < listaCarreraPuntos.Count)
                 {
-                    
+                    CarreraDetalleTiempos entidad = ObtenerEntidadDetalleTiempos(idCarreraActual, chip);
+                    idCarreraDetalleActual = entidad.IdCarreraDetalle;
 
-
-                }
-                else
-                {
-
+                    if (indicePunto == 0)
+                    {
+                        InsertarTiempoCarrera(idCarreraActual, chip);
+                    }
+                    else
+                    {
+                        if (idCarreraDetalleActual != 0 && ValidarInsertarTiempoCarrera(idCarreraActual))
+                        {
+                            InsertarTiempoCarrera(idCarreraActual, chip);
+                        }
+                    }
                 }
             }
             catch (Exception)
             {
                 
                 throw;
+            }
+        }
+
+        private DateTime ObtenerUltimaFechaHora(int idCarrera)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+            DateTime ultimoTiempo = new DateTime();
+            try
+            {
+                conexion.Open();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("SELECT ");
+                sentencia.AppendLine("	FECHAHORA ");
+                sentencia.AppendLine("FROM ");
+                sentencia.AppendLine("	CARRERASDETALLETIEMPOS ");
+                sentencia.AppendLine("WHERE ");
+                sentencia.AppendLine("	IDEMPRESA = " + IdEmpresa);
+                sentencia.AppendLine("AND IDCARRERA = " + idCarrera);
+                sentencia.AppendLine("AND IDCARRERADETALLE = " + idCarreraDetalleActual);
+                sentencia.AppendLine("ORDER BY IDEMPRESA, IDCARRERA, IDCARRERADETALLE, ID DESC ");
+                sentencia.AppendLine("LIMIT 1 ");
+
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                ultimoTiempo = Convert.ToDateTime(comando.ExecuteScalar());
+
+                return ultimoTiempo;
+            }
+            catch (Exception)
+            {
+                return ultimoTiempo;
+
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
+        private bool ValidarInsertarTiempoCarrera(int idCarrera)
+        {
+            try
+            {
+                DateTime ultimoTiempo = ObtenerUltimaFechaHora(idCarrera);
+                double diferencia = (DateTime.Now - ultimoTiempo).TotalSeconds;
+
+                return diferencia >= (listaCarreraPuntos[indicePunto].Intervalo * 60);
+            }
+            catch (Exception)
+            {
+                return false;
+
             }
         }
 
@@ -6029,6 +6178,18 @@ namespace UHFDemo
             btnModificarCarrera.PerformClick();
         }
 
+        private void gridCarreraDetalle_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            if (e.Column.Index == 0 || e.Column.Index == 1)
+            {
+                int a = int.Parse(e.CellValue1.ToString()), b = int.Parse(e.CellValue2.ToString());
 
+                // If the cell value is already an integer, just cast it instead of parsing
+
+                e.SortResult = a.CompareTo(b);
+
+                e.Handled = true;
+            }
+        }
     }
 }

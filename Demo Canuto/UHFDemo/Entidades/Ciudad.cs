@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UHFDemo.Entidades
 {
-    class Ciudad
+    public class Ciudad
     {
         public string IdPais { get; set; }
         public int IdEstado { get; set; }
