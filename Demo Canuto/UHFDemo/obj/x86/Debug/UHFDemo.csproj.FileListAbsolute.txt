@@ -122,3 +122,4 @@ C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.exe
 C:\Users\Nolberto\Documents\Visual Studio 2012\Projects\demo\UHFDemo.pdb
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.exe
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.pdb
+C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\UHFDemo\obj\x86\Debug\UHFDemo.VistaDetallesCarrera.resources

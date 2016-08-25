@@ -157,6 +157,12 @@
     <Compile Include="VistaCarreraTiempos.Designer.cs">
       <DependentUpon>VistaCarreraTiempos.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaDetallesCarrera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaDetallesCarrera.Designer.cs">
+      <DependentUpon>VistaDetallesCarrera.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaCarreraTiempos.resx">
       <DependentUpon>VistaCarreraTiempos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaDetallesCarrera.resx">
+      <DependentUpon>VistaDetallesCarrera.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

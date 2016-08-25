@@ -7,6 +7,7 @@ namespace UHFDemo.Entidades
 {
     public class CarreraDetalleTiempos
     {
+        public int Lugar { get; set; }
         public int IdEmpresa { get; set; }
         public int IdCarrera { get; set; }
         public int IdCarreraDetalle { get; set; }

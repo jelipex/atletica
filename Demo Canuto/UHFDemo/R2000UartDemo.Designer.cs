@@ -45,11 +45,16 @@
             this.label78 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.lxLedControl9 = new LxControl.LxLedControl();
+            this.lxLedControl10 = new LxControl.LxLedControl();
+            this.lxLedControl11 = new LxControl.LxLedControl();
+            this.lxLedControl12 = new LxControl.LxLedControl();
             this.label79 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
+            this.lxLedControl13 = new LxControl.LxLedControl();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -176,14 +181,18 @@
             this.txtFirmwareVersion = new System.Windows.Forms.TextBox();
             this.btnResetReader = new System.Windows.Forms.Button();
             this.gbCmdBaudrate = new System.Windows.Forms.GroupBox();
+            this.htbGetIdentifier = new CustomControl.HexTextBox();
+            this.htbSetIdentifier = new CustomControl.HexTextBox();
             this.btSetIdentifier = new System.Windows.Forms.Button();
             this.btGetIdentifier = new System.Windows.Forms.Button();
             this.gbCmdReaderAddress = new System.Windows.Forms.GroupBox();
+            this.htxtReadId = new CustomControl.HexTextBox();
             this.btnSetReadAddress = new System.Windows.Forms.Button();
             this.gbTcpIp = new System.Windows.Forms.GroupBox();
             this.btnDisconnectTcp = new System.Windows.Forms.Button();
             this.txtTcpPort = new System.Windows.Forms.TextBox();
             this.btnConnectTcp = new System.Windows.Forms.Button();
+            this.ipIpServer = new CustomControl.IpAddressTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gbRS232 = new System.Windows.Forms.GroupBox();
@@ -270,31 +279,29 @@
             this.txtOutputPower = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabCtrMain = new System.Windows.Forms.TabControl();
-            this.htbGetIdentifier = new CustomControl.HexTextBox();
-            this.htbSetIdentifier = new CustomControl.HexTextBox();
-            this.htxtReadId = new CustomControl.HexTextBox();
-            this.ipIpServer = new CustomControl.IpAddressTextBox();
-            this.lxLedControl9 = new LxControl.LxLedControl();
-            this.lxLedControl10 = new LxControl.LxLedControl();
-            this.lxLedControl11 = new LxControl.LxLedControl();
-            this.lxLedControl12 = new LxControl.LxLedControl();
-            this.lxLedControl13 = new LxControl.LxLedControl();
             this.lxLedControl14 = new LxControl.LxLedControl();
             this.lxLedControl15 = new LxControl.LxLedControl();
             this.lxLedControl16 = new LxControl.LxLedControl();
             this.lxLedControl17 = new LxControl.LxLedControl();
             this.lxLedControl18 = new LxControl.LxLedControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Punto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).BeginInit();
             this.TabCarreras.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).BeginInit();
@@ -347,11 +354,6 @@
             this.groupBox21.SuspendLayout();
             this.gbCmdOutputPower.SuspendLayout();
             this.tabCtrMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).BeginInit();
@@ -544,6 +546,91 @@
             this.comboBox9.Size = new System.Drawing.Size(55, 21);
             this.comboBox9.TabIndex = 39;
             // 
+            // lxLedControl9
+            // 
+            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl9.BevelRate = 0.1F;
+            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl9.HighlightOpaque = ((byte)(20));
+            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
+            this.lxLedControl9.Name = "lxLedControl9";
+            this.lxLedControl9.RoundCorner = true;
+            this.lxLedControl9.SegmentIntervalRatio = 50;
+            this.lxLedControl9.ShowHighlight = true;
+            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
+            this.lxLedControl9.TabIndex = 35;
+            this.lxLedControl9.Text = "0";
+            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            this.lxLedControl9.TotalCharCount = 10;
+            // 
+            // lxLedControl10
+            // 
+            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl10.BevelRate = 0.1F;
+            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl10.HighlightOpaque = ((byte)(20));
+            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
+            this.lxLedControl10.Name = "lxLedControl10";
+            this.lxLedControl10.RoundCorner = true;
+            this.lxLedControl10.SegmentIntervalRatio = 50;
+            this.lxLedControl10.ShowHighlight = true;
+            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl10.TabIndex = 34;
+            this.lxLedControl10.Text = "0";
+            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl11
+            // 
+            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl11.BevelRate = 0.1F;
+            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl11.HighlightOpaque = ((byte)(20));
+            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
+            this.lxLedControl11.Name = "lxLedControl11";
+            this.lxLedControl11.RoundCorner = true;
+            this.lxLedControl11.SegmentIntervalRatio = 50;
+            this.lxLedControl11.ShowHighlight = true;
+            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl11.TabIndex = 33;
+            this.lxLedControl11.Text = "0";
+            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
+            // lxLedControl12
+            // 
+            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl12.BevelRate = 0.1F;
+            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
+            this.lxLedControl12.HighlightOpaque = ((byte)(20));
+            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
+            this.lxLedControl12.Name = "lxLedControl12";
+            this.lxLedControl12.RoundCorner = true;
+            this.lxLedControl12.SegmentIntervalRatio = 50;
+            this.lxLedControl12.ShowHighlight = true;
+            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
+            this.lxLedControl12.TabIndex = 32;
+            this.lxLedControl12.Text = "0";
+            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
+            // 
             // label79
             // 
             this.label79.AutoSize = true;
@@ -594,6 +681,27 @@
             this.label83.Size = new System.Drawing.Size(149, 12);
             this.label83.TabIndex = 26;
             this.label83.Text = "已盘存的标签总数量(个)：";
+            // 
+            // lxLedControl13
+            // 
+            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
+            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
+            this.lxLedControl13.BevelRate = 0.1F;
+            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
+            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
+            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
+            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
+            this.lxLedControl13.HighlightOpaque = ((byte)(20));
+            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
+            this.lxLedControl13.Name = "lxLedControl13";
+            this.lxLedControl13.RoundCorner = true;
+            this.lxLedControl13.SegmentIntervalRatio = 50;
+            this.lxLedControl13.ShowHighlight = true;
+            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
+            this.lxLedControl13.TabIndex = 21;
+            this.lxLedControl13.Text = "0";
+            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
             // 
             // listView1
             // 
@@ -1154,6 +1262,7 @@
             this.Distancia,
             this.Categoria,
             this.Rama,
+            this.Punto,
             this.Tiempo});
             this.gridCarreraDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCarreraDetalle.Location = new System.Drawing.Point(3, 63);
@@ -1314,6 +1423,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.cmbCarreraConfig);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.btRealTimeInventory);
@@ -1947,6 +2057,23 @@
             this.gbCmdBaudrate.TabStop = false;
             this.gbCmdBaudrate.Text = "Reader Identifier(12 Bytes)";
             // 
+            // htbGetIdentifier
+            // 
+            this.htbGetIdentifier.Location = new System.Drawing.Point(34, 24);
+            this.htbGetIdentifier.Name = "htbGetIdentifier";
+            this.htbGetIdentifier.ReadOnly = true;
+            this.htbGetIdentifier.Size = new System.Drawing.Size(228, 20);
+            this.htbGetIdentifier.TabIndex = 13;
+            this.htbGetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // htbSetIdentifier
+            // 
+            this.htbSetIdentifier.Location = new System.Drawing.Point(34, 66);
+            this.htbSetIdentifier.Name = "htbSetIdentifier";
+            this.htbSetIdentifier.Size = new System.Drawing.Size(228, 20);
+            this.htbSetIdentifier.TabIndex = 12;
+            this.htbSetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btSetIdentifier
             // 
             this.btSetIdentifier.Location = new System.Drawing.Point(314, 65);
@@ -1978,6 +2105,14 @@
             this.gbCmdReaderAddress.TabIndex = 5;
             this.gbCmdReaderAddress.TabStop = false;
             this.gbCmdReaderAddress.Text = "RS-485 Address(HEX)";
+            // 
+            // htxtReadId
+            // 
+            this.htxtReadId.Location = new System.Drawing.Point(114, 27);
+            this.htxtReadId.Name = "htxtReadId";
+            this.htxtReadId.Size = new System.Drawing.Size(121, 20);
+            this.htxtReadId.TabIndex = 2;
+            this.htxtReadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSetReadAddress
             // 
@@ -2033,6 +2168,14 @@
             this.btnConnectTcp.Text = "Connect";
             this.btnConnectTcp.UseVisualStyleBackColor = true;
             this.btnConnectTcp.Click += new System.EventHandler(this.btnConnectTcp_Click);
+            // 
+            // ipIpServer
+            // 
+            this.ipIpServer.IpAddressStr = "";
+            this.ipIpServer.Location = new System.Drawing.Point(114, 22);
+            this.ipIpServer.Name = "ipIpServer";
+            this.ipIpServer.Size = new System.Drawing.Size(120, 23);
+            this.ipIpServer.TabIndex = 0;
             // 
             // label4
             // 
@@ -3052,145 +3195,6 @@
             this.tabCtrMain.SelectedIndexChanged += new System.EventHandler(this.tabCtrMain_SelectedIndexChanged);
             this.tabCtrMain.Click += new System.EventHandler(this.tabCtrMain_Click);
             // 
-            // htbGetIdentifier
-            // 
-            this.htbGetIdentifier.Location = new System.Drawing.Point(34, 24);
-            this.htbGetIdentifier.Name = "htbGetIdentifier";
-            this.htbGetIdentifier.ReadOnly = true;
-            this.htbGetIdentifier.Size = new System.Drawing.Size(228, 20);
-            this.htbGetIdentifier.TabIndex = 13;
-            this.htbGetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htbSetIdentifier
-            // 
-            this.htbSetIdentifier.Location = new System.Drawing.Point(34, 66);
-            this.htbSetIdentifier.Name = "htbSetIdentifier";
-            this.htbSetIdentifier.Size = new System.Drawing.Size(228, 20);
-            this.htbSetIdentifier.TabIndex = 12;
-            this.htbSetIdentifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // htxtReadId
-            // 
-            this.htxtReadId.Location = new System.Drawing.Point(114, 27);
-            this.htxtReadId.Name = "htxtReadId";
-            this.htxtReadId.Size = new System.Drawing.Size(121, 20);
-            this.htxtReadId.TabIndex = 2;
-            this.htxtReadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ipIpServer
-            // 
-            this.ipIpServer.IpAddressStr = "";
-            this.ipIpServer.Location = new System.Drawing.Point(114, 22);
-            this.ipIpServer.Name = "ipIpServer";
-            this.ipIpServer.Size = new System.Drawing.Size(120, 23);
-            this.ipIpServer.TabIndex = 0;
-            // 
-            // lxLedControl9
-            // 
-            this.lxLedControl9.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl9.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl9.BevelRate = 0.1F;
-            this.lxLedControl9.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl9.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl9.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl9.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl9.HighlightOpaque = ((byte)(20));
-            this.lxLedControl9.Location = new System.Drawing.Point(702, 118);
-            this.lxLedControl9.Name = "lxLedControl9";
-            this.lxLedControl9.RoundCorner = true;
-            this.lxLedControl9.SegmentIntervalRatio = 50;
-            this.lxLedControl9.ShowHighlight = true;
-            this.lxLedControl9.Size = new System.Drawing.Size(183, 35);
-            this.lxLedControl9.TabIndex = 35;
-            this.lxLedControl9.Text = "0";
-            this.lxLedControl9.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            this.lxLedControl9.TotalCharCount = 10;
-            // 
-            // lxLedControl10
-            // 
-            this.lxLedControl10.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl10.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl10.BevelRate = 0.1F;
-            this.lxLedControl10.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl10.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl10.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl10.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl10.HighlightOpaque = ((byte)(20));
-            this.lxLedControl10.Location = new System.Drawing.Point(496, 35);
-            this.lxLedControl10.Name = "lxLedControl10";
-            this.lxLedControl10.RoundCorner = true;
-            this.lxLedControl10.SegmentIntervalRatio = 50;
-            this.lxLedControl10.ShowHighlight = true;
-            this.lxLedControl10.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl10.TabIndex = 34;
-            this.lxLedControl10.Text = "0";
-            this.lxLedControl10.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl11
-            // 
-            this.lxLedControl11.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl11.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl11.BevelRate = 0.1F;
-            this.lxLedControl11.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl11.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl11.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl11.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl11.HighlightOpaque = ((byte)(20));
-            this.lxLedControl11.Location = new System.Drawing.Point(497, 103);
-            this.lxLedControl11.Name = "lxLedControl11";
-            this.lxLedControl11.RoundCorner = true;
-            this.lxLedControl11.SegmentIntervalRatio = 50;
-            this.lxLedControl11.ShowHighlight = true;
-            this.lxLedControl11.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl11.TabIndex = 33;
-            this.lxLedControl11.Text = "0";
-            this.lxLedControl11.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl12
-            // 
-            this.lxLedControl12.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl12.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl12.BevelRate = 0.1F;
-            this.lxLedControl12.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl12.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl12.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl12.ForeColor = System.Drawing.Color.Black;
-            this.lxLedControl12.HighlightOpaque = ((byte)(20));
-            this.lxLedControl12.Location = new System.Drawing.Point(702, 35);
-            this.lxLedControl12.Name = "lxLedControl12";
-            this.lxLedControl12.RoundCorner = true;
-            this.lxLedControl12.SegmentIntervalRatio = 50;
-            this.lxLedControl12.ShowHighlight = true;
-            this.lxLedControl12.Size = new System.Drawing.Size(140, 50);
-            this.lxLedControl12.TabIndex = 32;
-            this.lxLedControl12.Text = "0";
-            this.lxLedControl12.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
-            // lxLedControl13
-            // 
-            this.lxLedControl13.BackColor = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_1 = System.Drawing.Color.Transparent;
-            this.lxLedControl13.BackColor_2 = System.Drawing.Color.DarkRed;
-            this.lxLedControl13.BevelRate = 0.1F;
-            this.lxLedControl13.BorderColor = System.Drawing.Color.Lavender;
-            this.lxLedControl13.FadedColor = System.Drawing.SystemColors.ControlLight;
-            this.lxLedControl13.FocusedBorderColor = System.Drawing.Color.LightCoral;
-            this.lxLedControl13.ForeColor = System.Drawing.Color.Purple;
-            this.lxLedControl13.HighlightOpaque = ((byte)(20));
-            this.lxLedControl13.Location = new System.Drawing.Point(106, 35);
-            this.lxLedControl13.Name = "lxLedControl13";
-            this.lxLedControl13.RoundCorner = true;
-            this.lxLedControl13.SegmentIntervalRatio = 50;
-            this.lxLedControl13.ShowHighlight = true;
-            this.lxLedControl13.Size = new System.Drawing.Size(310, 118);
-            this.lxLedControl13.TabIndex = 21;
-            this.lxLedControl13.Text = "0";
-            this.lxLedControl13.TextAlignment = LxControl.LxLedControl.Alignment.Right;
-            // 
             // lxLedControl14
             // 
             this.lxLedControl14.BackColor = System.Drawing.Color.Transparent;
@@ -3297,6 +3301,18 @@
             this.lxLedControl18.Text = "0";
             this.lxLedControl18.TextAlignment = LxControl.LxLedControl.Alignment.Right;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(441, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 38);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Ver Detalles";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Lugar
             // 
             this.Lugar.HeaderText = "Lugar";
@@ -3330,14 +3346,20 @@
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
-            this.Categoria.Width = 200;
+            this.Categoria.Width = 120;
             // 
             // Rama
             // 
             this.Rama.HeaderText = "Rama";
             this.Rama.Name = "Rama";
             this.Rama.ReadOnly = true;
-            this.Rama.Width = 110;
+            this.Rama.Width = 95;
+            // 
+            // Punto
+            // 
+            this.Punto.HeaderText = "Punto";
+            this.Punto.Name = "Punto";
+            this.Punto.ReadOnly = true;
             // 
             // Tiempo
             // 
@@ -3367,6 +3389,11 @@
             this.panel7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).EndInit();
             this.TabCarreras.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCarreras)).EndInit();
@@ -3445,11 +3472,6 @@
             this.gbCmdOutputPower.ResumeLayout(false);
             this.gbCmdOutputPower.PerformLayout();
             this.tabCtrMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lxLedControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lxLedControl16)).EndInit();
@@ -3716,12 +3738,14 @@
         public System.Windows.Forms.ComboBox cmbCarreraConfig;
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.DataGridView gridCarreraDetalle;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Num;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distancia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Punto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
     }
 }

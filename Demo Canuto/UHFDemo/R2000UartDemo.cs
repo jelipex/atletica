@@ -5836,7 +5836,7 @@ namespace UHFDemo
             string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
             DataGridViewRow row = new DataGridViewRow();
 
-            string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, tiempoFormateado };
+            string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, entidad.Punto, tiempoFormateado };
 
             Invoke(new MethodInvoker(delegate
             {
@@ -6190,6 +6190,12 @@ namespace UHFDemo
 
                 e.Handled = true;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            VistaDetallesCarrera vista = new VistaDetallesCarrera();
+            vista.Show();
         }
     }
 }
