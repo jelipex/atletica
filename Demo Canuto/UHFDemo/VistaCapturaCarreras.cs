@@ -124,9 +124,7 @@ namespace UHFDemo
         {
             try
             {
-                cmbPaisCarrera.Items.Clear();
-                cmbEstadoCarrera.Items.Clear();
-                cmbCiudadCarrera.Items.Clear();
+              
 
                 txtIdCarrera.Text = ObtenerConsecutivo().ToString();
                 txtDescripcionCarrera.Text = "";
@@ -668,6 +666,7 @@ namespace UHFDemo
                             transaccion.Commit();
                             MessageBox.Show("Carrera guardada correctamente");
                             InicializarFormularioCarreras();
+                            VistaDemo.LlenarComboCarreras();
                         }
                     }
                     else
@@ -921,6 +920,7 @@ namespace UHFDemo
                             transaccion.Commit();
                             MessageBox.Show("Carrera guardada correctamente");
                             entroGuardarCerrar = true;
+                            VistaDemo.LlenarComboCarreras();
                             this.Close();
                         }
                     }
@@ -1325,7 +1325,7 @@ namespace UHFDemo
             return true;
         }
 
-        private void ObtenerDatosAdicionales(string idCompetidor)
+        private bool ObtenerDatosAdicionales(string idCompetidor)
         {
             string categorias = "";
             if (chkListCategorias.CheckedItems.Count > 0)
@@ -1395,13 +1395,23 @@ namespace UHFDemo
                 if (idCategoria == 0)
                 {
                     MessageBox.Show("No se encontró una categoría para el competidor");
+                    DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
+                    row.Cells[1].Value = "";
+                    row.Cells[2].Value = "";
+                    row.Cells[3].Value = "";
+                    row.Cells[4].Value = "";
+                    row.Cells[5].Value = "";
+                    row.Cells[6].Value = "";
+                    row.Cells[7].Value = "";
+                    return false;
                 }
                 else
                 {
                     DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
-                    row.Cells[3].Value = idCategoria;
-                    row.Cells[4].Value = categoria;
-                    row.Cells[5].Value = rama;
+                    row.Cells[5].Value = idCategoria;
+                    row.Cells[6].Value = categoria;
+                    row.Cells[7].Value = rama;
+                    return true;
                 }
             }
             catch (Exception)
@@ -1459,27 +1469,32 @@ namespace UHFDemo
 
                             gridCarrerasCompetidores[1, gridCarrerasCompetidores.CurrentRow.Index].Value = idCompetidor;
 
-                            if (ValidarCompetidorRepetido(idCompetidor, competidor) && chkListCategorias.CheckedItems.Count > 0)
+                            if (!string.IsNullOrEmpty(idCompetidor))
                             {
-                                ObtenerDatosAdicionales(idCompetidor);
-                                int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(2);
-                                if (indiceFinal != 0)
+                                if (ValidarCompetidorRepetido(idCompetidor, competidor) && chkListCategorias.CheckedItems.Count > 0)
                                 {
-                                    gridCarrerasCompetidores.CurrentCell =
-                                    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
-                                        .Cells[indiceFinal];
+                                    if (ObtenerDatosAdicionales(idCompetidor))
+                                    {
+                                        int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(2);
+                                        if (indiceFinal != 0)
+                                        {
+                                            gridCarrerasCompetidores.CurrentCell =
+                                            gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                                .Cells[indiceFinal];
+                                        }
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
-                                gridCarrerasCompetidores.CurrentRow.Index].Value = "";
-
-                                gridCarrerasCompetidores[1, gridCarrerasCompetidores.CurrentRow.Index].Value = "";
-
-                                if (chkListCategorias.CheckedItems.Count == 0)
+                                else
                                 {
-                                    MessageBox.Show("Debe de seleccionar por lo menos una categoria");
+                                    gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
+                                    gridCarrerasCompetidores.CurrentRow.Index].Value = "";
+
+                                    gridCarrerasCompetidores[1, gridCarrerasCompetidores.CurrentRow.Index].Value = "";
+
+                                    if (chkListCategorias.CheckedItems.Count == 0)
+                                    {
+                                        MessageBox.Show("Debe de seleccionar por lo menos una categoria");
+                                    }
                                 }
                             }
                         }

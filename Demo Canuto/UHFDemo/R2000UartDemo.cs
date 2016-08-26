@@ -849,7 +849,7 @@ namespace UHFDemo
             }
             if (tablaCarreraDetalle.CurrentCell != null)
             {
-                tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[6].Value = chip.Trim();
+                tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[8].Value = chip.Trim();
             }
         }
 
@@ -4503,7 +4503,7 @@ namespace UHFDemo
                 bool mostrarTiempos = false;
                 if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
                 {
-                    if (Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0)
+                    if (Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0 && btRealTimeInventory.Text == "Empezar Carrera ")
                     {
                         MessageBox.Show("Debe de seleccionar una carrera");
                         return;
@@ -5381,7 +5381,7 @@ namespace UHFDemo
             }            
         }
 
-        private void LlenarComboCarreras()
+        public void LlenarComboCarreras()
         {
             string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             MySqlConnection mysqlCon = new MySqlConnection(connectionString);

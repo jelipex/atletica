@@ -47,6 +47,7 @@
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetallesCarrera)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.btnBuscarCarrera);
             this.panel1.Controls.Add(this.cmbRamas);
             this.panel1.Controls.Add(this.cmbCategorias);
@@ -66,12 +68,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 48);
+            this.panel1.Size = new System.Drawing.Size(932, 48);
             this.panel1.TabIndex = 0;
             // 
             // btnBuscarCarrera
             // 
-            this.btnBuscarCarrera.Location = new System.Drawing.Point(792, 9);
+            this.btnBuscarCarrera.Location = new System.Drawing.Point(769, 9);
             this.btnBuscarCarrera.Name = "btnBuscarCarrera";
             this.btnBuscarCarrera.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarCarrera.TabIndex = 8;
@@ -157,7 +159,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(895, 404);
+            this.panel2.Size = new System.Drawing.Size(932, 404);
             this.panel2.TabIndex = 1;
             // 
             // gridDetallesCarrera
@@ -174,7 +176,7 @@
             this.gridDetallesCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDetallesCarrera.Location = new System.Drawing.Point(0, 0);
             this.gridDetallesCarrera.Name = "gridDetallesCarrera";
-            this.gridDetallesCarrera.Size = new System.Drawing.Size(895, 404);
+            this.gridDetallesCarrera.Size = new System.Drawing.Size(932, 404);
             this.gridDetallesCarrera.TabIndex = 0;
             // 
             // Lugar
@@ -225,11 +227,21 @@
             this.Tiempo.ReadOnly = true;
             this.Tiempo.Width = 120;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(850, 9);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 9;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // VistaDetallesCarrera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 452);
+            this.ClientSize = new System.Drawing.Size(932, 452);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "VistaDetallesCarrera";
@@ -264,5 +276,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.Button btnExportar;
     }
 }
