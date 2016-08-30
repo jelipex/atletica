@@ -23,12 +23,30 @@ namespace UHFDemo
         public string accion { get; set; }
         public bool entroGuardarCerrar = false;
 
+        public int indiceNumero = 0;
+        public int indiceCompetidor = 1;
+        public int indiceFechaNacimiento = 2;
+        public int indiceGenero = 3;
+        public int indiceCiudad = 4;
+        public int indiceIdDistancia = 5;
+        public int indiceDistancia = 6;
+        public int indiceIdCategoria = 7;
+        public int indiceCategoria = 8;
+        public int indiceRama = 9;
+        public int indiceChip = 10;
+        public int indicePunto = 1;
+
         public VistaCapturaCarreras(R2000UartDemo demo)
         {
             InitializeComponent();
             VistaDemo = demo;
             VistaDemo.tablaCarreraDetalle = gridCarrerasCompetidores;
 
+        }
+
+        public VistaCapturaCarreras(VistaCapturaDetalle detalle)
+        {
+            detalle.gridCompetidores = gridCarrerasCompetidores;
         }
 
         private void AsignarEventos()
@@ -105,6 +123,8 @@ namespace UHFDemo
             LlenarComboPaises("");
             LlenarCategorias(0);
             AsignarEventos();
+
+            cmbPaisCarrera.SelectedIndex = -1;
         }
 
         public void ModificarCarrera(int idCarrera)
@@ -231,8 +251,8 @@ namespace UHFDemo
         }
 
         private void LlenarComboEstados(string idPaisParam, int idEstadoParam)
-        {            
-            string idPais = idPaisParam == "" ? cmbPaisCarrera.SelectedValue.ToString() : idPaisParam;
+        {
+            string idPais = idPaisParam == "" && cmbPaisCarrera.SelectedValue != null ? cmbPaisCarrera.SelectedValue.ToString() : idPaisParam;
 
             connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
             mysqlCon = new MySqlConnection(connectionString);
@@ -956,9 +976,6 @@ namespace UHFDemo
             {
                 InicializarFormularioCarreras();
             }
-            cmbCompetidores.DataSource = LlenarComboCompetidores();
-            cmbCompetidores.DisplayMember = "NombreCompleto";
-            cmbCompetidores.ValueMember = "IdCompetidor";
 
             cmbCategorias.DataSource = LlenarComboCategorias();
             cmbCategorias.DisplayMember = "Descripcion";
@@ -976,12 +993,13 @@ namespace UHFDemo
 
         private void AgregarRenglonCompetidor()
         {
+            int primerIndice = gridCarrerasCompetidores.RowCount > 0 && gridCarrerasCompetidores[indiceNumero, gridCarrerasCompetidores.RowCount - 1].Value != null && gridCarrerasCompetidores[indiceNumero, gridCarrerasCompetidores.RowCount - 1].Value != "" ? Convert.ToInt32(gridCarrerasCompetidores[indiceNumero, gridCarrerasCompetidores.RowCount - 1].Value) : 0;
             DataGridViewRow row = new DataGridViewRow();
 
-            string[] rowNuevo = new string[] { (gridCarrerasCompetidores.RowCount + 1).ToString(), "", "", "", "", "", "", "" };
+            string[] rowNuevo = new string[] { (primerIndice + 1).ToString(), "", "", "", "", "", "", "", "", "" };
             gridCarrerasCompetidores.Rows.Add(rowNuevo);
 
-            gridCarrerasCompetidores.CurrentCell = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.RowCount - 1].Cells[2];
+            gridCarrerasCompetidores.CurrentCell = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.RowCount - 1].Cells[indiceCompetidor];
             
         }
 
@@ -1289,21 +1307,50 @@ namespace UHFDemo
             return indiceFinal;
         }
 
-        private bool ValidarCompetidorRepetido(string idCompetidor, string competidor)
+        private bool ValidarCompetidorRepetido()
         {
-            foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
+            string competidor = gridCarrerasCompetidores.CurrentCell != null ? gridCarrerasCompetidores[indiceCompetidor, gridCarrerasCompetidores.CurrentCell.RowIndex].Value.ToString() : string.Empty;
+            string fechaNacimiento = gridCarrerasCompetidores.CurrentCell != null ? gridCarrerasCompetidores[indiceFechaNacimiento, gridCarrerasCompetidores.CurrentCell.RowIndex].Value.ToString() : string.Empty;
+
+            if (!string.IsNullOrEmpty(competidor) && !string.IsNullOrEmpty(fechaNacimiento))
             {
-                if (row.Index != gridCarrerasCompetidores.CurrentCell.RowIndex)
+                foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
                 {
-                    if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "" && row.Cells[1].Value.ToString().Equals(idCompetidor) && 
-                        row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "" && row.Cells[2].Value.ToString().Equals(competidor))
+                    if (row.Index != gridCarrerasCompetidores.CurrentCell.RowIndex)
                     {
-                        MessageBox.Show("Ya se encuentra registrado el competidor seleccionado");
-                        return false;
+                        if (row.Cells[indiceCompetidor].Value != null && row.Cells[indiceCompetidor].Value.ToString() != "" && row.Cells[indiceCompetidor].Value.ToString().Equals(competidor) &&
+                            row.Cells[indiceFechaNacimiento].Value != null && row.Cells[indiceFechaNacimiento].Value.ToString() != "" && row.Cells[indiceFechaNacimiento].Value.ToString().Equals(fechaNacimiento))
+                        {
+                            MessageBox.Show("Ya se encuentra registrado el competidor capturado");
+                            return false;
+                        }
                     }
                 }
             }
+            
 
+            return true;
+        }
+
+        private bool ValidarNumeroRepetido()
+        {
+            string numero = gridCarrerasCompetidores.CurrentCell != null ? gridCarrerasCompetidores[indiceNumero, gridCarrerasCompetidores.CurrentCell.RowIndex].EditedFormattedValue.ToString() : string.Empty;
+
+            if (!string.IsNullOrEmpty(numero))
+            {
+                foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
+                {
+                    if (row.Index != gridCarrerasCompetidores.CurrentCell.RowIndex)
+                    {
+                        if (row.Cells[indiceNumero].Value != null && row.Cells[indiceNumero].Value.ToString() != "" && row.Cells[indiceNumero].Value.ToString().Equals(numero))
+                        {
+                            gridCarrerasCompetidores.CurrentCell.Value = "";
+                            MessageBox.Show("Ya se encuentra registrado el número de competidor capturado");
+                            return false;
+                        }
+                    }
+                }
+            }
             return true;
         }
 
@@ -1325,7 +1372,7 @@ namespace UHFDemo
             return true;
         }
 
-        private bool ObtenerDatosAdicionales(string idCompetidor)
+        private bool ObtenerDatosAdicionales(string fechaNacimiento)
         {
             string categorias = "";
             if (chkListCategorias.CheckedItems.Count > 0)
@@ -1351,12 +1398,7 @@ namespace UHFDemo
                 StringBuilder sentencia = new StringBuilder();
                 sentencia.AppendLine("SELECT ");
                 sentencia.AppendLine("	A.IDCATEGORIA, ");
-                sentencia.AppendLine("	A.DESCRIPCION, ");
-                sentencia.AppendLine("	CASE ");
-                sentencia.AppendLine("		WHEN (SELECT GENERO FROM COMPETIDORES WHERE IDEMPRESA = " + IdEmpresa + " AND IDCOMPETIDOR = " + idCompetidor + ") = 'Masculino' ");
-                sentencia.AppendLine("		THEN 'Varonil' ");
-                sentencia.AppendLine("		ELSE 'Femenil' ");
-                sentencia.AppendLine("	END AS RAMA ");
+                sentencia.AppendLine("	A.DESCRIPCION ");
                 sentencia.AppendLine("FROM ");
                 sentencia.AppendLine("	CATEGORIAS AS A ");
                 sentencia.AppendLine("WHERE ");
@@ -1364,14 +1406,9 @@ namespace UHFDemo
                 sentencia.AppendLine("		SELECT ");
                 sentencia.AppendLine("			TIMESTAMPDIFF( ");
                 sentencia.AppendLine("				YEAR, ");
-                sentencia.AppendLine("				(FECHANACIMIENTO), ");
+                sentencia.AppendLine("				('" + fechaNacimiento + "'), ");
                 sentencia.AppendLine("				NOW() ");
                 sentencia.AppendLine("			) AS EDAD ");
-                sentencia.AppendLine("		FROM ");
-                sentencia.AppendLine("			COMPETIDORES ");
-                sentencia.AppendLine("		WHERE ");
-                sentencia.AppendLine("			IDEMPRESA = " + IdEmpresa);
-                sentencia.AppendLine("		AND IDCOMPETIDOR = " + idCompetidor);
                 sentencia.AppendLine("	) BETWEEN A.EdadInicial ");
                 sentencia.AppendLine("AND A.EdadFinal ");
                 sentencia.AppendLine("AND A.IDCATEGORIA IN (" + categorias + ") ");
@@ -1389,28 +1426,21 @@ namespace UHFDemo
                     int indice = 0;
                     idCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    rama = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                 }
 
                 if (idCategoria == 0)
                 {
                     MessageBox.Show("No se encontró una categoría para el competidor");
                     DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
-                    row.Cells[1].Value = "";
-                    row.Cells[2].Value = "";
-                    row.Cells[3].Value = "";
-                    row.Cells[4].Value = "";
-                    row.Cells[5].Value = "";
-                    row.Cells[6].Value = "";
-                    row.Cells[7].Value = "";
+                    row.Cells[indiceIdCategoria].Value = "";
+                    row.Cells[indiceCategoria].Value = "";
                     return false;
                 }
                 else
                 {
                     DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
-                    row.Cells[5].Value = idCategoria;
-                    row.Cells[6].Value = categoria;
-                    row.Cells[7].Value = rama;
+                    row.Cells[indiceIdCategoria].Value = idCategoria;
+                    row.Cells[indiceCategoria].Value = categoria;
                     return true;
                 }
             }
@@ -1428,88 +1458,297 @@ namespace UHFDemo
             }
         }
 
+        public void ReajustarNumeros()
+        {
+            int primerNumero = gridCarrerasCompetidores.RowCount > 0 && gridCarrerasCompetidores[indiceNumero, 0].Value != null && gridCarrerasCompetidores[indiceNumero, 0].Value != "" ? Convert.ToInt32(gridCarrerasCompetidores[indiceNumero, 0].EditedFormattedValue) : 0;
+            foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
+            {
+                if (row.Index != 0)
+                {
+                    row.Cells[0].Value = ++primerNumero;
+                }
+            }
+        }
+
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, 
             System.Windows.Forms.Keys keyData)
         {
-            if (ActiveControl.Name == "txtIdCarrera" || ActiveControl.Name == "txtDescripcionCarrera" || ActiveControl.Name == "dpFechaCarrera"
+            if (ActiveControl.Name == "txtIdCarrera" || ActiveControl.Name == "txtDescripcionCarrera" || ActiveControl.Name == "dpFechaCarrera" 
                 || ActiveControl.Name == "cmbPaisCarrera" || ActiveControl.Name == "cmbEstadoCarrera" || ActiveControl.Name == "cmbCiudadCarrera" || ActiveControl.Name == "chkListCategorias")
             {
                 return base.ProcessCmdKey(ref msg, keyData);
             }
 
+            #region Enter
             if (keyData == Keys.Enter)
             {
+
+                if (ActiveControl.Name == "txtNumCompetidores")
+                {
+                    int numeroCompetidores = txtNumCompetidores.Text != "" ? Convert.ToInt32(txtNumCompetidores.Text) : 0;
+
+                    if (numeroCompetidores > gridCarrerasCompetidores.RowCount)
+                    {
+                        while (gridCarrerasCompetidores.RowCount < numeroCompetidores)
+                        {
+                            AgregarRenglonCompetidor();
+                        }
+                    }
+                    else
+                    {
+                        for (int i = (gridCarrerasCompetidores.RowCount - 1); i > 0; i--)
+                        {
+                            DataGridViewRow row = gridCarrerasCompetidores.Rows[i];
+
+                            if ((row.Cells[indiceCompetidor].Value == null || row.Cells[indiceCompetidor].Value == "") && (row.Cells[indiceFechaNacimiento].Value  == null || row.Cells[indiceFechaNacimiento].Value == "") && (row.Cells[indiceGenero].Value == null || row.Cells[indiceGenero].Value == "") && (row.Cells[indiceCiudad].Value == null || row.Cells[indiceCiudad].Value == "") && (row.Cells[indiceIdCategoria].Value == null || row.Cells[indiceIdCategoria].Value == "")
+                                && (row.Cells[indiceCategoria].Value == null || row.Cells[indiceCategoria].Value == "") && (row.Cells[indiceIdDistancia].Value == null || row.Cells[indiceIdDistancia].Value == "") && (row.Cells[indiceDistancia].Value == null || row.Cells[indiceDistancia].Value == "") && (row.Cells[indiceRama].Value == null || row.Cells[indiceRama].Value == "") && (row.Cells[indiceChip].Value == null || row.Cells[indiceChip].Value == ""))
+                            {
+                                gridCarrerasCompetidores.Rows.Remove(row);
+                            }
+                        }
+                        if (numeroCompetidores > gridCarrerasCompetidores.RowCount)
+                        {
+                            while (gridCarrerasCompetidores.RowCount < numeroCompetidores)
+                            {
+                                AgregarRenglonCompetidor();
+                            }
+                        }
+                        ReajustarNumeros();
+                    }
+                    
+
+                    return true;
+                }
                 // ON ENTER KEY, GO TO THE NEXT CELL. 
                 // WHEN THE CURSOR REACHES THE LAST COLUMN, CARRY IT ON TO THE NEXT ROW.
                 if (TabCarrerasDetalle.SelectedIndex == 0)
                 {
-                    if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == 2)
+                    #region celdaNumero
+                    if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceNumero)
                     {
-                        if (ActiveControl.Name == "cmbCompetidores")
+                        if (gridCarrerasCompetidores.CurrentCell.IsInEditMode)
                         {
-                            cmbCompetidores.Visible = false;
-
-                            gridCarrerasCompetidores.Focus();
-
-                            string idCompetidor = "";
-                            string competidor = "";
-                            if (cmbCompetidores.SelectedIndex != -1)
+                            
+                            if (!ValidarNumeroRepetido())
                             {
-                                idCompetidor = cmbCompetidores.SelectedValue.ToString();
-                                competidor = cmbCompetidores.Text;
+                                gridCarrerasCompetidores[indiceNumero, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "";
+                                return true;
                             }
                             else
                             {
-                                idCompetidor = "";
-                                competidor = "";
-                            }
-                            // ONCE THE COMBO IS SET AS INVISIBLE, SET FOCUS BACK TO THE GRID. (IMPORTANT)
-                            gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
-                                gridCarrerasCompetidores.CurrentRow.Index].Value = competidor;
-
-                            gridCarrerasCompetidores[1, gridCarrerasCompetidores.CurrentRow.Index].Value = idCompetidor;
-
-                            if (!string.IsNullOrEmpty(idCompetidor))
-                            {
-                                if (ValidarCompetidorRepetido(idCompetidor, competidor) && chkListCategorias.CheckedItems.Count > 0)
+                                if (gridCarrerasCompetidores.CurrentCell.RowIndex == 0)
                                 {
-                                    if (ObtenerDatosAdicionales(idCompetidor))
-                                    {
-                                        int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(2);
-                                        if (indiceFinal != 0)
-                                        {
-                                            gridCarrerasCompetidores.CurrentCell =
-                                            gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
-                                                .Cells[indiceFinal];
-                                        }
-                                    }
+                                    ReajustarNumeros();
                                 }
-                                else
+
+                                int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceNumero);
+                                if (indiceFinal != 0)
                                 {
-                                    gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
-                                    gridCarrerasCompetidores.CurrentRow.Index].Value = "";
-
-                                    gridCarrerasCompetidores[1, gridCarrerasCompetidores.CurrentRow.Index].Value = "";
-
-                                    if (chkListCategorias.CheckedItems.Count == 0)
-                                    {
-                                        MessageBox.Show("Debe de seleccionar por lo menos una categoria");
-                                    }
+                                    gridCarrerasCompetidores.CurrentCell =
+                                    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                        .Cells[indiceFinal];
                                 }
                             }
                         }
                         else
                         {
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceNumero);
+                            if (indiceFinal != 0)
+                            {
+                                gridCarrerasCompetidores.CurrentCell =
+                                gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                    .Cells[indiceFinal];
+                            }
+                        }
+                        
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    }
+                    #endregion
+
+                    #region celdaCompetidor
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceCompetidor)
+                    {
+                        if (gridCarrerasCompetidores.CurrentCell.IsInEditMode)
+                        {
+                            if (!ValidarCompetidorRepetido())
+                            {
+                                gridCarrerasCompetidores[indiceCompetidor, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "";
+                            }
+                            else
+                            {
+                                int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceCompetidor);
+                                if (indiceFinal != 0)
+                                {
+                                    gridCarrerasCompetidores.CurrentCell =
+                                    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                        .Cells[indiceFinal];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceCompetidor);
+                            //if (indiceFinal != 0)
+                            //{
+                            //    gridCarrerasCompetidores.CurrentCell =
+                            //    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                            //        .Cells[indiceFinal];
+                            //}
+                            SendKeys.Send("{F2}");
+                            return true;
+                        }
+                       
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    }
+                    #endregion
+
+                    #region celdaFechaNacimiento
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceFechaNacimiento)
+                    {
+                        if (gridCarrerasCompetidores.CurrentCell.IsInEditMode)
+                        {
+                            DateTime dDate;
+
+                            if (gridCarrerasCompetidores.CurrentCell.EditedFormattedValue != "")
+                            {
+                                if (!DateTime.TryParse(gridCarrerasCompetidores.CurrentCell.EditedFormattedValue.ToString(), out dDate))
+                                {
+                                    MessageBox.Show("El formato capturado no corresponde con un formato de fecha");
+                                    gridCarrerasCompetidores[indiceFechaNacimiento, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "";
+                                }
+                                else
+                                {
+                                    if (!ValidarCompetidorRepetido())
+                                    {
+                                        gridCarrerasCompetidores[indiceFechaNacimiento, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "";
+                                    }
+                                    else
+                                    {
+                                        if (chkListCategorias.CheckedItems.Count == 0)
+                                        {
+                                            MessageBox.Show("No hay ninguna categoría seleccionada");
+
+                                        }
+                                        else
+                                        {
+                                            ObtenerDatosAdicionales(dDate.ToString("yyyy-MM-dd"));
+                                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceFechaNacimiento);
+                                            if (indiceFinal != 0)
+                                            {
+                                                gridCarrerasCompetidores.CurrentCell =
+                                                gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                                    .Cells[indiceFinal];
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceFechaNacimiento);
+                                if (indiceFinal != 0)
+                                {
+                                    gridCarrerasCompetidores.CurrentCell =
+                                    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                        .Cells[indiceFinal];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            SendKeys.Send("{F2}");
+                            return true;
+                            //int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceFechaNacimiento);
+                            //if (indiceFinal != 0)
+                            //{
+                            //    gridCarrerasCompetidores.CurrentCell =
+                            //    gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                            //        .Cells[indiceFinal];
+                            //}
+                        }
+                        
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    }
+                    #endregion
+
+                    #region celdaGenero
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceGenero)
+                    {
+                        if (ActiveControl.Name == "cmbGenero")
+                        {
+                            cmbGenero.Visible = false;
+
+                            gridCarrerasCompetidores.Focus();
+
+                            string genero = "";
+                            if (cmbGenero.SelectedIndex != -1)
+                            {
+                                genero = cmbGenero.SelectedItem.ToString();
+
+                                if (genero.ToUpper() == "MASCULINO")
+                                {
+                                    gridCarrerasCompetidores[indiceRama, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "Varonil";
+                                }
+                                else if (genero.ToUpper() == "FEMENINO")
+                                {
+                                    gridCarrerasCompetidores[indiceRama, gridCarrerasCompetidores.CurrentCell.RowIndex].Value = "Femenil";
+                                }
+                            }
+                            else
+                            {
+                                genero = "";
+                            }
+                            // ONCE THE COMBO IS SET AS INVISIBLE, SET FOCUS BACK TO THE GRID. (IMPORTANT)
+                            gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
+                                gridCarrerasCompetidores.CurrentRow.Index].Value = genero;
+
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceGenero);
+                            if (indiceFinal != 0)
+                            {
+                                gridCarrerasCompetidores.CurrentCell =
+                                gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                    .Cells[indiceFinal];
+                            }
+
+                        }
+                        else
+                        {
                             // SHOW COMBOBOX.
                             Show_Combobox(gridCarrerasCompetidores.CurrentRow.Index,
-                                gridCarrerasCompetidores.CurrentCell.ColumnIndex, "competidor");
+                                gridCarrerasCompetidores.CurrentCell.ColumnIndex, "genero");
 
                             SendKeys.Send("{F4}");      // DROP DOWN THE LIST.
                             return true;
 
                         }
                     }
-                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == 4)
+                    #endregion
+
+                    #region celdaCiudad
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceCiudad)
+                    {
+                        if (gridCarrerasCompetidores.CurrentCell.IsInEditMode)
+                        {
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceCiudad);
+                            if (indiceFinal != 0)
+                            {
+                                gridCarrerasCompetidores.CurrentCell =
+                                gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentRow.Index]
+                                    .Cells[indiceFinal];
+                            }
+                        }
+                        else
+                        {
+                            SendKeys.Send("{F2}");
+                            return true;
+                        }
+                        
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    }
+                    #endregion
+
+                    #region celdaDistancia
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceDistancia)
                     {
                         if (ActiveControl.Name == "cmbDistanciasCarrera")
                         {
@@ -1534,9 +1773,9 @@ namespace UHFDemo
                             gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
                                                         gridCarrerasCompetidores.CurrentRow.Index].Value = distancia;
 
-                            gridCarrerasCompetidores[3, gridCarrerasCompetidores.CurrentRow.Index].Value = idDistsancia;
+                            gridCarrerasCompetidores[indiceIdDistancia, gridCarrerasCompetidores.CurrentRow.Index].Value = idDistsancia;
 
-                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(4);
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceDistancia);
                             if (indiceFinal != 0)
                             {
                                 gridCarrerasCompetidores.CurrentCell =
@@ -1555,8 +1794,10 @@ namespace UHFDemo
 
                         }
                     }
+                    #endregion
 
-                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == 6)
+                    #region celdaCategoria
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceCategoria)
                     {
                         if (ActiveControl.Name == "cmbCategorias")
                         {
@@ -1581,9 +1822,9 @@ namespace UHFDemo
                             gridCarrerasCompetidores[gridCarrerasCompetidores.CurrentCell.ColumnIndex,
                                                         gridCarrerasCompetidores.CurrentRow.Index].Value = categoria;
 
-                            gridCarrerasCompetidores[5, gridCarrerasCompetidores.CurrentRow.Index].Value = idCategoria;
+                            gridCarrerasCompetidores[indiceIdCategoria, gridCarrerasCompetidores.CurrentRow.Index].Value = idCategoria;
 
-                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(6);
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceCategoria);
                             if (indiceFinal != 0)
                             {
                                 gridCarrerasCompetidores.CurrentCell =
@@ -1602,7 +1843,10 @@ namespace UHFDemo
 
                         }
                     }
-                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == 5)
+                    #endregion
+
+                    #region celdaRama
+                    else if (gridCarrerasCompetidores.CurrentCell.ColumnIndex == indiceRama)
                     {
                         if (ActiveControl.Name == "cmbRama")
                         {
@@ -1625,7 +1869,7 @@ namespace UHFDemo
                                                         gridCarrerasCompetidores.CurrentRow.Index].Value = rama;
 
 
-                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(5);
+                            int indiceFinal = ObtenerSiguienteColumnaVisibleCompetidores(indiceRama);
                             if (indiceFinal != 0)
                             {
                                 gridCarrerasCompetidores.CurrentCell =
@@ -1644,6 +1888,8 @@ namespace UHFDemo
 
                         }
                     }
+                    #endregion
+
                     else
                     {
                         AgregarRenglonCompetidor();
@@ -1652,7 +1898,7 @@ namespace UHFDemo
                 }
                 else
                 {
-                    if (gridCarrerasPuntos.CurrentCell.ColumnIndex == 1)
+                    if (gridCarrerasPuntos.CurrentCell.ColumnIndex == indicePunto)
                     {
                         if (ActiveControl.Name == "cmbPuntos")
                         {
@@ -1680,7 +1926,7 @@ namespace UHFDemo
 
                             if (ValidarPuntoRepetido(idPunto, punto))
                             {
-                                int indiceFinal = ObtenerSiguienteColumnaVisiblePuntos(1);
+                                int indiceFinal = ObtenerSiguienteColumnaVisiblePuntos(indicePunto);
                                 if (indiceFinal != 0)
                                 {
                                     gridCarrerasPuntos.CurrentCell =
@@ -1741,12 +1987,16 @@ namespace UHFDemo
                 
                 return true;
             }
+
+            #endregion Enter
+
+            #region Escape
             else if (keyData == Keys.Escape)            // PRESS ESCAPE TO HIDE THE COMBOBOX.
             {
-                if (ActiveControl.Name == "cmbCompetidores")
+                if (ActiveControl.Name == "cmbGenero")
                 {
-                    cmbCompetidores.Text = "";
-                    cmbCompetidores.Visible = false;
+                    cmbGenero.Text = "";
+                    cmbGenero.Visible = false;
 
                     gridCarrerasCompetidores.CurrentCell =
                         gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex]
@@ -1789,26 +2039,31 @@ namespace UHFDemo
                 }
                 return true;
             }
+            #endregion Escape
+
+            #region Flecha Abajo
             else if (keyData == Keys.Down)
             {
                 if (TabCarrerasDetalle.SelectedIndex == 0)
                 {
-                    if (ActiveControl.Name != "cmbCompetidores" && ActiveControl.Name != "cmbCategorias" && ActiveControl.Name != "cmbRama" && ActiveControl.Name != "cmbDistanciasCarrera")
+                    if (ActiveControl.Name != "cmbGenero" && ActiveControl.Name != "cmbCategorias" && ActiveControl.Name != "cmbRama" && ActiveControl.Name != "cmbDistanciasCarrera")
                     {
                         if (gridCarrerasCompetidores.CurrentCell.RowIndex == gridCarrerasCompetidores.RowCount - 1)
                         {
                             DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.RowCount - 1];
-                            string clave = row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" ? row.Cells[0].Value.ToString() : "";
-                            string idCompetidor = row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "" ? row.Cells[1].Value.ToString() : "";
-                            string competidor = row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "" ? row.Cells[2].Value.ToString() : "";
-                            string idDistancia = row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "" ? row.Cells[3].Value.ToString() : "";
-                            string distancia = row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "" ? row.Cells[4].Value.ToString() : "";
-                            string idCategoria = row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "" ? row.Cells[5].Value.ToString() : "";
-                            string categoria = row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "" ? row.Cells[6].Value.ToString() : "";
-                            string rama = row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "" ? row.Cells[7].Value.ToString() : "";
-                            string chip = row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "" ? row.Cells[8].Value.ToString() : "";
+                            string numero = row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" ? row.Cells[0].Value.ToString() : "";
+                            string competidor = row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "" ? row.Cells[1].Value.ToString() : "";
+                            string fechaNacimiento = row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "" ? row.Cells[2].Value.ToString() : "";
+                            string genero = row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "" ? row.Cells[3].Value.ToString() : "";
+                            string ciudad = row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "" ? row.Cells[4].Value.ToString() : "";
+                            string idDistancia = row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "" ? row.Cells[5].Value.ToString() : "";
+                            string distancia = row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "" ? row.Cells[6].Value.ToString() : "";
+                            string idCategoria = row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "" ? row.Cells[7].Value.ToString() : "";
+                            string categoria = row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "" ? row.Cells[8].Value.ToString() : "";
+                            string rama = row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "" ? row.Cells[9].Value.ToString() : "";
+                            string chip = row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "" ? row.Cells[10].Value.ToString() : "";
 
-                            if (idCompetidor != "" || competidor != "" || idDistancia != "" && distancia != "" || idCategoria != "" || categoria != "" || rama != "" || chip != "")
+                            if (numero != "" || competidor != "" || fechaNacimiento != "" || genero != "" || ciudad != "" || idDistancia != "" && distancia != "" || idCategoria != "" || categoria != "" || rama != "" || chip != "")
                             {
                                 AgregarRenglonCompetidor();
                                 return true;
@@ -1861,26 +2116,31 @@ namespace UHFDemo
                     }
                 }
             }
+            #endregion
+
+            #region Flecha Arriba
             else if (keyData == Keys.Up)
             {
                 if (TabCarrerasDetalle.SelectedIndex == 0)
                 {
-                    if (ActiveControl.Name != "cmbCompetidores" && ActiveControl.Name != "cmbCategorias" && ActiveControl.Name != "cmbRama" && ActiveControl.Name != "cmbDistanciasCarrera")
+                    if (ActiveControl.Name != "cmbGenero" && ActiveControl.Name != "cmbCategorias" && ActiveControl.Name != "cmbRama" && ActiveControl.Name != "cmbDistanciasCarrera")
                     {
                         if (gridCarrerasCompetidores.CurrentCell.RowIndex == gridCarrerasCompetidores.RowCount - 1)
                         {
                             DataGridViewRow row = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
-                            string clave = row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" ? row.Cells[0].Value.ToString() : "";
-                            string idCompetidor = row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "" ? row.Cells[1].Value.ToString() : "";
-                            string competidor = row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "" ? row.Cells[2].Value.ToString() : "";
-                            string idDistancia = row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "" ? row.Cells[3].Value.ToString() : "";
-                            string distancia = row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "" ? row.Cells[4].Value.ToString() : "";
-                            string idCategoria = row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "" ? row.Cells[5].Value.ToString() : "";
-                            string categoria = row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "" ? row.Cells[6].Value.ToString() : "";
-                            string rama = row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "" ? row.Cells[7].Value.ToString() : "";
-                            string chip = row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "" ? row.Cells[8].Value.ToString() : "";
+                            string numero = row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" ? row.Cells[0].Value.ToString() : "";
+                            string competidor = row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "" ? row.Cells[1].Value.ToString() : "";
+                            string fechaNacimiento = row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "" ? row.Cells[2].Value.ToString() : "";
+                            string genero = row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "" ? row.Cells[3].Value.ToString() : "";
+                            string ciudad = row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "" ? row.Cells[4].Value.ToString() : "";
+                            string idDistancia = row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "" ? row.Cells[5].Value.ToString() : "";
+                            string distancia = row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "" ? row.Cells[6].Value.ToString() : "";
+                            string idCategoria = row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "" ? row.Cells[7].Value.ToString() : "";
+                            string categoria = row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "" ? row.Cells[8].Value.ToString() : "";
+                            string rama = row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "" ? row.Cells[9].Value.ToString() : "";
+                            string chip = row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "" ? row.Cells[10].Value.ToString() : "";
 
-                            if (idCompetidor == "" && competidor == "" &&idDistancia == "" && distancia == "" && idCategoria == "" && categoria == "" && rama == "" && chip == "")
+                            if (numero == "" && competidor == "" && fechaNacimiento == "" && genero == "" && ciudad == "" && idDistancia == "" && distancia == "" && idCategoria == "" && categoria == "" && rama == "" && chip == "")
                             {
                                 gridCarrerasCompetidores.Rows.Remove(row);
                                 return true;
@@ -1932,6 +2192,86 @@ namespace UHFDemo
                     }
                 }
             }
+            #endregion
+
+            #region Tab
+            else if (keyData == Keys.Tab)
+            {
+                if (ActiveControl.Name == "txtNumCompetidores")
+                {
+                    int numeroCompetidores = txtNumCompetidores.Text != "" ? Convert.ToInt32(txtNumCompetidores.Text) : 0;
+
+                    for (int i = 0; i < numeroCompetidores; i++)
+                    {
+                        AgregarRenglonCompetidor();
+                    }
+                }
+
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+            #endregion
+
+            else if (keyData == Keys.F5)
+            {
+                if (TabCarrerasDetalle.SelectedIndex == 0)
+                {
+                    if (gridCarrerasCompetidores.CurrentCell != null)
+                    {
+                        if (chkListCategorias.CheckedItems.Count == 0)
+                        {
+                            MessageBox.Show("Debe de seleccionar al menos una categoría");
+                            return true;
+                        }
+
+                        VistaCapturaDetalle vista = new VistaCapturaDetalle(VistaDemo, this);
+                       
+                        DataGridViewRow rowSeleccionado = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.CurrentCell.RowIndex];
+
+                        string numero = rowSeleccionado.Cells[indiceNumero].Value != null && rowSeleccionado.Cells[indiceNumero].Value != "" ? rowSeleccionado.Cells[indiceNumero].Value.ToString() : string.Empty;
+                        string competidor = rowSeleccionado.Cells[indiceCompetidor].Value != null && rowSeleccionado.Cells[indiceCompetidor].Value != "" ? rowSeleccionado.Cells[indiceCompetidor].Value.ToString() : string.Empty;
+                        string fechaNacimiento = rowSeleccionado.Cells[indiceFechaNacimiento].Value != null && rowSeleccionado.Cells[indiceFechaNacimiento].Value != "" ? rowSeleccionado.Cells[indiceFechaNacimiento].Value.ToString() : string.Empty;
+                        string genero = rowSeleccionado.Cells[indiceGenero].Value != null && rowSeleccionado.Cells[indiceGenero].Value != "" ? rowSeleccionado.Cells[indiceGenero].Value.ToString() : string.Empty;
+                        string ciudad = rowSeleccionado.Cells[indiceCiudad].Value != null && rowSeleccionado.Cells[indiceCiudad].Value != "" ? rowSeleccionado.Cells[indiceCiudad].Value.ToString() : string.Empty;
+                        int idDistancia = rowSeleccionado.Cells[indiceIdDistancia].Value != null && rowSeleccionado.Cells[indiceIdDistancia].Value != "" ? Convert.ToInt32(rowSeleccionado.Cells[indiceIdDistancia].Value) : 0;
+                        int idCategoria = rowSeleccionado.Cells[indiceIdCategoria].Value != null && rowSeleccionado.Cells[indiceIdCategoria].Value != "" ? Convert.ToInt32(rowSeleccionado.Cells[indiceIdCategoria].Value) : 0;
+                        string rama = rowSeleccionado.Cells[indiceRama].Value != null && rowSeleccionado.Cells[indiceRama].Value != "" ? rowSeleccionado.Cells[indiceRama].Value.ToString() : string.Empty;
+                        string chip = rowSeleccionado.Cells[indiceChip].Value != null && rowSeleccionado.Cells[indiceChip].Value != "" ? rowSeleccionado.Cells[indiceChip].Value.ToString() : string.Empty;
+
+                        vista.txtNumeroCarreraDetalle.Text = numero;
+                        vista.txtCompetidorCarreraDetalle.Text = competidor;
+                        vista.dpFechaNacimientoCarreraDetalle.Text = fechaNacimiento;
+
+                        if (genero != "")
+                        {
+                            vista.cmbGeneroCarreraDetalle.SelectedValue = genero;
+                        }
+                        
+                        vista.txtCiudadCarreraDetalle.Text = ciudad;
+
+                        if (idDistancia != 0)
+                        {
+                            vista.cmbDistanciaCarreraDetalle.SelectedValue = idDistancia;
+                        }
+
+                        if (idCategoria != 0)
+                        {
+                            vista.cmbCategoriaCarreraDetalle.SelectedValue = idCategoria;
+                        }
+
+                        if (rama != "")
+                        {
+                            vista.cmbRamaCarreraDetalle.SelectedValue = rama;
+                        }
+                        
+                        vista.txtChipCarreraDetalle.Text = chip;
+
+                        vista.txtNumeroCarreraDetalle.Focus();
+                        vista.ShowDialog();
+                    }
+                }
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+
             else
             {
                 return base.ProcessCmdKey(ref msg, keyData);
@@ -1969,23 +2309,25 @@ namespace UHFDemo
 
              switch (tipo)
              {
-                 case "competidor":
+                 case "genero":
                      {
-                         cmbCompetidores.SetBounds(x, y, Width, height);
-                         cmbCompetidores.Visible = true;
-                         cmbCompetidores.Focus();
+                         cmbGenero.SetBounds(x, y, Width, height);
+                         cmbGenero.Visible = true;
+                         cmbGenero.Focus();
                      }break;
                  case "categoria":
                      {
                          cmbCategorias.SetBounds(x, y, Width, height);
                          cmbCategorias.Visible = true;
                          cmbCategorias.Focus();
+                         cmbCategorias.SelectedValue = gridCarrerasCompetidores[indiceIdCategoria, gridCarrerasCompetidores.CurrentCell.RowIndex].Value;
                      }break;
                  case "rama":
                      {
                          cmbRama.SetBounds(x, y, Width, height);
                          cmbRama.Visible = true;
                          cmbRama.Focus();
+                         cmbRama.SelectedText = gridCarrerasCompetidores[indiceRama, gridCarrerasCompetidores.CurrentCell.RowIndex].Value.ToString();
                      }break;
                  case "distancia":
                      {
@@ -2005,47 +2347,7 @@ namespace UHFDemo
 
         private void gridCarrerasCompetidores_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (e.Control is DataGridViewComboBoxEditingControl)
-            {
-                ((ComboBox)e.Control).DropDownStyle = ComboBoxStyle.DropDown;
-                ((ComboBox)e.Control).AutoCompleteSource = AutoCompleteSource.ListItems;
-                ((ComboBox)e.Control).AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            }
-
-            int indice = gridCarrerasCompetidores.CurrentCell.RowIndex;
-            if (e.Control is ComboBox)
-            {
-                ComboBox cmb = (ComboBox)e.Control;
-                if (cmb.SelectedValue != null && cmb.Name == "IdCompetidor")
-                {
-                    if (gridCarrerasCompetidores != null && gridCarrerasCompetidores.RowCount > 0)
-                    {
-                        int indiceRow = 0;
-                        foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
-                        {
-                            if (indice == indiceRow)
-                            {
-                                continue;
-                            }
-
-                            if (row.Cells[1].Value != null)
-                            {
-                                if (row.Cells[1].Value.ToString().Equals(cmb.SelectedValue.ToString()))
-                                {
-                                    MessageBox.Show("Ya se agregó ese competidor");
-                                    cmb.SelectedIndex = -1;
-                                    return;
-                                }
-                            }
-                            indiceRow++;
-                        }
-                    }
-                }
-
-                // remove handler first to avoid attaching twice
-                //((ComboBox)e.Control).SelectedIndexChanged -= new EventHandler(ValidarCompetidor(sender, e, indice));
-                //((ComboBox)e.Control).SelectedIndexChanged += new EventHandler(ValidarCompetidor(sender, e, indice));
-            }
+            Console.Write("asd");
         }
 
         private void gridCarrerasPuntos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

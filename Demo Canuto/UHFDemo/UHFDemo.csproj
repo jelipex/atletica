@@ -151,6 +151,12 @@
     <Compile Include="VistaCapturaCompetidores.Designer.cs">
       <DependentUpon>VistaCapturaCompetidores.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaCapturaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaCapturaDetalle.Designer.cs">
+      <DependentUpon>VistaCapturaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaCarreraTiempos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaCapturaCompetidores.resx">
       <DependentUpon>VistaCapturaCompetidores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaCapturaDetalle.resx">
+      <DependentUpon>VistaCapturaDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaCarreraTiempos.resx">
       <DependentUpon>VistaCarreraTiempos.cs</DependentUpon>

@@ -30,6 +30,8 @@ namespace UHFDemo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbPaisCarrera = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,9 +51,9 @@ namespace UHFDemo
             this.panel3 = new System.Windows.Forms.Panel();
             this.TabCarrerasDetalle = new System.Windows.Forms.TabControl();
             this.tabCompetidores = new System.Windows.Forms.TabPage();
+            this.cmbDistanciasCarrera = new System.Windows.Forms.ComboBox();
             this.cmbRama = new System.Windows.Forms.ComboBox();
             this.cmbCategorias = new System.Windows.Forms.ComboBox();
-            this.cmbCompetidores = new System.Windows.Forms.ComboBox();
             this.gridCarrerasCompetidores = new System.Windows.Forms.DataGridView();
             this.ctxMenuCompetidor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripEliminarCompetidor = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,10 +69,15 @@ namespace UHFDemo
             this.btnGuardarCarrera = new System.Windows.Forms.Button();
             this.ctxMenuPunto = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripEliminarPunto = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbDistanciasCarrera = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNumCompetidores = new System.Windows.Forms.TextBox();
+            this.chkAbsoultos = new System.Windows.Forms.CheckBox();
+            this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdCompetidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Competidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdDistancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +100,9 @@ namespace UHFDemo
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.chkAbsoultos);
+            this.panel1.Controls.Add(this.txtNumCompetidores);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmbPaisCarrera);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.txtDescripcionCarrera);
@@ -110,7 +120,7 @@ namespace UHFDemo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1159, 90);
+            this.panel1.Size = new System.Drawing.Size(1159, 92);
             this.panel1.TabIndex = 0;
             // 
             // cmbPaisCarrera
@@ -129,7 +139,7 @@ namespace UHFDemo
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Location = new System.Drawing.Point(747, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 90);
+            this.groupBox1.Size = new System.Drawing.Size(412, 92);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Categorías";
@@ -142,7 +152,7 @@ namespace UHFDemo
             this.chkListCategorias.Location = new System.Drawing.Point(3, 16);
             this.chkListCategorias.MultiColumn = true;
             this.chkListCategorias.Name = "chkListCategorias";
-            this.chkListCategorias.Size = new System.Drawing.Size(406, 71);
+            this.chkListCategorias.Size = new System.Drawing.Size(406, 73);
             this.chkListCategorias.TabIndex = 17;
             // 
             // txtDescripcionCarrera
@@ -259,7 +269,7 @@ namespace UHFDemo
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel3.Controls.Add(this.TabCarrerasDetalle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 90);
+            this.panel3.Location = new System.Drawing.Point(0, 92);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1159, 362);
             this.panel3.TabIndex = 1;
@@ -279,10 +289,10 @@ namespace UHFDemo
             // 
             // tabCompetidores
             // 
+            this.tabCompetidores.Controls.Add(this.cmbGenero);
             this.tabCompetidores.Controls.Add(this.cmbDistanciasCarrera);
             this.tabCompetidores.Controls.Add(this.cmbRama);
             this.tabCompetidores.Controls.Add(this.cmbCategorias);
-            this.tabCompetidores.Controls.Add(this.cmbCompetidores);
             this.tabCompetidores.Controls.Add(this.gridCarrerasCompetidores);
             this.tabCompetidores.Location = new System.Drawing.Point(4, 22);
             this.tabCompetidores.Name = "tabCompetidores";
@@ -290,6 +300,21 @@ namespace UHFDemo
             this.tabCompetidores.TabIndex = 0;
             this.tabCompetidores.Text = "Competidores";
             this.tabCompetidores.UseVisualStyleBackColor = true;
+            // 
+            // cmbDistanciasCarrera
+            // 
+            this.cmbDistanciasCarrera.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDistanciasCarrera.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDistanciasCarrera.DropDownWidth = 250;
+            this.cmbDistanciasCarrera.FormattingEnabled = true;
+            this.cmbDistanciasCarrera.Items.AddRange(new object[] {
+            "Varonil",
+            "Femenil"});
+            this.cmbDistanciasCarrera.Location = new System.Drawing.Point(1022, 96);
+            this.cmbDistanciasCarrera.Name = "cmbDistanciasCarrera";
+            this.cmbDistanciasCarrera.Size = new System.Drawing.Size(121, 21);
+            this.cmbDistanciasCarrera.TabIndex = 4;
+            this.cmbDistanciasCarrera.Visible = false;
             // 
             // cmbRama
             // 
@@ -300,7 +325,7 @@ namespace UHFDemo
             this.cmbRama.Items.AddRange(new object[] {
             "Varonil",
             "Femenil"});
-            this.cmbRama.Location = new System.Drawing.Point(1022, 52);
+            this.cmbRama.Location = new System.Drawing.Point(1022, 69);
             this.cmbRama.Name = "cmbRama";
             this.cmbRama.Size = new System.Drawing.Size(121, 21);
             this.cmbRama.TabIndex = 3;
@@ -312,23 +337,11 @@ namespace UHFDemo
             this.cmbCategorias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCategorias.DropDownWidth = 250;
             this.cmbCategorias.FormattingEnabled = true;
-            this.cmbCategorias.Location = new System.Drawing.Point(1022, 3);
+            this.cmbCategorias.Location = new System.Drawing.Point(1022, 42);
             this.cmbCategorias.Name = "cmbCategorias";
             this.cmbCategorias.Size = new System.Drawing.Size(121, 21);
             this.cmbCategorias.TabIndex = 2;
             this.cmbCategorias.Visible = false;
-            // 
-            // cmbCompetidores
-            // 
-            this.cmbCompetidores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCompetidores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCompetidores.DropDownWidth = 250;
-            this.cmbCompetidores.FormattingEnabled = true;
-            this.cmbCompetidores.Location = new System.Drawing.Point(1022, 27);
-            this.cmbCompetidores.Name = "cmbCompetidores";
-            this.cmbCompetidores.Size = new System.Drawing.Size(121, 21);
-            this.cmbCompetidores.TabIndex = 1;
-            this.cmbCompetidores.Visible = false;
             // 
             // gridCarrerasCompetidores
             // 
@@ -336,8 +349,10 @@ namespace UHFDemo
             this.gridCarrerasCompetidores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCarrerasCompetidores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.IdCompetidor,
             this.Competidor,
+            this.FechaNacimiento,
+            this.Genero,
+            this.Ciudad,
             this.IdDistancia,
             this.Distancia,
             this.IdCategoria,
@@ -430,9 +445,9 @@ namespace UHFDemo
             this.panel2.Controls.Add(this.btnGuardarCerrarCarrera);
             this.panel2.Controls.Add(this.btnGuardarCarrera);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 452);
+            this.panel2.Location = new System.Drawing.Point(0, 454);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1159, 62);
+            this.panel2.Size = new System.Drawing.Size(1159, 60);
             this.panel2.TabIndex = 2;
             // 
             // btnCancelarCarrera
@@ -480,46 +495,82 @@ namespace UHFDemo
             this.toolStripEliminarPunto.Text = "Eliminar Punto";
             this.toolStripEliminarPunto.Click += new System.EventHandler(this.toolStripEliminarPunto_Click);
             // 
-            // cmbDistanciasCarrera
+            // label2
             // 
-            this.cmbDistanciasCarrera.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDistanciasCarrera.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDistanciasCarrera.DropDownWidth = 250;
-            this.cmbDistanciasCarrera.FormattingEnabled = true;
-            this.cmbDistanciasCarrera.Items.AddRange(new object[] {
-            "Varonil",
-            "Femenil"});
-            this.cmbDistanciasCarrera.Location = new System.Drawing.Point(1022, 79);
-            this.cmbDistanciasCarrera.Name = "cmbDistanciasCarrera";
-            this.cmbDistanciasCarrera.Size = new System.Drawing.Size(121, 21);
-            this.cmbDistanciasCarrera.TabIndex = 4;
-            this.cmbDistanciasCarrera.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "N° de Competidores";
+            // 
+            // txtNumCompetidores
+            // 
+            this.txtNumCompetidores.Location = new System.Drawing.Point(119, 66);
+            this.txtNumCompetidores.Name = "txtNumCompetidores";
+            this.txtNumCompetidores.Size = new System.Drawing.Size(71, 20);
+            this.txtNumCompetidores.TabIndex = 20;
+            // 
+            // chkAbsoultos
+            // 
+            this.chkAbsoultos.AutoSize = true;
+            this.chkAbsoultos.Location = new System.Drawing.Point(217, 68);
+            this.chkAbsoultos.Name = "chkAbsoultos";
+            this.chkAbsoultos.Size = new System.Drawing.Size(72, 17);
+            this.chkAbsoultos.TabIndex = 21;
+            this.chkAbsoultos.Text = "Absolutos";
+            this.chkAbsoultos.UseVisualStyleBackColor = true;
+            // 
+            // cmbGenero
+            // 
+            this.cmbGenero.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGenero.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbGenero.DropDownWidth = 250;
+            this.cmbGenero.FormattingEnabled = true;
+            this.cmbGenero.Items.AddRange(new object[] {
+            "Masculino",
+            "Femenino"});
+            this.cmbGenero.Location = new System.Drawing.Point(1023, 123);
+            this.cmbGenero.Name = "cmbGenero";
+            this.cmbGenero.Size = new System.Drawing.Size(121, 21);
+            this.cmbGenero.TabIndex = 5;
+            this.cmbGenero.Visible = false;
             // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.Frozen = true;
-            this.Id.HeaderText = "Clave";
+            this.Id.HeaderText = "Número";
             this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
             this.Id.Width = 60;
-            // 
-            // IdCompetidor
-            // 
-            this.IdCompetidor.DataPropertyName = "IdCompetidor";
-            this.IdCompetidor.HeaderText = "IdCompetidor";
-            this.IdCompetidor.Name = "IdCompetidor";
-            this.IdCompetidor.ReadOnly = true;
-            this.IdCompetidor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IdCompetidor.Visible = false;
-            this.IdCompetidor.Width = 250;
             // 
             // Competidor
             // 
             this.Competidor.HeaderText = "Competidor";
             this.Competidor.Name = "Competidor";
-            this.Competidor.ReadOnly = true;
             this.Competidor.Width = 250;
+            // 
+            // FechaNacimiento
+            // 
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.FechaNacimiento.DefaultCellStyle = dataGridViewCellStyle2;
+            this.FechaNacimiento.HeaderText = "Fecha de Nacimiento";
+            this.FechaNacimiento.MaxInputLength = 10;
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            // 
+            // Genero
+            // 
+            this.Genero.HeaderText = "Género";
+            this.Genero.Name = "Genero";
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
             // 
             // IdDistancia
             // 
@@ -560,6 +611,7 @@ namespace UHFDemo
             this.Chip.DataPropertyName = "Chip";
             this.Chip.HeaderText = "Chip";
             this.Chip.Name = "Chip";
+            this.Chip.ReadOnly = true;
             this.Chip.Width = 250;
             // 
             // VistaCapturaCarreras
@@ -618,7 +670,6 @@ namespace UHFDemo
         private System.Windows.Forms.TabPage tabCompetidores;
         private System.Windows.Forms.TabPage tabPuntos;
         private System.Windows.Forms.DataGridView gridCarrerasPuntos;
-        private System.Windows.Forms.ComboBox cmbCompetidores;
         private System.Windows.Forms.ComboBox cmbCategorias;
         private System.Windows.Forms.ComboBox cmbRama;
         public System.Windows.Forms.DataGridView gridCarrerasCompetidores;
@@ -632,9 +683,15 @@ namespace UHFDemo
         private System.Windows.Forms.ContextMenuStrip ctxMenuPunto;
         private System.Windows.Forms.ToolStripMenuItem toolStripEliminarPunto;
         private System.Windows.Forms.ComboBox cmbDistanciasCarrera;
+        private System.Windows.Forms.TextBox txtNumCompetidores;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chkAbsoultos;
+        private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdCompetidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Competidor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdDistancia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distancia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;

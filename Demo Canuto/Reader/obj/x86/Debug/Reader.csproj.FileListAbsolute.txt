@@ -55,3 +55,9 @@ C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_sourc
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Debug\Reader.dll
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Debug\Reader.pdb
 C:\Users\Nolberto\Desktop\YR9010 desktop uhf rfid reader\UHFDemo_v3.62_eng_source\UHFDemo_v3.62_eng\Reader\obj\x86\Debug\Reader.csprojResolveAssemblyReference.cache
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\Reader.dll.config
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\Reader.dll
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\Reader.pdb
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\MySql.Data.dll
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\obj\x86\Debug\Reader.dll
+C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\obj\x86\Debug\Reader.pdb

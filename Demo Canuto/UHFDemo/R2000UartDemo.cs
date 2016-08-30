@@ -34,6 +34,7 @@ namespace UHFDemo
         public DateTime ultimoTiempoInsertado { get; set; }
         public int idCarreraDetalleActual { get; set; }
         public int idCarreraActual { get; set; }
+        public VistaCapturaDetalle vistaDetalle1 { get; set; }
 
         private ReaderSetting m_curSetting = new ReaderSetting();
         private InventoryBuffer m_curInventoryBuffer = new InventoryBuffer();
@@ -836,21 +837,31 @@ namespace UHFDemo
 
         private void AsignarChip(string chip)
         {
-            foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
+            
+
+            if (Application.OpenForms["VistaCapturaDetalle"] != null)
             {
-                if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
+                vistaDetalle1.txtChipCarreraDetalle.Text = chip;
+            }
+            else
+            {
+                foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
                 {
-                    if (row.Cells[8].Value != null && row.Cells[8].Value.ToString().Equals(chip.Trim()))
+                    if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
                     {
-                        MessageBox.Show("Ya existe otro competidor con el mismo chip");
-                        return;
+                        if (row.Cells[10].Value != null && row.Cells[10].Value.ToString().Equals(chip.Trim()))
+                        {
+                            MessageBox.Show("Ya existe otro numero con el mismo chip");
+                            return;
+                        }
                     }
                 }
+                if (tablaCarreraDetalle.CurrentCell != null)
+                {
+                    tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[10].Value = chip.Trim();
+                }
             }
-            if (tablaCarreraDetalle.CurrentCell != null)
-            {
-                tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[8].Value = chip.Trim();
-            }
+            
         }
 
         private delegate void RefreshFastSwitchUnsafe(byte btCmd);
