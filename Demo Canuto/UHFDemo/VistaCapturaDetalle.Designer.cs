@@ -199,6 +199,7 @@
             this.cmbGeneroCarreraDetalle.Name = "cmbGeneroCarreraDetalle";
             this.cmbGeneroCarreraDetalle.Size = new System.Drawing.Size(121, 21);
             this.cmbGeneroCarreraDetalle.TabIndex = 4;
+            this.cmbGeneroCarreraDetalle.SelectedIndexChanged += new System.EventHandler(this.cmbGeneroCarreraDetalle_SelectedIndexChanged);
             // 
             // label9
             // 

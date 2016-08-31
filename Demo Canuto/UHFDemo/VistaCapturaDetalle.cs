@@ -17,6 +17,7 @@ namespace UHFDemo
         public DataGridView gridCompetidores { get; set; }
         public VistaCapturaCarreras vistaCarrera { get; set; }
         public R2000UartDemo vistaDemo2 { get; set; }
+        public bool guardo = false;
 
         public VistaCapturaDetalle(R2000UartDemo demo, VistaCapturaCarreras carrera)
         {
@@ -98,6 +99,8 @@ namespace UHFDemo
 
         private bool ValidarCompetidorRepetido(VistaCapturaCarreras vista)
         {
+            gridCompetidores = vista.gridCarrerasCompetidores;
+
             string competidor = gridCompetidores.CurrentCell != null ? gridCompetidores[vista.indiceCompetidor, gridCompetidores.CurrentCell.RowIndex].Value.ToString() : string.Empty;
             string fechaNacimiento = gridCompetidores.CurrentCell != null ? gridCompetidores[vista.indiceFechaNacimiento, gridCompetidores.CurrentCell.RowIndex].Value.ToString() : string.Empty;
 
@@ -123,6 +126,7 @@ namespace UHFDemo
 
         private bool ValidarNumeroRepetido(VistaCapturaCarreras vista)
         {
+            gridCompetidores = vista.gridCarrerasCompetidores;
             string numero = gridCompetidores.CurrentCell != null ? gridCompetidores[vista.indiceNumero, gridCompetidores.CurrentCell.RowIndex].Value.ToString() : string.Empty;
 
             if (!string.IsNullOrEmpty(numero))
@@ -160,7 +164,7 @@ namespace UHFDemo
                 MessageBox.Show("Debe de llenar todos los campos del competidor");
                 return false;
             }
-            else if (cmbGeneroCarreraDetalle.SelectedValue == null || cmbGeneroCarreraDetalle.SelectedValue == "")
+            else if (cmbGeneroCarreraDetalle.SelectedItem == null || cmbGeneroCarreraDetalle.SelectedItem.ToString() == "")
             {
                 MessageBox.Show("Debe de llenar todos los campos del competidor");
                 return false;
@@ -180,7 +184,7 @@ namespace UHFDemo
                 MessageBox.Show("Debe de llenar todos los campos del competidor");
                 return false;
             }
-            else if (cmbRamaCarreraDetalle.SelectedValue == null || cmbRamaCarreraDetalle.SelectedValue == "")
+            else if (cmbRamaCarreraDetalle.SelectedItem == null || cmbRamaCarreraDetalle.SelectedItem.ToString() == "")
             {
                 MessageBox.Show("Debe de llenar todos los campos del competidor");
                 return false;
@@ -196,7 +200,6 @@ namespace UHFDemo
 
         private void btnAceptarCarreraDetalle_Click(object sender, EventArgs e)
         {
-
             if (ValidarCampos() && ValidarCompetidorRepetido(vistaCarrera) && ValidarNumeroRepetido(vistaCarrera))
             {
                 if (vistaCarrera.gridCarrerasCompetidores.CurrentCell != null)
@@ -207,16 +210,18 @@ namespace UHFDemo
                     row.Cells[vistaCarrera.indiceNumero].Value = txtNumeroCarreraDetalle.Text;
                     row.Cells[vistaCarrera.indiceCompetidor].Value = txtCompetidorCarreraDetalle.Text;
                     row.Cells[vistaCarrera.indiceFechaNacimiento].Value = dpFechaNacimientoCarreraDetalle.Text;
-                    row.Cells[vistaCarrera.indiceGenero].Value = cmbGeneroCarreraDetalle.SelectedValue;
+                    row.Cells[vistaCarrera.indiceGenero].Value = cmbGeneroCarreraDetalle.SelectedItem.ToString();
+                    row.Cells[vistaCarrera.indiceCiudad].Value = txtCiudadCarreraDetalle.Text;
                     row.Cells[vistaCarrera.indiceIdDistancia].Value = cmbDistanciaCarreraDetalle.SelectedValue;
-                    row.Cells[vistaCarrera.indiceDistancia].Value = cmbDistanciaCarreraDetalle.SelectedText;
+                    row.Cells[vistaCarrera.indiceDistancia].Value = cmbDistanciaCarreraDetalle.Text;
                     row.Cells[vistaCarrera.indiceIdCategoria].Value = cmbCategoriaCarreraDetalle.SelectedValue;
-                    row.Cells[vistaCarrera.indiceCategoria].Value = cmbCategoriaCarreraDetalle.SelectedText;
-                    row.Cells[vistaCarrera.indiceRama].Value = cmbRamaCarreraDetalle.SelectedValue;
+                    row.Cells[vistaCarrera.indiceCategoria].Value = cmbCategoriaCarreraDetalle.Text;
+                    row.Cells[vistaCarrera.indiceRama].Value = cmbRamaCarreraDetalle.SelectedItem.ToString();
                     row.Cells[vistaCarrera.indiceChip].Value = txtChipCarreraDetalle.Text;
 
                     vistaCarrera.ReajustarNumeros();
                 }
+                guardo = true;
                 this.Close(); 
             }
         }
@@ -237,10 +242,144 @@ namespace UHFDemo
 
         private void VistaCapturaDetalle_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Desea salir sin guardar cambios?", "Confirmación", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
+            if (!guardo)
             {
-                e.Cancel = true;
+                DialogResult result = MessageBox.Show("¿Desea salir sin guardar cambios?", "Confirmación", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                
+            }
+            guardo = false;
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg,
+            System.Windows.Forms.Keys keyData)
+        {
+            if (keyData == Keys.Tab)
+            {
+                if (ActiveControl.Name == "dpFechaNacimientoCarreraDetalle")
+                {
+                    if (!string.IsNullOrEmpty(dpFechaNacimientoCarreraDetalle.Text))
+                    {
+                        DateTime fecha = Convert.ToDateTime(dpFechaNacimientoCarreraDetalle.Text);
+                        ObtenerDatosAdicionales(fecha.ToString("yyyy-MM-dd"), vistaCarrera);
+                    }
+                }
+            }
+            else if (keyData == Keys.Enter)
+            {
+                if (ActiveControl.Name == "cmbGeneroCarreraDetalle")
+                {
+                    if (cmbGeneroCarreraDetalle.SelectedItem.ToString().ToUpper() == "MASCULINO")
+                    {
+                        cmbRamaCarreraDetalle.SelectedItem = "Varonil";
+                    }
+                    else
+                    {
+                        cmbRamaCarreraDetalle.SelectedItem = "Femenil";
+                    }
+                }
+            }
+
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private bool ObtenerDatosAdicionales(string fechaNacimiento, VistaCapturaCarreras vista)
+        {
+            connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection mysqlCon = new MySqlConnection(connectionString);
+            string categorias = "";
+            if (vista.chkListCategorias.CheckedItems.Count > 0)
+            {
+                foreach (Item item in vista.chkListCategorias.CheckedItems)
+                {
+                    if (categorias == "")
+                    {
+                        categorias += string.Concat(item.Value);
+                    }
+                    else
+                    {
+                        categorias += string.Concat(", ", item.Value);
+                    }
+                }
+            }
+
+            try
+            {
+                
+                mysqlCon.Open();
+
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("SELECT ");
+                sentencia.AppendLine("	A.IDCATEGORIA, ");
+                sentencia.AppendLine("	A.DESCRIPCION ");
+                sentencia.AppendLine("FROM ");
+                sentencia.AppendLine("	CATEGORIAS AS A ");
+                sentencia.AppendLine("WHERE ");
+                sentencia.AppendLine("	( ");
+                sentencia.AppendLine("		SELECT ");
+                sentencia.AppendLine("			TIMESTAMPDIFF( ");
+                sentencia.AppendLine("				YEAR, ");
+                sentencia.AppendLine("				('" + fechaNacimiento + "'), ");
+                sentencia.AppendLine("				NOW() ");
+                sentencia.AppendLine("			) AS EDAD ");
+                sentencia.AppendLine("	) BETWEEN A.EdadInicial ");
+                sentencia.AppendLine("AND A.EdadFinal ");
+                sentencia.AppendLine("AND A.IDCATEGORIA IN (" + categorias + ") ");
+                sentencia.AppendLine("LIMIT 1");
+
+                MySqlCommand cmd = new MySqlCommand(sentencia.ToString(), mysqlCon);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                int idCategoria = 0;
+                string categoria = "";
+                string rama = "";
+
+                while (reader.Read())
+                {
+                    int indice = 0;
+                    idCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                }
+
+                if (idCategoria == 0)
+                {
+                    MessageBox.Show("No se encontró una categoría para el competidor");
+                    cmbCategoriaCarreraDetalle.SelectedValue = 0;
+                    return false;
+                }
+                else
+                {
+                    cmbCategoriaCarreraDetalle.SelectedValue = idCategoria;
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (mysqlCon != null && mysqlCon.State == ConnectionState.Open)
+                {
+                    mysqlCon.Close();
+                }
+            }
+        }
+
+        private void cmbGeneroCarreraDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbGeneroCarreraDetalle.SelectedItem.ToString().ToUpper() == "MASCULINO")
+            {
+                cmbRamaCarreraDetalle.SelectedItem = "Varonil";
+            }
+            else
+            {
+                cmbRamaCarreraDetalle.SelectedItem = "Femenil";
             }
         }
     }

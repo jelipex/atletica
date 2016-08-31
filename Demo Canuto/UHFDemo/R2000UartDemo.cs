@@ -120,7 +120,7 @@ namespace UHFDemo
 
            
             //tabEpcTest.Visible = false;
-
+            Globales.capturaCarrera = false;
             AsignarEventos();
         }
 
@@ -837,31 +837,52 @@ namespace UHFDemo
 
         private void AsignarChip(string chip)
         {
-            
 
-            if (Application.OpenForms["VistaCapturaDetalle"] != null)
+            Invoke(new MethodInvoker(delegate
             {
-                vistaDetalle1.txtChipCarreraDetalle.Text = chip;
-            }
-            else
-            {
-                foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
+                if (Application.OpenForms["VistaCapturaDetalle"] != null)
                 {
-                    if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
+                    
+                    bool encontro = false;
+
+                    foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
                     {
-                        if (row.Cells[10].Value != null && row.Cells[10].Value.ToString().Equals(chip.Trim()))
+                        if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
                         {
-                            MessageBox.Show("Ya existe otro numero con el mismo chip");
-                            return;
+                            if (row.Cells[10].Value != null && row.Cells[10].Value.ToString().Equals(chip.Trim()))
+                            {
+                                encontro = true;
+                                MessageBox.Show("Ya existe otro numero con el mismo chip");
+                                break;
+                                
+                            }
                         }
                     }
+
+                    if (!encontro)
+                    {
+                        vistaDetalle1.txtChipCarreraDetalle.Text = chip;
+                    }
                 }
-                if (tablaCarreraDetalle.CurrentCell != null)
+                else
                 {
-                    tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[10].Value = chip.Trim();
+                    foreach (DataGridViewRow row in tablaCarreraDetalle.Rows)
+                    {
+                        if (row.Index != tablaCarreraDetalle.CurrentCell.RowIndex)
+                        {
+                            if (row.Cells[10].Value != null && row.Cells[10].Value.ToString().Equals(chip.Trim()))
+                            {
+                                MessageBox.Show("Ya existe otro numero con el mismo chip");
+                                return;
+                            }
+                        }
+                    }
+                    if (tablaCarreraDetalle.CurrentCell != null)
+                    {
+                        tablaCarreraDetalle.Rows[tablaCarreraDetalle.CurrentCell.RowIndex].Cells[10].Value = chip.Trim();
+                    }
                 }
-            }
-            
+            }));
         }
 
         private delegate void RefreshFastSwitchUnsafe(byte btCmd);
@@ -4514,24 +4535,39 @@ namespace UHFDemo
                 bool mostrarTiempos = false;
                 if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
                 {
-                    if (Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0 && btRealTimeInventory.Text == "Empezar Carrera ")
+                    if (btRealTimeInventory.Text == "Empezar Carrera")
                     {
-                        MessageBox.Show("Debe de seleccionar una carrera");
-                        return;
+                        if ((Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0 || cmbCarreraConfig.SelectedItem.ToString().Equals("Seleccionar") || cmbCarreraConfig.SelectedItem.ToString() == ""))
+                        {
+                            MessageBox.Show("Debe de seleccionar una carrera");
+                            return;
+                        }
+
+                        tiempoInicialCarrera = new DateTime();
+                        ultimoTiempoInsertado = new DateTime();
+                        indicePunto = 0;
+                        idCarreraActual = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+                        idCarreraDetalleActual = 0;
+                        InsertarTiempoInicial(Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value));
+                        mostrarTiempos = true;
                     }
-                    mostrarTiempos = true;
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea terminar la carrera?", "Confirmación", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                    
                 }
                 else
                 {
                     mostrarTiempos = false;
+                    MessageBox.Show("No hay carreras registradas");
+                    return;
                 }
 
-                tiempoInicialCarrera = new DateTime();
-                ultimoTiempoInsertado = new DateTime();
-                indicePunto = 0;
-                idCarreraActual = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
-                idCarreraDetalleActual = 0;
-                InsertarTiempoInicial(Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value));
                 
                 m_curInventoryBuffer.ClearInventoryPar();
 
@@ -4592,6 +4628,7 @@ namespace UHFDemo
                     btRealTimeInventory.BackColor = Color.Green;
                     btRealTimeInventory.ForeColor = Color.White;
                     btRealTimeInventory.Text = "Empezar Carrera ";
+                    tiempoCarrera.Enabled = false;
                     return;
                 }
                 else
@@ -4616,6 +4653,7 @@ namespace UHFDemo
                     btRealTimeInventory.ForeColor = Color.White;
                     btRealTimeInventory.Text = "Detener Carrera";
                     gridCarreraDetalle.Rows.Clear();
+                    tiempoCarrera.Enabled = true;
 
                     //Abrir Ventana de competidores
                     //MostrarVentanaCompetidores();
@@ -5362,6 +5400,7 @@ namespace UHFDemo
 
         private void btnRegistrarCarrera_Click(object sender, EventArgs e)
         {
+            Globales.capturaCarrera = true;
             m_curInventoryBuffer.bLoopInventory = false;
             tabCtrMain.SelectedTab = pageEpcTest;
             btRealTimeInventory.PerformClick();
@@ -5378,7 +5417,7 @@ namespace UHFDemo
             {
                 DataGridViewRow row = this.tablaCarreras.SelectedRows[0];
                 int idCarrera = (int)row.Cells[0].Value;
-
+                Globales.capturaCarrera = true;
                 btRealTimeInventory.PerformClick();
                 VistaCapturaCarreras vista = new VistaCapturaCarreras(this);
                 vista.accion = "modificar";
@@ -5645,20 +5684,18 @@ namespace UHFDemo
                 sentencia.AppendLine("			A.IDCARRERA, ");
                 sentencia.AppendLine("			A.ID, ");
                 sentencia.AppendLine("			(SELECT IF(MAX(B.ID) IS NULL, 1, MAX(B.ID) + 1 ) FROM CARRERASDETALLETIEMPOS AS B WHERE B.IDEMPRESA = " + IdEmpresa + " AND B.IDCARRERA = " + idCarrera + " AND B.IDCARRERADETALLE = A.ID), ");
-                sentencia.AppendLine("			A.IDCOMPETIDOR, ");
-                sentencia.AppendLine("			CONCAT(B.APELLIDOPATERNO, ' ', B.APELLIDOMATERNO, ' ', B.NOMBRE), ");
+                sentencia.AppendLine("			A.NUMERO, ");
+                sentencia.AppendLine("			A.COMPETIDOR, ");
                 sentencia.AppendLine("			A.IDCATEGORIA, ");
-                sentencia.AppendLine("			C.DESCRIPCION, ");
+                sentencia.AppendLine("			C.DESCRIPCION AS CATEGORIA, ");
                 sentencia.AppendLine("			A.IDDISTANCIA, ");
-                sentencia.AppendLine("			D.DESCRIPCION, ");
+                sentencia.AppendLine("			D.DESCRIPCION AS DISTANCIA, ");
                 sentencia.AppendLine("			" + listaCarreraPuntos[indicePunto].IdPunto + ", ");
-                sentencia.AppendLine("			E.DESCRIPCION, ");
+                sentencia.AppendLine("			E.DESCRIPCION AS PUNTO, ");
                 sentencia.AppendLine("			A.RAMA, ");
                 sentencia.AppendLine("			NOW(6) ");
                 sentencia.AppendLine("		FROM ");
                 sentencia.AppendLine("			CARRERASDETALLE AS A ");
-                sentencia.AppendLine("		LEFT JOIN COMPETIDORES AS B ");
-                sentencia.AppendLine("			ON B.IDEMPRESA = A.IDEMPRESA AND B.IDCOMPETIDOR = A.IDCOMPETIDOR");
                 sentencia.AppendLine("		LEFT JOIN CATEGORIAS AS C ");
                 sentencia.AppendLine("			ON C.IDEMPRESA = A.IDEMPRESA AND C.IDCATEGORIA = A.IDCATEGORIA");
                 sentencia.AppendLine("		LEFT JOIN DISTANCIASCARRERA AS D ");
@@ -5682,7 +5719,7 @@ namespace UHFDemo
                     entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.IdCarreraDetalle = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Id = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
-                    entidad.IdCompetidor = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Numero = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Competidor = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     entidad.IdCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
@@ -5795,7 +5832,8 @@ namespace UHFDemo
                 sentencia.AppendLine("	IDCARRERA, ");
                 sentencia.AppendLine("	IDCARRERADETALLE, ");
                 sentencia.AppendLine("	ID, ");
-                sentencia.AppendLine("	IDCOMPETIDOR, ");
+                sentencia.AppendLine("	NUMERO, ");
+                sentencia.AppendLine("	COMPETIDOR, ");
                 sentencia.AppendLine("	IDCATEGORIA, ");
                 sentencia.AppendLine("	IDDISTANCIA, ");
                 sentencia.AppendLine("	IDPUNTO, ");
@@ -5809,7 +5847,8 @@ namespace UHFDemo
                 sentencia.AppendLine("	 " + entidad.IdCarrera + ", ");
                 sentencia.AppendLine("	 " + entidad.IdCarreraDetalle + ", ");
                 sentencia.AppendLine("	 " + entidad.Id + ", ");
-                sentencia.AppendLine("	 " + entidad.IdCompetidor + ", ");
+                sentencia.AppendLine("	 " + entidad.Numero + ", ");
+                sentencia.AppendLine("	'" + entidad.Competidor + "', ");
                 sentencia.AppendLine("	 " + entidad.IdCategoria + ", ");
                 sentencia.AppendLine("	 " + entidad.IdDistancia + ", ");
                 sentencia.AppendLine("	 " + entidad.IdPunto + ", ");
@@ -6207,6 +6246,79 @@ namespace UHFDemo
         {
             VistaDetallesCarrera vista = new VistaDetallesCarrera();
             vista.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Desea reiniciar la carrera?", "Confirmación", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                tiempoInicialCarrera = new DateTime();
+                ultimoTiempoInsertado = new DateTime();
+                indicePunto = 0;
+                idCarreraActual = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+                idCarreraDetalleActual = 0;
+                InsertarTiempoInicial(Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value));
+                gridCarreraDetalle.Rows.Clear();
+                EliminarDetalles();
+                lblTiempo.Text = "00:00:00";
+            }
+            
+        }
+
+        private bool EliminarDetalles()
+        {
+            int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+            bool eliminadoConExitoDetalle = false;
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection conexion = new MySqlConnection(connectionString);
+
+            try
+            {
+                conexion.Open();
+              
+                string query = "DELETE FROM CARRERASDETALLETIEMPOS WHERE IDEMPRESA =" + IdEmpresa + " AND IDCARRERA = " + idCarrera;
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    eliminadoConExitoDetalle = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return eliminadoConExitoDetalle;
+        }
+
+        int seg = 0;
+        int min = 0;
+        int hora = 0;
+        private void tiempoCarrera_Tick(object sender, EventArgs e)
+        {
+            if (min > 60)
+            {
+                hora++;
+                min = 0;
+            }
+
+            if (seg > 60)
+            {
+                min++;
+                seg = 0;
+            }
+            seg++;
+
+            lblTiempo.Text = string.Concat(hora.ToString("00"), ":", min.ToString("00"), ":", seg.ToString("00"));
         }
     }
 }

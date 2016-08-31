@@ -12,7 +12,7 @@ namespace UHFDemo.Entidades
         public int IdCarrera { get; set; }
         public int IdCarreraDetalle { get; set; }
         public int Id { get; set; }
-        public int IdCompetidor { get; set; }
+        public int Numero { get; set; }
         public string Competidor { get; set; }
         public int IdCategoria { get; set; }
         public string Categoria { get; set; }

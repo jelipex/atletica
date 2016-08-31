@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(R2000UartDemo));
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -111,6 +112,14 @@
             this.tabEpcTest = new System.Windows.Forms.TabControl();
             this.pageRealMode = new System.Windows.Forms.TabPage();
             this.gridCarreraDetalle = new System.Windows.Forms.DataGridView();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Punto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.cbRealWorkant1 = new System.Windows.Forms.CheckBox();
             this.cbRealWorkant4 = new System.Windows.Forms.CheckBox();
@@ -124,6 +133,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.cmbCarreraConfig = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btRealTimeInventory = new System.Windows.Forms.Button();
@@ -284,15 +294,10 @@
             this.lxLedControl16 = new LxControl.LxLedControl();
             this.lxLedControl17 = new LxControl.LxLedControl();
             this.lxLedControl18 = new LxControl.LxLedControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Punto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.tiempoCarrera = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -1265,11 +1270,66 @@
             this.Punto,
             this.Tiempo});
             this.gridCarreraDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCarreraDetalle.Location = new System.Drawing.Point(3, 63);
+            this.gridCarreraDetalle.Location = new System.Drawing.Point(3, 64);
             this.gridCarreraDetalle.Name = "gridCarreraDetalle";
-            this.gridCarreraDetalle.Size = new System.Drawing.Size(994, 569);
+            this.gridCarreraDetalle.Size = new System.Drawing.Size(994, 568);
             this.gridCarreraDetalle.TabIndex = 50;
             this.gridCarreraDetalle.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.gridCarreraDetalle_SortCompare);
+            // 
+            // Lugar
+            // 
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            this.Lugar.Width = 60;
+            // 
+            // Num
+            // 
+            this.Num.HeaderText = "Num";
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Width = 50;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 250;
+            // 
+            // Distancia
+            // 
+            this.Distancia.HeaderText = "Distancia";
+            this.Distancia.Name = "Distancia";
+            this.Distancia.ReadOnly = true;
+            this.Distancia.Width = 110;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 120;
+            // 
+            // Rama
+            // 
+            this.Rama.HeaderText = "Rama";
+            this.Rama.Name = "Rama";
+            this.Rama.ReadOnly = true;
+            this.Rama.Width = 95;
+            // 
+            // Punto
+            // 
+            this.Punto.HeaderText = "Punto";
+            this.Punto.Name = "Punto";
+            this.Punto.ReadOnly = true;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            this.Tiempo.Width = 145;
             // 
             // groupBox20
             // 
@@ -1409,8 +1469,8 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1418,29 +1478,43 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 60);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 61);
             this.tableLayoutPanel1.TabIndex = 48;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblTiempo);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textRealRound);
+            this.panel1.Controls.Add(this.label84);
             this.panel1.Controls.Add(this.cmbCarreraConfig);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.btRealTimeInventory);
-            this.panel1.Controls.Add(this.textRealRound);
-            this.panel1.Controls.Add(this.label84);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(687, 52);
+            this.panel1.Size = new System.Drawing.Size(983, 52);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(567, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 38);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Ver Detalles";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // cmbCarreraConfig
             // 
             this.cmbCarreraConfig.AccessibleName = "cmbCarreraConfig";
             this.cmbCarreraConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCarreraConfig.FormattingEnabled = true;
-            this.cmbCarreraConfig.Location = new System.Drawing.Point(79, 17);
+            this.cmbCarreraConfig.Location = new System.Drawing.Point(68, 16);
             this.cmbCarreraConfig.Name = "cmbCarreraConfig";
             this.cmbCarreraConfig.Size = new System.Drawing.Size(140, 22);
             this.cmbCarreraConfig.TabIndex = 50;
@@ -1448,7 +1522,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 20);
+            this.label15.Location = new System.Drawing.Point(6, 19);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 14);
             this.label15.TabIndex = 49;
@@ -1460,7 +1534,7 @@
             this.btRealTimeInventory.BackColor = System.Drawing.Color.Green;
             this.btRealTimeInventory.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btRealTimeInventory.ForeColor = System.Drawing.Color.White;
-            this.btRealTimeInventory.Location = new System.Drawing.Point(229, 5);
+            this.btRealTimeInventory.Location = new System.Drawing.Point(214, 5);
             this.btRealTimeInventory.Name = "btRealTimeInventory";
             this.btRealTimeInventory.Size = new System.Drawing.Size(202, 40);
             this.btRealTimeInventory.TabIndex = 1;
@@ -1492,15 +1566,16 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.panel2);
             this.panel5.Controls.Add(this.cbRealSession);
             this.panel5.Controls.Add(this.cmbTarget);
             this.panel5.Controls.Add(this.label98);
             this.panel5.Controls.Add(this.cmbSession);
             this.panel5.Controls.Add(this.label97);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(698, 4);
+            this.panel5.Location = new System.Drawing.Point(777, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(292, 52);
+            this.panel5.Size = new System.Drawing.Size(213, 52);
             this.panel5.TabIndex = 1;
             this.panel5.Visible = false;
             // 
@@ -1508,7 +1583,7 @@
             // 
             this.cbRealSession.AutoSize = true;
             this.cbRealSession.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbRealSession.Location = new System.Drawing.Point(3, 20);
+            this.cbRealSession.Location = new System.Drawing.Point(3, 15);
             this.cbRealSession.Name = "cbRealSession";
             this.cbRealSession.Size = new System.Drawing.Size(96, 28);
             this.cbRealSession.TabIndex = 55;
@@ -1525,7 +1600,7 @@
             this.cmbTarget.Items.AddRange(new object[] {
             "A",
             "B"});
-            this.cmbTarget.Location = new System.Drawing.Point(227, 25);
+            this.cmbTarget.Location = new System.Drawing.Point(227, 20);
             this.cmbTarget.Name = "cmbTarget";
             this.cmbTarget.Size = new System.Drawing.Size(62, 20);
             this.cmbTarget.TabIndex = 54;
@@ -1535,7 +1610,7 @@
             this.label98.AutoSize = true;
             this.label98.Enabled = false;
             this.label98.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label98.Location = new System.Drawing.Point(189, 10);
+            this.label98.Location = new System.Drawing.Point(189, 5);
             this.label98.Name = "label98";
             this.label98.Size = new System.Drawing.Size(107, 12);
             this.label98.TabIndex = 53;
@@ -1552,7 +1627,7 @@
             "S1",
             "S2",
             "S3"});
-            this.cmbSession.Location = new System.Drawing.Point(114, 25);
+            this.cmbSession.Location = new System.Drawing.Point(105, 20);
             this.cmbSession.Name = "cmbSession";
             this.cmbSession.Size = new System.Drawing.Size(62, 20);
             this.cmbSession.TabIndex = 52;
@@ -1562,7 +1637,7 @@
             this.label97.AutoSize = true;
             this.label97.Enabled = false;
             this.label97.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label97.Location = new System.Drawing.Point(105, 10);
+            this.label97.Location = new System.Drawing.Point(105, 5);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(71, 12);
             this.label97.TabIndex = 51;
@@ -3301,72 +3376,42 @@
             this.lxLedControl18.Text = "0";
             this.lxLedControl18.TextAlignment = LxControl.LxLedControl.Alignment.Right;
             // 
-            // button1
+            // button2
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(441, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 38);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Ver Detalles";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button2.BackColor = System.Drawing.Color.OrangeRed;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(437, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(111, 38);
+            this.button2.TabIndex = 52;
+            this.button2.Text = "Reiniciar Carrera";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Lugar
+            // panel2
             // 
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            this.Lugar.ReadOnly = true;
-            this.Lugar.Width = 60;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(213, 52);
+            this.panel2.TabIndex = 56;
             // 
-            // Num
+            // lblTiempo
             // 
-            this.Num.HeaderText = "Num";
-            this.Num.Name = "Num";
-            this.Num.ReadOnly = true;
-            this.Num.Width = 50;
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTiempo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblTiempo.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTiempo.Location = new System.Drawing.Point(761, 0);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(222, 50);
+            this.lblTiempo.TabIndex = 0;
+            this.lblTiempo.Text = "00:00:00";
             // 
-            // Nombre
+            // tiempoCarrera
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 250;
-            // 
-            // Distancia
-            // 
-            this.Distancia.HeaderText = "Distancia";
-            this.Distancia.Name = "Distancia";
-            this.Distancia.ReadOnly = true;
-            this.Distancia.Width = 110;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            this.Categoria.Width = 120;
-            // 
-            // Rama
-            // 
-            this.Rama.HeaderText = "Rama";
-            this.Rama.Name = "Rama";
-            this.Rama.ReadOnly = true;
-            this.Rama.Width = 95;
-            // 
-            // Punto
-            // 
-            this.Punto.HeaderText = "Punto";
-            this.Punto.Name = "Punto";
-            this.Punto.ReadOnly = true;
-            // 
-            // Tiempo
-            // 
-            this.Tiempo.HeaderText = "Tiempo";
-            this.Tiempo.Name = "Tiempo";
-            this.Tiempo.ReadOnly = true;
-            this.Tiempo.Width = 145;
+            this.tiempoCarrera.Interval = 1000;
+            this.tiempoCarrera.Tick += new System.EventHandler(this.tiempoCarrera_Tick);
             // 
             // R2000UartDemo
             // 
@@ -3747,6 +3792,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
         private System.Windows.Forms.DataGridViewTextBoxColumn Punto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblTiempo;
+        private System.Windows.Forms.Timer tiempoCarrera;
     }
 }
 

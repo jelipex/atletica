@@ -172,8 +172,8 @@ namespace UHFDemo
                 sentencia.AppendLine("	A.IDCARRERA, ");
                 sentencia.AppendLine("	A.IDCARRERADETALLE, ");
                 sentencia.AppendLine("	A.ID, ");
-                sentencia.AppendLine("	A.IDCOMPETIDOR, ");
-                sentencia.AppendLine("	CONCAT(B.APELLIDOPATERNO, ' ', B.APELLIDOMATERNO, ' ', B.NOMBRE) AS NOMBRECOMPLETO, ");
+                sentencia.AppendLine("	A.NUMERO, ");
+                sentencia.AppendLine("	A.COMPETIDOR, ");
                 sentencia.AppendLine("	A.IDCATEGORIA, ");
                 sentencia.AppendLine("	C.DESCRIPCION AS CATEGORIA, ");
                 sentencia.AppendLine("	A.IDDISTANCIA, ");
@@ -214,7 +214,7 @@ namespace UHFDemo
                     entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.IdCarreraDetalle = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Id = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
-                    entidad.IdCompetidor = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Numero = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Competidor = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     entidad.IdCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     entidad.Categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
@@ -377,7 +377,7 @@ namespace UHFDemo
                         var dato = ws.Cells[renglon, 1, renglon, numeroColumna];
                         ws.Cells[renglon, 1].Value = entidad.Lugar.ToString();
                         ws.Cells[renglon, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        ws.Cells[renglon, 2].Value = entidad.IdCompetidor;
+                        ws.Cells[renglon, 2].Value = entidad.Numero;
                         ws.Cells[renglon, 3].Value = entidad.Competidor;
                         ws.Cells[renglon, 4].Value = entidad.Distancia;
                         ws.Cells[renglon, 5].Value = entidad.Categoria;

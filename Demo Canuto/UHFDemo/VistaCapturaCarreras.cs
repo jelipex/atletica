@@ -55,6 +55,7 @@ namespace UHFDemo
             cmbEstadoCarrera.SelectedIndexChanged += cmbEstadoCarrera_SelectedIndexChanged;
             this.FormClosing += VistaCapturaCarreras_FormClosing;
             toolStripEliminarCompetidor.Click += toolStripEliminarCompetidor_Click;
+            VistaDemo.btRealTimeInventory.PerformClick();
         }
 
         void toolStripEliminarCompetidor_Click(object sender, EventArgs e)
@@ -532,30 +533,35 @@ namespace UHFDemo
         {
             foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
             {
-                if ((row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "") &&
-                    (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == ""))
+                //if ((row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "") &&
+                //    (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == ""))
+                //{
+                //    MessageBox.Show("Debe de capturar el competidor en el renglon " + row.Index + 1);
+                //    return false;
+                //}
+                //else if ((row.Cells[3].Value == null || row.Cells[3].Value.ToString() == "") &&
+                //    (row.Cells[4].Value == null || row.Cells[4].Value.ToString() == ""))
+                //{
+                //    MessageBox.Show("Debe de capturar la categoría del corredor en el renglon " + row.Index + 1);
+                //    return false;
+                //}
+                //else if ((row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "") &&
+                //         (row.Cells[6].Value == null || row.Cells[6].Value.ToString() == ""))
+                //{
+                //    MessageBox.Show("Debe de capturar la categoría del corredor en el renglon " + row.Index + 1);
+                //    return false;
+                //}
+                //else if ((row.Cells[7].Value == null || row.Cells[7].Value.ToString() == ""))
+                //{
+                //    MessageBox.Show("Debe de capturar la rama del corredor en el renglon " + row.Index + 1);
+                //    return false;
+                //}
+                if (row.Cells[indiceNumero].Value == null || row.Cells[indiceNumero].Value.ToString() == "")
                 {
-                    MessageBox.Show("Debe de capturar el competidor en el renglon " + row.Index + 1);
+                    MessageBox.Show("Debe de capturar el número del corredor en el renglon " + row.Index + 1);
                     return false;
                 }
-                else if ((row.Cells[3].Value == null || row.Cells[3].Value.ToString() == "") &&
-                    (row.Cells[4].Value == null || row.Cells[4].Value.ToString() == ""))
-                {
-                    MessageBox.Show("Debe de capturar la categoría del corredor en el renglon " + row.Index + 1);
-                    return false;
-                }
-                else if ((row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "") &&
-                         (row.Cells[6].Value == null || row.Cells[6].Value.ToString() == ""))
-                {
-                    MessageBox.Show("Debe de capturar la categoría del corredor en el renglon " + row.Index + 1);
-                    return false;
-                }
-                else if ((row.Cells[7].Value == null || row.Cells[7].Value.ToString() == ""))
-                {
-                    MessageBox.Show("Debe de capturar la rama del corredor en el renglon " + row.Index + 1);
-                    return false;
-                }
-                else if ((row.Cells[8].Value == null || row.Cells[8].Value.ToString() == ""))
+                else if ((row.Cells[indiceChip].Value == null || row.Cells[indiceChip].Value.ToString() == ""))
                 {
                     MessageBox.Show("Debe de capturar el chip del corredor en el renglon " + row.Index + 1);
                     return false;
@@ -610,25 +616,41 @@ namespace UHFDemo
                     if (InsertarMaestro(idCarrera, descripcion, fechaCarrera, idPais, idEstado, idCiudad, mysqlCon, transaccion))
                     {
                         StringBuilder cadenaCompetidores = new StringBuilder();
-                        cadenaCompetidores.AppendLine("INSERT INTO CARRERASDETALLE(IDEMPRESA, IDCARRERA, ID, IDCOMPETIDOR, IDDISTANCIA, IDCATEGORIA, CHIP, RAMA) VALUES ");
+                        cadenaCompetidores.AppendLine("INSERT INTO CARRERASDETALLE(IDEMPRESA, IDCARRERA, ID, NUMERO, COMPETIDOR, FECHANACIMIENTO, GENERO, CIUDAD, IDDISTANCIA, IDCATEGORIA, RAMA, CHIP) VALUES ");
 
                         int indice = 0;
+                        int idCarreraDetalle = 1;
                         foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
                         {
-                            int idCarreraDetalle = Convert.ToInt32(row.Cells[0].Value);
-                            int idCompetidor = Convert.ToInt32(row.Cells[1].Value);
-                            int idDistancia = Convert.ToInt32(row.Cells[3].Value);
-                            int idCategoria = Convert.ToInt32(row.Cells[5].Value);
-                            string rama = row.Cells[7].Value.ToString();
-                            string chip = row.Cells[8].Value.ToString();
+                            string fechaFormateada = "";
+                            if (row.Cells[indiceFechaNacimiento].Value != null && !string.IsNullOrEmpty(row.Cells[indiceFechaNacimiento].Value.ToString()))
+                            {
+                                DateTime fechaConvertida = Convert.ToDateTime(row.Cells[indiceFechaNacimiento].Value);
+
+                                if (fechaConvertida != null)
+                                {
+                                    fechaFormateada = fechaConvertida.ToString("yyyy-MM-dd");
+                                }
+                            }
+
+                            int numero = row.Cells[indiceNumero].Value != null && !string.IsNullOrEmpty(row.Cells[indiceNumero].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceNumero].Value) : 0;
+                            string competidor = row.Cells[indiceCompetidor].Value != null && !string.IsNullOrEmpty(row.Cells[indiceCompetidor].Value.ToString()) ? row.Cells[indiceCompetidor].Value.ToString() : string.Empty;
+                            string fechaNacimiento = fechaFormateada;
+                            string genero = row.Cells[indiceGenero].Value != null && !string.IsNullOrEmpty(row.Cells[indiceGenero].Value.ToString()) ? row.Cells[indiceGenero].Value.ToString() : string.Empty;
+                            string ciudad = row.Cells[indiceCiudad].Value != null && !string.IsNullOrEmpty(row.Cells[indiceCiudad].Value.ToString()) ? row.Cells[indiceCiudad].Value.ToString() : string.Empty;
+                            int idDistancia = row.Cells[indiceIdDistancia].Value != null && !string.IsNullOrEmpty(row.Cells[indiceIdDistancia].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceIdDistancia].Value) : 0;
+                            int idCategoria = row.Cells[indiceIdCategoria].Value != null && !string.IsNullOrEmpty(row.Cells[indiceIdCategoria].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceIdCategoria].Value) : 0;
+                            string rama = row.Cells[indiceRama].Value != null && !string.IsNullOrEmpty(row.Cells[indiceRama].Value.ToString()) ? row.Cells[indiceRama].Value.ToString() : string.Empty;
+                            string chip = row.Cells[indiceChip].Value != null && !string.IsNullOrEmpty(row.Cells[indiceChip].Value.ToString()) ? row.Cells[indiceChip].Value.ToString() : string.Empty;
 
 
                             if (indice != 0)
                             {
                                 cadenaCompetidores.Append(", ");
                             }
-                            cadenaCompetidores.AppendLine("(" + IdEmpresa + ", " + idCarrera + ", " + idCarreraDetalle + ", " + idCompetidor + ", " + idDistancia + ", " + idCategoria + ",'" + chip + "', '" + rama + "')");
+                            cadenaCompetidores.AppendLine("(" + IdEmpresa + ", " + idCarrera + ", " + idCarreraDetalle + ", " + numero + ", '" + competidor + "', '" + fechaNacimiento + "', '" + genero + "', '" + ciudad + "', " + idDistancia + ", " + idCategoria + ", '" + rama + "', '" + chip + "'");
                             indice++;
+                            idCarreraDetalle++;
                         }
 
                         StringBuilder cadenaPuntos = new StringBuilder();
@@ -864,25 +886,49 @@ namespace UHFDemo
                     if (valido)
                     {
                         StringBuilder cadenaCompetidores = new StringBuilder();
-                        cadenaCompetidores.AppendLine("INSERT INTO CARRERASDETALLE(IDEMPRESA, IDCARRERA, ID, IDCOMPETIDOR, IDDISTANCIA, IDCATEGORIA, CHIP, RAMA) VALUES ");
+                        cadenaCompetidores.AppendLine("INSERT INTO CARRERASDETALLE(IDEMPRESA, IDCARRERA, ID, NUMERO, COMPETIDOR, FECHANACIMIENTO, GENERO, CIUDAD, IDDISTANCIA, IDCATEGORIA, RAMA, CHIP) VALUES ");
 
                         int indice = 0;
+                        int idCarreraDetalle = 1;
                         foreach (DataGridViewRow row in gridCarrerasCompetidores.Rows)
                         {
-                            int idCarreraDetalle = Convert.ToInt32(row.Cells[0].Value);
-                            int idCompetidor = Convert.ToInt32(row.Cells[1].Value);
-                            int idDistancia = Convert.ToInt32(row.Cells[3].Value);
-                            int idCategoria = Convert.ToInt32(row.Cells[5].Value);
-                            string rama = row.Cells[7].Value.ToString();
-                            string chip = row.Cells[8].Value.ToString();
+                            string fechaFormateada = null;
+                            if (row.Cells[indiceFechaNacimiento].Value != null && !string.IsNullOrEmpty(row.Cells[indiceFechaNacimiento].Value.ToString()))
+                            {
+                                DateTime fechaConvertida = Convert.ToDateTime(row.Cells[indiceFechaNacimiento].Value);
+
+                                if (fechaConvertida != null)
+                                {
+                                    fechaFormateada = fechaConvertida.ToString("yyyy-MM-dd");
+                                }
+                            }
+
+                            int numero = row.Cells[indiceNumero].Value != null && !string.IsNullOrEmpty(row.Cells[indiceNumero].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceNumero].Value) : 0;
+                            string competidor = row.Cells[indiceCompetidor].Value != null && !string.IsNullOrEmpty(row.Cells[indiceCompetidor].Value.ToString()) ? row.Cells[indiceCompetidor].Value.ToString() : string.Empty;
+                            string fechaNacimiento = fechaFormateada;
+                            string genero = row.Cells[indiceGenero].Value != null && !string.IsNullOrEmpty(row.Cells[indiceGenero].Value.ToString()) ? row.Cells[indiceGenero].Value.ToString() : string.Empty;
+                            string ciudad = row.Cells[indiceCiudad].Value != null && !string.IsNullOrEmpty(row.Cells[indiceCiudad].Value.ToString()) ? row.Cells[indiceCiudad].Value.ToString() : string.Empty;
+                            int idDistancia = row.Cells[indiceIdDistancia].Value != null && !string.IsNullOrEmpty(row.Cells[indiceIdDistancia].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceIdDistancia].Value) : 0;
+                            int idCategoria = row.Cells[indiceIdCategoria].Value != null && !string.IsNullOrEmpty(row.Cells[indiceIdCategoria].Value.ToString()) ? Convert.ToInt32(row.Cells[indiceIdCategoria].Value) : 0;
+                            string rama = row.Cells[indiceRama].Value != null && !string.IsNullOrEmpty(row.Cells[indiceRama].Value.ToString()) ? row.Cells[indiceRama].Value.ToString() : string.Empty;
+                            string chip = row.Cells[indiceChip].Value != null && !string.IsNullOrEmpty(row.Cells[indiceChip].Value.ToString()) ? row.Cells[indiceChip].Value.ToString() : string.Empty;
 
 
                             if (indice != 0)
                             {
                                 cadenaCompetidores.Append(", ");
                             }
-                            cadenaCompetidores.AppendLine("(" + IdEmpresa + ", " + idCarrera + ", " + idCarreraDetalle + ", " + idCompetidor + ", " + idDistancia + ", " + idCategoria + ",'" + chip + "', '" + rama + "')");
+                            if (fechaFormateada == null)
+                            {
+                                cadenaCompetidores.AppendLine("(" + IdEmpresa + ", " + idCarrera + ", " + idCarreraDetalle + ", " + numero + ", '" + competidor + "', NULL, '" + genero + "', '" + ciudad + "', " + idDistancia + ", " + idCategoria + ", '" + rama + "', '" + chip + "')");
+                            }
+                            else
+                            {
+                                cadenaCompetidores.AppendLine("(" + IdEmpresa + ", " + idCarrera + ", " + idCarreraDetalle + ", " + numero + ", '" + competidor + "', '" + fechaNacimiento + "', '" + genero + "', '" + ciudad + "', " + idDistancia + ", " + idCategoria + ", '" + rama + "', '" + chip + "')");
+                            }
+                            
                             indice++;
+                            idCarreraDetalle++;
                         }
 
                         StringBuilder cadenaPuntos = new StringBuilder();
@@ -1013,11 +1059,11 @@ namespace UHFDemo
 
         }
 
-        private void AgregarRenglonCompetidor(int idCarreraDetalle, int idCompetidor, string competidor, int idDistancia, string distancia, int idCategoria, string categoria, string rama, string chip)
+        private void AgregarRenglonCompetidor(int idCarreraDetalle, int numero, string competidor, string fechaNacimiento, string genero, string ciudad, string idDistanciaValida, string distancia, string idCategoriaValida, string categoria, string rama, string chip)
         {   
             DataGridViewRow row = new DataGridViewRow();
 
-            string[] rowNuevo = new string[] { idCarreraDetalle.ToString(), idCompetidor.ToString(), competidor, idDistancia.ToString(), distancia, idCategoria.ToString(), categoria, rama, chip};
+            string[] rowNuevo = new string[] { numero.ToString(), competidor, fechaNacimiento, genero, ciudad, idDistanciaValida, distancia, idCategoriaValida, categoria, rama, chip};
             gridCarrerasCompetidores.Rows.Add(rowNuevo);
             gridCarrerasCompetidores.CurrentCell = gridCarrerasCompetidores.Rows[gridCarrerasCompetidores.RowCount - 1].Cells[2];
         }
@@ -1176,33 +1222,40 @@ namespace UHFDemo
             {
                 StringBuilder sentencia = new StringBuilder();
                 sentencia.AppendLine("SELECT ");
-                sentencia.AppendLine("	A.Descripcion, ");
-                sentencia.AppendLine("	A.Fecha, ");
-                sentencia.AppendLine("	A.IdPais, ");
-                sentencia.AppendLine("	A.IdEstado, ");
-                sentencia.AppendLine("	A.IdCiudad, ");
-                sentencia.AppendLine("	B.Id, ");
-                sentencia.AppendLine("	B.IdCompetidor, ");
-                sentencia.AppendLine("	CONCAT(D.ApellidoPaterno, ' ', D.ApellidoMaterno, ' ', D.Nombre) as NombreCompleto , ");
-                sentencia.AppendLine("	B.IdDistancia, ");
-                sentencia.AppendLine("	E.Descripcion, ");
-                sentencia.AppendLine("	B.IdCategoria, ");
-                sentencia.AppendLine("	C.Descripcion as Categoria, ");
-                sentencia.AppendLine("	B.Chip, ");
-                sentencia.AppendLine("	B.Rama ");
+                sentencia.AppendLine("	D.DESCRIPCION AS CARRERA, ");
+                sentencia.AppendLine("	D.FECHA AS FECHACARRERA, ");
+                sentencia.AppendLine("	D.IDPAIS AS PAIS, ");
+                sentencia.AppendLine("	D.IDESTADO AS ESTADO, ");
+                sentencia.AppendLine("	D.IDCIUDAD AS CIUDAD, ");
+                sentencia.AppendLine("	A.ID, ");
+                sentencia.AppendLine("	A.NUMERO, ");
+                sentencia.AppendLine("	A.COMPETIDOR, ");
+                sentencia.AppendLine("	A.FECHANACIMIENTO, ");
+                sentencia.AppendLine("	A.GENERO, ");
+                sentencia.AppendLine("	A.CIUDAD, ");
+                sentencia.AppendLine("	A.IDDISTANCIA, ");
+                sentencia.AppendLine("	B.DESCRIPCION AS DISTANCIA, ");
+                sentencia.AppendLine("	A.IDCATEGORIA, ");
+                sentencia.AppendLine("	C.DESCRIPCION AS CATEGORIA, ");
+                sentencia.AppendLine("	A.RAMA, ");
+                sentencia.AppendLine("	A.CHIP ");
                 sentencia.AppendLine("FROM ");
-                sentencia.AppendLine("	carreras AS A ");
-                sentencia.AppendLine("LEFT JOIN carrerasdetalle AS B ON B.IdEmpresa = A.IdEmpresa ");
-                sentencia.AppendLine("AND B.IdCarrera = A.IdCarrera ");
-                sentencia.AppendLine("LEFT JOIN categorias AS C ON C.IdEmpresa = B.IdEmpresa ");
-                sentencia.AppendLine("AND C.IdCategoria = B.IdCategoria ");
-                sentencia.AppendLine("LEFT JOIN competidores AS D ON D.IdEmpresa = B.IdEmpresa ");
-                sentencia.AppendLine("AND D.IdCompetidor = B.IdCompetidor ");
-                sentencia.AppendLine("LEFT JOIN distanciascarrera AS E ON E.IdEmpresa = B.IdEmpresa ");
-                sentencia.AppendLine("AND E.IdDistancia = B.IdDistancia ");
+                sentencia.AppendLine("	CARRERASDETALLE AS A ");
+                sentencia.AppendLine("LEFT JOIN ");
+                sentencia.AppendLine("	CARRERAS AS D ");
+                sentencia.AppendLine("ON 	D.IDEMPRESA = A.IDEMPRESA ");
+                sentencia.AppendLine("AND D.IDCARRERA = A.IDCARRERA ");
+                sentencia.AppendLine("LEFT JOIN ");
+                sentencia.AppendLine("	DISTANCIASCARRERA AS B ");
+                sentencia.AppendLine("ON 	B.IDEMPRESA = A.IDEMPRESA ");
+                sentencia.AppendLine("AND B.IDDISTANCIA = A.IDDISTANCIA ");
+                sentencia.AppendLine("LEFT JOIN ");
+                sentencia.AppendLine("	CATEGORIAS AS C ");
+                sentencia.AppendLine("ON 	C.IDEMPRESA = A.IDEMPRESA ");
+                sentencia.AppendLine("AND C.IDCATEGORIA = A.IDCATEGORIA ");
                 sentencia.AppendLine("WHERE ");
-                sentencia.AppendLine("	A.IdEmpresa = " + IdEmpresa);
-                sentencia.AppendLine("AND A.IdCarrera = " + idCarrera);
+                sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
+                sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
 
                 string query = sentencia.ToString();
                 MySqlCommand cmd = new MySqlCommand(query, mysqlCon);
@@ -1212,34 +1265,41 @@ namespace UHFDemo
                 while (reader.Read())
                 {
                     int indice = 0;
-                    string descripcion = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    DateTime fecha = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
+
+                    string carrera = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    DateTime fechaCarrera = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
                     string idPais = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     int idEstado = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     int idCiudad = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     int idCarreraDetalle = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
-                    int idCompetidor = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    int numero = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     string competidor = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    DateTime fechaNacimiento = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
+                    string genero = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    string ciudad = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     int idDistancia = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     string distancia = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     int idCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
                     string categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
-                    string chip = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
                     string rama = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    string chip = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
 
                     if (row == 0)
                     {
                         txtIdCarrera.Text = idCarrera.ToString();
-                        txtDescripcionCarrera.Text = descripcion;
-                        dpFechaCarrera.Text = fecha.ToString("dd/MM/yyyy");
+                        txtDescripcionCarrera.Text = carrera;
+                        dpFechaCarrera.Text = fechaCarrera.ToString("dd/MM/yyyy");
                         LlenarComboPaises(idPais);
                         LlenarComboEstados(idPais, idEstado);
                         LlenarComboCiudades(idPais, idEstado, idCiudad);
                         LlenarCategorias(idCarrera);
                     }
 
+                    string fechaValida = fechaNacimiento != DateTime.MinValue ? fechaNacimiento.ToString("dd/MM/yyyy") : string.Empty;
+                    string idDistanciaValida = idDistancia != 0 ? idDistancia.ToString() : string.Empty;
+                    string idCategoriaValida = idCategoria != 0 ? idCategoria.ToString() : string.Empty;
                    
-                    AgregarRenglonCompetidor(idCarreraDetalle, idCompetidor, competidor, idDistancia, distancia, idCategoria, categoria, rama, chip);
+                    AgregarRenglonCompetidor(idCarreraDetalle, numero, competidor, fechaValida, genero, ciudad, idDistanciaValida, distancia, idCategoriaValida, categoria, rama, chip);
                     row++;
                 }
 
@@ -2243,7 +2303,7 @@ namespace UHFDemo
 
                         if (genero != "")
                         {
-                            vista.cmbGeneroCarreraDetalle.SelectedValue = genero;
+                            vista.cmbGeneroCarreraDetalle.SelectedItem = genero;
                         }
                         
                         vista.txtCiudadCarreraDetalle.Text = ciudad;
@@ -2260,7 +2320,7 @@ namespace UHFDemo
 
                         if (rama != "")
                         {
-                            vista.cmbRamaCarreraDetalle.SelectedValue = rama;
+                            vista.cmbRamaCarreraDetalle.SelectedItem = rama;
                         }
                         
                         vista.txtChipCarreraDetalle.Text = chip;
