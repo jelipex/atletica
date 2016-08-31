@@ -15,6 +15,7 @@ using OfficeOpenXml.Style;
 using System.IO;
 using UHFDemo.Entidades;
 using System.Globalization;
+using DataGridViewAutoFilter;
 
 namespace UHFDemo
 {
@@ -40,6 +41,7 @@ namespace UHFDemo
         private InventoryBuffer m_curInventoryBuffer = new InventoryBuffer();
         private OperateTagBuffer m_curOperateTagBuffer = new OperateTagBuffer();
         private OperateTagISO18000Buffer m_curOperateTagISO18000Buffer = new OperateTagISO18000Buffer();
+
 
         //盘存操作前，需要先设置工作天线，用于标识当前是否在执行盘存操作
         private bool m_bInventory = false;
@@ -129,6 +131,12 @@ namespace UHFDemo
             tabOpcionesCatalogos.SelectedIndexChanged += tabOpcionesCatalogos_SelectedIndexChanged;
             tabCtrMain.SelectedIndexChanged+=tabCtrMain_SelectedIndexChanged;
             cmbCarreraConfig.SelectedIndexChanged += cmbCarreraConfig_SelectedIndexChanged;
+            gridCarreraDetalle.BindingContextChanged += gridCarreraDetalle_BindingContextChanged;
+        }
+
+        void gridCarreraDetalle_BindingContextChanged(object sender, EventArgs e)
+        {
+            Console.Write("asdasd");
         }
 
         void cmbCarreraConfig_SelectedIndexChanged(object sender, EventArgs e)
@@ -4535,7 +4543,7 @@ namespace UHFDemo
                 bool mostrarTiempos = false;
                 if (!Globales.capturaCarrera && cmbCarreraConfig.Items.Count > 0)
                 {
-                    if (btRealTimeInventory.Text == "Empezar Carrera")
+                    if (btRealTimeInventory.Text.Trim() == "Empezar Carrera")
                     {
                         if ((Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0 || cmbCarreraConfig.SelectedItem.ToString().Equals("Seleccionar") || cmbCarreraConfig.SelectedItem.ToString() == ""))
                         {
@@ -4543,6 +4551,9 @@ namespace UHFDemo
                             return;
                         }
 
+                        seg = 0;
+                        min = 0;
+                        hora = 0;
                         tiempoInicialCarrera = new DateTime();
                         ultimoTiempoInsertado = new DateTime();
                         indicePunto = 0;
@@ -5881,21 +5892,54 @@ namespace UHFDemo
 
         private void InsertarRenglonCarreraTiempo(CarreraDetalleTiempos entidad)
         {
-            TimeSpan tiempo = TimeSpan.FromSeconds((entidad.FechaHora - tiempoInicialCarrera).TotalSeconds);
-
-            string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
-            DataGridViewRow row = new DataGridViewRow();
-
-            string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, entidad.Punto, tiempoFormateado };
-
+           
             Invoke(new MethodInvoker(delegate
             {
+                TimeSpan tiempo = TimeSpan.FromSeconds((entidad.FechaHora - tiempoInicialCarrera).TotalSeconds);
 
+                string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                DataGridViewRow row = new DataGridViewRow();
+
+                string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, entidad.Punto, tiempoFormateado };
+
+                string distancia = cmbFiltroDistancias.SelectedValue != null && cmbFiltroDistancias.SelectedValue.ToString() != "" && cmbFiltroDistancias.SelectedIndex != 0 ? cmbFiltroDistancias.Text : string.Empty;
+                string categoria = cmbFiltroCategorias.SelectedValue != null && cmbFiltroCategorias.SelectedValue.ToString() != "" && cmbFiltroCategorias.SelectedIndex != 0 ? cmbFiltroCategorias.Text : string.Empty;
+                string rama = cmbFiltroRamas.SelectedItem != null && cmbFiltroRamas.SelectedItem.ToString() != "" && cmbFiltroRamas.SelectedItem.ToString() != "Todas" ? cmbFiltroRamas.SelectedItem.ToString() : string.Empty;
+                string punto = cmbFiltroPunto.SelectedValue != null && cmbFiltroPunto.SelectedValue.ToString() != "" && cmbFiltroPunto.SelectedIndex != 0 ? cmbFiltroPunto.Text : string.Empty;
+
+                gridCarreraDetalle.Rows.Add(rowNuevo);
+                //if ((distancia != "" && distancia != entidad.Distancia) || (categoria != "" && categoria != entidad.Categoria) || (rama != "" && entidad.Rama != "") || (punto != "" && punto != entidad.Punto))
+                //{
+                //    gridCarreraDetalle.Rows[gridCarreraDetalle.RowCount - 1].Visible = false;
+
+                //    if (gridCarreraDetalle.SortedColumn != null && gridCarreraDetalle.SortedColumn.HeaderText != "")
+                //    {
+                //        gridCarreraDetalle.Sort(gridCarreraDetalle.SortedColumn, ListSortDirection.Ascending);
+                //    }
+                //}
+
+                FiltrarListado();
                 //  Ejemplo: Mostrar datos de los eventos
                 // enviados por el Thread en una ListBox
-                gridCarreraDetalle.Rows.Add(rowNuevo);
+                
+                
             }));
             
+        }
+
+        private int ObtenerLugar(CarreraDetalleTiempos entidad)
+        {
+            int lugar = 1;
+
+            foreach (DataGridViewRow row in gridCarreraDetalle.Rows)
+            {
+                if (row.Cells[6].Value == entidad.Punto)
+                {
+                    lugar++;
+                }
+            }
+
+            return lugar;
         }
 
         private void InsertarTiempoDetalle(string chip)
@@ -6261,7 +6305,14 @@ namespace UHFDemo
                 InsertarTiempoInicial(Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value));
                 gridCarreraDetalle.Rows.Clear();
                 EliminarDetalles();
+                tiempoCarrera.Stop();
+                tiempoCarrera.Enabled = false;
                 lblTiempo.Text = "00:00:00";
+                seg = 0;
+                min = 0;
+                hora = 0;
+                tiempoCarrera.Enabled = true;
+                tiempoCarrera.Start();
             }
             
         }
@@ -6300,9 +6351,9 @@ namespace UHFDemo
             return eliminadoConExitoDetalle;
         }
 
-        int seg = 0;
-        int min = 0;
-        int hora = 0;
+        public int seg = 0;
+        public int min = 0;
+        public int hora = 0;
         private void tiempoCarrera_Tick(object sender, EventArgs e)
         {
             if (min > 60)
@@ -6319,6 +6370,178 @@ namespace UHFDemo
             seg++;
 
             lblTiempo.Text = string.Concat(hora.ToString("00"), ":", min.ToString("00"), ":", seg.ToString("00"));
+        }
+
+        private DataTable LlenarComboDistancias(int idCarrera)
+        {
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.AppendLine("SELECT ");
+            sentencia.AppendLine("	DISTINCT  ");
+            sentencia.AppendLine("	A.IDDISTANCIA, ");
+            sentencia.AppendLine("	B.DESCRIPCION ");
+            sentencia.AppendLine("FROM ");
+            sentencia.AppendLine("	CARRERASDETALLE AS A ");
+            sentencia.AppendLine("LEFT JOIN ");
+            sentencia.AppendLine("	DISTANCIASCARRERA AS B ");
+            sentencia.AppendLine("ON 	B.IDEMPRESA = A.IDEMPRESA ");
+            sentencia.AppendLine("AND B.IDDISTANCIA = A.IDDISTANCIA ");
+            sentencia.AppendLine("WHERE ");
+            sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
+            sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
+            
+            return Populate(sentencia.ToString());
+        }
+
+        private DataTable LlenarComboPuntos(int idCarrera)
+        {
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.AppendLine("SELECT ");
+            sentencia.AppendLine("	A.IDPUNTO, ");
+            sentencia.AppendLine("	B.DESCRIPCION ");
+            sentencia.AppendLine("FROM ");
+            sentencia.AppendLine("	CARRERASPUNTOS A ");
+            sentencia.AppendLine("LEFT JOIN ");
+            sentencia.AppendLine("	PUNTOS B ");
+            sentencia.AppendLine("ON 	B.IDEMPRESA = A.IdEmpresa ");
+            sentencia.AppendLine("AND B.IDPUNTO = A.IDPUNTO ");
+            sentencia.AppendLine("WHERE ");
+            sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
+            sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
+            return Populate(sentencia.ToString());
+        }
+
+        private DataTable LlenarComboCategorias(int idCarrera)
+        {
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.AppendLine("SELECT ");
+            sentencia.AppendLine("	A.IDCATEGORIA, ");
+            sentencia.AppendLine("	B.DESCRIPCION ");
+            sentencia.AppendLine("FROM ");
+            sentencia.AppendLine("	CARRERASCATEGORIAS AS A ");
+            sentencia.AppendLine("LEFT JOIN ");
+            sentencia.AppendLine("	CATEGORIAS AS B ");
+            sentencia.AppendLine("ON 	B.IDEMPRESA = A.IDEMPRESA ");
+            sentencia.AppendLine("AND B.IDCATEGORIA = A.IDCATEGORIA ");
+            sentencia.AppendLine("WHERE ");
+            sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
+            sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
+            return Populate(sentencia.ToString());
+        }
+
+        private DataTable Populate(string sqlCommand)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=atletica;UID=root;PASSWORD=pecopeco1290;";
+            MySqlConnection mySqlCon = new MySqlConnection(connectionString);
+            DataTable table = new DataTable();
+
+            try
+            {
+                mySqlCon.Open();
+                MySqlCommand command = new MySqlCommand(sqlCommand, mySqlCon);
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (mySqlCon != null && mySqlCon.State == ConnectionState.Open)
+                {
+                    mySqlCon.Close();
+                }
+            }
+
+            return table;
+        }
+
+        private void cmbCarreraConfig_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+            int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+
+            DataTable dtDistancias = LlenarComboDistancias(idCarrera);
+            cmbFiltroDistancias.DataSource = dtDistancias;
+            cmbFiltroDistancias.DisplayMember = "Descripcion";
+            cmbFiltroDistancias.ValueMember = "IdDistancia";
+
+            DataRow drDistancias = dtDistancias.NewRow();
+            drDistancias["Descripcion"] = "Todas";
+            drDistancias["IdDistancia"] = 0;
+
+            dtDistancias.Rows.InsertAt(drDistancias, 0);
+            cmbFiltroDistancias.SelectedIndex = 0;
+
+            DataTable dtCategorias = LlenarComboCategorias(idCarrera);
+            cmbFiltroCategorias.DataSource = dtCategorias;
+            cmbFiltroCategorias.DisplayMember = "Descripcion";
+            cmbFiltroCategorias.ValueMember = "IdCategoria";
+
+            DataRow drCategorias = dtCategorias.NewRow();
+            drCategorias["Descripcion"] = "Todas";
+            drCategorias["IdCategoria"] = 0;
+
+            dtCategorias.Rows.InsertAt(drCategorias, 0);
+            cmbFiltroCategorias.SelectedIndex = 0;
+
+            DataTable dtPuntos = LlenarComboPuntos(idCarrera);
+            cmbFiltroPunto.DataSource = dtPuntos;
+            cmbFiltroPunto.DisplayMember = "Descripcion";
+            cmbFiltroPunto.ValueMember = "IdPunto";
+
+            DataRow drPuntos = dtPuntos.NewRow();
+            drPuntos["Descripcion"] = "Todas";
+            drPuntos["IdPunto"] = 0;
+
+            dtPuntos.Rows.InsertAt(drPuntos, 0);
+            cmbFiltroPunto.SelectedIndex = 0;
+            cmbFiltroRamas.SelectedItem = "Todas";
+        }
+
+        private void FiltrarListado()
+        {
+            string distancia = cmbFiltroDistancias.SelectedValue != null && cmbFiltroDistancias.SelectedValue.ToString() != "" && cmbFiltroDistancias.SelectedIndex != 0 ? cmbFiltroDistancias.Text : string.Empty;
+            string categoria = cmbFiltroCategorias.SelectedValue != null && cmbFiltroCategorias.SelectedValue.ToString() != "" && cmbFiltroCategorias.SelectedIndex != 0 ? cmbFiltroCategorias.Text : string.Empty;
+            string rama = cmbFiltroRamas.SelectedItem != null && cmbFiltroRamas.SelectedItem.ToString() != "" && cmbFiltroRamas.SelectedItem.ToString() != "Todas" ? cmbFiltroRamas.SelectedItem.ToString() : string.Empty;
+            string punto = cmbFiltroPunto.SelectedValue != null && cmbFiltroPunto.SelectedValue.ToString() != "" && cmbFiltroPunto.SelectedIndex != 0 ? cmbFiltroPunto.Text : string.Empty;
+
+            if (gridCarreraDetalle.RowCount > 0)
+            {
+                foreach (DataGridViewRow row in gridCarreraDetalle.Rows)
+                {
+                    row.Visible = true;
+                    if (distancia != "" && row.Cells[3].Value != null && distancia != row.Cells[3].Value.ToString())
+                    {
+                        row.Visible = false;
+                    }
+                    else if (categoria != "" && row.Cells[4].Value != null && categoria != row.Cells[4].Value.ToString())
+                    {
+                        row.Visible = false;
+                    }
+                    else if (rama != "" && row.Cells[5].Value != null && rama != row.Cells[5].Value.ToString())
+                    {
+                        row.Visible = false;
+                    }
+                    else if (punto != "" && row.Cells[6].Value != null && punto != row.Cells[6].Value.ToString())
+                    {
+                        row.Visible = false;
+                    }
+                }
+
+                if (gridCarreraDetalle.SortedColumn != null && gridCarreraDetalle.SortedColumn.HeaderText != "")
+                {
+                    gridCarreraDetalle.Sort(gridCarreraDetalle.SortedColumn, ListSortDirection.Ascending);
+                }
+            }
+            
+        }
+
+        private void btnFiltroBuscar_Click(object sender, EventArgs e)
+        {
+            FiltrarListado();
         }
     }
 }

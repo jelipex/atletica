@@ -61,4 +61,3 @@ C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\Rea
 C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\bin\x86\Debug\MySql.Data.dll
 C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\obj\x86\Debug\Reader.dll
 C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\obj\x86\Debug\Reader.pdb
-C:\Users\Nolberto\Documents\GitHub\atletica\Demo Canuto\Reader\obj\x86\Debug\Reader.csprojResolveAssemblyReference.cache
