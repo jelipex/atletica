@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.btnBuscarCarrera = new System.Windows.Forms.Button();
             this.cmbRamas = new System.Windows.Forms.ComboBox();
             this.cmbCategorias = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridDetallesCarrera = new System.Windows.Forms.DataGridView();
+            this.chkGanadores = new System.Windows.Forms.CheckBox();
+            this.txtNumeroGanadores = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +51,7 @@
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExportar = new System.Windows.Forms.Button();
+            this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetallesCarrera)).BeginInit();
@@ -55,6 +59,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtNumeroGanadores);
+            this.panel1.Controls.Add(this.chkGanadores);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.btnBuscarCarrera);
             this.panel1.Controls.Add(this.cmbRamas);
@@ -68,12 +75,22 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 48);
+            this.panel1.Size = new System.Drawing.Size(933, 68);
             this.panel1.TabIndex = 0;
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(371, 37);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 9;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnBuscarCarrera
             // 
-            this.btnBuscarCarrera.Location = new System.Drawing.Point(769, 9);
+            this.btnBuscarCarrera.Location = new System.Drawing.Point(290, 37);
             this.btnBuscarCarrera.Name = "btnBuscarCarrera";
             this.btnBuscarCarrera.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarCarrera.TabIndex = 8;
@@ -157,9 +174,9 @@
             // 
             this.panel2.Controls.Add(this.gridDetallesCarrera);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 48);
+            this.panel2.Location = new System.Drawing.Point(0, 68);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(932, 404);
+            this.panel2.Size = new System.Drawing.Size(933, 384);
             this.panel2.TabIndex = 1;
             // 
             // gridDetallesCarrera
@@ -172,15 +189,44 @@
             this.Distancia,
             this.Categoria,
             this.Rama,
-            this.Tiempo});
+            this.Tiempo,
+            this.Diferencia});
             this.gridDetallesCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDetallesCarrera.Location = new System.Drawing.Point(0, 0);
             this.gridDetallesCarrera.Name = "gridDetallesCarrera";
-            this.gridDetallesCarrera.Size = new System.Drawing.Size(932, 404);
+            this.gridDetallesCarrera.Size = new System.Drawing.Size(933, 384);
             this.gridDetallesCarrera.TabIndex = 0;
+            // 
+            // chkGanadores
+            // 
+            this.chkGanadores.AutoSize = true;
+            this.chkGanadores.Location = new System.Drawing.Point(16, 39);
+            this.chkGanadores.Name = "chkGanadores";
+            this.chkGanadores.Size = new System.Drawing.Size(78, 17);
+            this.chkGanadores.TabIndex = 10;
+            this.chkGanadores.Text = "Ganadores";
+            this.chkGanadores.UseVisualStyleBackColor = true;
+            // 
+            // txtNumeroGanadores
+            // 
+            this.txtNumeroGanadores.Enabled = false;
+            this.txtNumeroGanadores.Location = new System.Drawing.Point(195, 38);
+            this.txtNumeroGanadores.Name = "txtNumeroGanadores";
+            this.txtNumeroGanadores.Size = new System.Drawing.Size(75, 20);
+            this.txtNumeroGanadores.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(100, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "N° de Ganadores";
             // 
             // Lugar
             // 
+            this.Lugar.Frozen = true;
             this.Lugar.HeaderText = "Lugar";
             this.Lugar.Name = "Lugar";
             this.Lugar.ReadOnly = true;
@@ -188,6 +234,7 @@
             // 
             // Numero
             // 
+            this.Numero.Frozen = true;
             this.Numero.HeaderText = "N°";
             this.Numero.Name = "Numero";
             this.Numero.ReadOnly = true;
@@ -195,6 +242,7 @@
             // 
             // Nombre
             // 
+            this.Nombre.Frozen = true;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
@@ -202,6 +250,7 @@
             // 
             // Distancia
             // 
+            this.Distancia.Frozen = true;
             this.Distancia.HeaderText = "Distancia";
             this.Distancia.Name = "Distancia";
             this.Distancia.ReadOnly = true;
@@ -209,6 +258,7 @@
             // 
             // Categoria
             // 
+            this.Categoria.Frozen = true;
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
@@ -216,36 +266,35 @@
             // 
             // Rama
             // 
+            this.Rama.Frozen = true;
             this.Rama.HeaderText = "Rama";
             this.Rama.Name = "Rama";
             this.Rama.ReadOnly = true;
             // 
             // Tiempo
             // 
+            this.Tiempo.Frozen = true;
             this.Tiempo.HeaderText = "Tiempo";
             this.Tiempo.Name = "Tiempo";
             this.Tiempo.ReadOnly = true;
             this.Tiempo.Width = 120;
             // 
-            // btnExportar
+            // Diferencia
             // 
-            this.btnExportar.Location = new System.Drawing.Point(850, 9);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(75, 23);
-            this.btnExportar.TabIndex = 9;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            this.Diferencia.Frozen = true;
+            this.Diferencia.HeaderText = "Diferencia";
+            this.Diferencia.Name = "Diferencia";
+            this.Diferencia.ReadOnly = true;
             // 
             // VistaDetallesCarrera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 452);
+            this.ClientSize = new System.Drawing.Size(933, 452);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "VistaDetallesCarrera";
-            this.Text = "VistaDetallesCarrera";
+            this.Text = "Consulta de Carrera";
             this.Load += new System.EventHandler(this.VistaDetallesCarrera_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -269,6 +318,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnBuscarCarrera;
         private System.Windows.Forms.DataGridView gridDetallesCarrera;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.CheckBox chkGanadores;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNumeroGanadores;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -276,6 +329,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diferencia;
     }
 }

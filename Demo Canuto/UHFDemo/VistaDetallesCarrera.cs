@@ -155,6 +155,118 @@ namespace UHFDemo
             cmbCarreras.SelectedIndexChanged+= cmbCarreras_SelectedIndexChanged;
         }
 
+        private List<CarreraDetalleTiempos> ObtenerListadoGanadores()
+        {
+            conexion = new MySqlConnection(connectionString);
+            CarreraDetalleTiempos entidad = new CarreraDetalleTiempos();
+            List<CarreraDetalleTiempos> listaCarreraDetalle = new List<CarreraDetalleTiempos>();
+            try
+            {
+                int idCarrera = Convert.ToInt32(cmbCarreras.SelectedValue);
+                int numeroGanadores = txtNumeroGanadores.Text != null && txtNumeroGanadores.Text != "" ? Convert.ToInt32(txtNumeroGanadores.Text) : 3;
+
+                conexion.Open();
+
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.AppendLine("SELECT ");
+                sentencia.AppendLine("	A.IDEMPRESA, ");
+                sentencia.AppendLine("	A.IDCARRERA, ");
+                sentencia.AppendLine("	A.IDCARRERADETALLE, ");
+                sentencia.AppendLine("	A.ID, ");
+                sentencia.AppendLine("	A.NUMERO, ");
+                sentencia.AppendLine("	A.COMPETIDOR, ");
+                sentencia.AppendLine("	A.IDDISTANCIA, ");
+                sentencia.AppendLine("	B.DESCRIPCION AS DISTANCIA,	 ");
+                sentencia.AppendLine("	A.IDCATEGORIA, ");
+                sentencia.AppendLine("	C.DESCRIPCION AS CATEGORIA, ");
+                sentencia.AppendLine("	A.RAMA, ");
+                sentencia.AppendLine("	SUM(TIEMPO) AS TIEMPO ");
+                sentencia.AppendLine("FROM  ");
+                sentencia.AppendLine("	CARRERASDETALLETIEMPOS AS A ");
+                sentencia.AppendLine("LEFT JOIN ");
+                sentencia.AppendLine("	DISTANCIASCARRERA AS B ");
+                sentencia.AppendLine("ON 	B.IDEMPRESA = A.IDEMPRESA ");
+                sentencia.AppendLine("AND B.IDDISTANCIA = A.IDDISTANCIA ");
+                sentencia.AppendLine("LEFT JOIN ");
+                sentencia.AppendLine("	CATEGORIAS AS C ");
+                sentencia.AppendLine("ON 	C.IDEMPRESA = A.IDEMPRESA ");
+                sentencia.AppendLine("AND C.IDCATEGORIA = A.IDCATEGORIA ");
+                sentencia.AppendLine("WHERE  ");
+                sentencia.AppendLine("	A.IDEMPRESA = " + IdEmpresa);
+                sentencia.AppendLine("AND A.IDCARRERA = " + idCarrera);
+                sentencia.AppendLine("GROUP BY A.IDEMPRESA, A.IDCARRERA, A.IDDISTANCIA, A.IDCATEGORIA, A.RAMA, A.NUMERO ");
+                sentencia.AppendLine("ORDER BY A.IDEMPRESA, A.IDCARRERA, A.IDDISTANCIA, A.IDCATEGORIA, A.RAMA, SUM(A.TIEMPO) ");
+
+                MySqlCommand comando = new MySqlCommand(sentencia.ToString(), conexion);
+                MySqlDataReader reader = comando.ExecuteReader();
+                int row = 1;
+                int rowAnterior = 0;
+
+                while (reader.Read())
+                {
+                    int indice = 0;
+                    entidad = new CarreraDetalleTiempos();
+                    
+                    entidad.IdEmpresa = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCarrera = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.IdCarreraDetalle = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Id = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Numero = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Competidor = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.IdCategoria = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Categoria = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.IdDistancia = (reader[indice] is DBNull) ? 0 : reader.GetInt32(indice); indice++;
+                    entidad.Distancia = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.Rama = (reader[indice] is DBNull) ? string.Empty : reader.GetString(indice); indice++;
+                    entidad.FechaHora = (reader[indice] is DBNull) ? DateTime.MinValue : reader.GetDateTime(indice); indice++;
+                    entidad.Tiempo = (reader[indice] is DBNull) ? 0 : reader.GetDouble(indice); indice++;
+
+                    if (row > numeroGanadores)
+                    {
+                        continue;
+                    }
+                    if (rowAnterior != 0)
+                    {
+                        if (listaCarreraDetalle[rowAnterior].IdDistancia != entidad.IdDistancia)
+                        {
+                            entidad.Lugar = 1;
+                            row = 1;
+                        }
+
+                        else if (listaCarreraDetalle[rowAnterior].IdCategoria != entidad.IdCategoria)
+                        {
+                            entidad.Lugar = 1;
+                            row = 1;
+                        }
+
+                        else if (listaCarreraDetalle[rowAnterior].Rama != entidad.Rama)
+                        {
+                            entidad.Lugar = 1;
+                            row = 1;
+                        }
+                    }
+
+                    entidad.Lugar = row;
+
+                    listaCarreraDetalle.Add(entidad);
+                    row++;
+                    rowAnterior++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return listaCarreraDetalle;
+        }
+
         private List<CarreraDetalleTiempos> ObtenerListado()
         {
             conexion = new MySqlConnection(connectionString);
@@ -289,9 +401,63 @@ namespace UHFDemo
 
         }
 
+        private void LlenarListadoGanadores()
+        {
+            List<CarreraDetalleTiempos> listaCarreraDetalle = new List<CarreraDetalleTiempos>();
+            int idCategoria = cmbCategorias.SelectedIndex > -1 ? Convert.ToInt32(cmbCategorias.SelectedValue) : 0;
+            int idDistancia = cmbDistancias.SelectedIndex > -1 ? Convert.ToInt32(cmbDistancias.SelectedValue) : 0;
+            string rama = cmbRamas.SelectedItem != null && cmbRamas.SelectedItem != "" && cmbRamas.SelectedItem.ToString() != "Todas" ? cmbRamas.SelectedItem.ToString() : "";
+
+            listaCarreraDetalle = ObtenerListadoGanadores();
+            gridDetallesCarrera.Rows.Clear();
+
+            if (listaCarreraDetalle != null && listaCarreraDetalle.Count > 0)
+            {
+                foreach (CarreraDetalleTiempos entidad in listaCarreraDetalle)
+                {
+                    if (idCategoria != 0 && entidad.IdCategoria != idCategoria)
+                    {
+                        continue;
+                    }
+
+                    if (idDistancia != 0 && entidad.IdDistancia != idDistancia)
+                    {
+                        continue;
+                    }
+
+                    if (rama != "" && entidad.Rama != rama)
+                    {
+                        continue;
+                    }
+
+                    string lugar = entidad.Lugar.ToString();
+                    string numero = entidad.IdCarreraDetalle.ToString();
+                    string competidor = entidad.Competidor;
+                    string distancia = entidad.Distancia;
+                    string categoria = entidad.Categoria;
+                    string ramaCarrera = entidad.Rama;
+
+                    TimeSpan tiempo = TimeSpan.FromSeconds(entidad.Tiempo);
+                    string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+
+                    string[] row = new string[] { lugar, numero, competidor, distancia, categoria, ramaCarrera, tiempoFormateado };
+                    gridDetallesCarrera.Rows.Add(row);
+
+                }
+            }
+
+        }
+
         private void btnBuscarCarrera_Click(object sender, EventArgs e)
         {
-            LlenarListado();
+            if (chkGanadores.Checked)
+            {
+                LlenarListadoGanadores();
+            }
+            else
+            {
+                LlenarListado();
+            }
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
