@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNumeroGanadores = new System.Windows.Forms.TextBox();
+            this.chkGanadores = new System.Windows.Forms.CheckBox();
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnBuscarCarrera = new System.Windows.Forms.Button();
             this.cmbRamas = new System.Windows.Forms.ComboBox();
@@ -41,17 +44,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridDetallesCarrera = new System.Windows.Forms.DataGridView();
-            this.chkGanadores = new System.Windows.Forms.CheckBox();
-            this.txtNumeroGanadores = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.chkPorPuntos = new System.Windows.Forms.CheckBox();
             this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Punto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetallesCarrera)).BeginInit();
@@ -59,6 +60,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkPorPuntos);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtNumeroGanadores);
             this.panel1.Controls.Add(this.chkGanadores);
@@ -78,9 +80,37 @@
             this.panel1.Size = new System.Drawing.Size(933, 68);
             this.panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(100, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "N° de Ganadores";
+            // 
+            // txtNumeroGanadores
+            // 
+            this.txtNumeroGanadores.Enabled = false;
+            this.txtNumeroGanadores.Location = new System.Drawing.Point(195, 38);
+            this.txtNumeroGanadores.Name = "txtNumeroGanadores";
+            this.txtNumeroGanadores.Size = new System.Drawing.Size(75, 20);
+            this.txtNumeroGanadores.TabIndex = 11;
+            // 
+            // chkGanadores
+            // 
+            this.chkGanadores.AutoSize = true;
+            this.chkGanadores.Location = new System.Drawing.Point(16, 39);
+            this.chkGanadores.Name = "chkGanadores";
+            this.chkGanadores.Size = new System.Drawing.Size(78, 17);
+            this.chkGanadores.TabIndex = 10;
+            this.chkGanadores.Text = "Ganadores";
+            this.chkGanadores.UseVisualStyleBackColor = true;
+            this.chkGanadores.CheckedChanged += new System.EventHandler(this.chkGanadores_CheckedChanged);
+            // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(371, 37);
+            this.btnExportar.Location = new System.Drawing.Point(487, 36);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(75, 23);
             this.btnExportar.TabIndex = 9;
@@ -90,7 +120,7 @@
             // 
             // btnBuscarCarrera
             // 
-            this.btnBuscarCarrera.Location = new System.Drawing.Point(290, 37);
+            this.btnBuscarCarrera.Location = new System.Drawing.Point(406, 36);
             this.btnBuscarCarrera.Name = "btnBuscarCarrera";
             this.btnBuscarCarrera.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarCarrera.TabIndex = 8;
@@ -189,40 +219,24 @@
             this.Distancia,
             this.Categoria,
             this.Rama,
-            this.Tiempo,
-            this.Diferencia});
+            this.Punto,
+            this.Tiempo});
             this.gridDetallesCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDetallesCarrera.Location = new System.Drawing.Point(0, 0);
             this.gridDetallesCarrera.Name = "gridDetallesCarrera";
             this.gridDetallesCarrera.Size = new System.Drawing.Size(933, 384);
             this.gridDetallesCarrera.TabIndex = 0;
             // 
-            // chkGanadores
+            // chkPorPuntos
             // 
-            this.chkGanadores.AutoSize = true;
-            this.chkGanadores.Location = new System.Drawing.Point(16, 39);
-            this.chkGanadores.Name = "chkGanadores";
-            this.chkGanadores.Size = new System.Drawing.Size(78, 17);
-            this.chkGanadores.TabIndex = 10;
-            this.chkGanadores.Text = "Ganadores";
-            this.chkGanadores.UseVisualStyleBackColor = true;
-            // 
-            // txtNumeroGanadores
-            // 
-            this.txtNumeroGanadores.Enabled = false;
-            this.txtNumeroGanadores.Location = new System.Drawing.Point(195, 38);
-            this.txtNumeroGanadores.Name = "txtNumeroGanadores";
-            this.txtNumeroGanadores.Size = new System.Drawing.Size(75, 20);
-            this.txtNumeroGanadores.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(100, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "N° de Ganadores";
+            this.chkPorPuntos.AutoSize = true;
+            this.chkPorPuntos.Location = new System.Drawing.Point(296, 40);
+            this.chkPorPuntos.Name = "chkPorPuntos";
+            this.chkPorPuntos.Size = new System.Drawing.Size(78, 17);
+            this.chkPorPuntos.TabIndex = 13;
+            this.chkPorPuntos.Text = "Por Puntos";
+            this.chkPorPuntos.UseVisualStyleBackColor = true;
+            this.chkPorPuntos.CheckedChanged += new System.EventHandler(this.chkPorPuntos_CheckedChanged);
             // 
             // Lugar
             // 
@@ -271,20 +285,19 @@
             this.Rama.Name = "Rama";
             this.Rama.ReadOnly = true;
             // 
+            // Punto
+            // 
+            this.Punto.HeaderText = "Punto";
+            this.Punto.Name = "Punto";
+            this.Punto.ReadOnly = true;
+            this.Punto.Visible = false;
+            // 
             // Tiempo
             // 
-            this.Tiempo.Frozen = true;
             this.Tiempo.HeaderText = "Tiempo";
             this.Tiempo.Name = "Tiempo";
             this.Tiempo.ReadOnly = true;
             this.Tiempo.Width = 120;
-            // 
-            // Diferencia
-            // 
-            this.Diferencia.Frozen = true;
-            this.Diferencia.HeaderText = "Diferencia";
-            this.Diferencia.Name = "Diferencia";
-            this.Diferencia.ReadOnly = true;
             // 
             // VistaDetallesCarrera
             // 
@@ -322,13 +335,14 @@
         private System.Windows.Forms.CheckBox chkGanadores;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNumeroGanadores;
+        private System.Windows.Forms.CheckBox chkPorPuntos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distancia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Punto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diferencia;
     }
 }

@@ -4570,16 +4570,18 @@ namespace UHFDemo
                             return;
                         }
                     }
-                    
-                }
-                else
-                {
-                    mostrarTiempos = false;
-                    MessageBox.Show("No hay carreras registradas");
-                    return;
-                }
 
-                
+                }
+                //else
+                //{
+                //    mostrarTiempos = false;
+                //    MessageBox.Show("No hay carreras registradas");
+                //    return;
+                //}
+
+                seg = 0;
+                min = 0;
+                hora = 0;
                 m_curInventoryBuffer.ClearInventoryPar();
 
                 if (textRealRound.Text.Length == 0)
@@ -6294,6 +6296,12 @@ namespace UHFDemo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if ((Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value) == 0 || cmbCarreraConfig.SelectedItem.ToString().Equals("Seleccionar") || cmbCarreraConfig.SelectedItem.ToString() == ""))
+            {
+                MessageBox.Show("Debe de seleccionar una carrera");
+                return;
+            }
+
             DialogResult result = MessageBox.Show("¿Desea reiniciar la carrera?", "Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -6311,8 +6319,12 @@ namespace UHFDemo
                 seg = 0;
                 min = 0;
                 hora = 0;
-                tiempoCarrera.Enabled = true;
-                tiempoCarrera.Start();
+
+                if (btRealTimeInventory.Text.Trim() != "Empezar Carrera")
+                {
+                    tiempoCarrera.Enabled = true;
+                    tiempoCarrera.Start();
+                } 
             }
             
         }
@@ -6543,5 +6555,42 @@ namespace UHFDemo
         {
             FiltrarListado();
         }
+
+        private void cmbAntenas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbAntenas.Text.ToString())
+            {
+                case "1":
+                    {
+                        cbRealWorkant1.Checked = true;
+                        cbRealWorkant2.Checked = false;
+                        cbRealWorkant3.Checked = false;
+                        cbRealWorkant4.Checked = false;
+                    }break;
+                case "2":
+                    {
+                        cbRealWorkant1.Checked = true;
+                        cbRealWorkant2.Checked = true;
+                        cbRealWorkant3.Checked = false;
+                        cbRealWorkant4.Checked = false;
+                    }break;
+                case "3":
+                    {
+                        cbRealWorkant1.Checked = true;
+                        cbRealWorkant2.Checked = true;
+                        cbRealWorkant3.Checked = true;
+                        cbRealWorkant4.Checked = false;
+                    }break;
+                case "4":
+                    {
+                        cbRealWorkant1.Checked = true;
+                        cbRealWorkant2.Checked = true;
+                        cbRealWorkant3.Checked = true;
+                        cbRealWorkant4.Checked = true;
+                    }break;
+            }
+        }
+
+        
     }
 }

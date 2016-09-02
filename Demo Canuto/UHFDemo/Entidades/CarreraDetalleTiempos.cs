@@ -23,6 +23,7 @@ namespace UHFDemo.Entidades
         public string Rama { get; set; }
         public DateTime FechaHora { get; set; }
         public double Tiempo { get; set; }
+        public DateTime TiempoInicialCarrera { get; set; }
 
         public CarreraDetalleTiempos()
         {

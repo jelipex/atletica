@@ -55,7 +55,7 @@ namespace UHFDemo
             cmbEstadoCarrera.SelectedIndexChanged += cmbEstadoCarrera_SelectedIndexChanged;
             this.FormClosing += VistaCapturaCarreras_FormClosing;
             toolStripEliminarCompetidor.Click += toolStripEliminarCompetidor_Click;
-            VistaDemo.btRealTimeInventory.PerformClick();
+            //VistaDemo.btRealTimeInventory.PerformClick();
         }
 
         void toolStripEliminarCompetidor_Click(object sender, EventArgs e)
@@ -93,6 +93,9 @@ namespace UHFDemo
                 if (result == DialogResult.Yes)
                 {
                     VistaDemo.LlenarListadoCarreras();
+                    VistaDemo.btRealTimeInventory.PerformClick();
+                    Globales.capturaCarrera = false;
+
                 }
                 else
                 {
@@ -1034,7 +1037,7 @@ namespace UHFDemo
             cmbPuntos.DataSource = LlenarComboPuntos();
             cmbPuntos.DisplayMember = "Descripcion";
             cmbPuntos.ValueMember = "IdPunto";
-           
+            Globales.capturaCarrera = true;
         }
 
         private void AgregarRenglonCompetidor()
