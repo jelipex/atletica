@@ -5902,7 +5902,7 @@ namespace UHFDemo
                 string tiempoFormateado = string.Format("{0:00}:{1:00}:{2:00}:{3:000000}", tiempo.TotalHours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
                 DataGridViewRow row = new DataGridViewRow();
 
-                string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.IdCarreraDetalle.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, entidad.Punto, tiempoFormateado };
+                string[] rowNuevo = new string[] { (gridCarreraDetalle.RowCount).ToString(), entidad.Numero.ToString(), entidad.Competidor, entidad.Distancia, entidad.Categoria, entidad.Rama, entidad.Punto, tiempoFormateado };
 
                 string distancia = cmbFiltroDistancias.SelectedValue != null && cmbFiltroDistancias.SelectedValue.ToString() != "" && cmbFiltroDistancias.SelectedIndex != 0 ? cmbFiltroDistancias.Text : string.Empty;
                 string categoria = cmbFiltroCategorias.SelectedValue != null && cmbFiltroCategorias.SelectedValue.ToString() != "" && cmbFiltroCategorias.SelectedIndex != 0 ? cmbFiltroCategorias.Text : string.Empty;
@@ -5910,6 +5910,11 @@ namespace UHFDemo
                 string punto = cmbFiltroPunto.SelectedValue != null && cmbFiltroPunto.SelectedValue.ToString() != "" && cmbFiltroPunto.SelectedIndex != 0 ? cmbFiltroPunto.Text : string.Empty;
 
                 gridCarreraDetalle.Rows.Add(rowNuevo);
+
+                int rVisible = gridCarreraDetalle.DisplayedRowCount(false);
+                if (gridCarreraDetalle.FirstDisplayedScrollingRowIndex + rVisible < gridCarreraDetalle.Rows.Count)
+                    gridCarreraDetalle.FirstDisplayedScrollingRowIndex += 2;
+                else gridCarreraDetalle.FirstDisplayedScrollingRowIndex = 0;
                 //if ((distancia != "" && distancia != entidad.Distancia) || (categoria != "" && categoria != entidad.Categoria) || (rama != "" && entidad.Rama != "") || (punto != "" && punto != entidad.Punto))
                 //{
                 //    gridCarreraDetalle.Rows[gridCarreraDetalle.RowCount - 1].Visible = false;
@@ -6474,43 +6479,46 @@ namespace UHFDemo
         {
 
             int idCarrera = Convert.ToInt32(((Item)cmbCarreraConfig.SelectedValue).Value);
+            if (idCarrera != 0)
+            {
+                DataTable dtDistancias = LlenarComboDistancias(idCarrera);
+                cmbFiltroDistancias.DataSource = dtDistancias;
+                cmbFiltroDistancias.DisplayMember = "Descripcion";
+                cmbFiltroDistancias.ValueMember = "IdDistancia";
 
-            DataTable dtDistancias = LlenarComboDistancias(idCarrera);
-            cmbFiltroDistancias.DataSource = dtDistancias;
-            cmbFiltroDistancias.DisplayMember = "Descripcion";
-            cmbFiltroDistancias.ValueMember = "IdDistancia";
+                DataRow drDistancias = dtDistancias.NewRow();
+                drDistancias["Descripcion"] = "Todas";
+                drDistancias["IdDistancia"] = 0;
 
-            DataRow drDistancias = dtDistancias.NewRow();
-            drDistancias["Descripcion"] = "Todas";
-            drDistancias["IdDistancia"] = 0;
+                dtDistancias.Rows.InsertAt(drDistancias, 0);
+                cmbFiltroDistancias.SelectedIndex = 0;
 
-            dtDistancias.Rows.InsertAt(drDistancias, 0);
-            cmbFiltroDistancias.SelectedIndex = 0;
+                DataTable dtCategorias = LlenarComboCategorias(idCarrera);
+                cmbFiltroCategorias.DataSource = dtCategorias;
+                cmbFiltroCategorias.DisplayMember = "Descripcion";
+                cmbFiltroCategorias.ValueMember = "IdCategoria";
 
-            DataTable dtCategorias = LlenarComboCategorias(idCarrera);
-            cmbFiltroCategorias.DataSource = dtCategorias;
-            cmbFiltroCategorias.DisplayMember = "Descripcion";
-            cmbFiltroCategorias.ValueMember = "IdCategoria";
+                DataRow drCategorias = dtCategorias.NewRow();
+                drCategorias["Descripcion"] = "Todas";
+                drCategorias["IdCategoria"] = 0;
 
-            DataRow drCategorias = dtCategorias.NewRow();
-            drCategorias["Descripcion"] = "Todas";
-            drCategorias["IdCategoria"] = 0;
+                dtCategorias.Rows.InsertAt(drCategorias, 0);
+                cmbFiltroCategorias.SelectedIndex = 0;
 
-            dtCategorias.Rows.InsertAt(drCategorias, 0);
-            cmbFiltroCategorias.SelectedIndex = 0;
+                DataTable dtPuntos = LlenarComboPuntos(idCarrera);
+                cmbFiltroPunto.DataSource = dtPuntos;
+                cmbFiltroPunto.DisplayMember = "Descripcion";
+                cmbFiltroPunto.ValueMember = "IdPunto";
 
-            DataTable dtPuntos = LlenarComboPuntos(idCarrera);
-            cmbFiltroPunto.DataSource = dtPuntos;
-            cmbFiltroPunto.DisplayMember = "Descripcion";
-            cmbFiltroPunto.ValueMember = "IdPunto";
+                DataRow drPuntos = dtPuntos.NewRow();
+                drPuntos["Descripcion"] = "Todas";
+                drPuntos["IdPunto"] = 0;
 
-            DataRow drPuntos = dtPuntos.NewRow();
-            drPuntos["Descripcion"] = "Todas";
-            drPuntos["IdPunto"] = 0;
-
-            dtPuntos.Rows.InsertAt(drPuntos, 0);
-            cmbFiltroPunto.SelectedIndex = 0;
-            cmbFiltroRamas.SelectedItem = "Todas";
+                dtPuntos.Rows.InsertAt(drPuntos, 0);
+                cmbFiltroPunto.SelectedIndex = 0;
+                cmbFiltroRamas.SelectedItem = "Todas";
+            }
+            
         }
 
         private void FiltrarListado()
